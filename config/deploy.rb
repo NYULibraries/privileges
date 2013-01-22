@@ -3,6 +3,12 @@ require "bundler/capistrano"
 # Load rvm-capistrano gem
 require "rvm/capistrano"
 
+# Environments
+set :stages, ["staging", "production"]
+set :default_stage, "staging"
+# Multistage
+require 'capistrano/ext/multistage'
+
 set :ssh_options, {:forward_agent => true}
 set :app_title, "privileges_guide"
 set :application, "#{app_title}_repos"
@@ -18,12 +24,6 @@ set :scm, :git
 set :deploy_via, :remote_cache
 set(:branch, 'master') unless exists?(:branch)
 set :git_enable_submodules, 1
-
-# Environments
-set :stages, ["staging", "production"]
-set :default_stage, "staging"
-# Multistage
-require 'capistrano/ext/multistage'
 
 set :keep_releases, 5
 set :use_sudo, false
