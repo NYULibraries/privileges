@@ -68,7 +68,7 @@ desc "Cleanup git project"
 task :clean_git, :roles => :app do
   # Clean up non tracked git files that aren't explicitly ignoredgit 
   system "git clean -d -f"
-  system "git rm -f -r log/*.log"
+  system "rm -rf log/*.log"
 end
 
 desc "Generate rdocs and push rdocs and coverage to gh-pages"
