@@ -9,7 +9,7 @@
       <h4 id="permission_span_<%=permission.id%>" class="permission_header <%=hidden_class(permission)%>"><i class="icon-move"></i>&nbsp;<%=h permission.web_text %></h4>	
       <%= link_to 'Show', permission %> | 
       <%= link_to 'Edit', edit_permission_path(permission) %> | 
-      <%= link_to_if permission.from_aleph?, "Destroy", permission, :data => { :confirm =>'Are you sure?' }, :method => :delete%> | 
+      <%= link_to_unless permission.from_aleph?, "Destroy", permission, :data => { :confirm =>'Are you sure?' }, :method => :delete%> | 
       <%= link_to permission_path(permission, :permission => {:visible => !permission.visible}), :method => :put, :remote => true, :class => "toggle_visible" do %>
           <%= (permission.visible?) ? "Hide" : "Reveal" %>
         <% end %>
