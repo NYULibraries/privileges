@@ -19,7 +19,7 @@ To ensure that memcached is running on your server run the command
 And then start it up if it is not running
 
     ~$ /etc/init.d/memcached start
-  g
+
 Its presence in init.d should indicate that it is set to run on startup.
 
 ### Loading the data from Aleph and indexing in Websolr
