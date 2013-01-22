@@ -1,0 +1,7 @@
+<h1>Editing patron status</h1>
+
+<%= render 'form', :locals => { :disable_code_field => true }%>
+
+<%= icon_tag :show %><%= link_to 'Show', @patron_status %> |
+<%= icon_tag :back %>
+<%= link_to 'Back', patron_statuses_path %>

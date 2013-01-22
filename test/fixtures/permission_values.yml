@@ -1,0 +1,17 @@
+pv_aleph_one:
+  permission_code: multiple_hold_permission
+  code: N
+  web_text: N
+  from_aleph: true
+
+pv_aleph_two:
+  permission_code: multiple_hold_permission
+  code: Y
+  web_text: Y
+  from_aleph: true
+
+pv_nonaleph_one:
+  permission_code: nyu_ag_noaleph_Page_and_Delivery_Services
+  code: nyu_ag_noaleph_Page_and_delivery_service_eligible_No
+  web_text: Not available.
+  from_aleph: false

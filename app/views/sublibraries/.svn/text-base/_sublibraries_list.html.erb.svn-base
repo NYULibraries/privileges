@@ -1,0 +1,57 @@
+<% if @total == 0 %>
+
+<p>No items found...</p>
+
+<% else %>
+
+<p>Total: <b><%= @total %></b></p>
+
+<%= will_paginate @sublibraries%>
+<table>
+  <thead>
+	  <tr>
+			<th <%= sort_td_class_helper "under_header" %>>
+		        <%= sort_link_helper "Grouping", "under_header" %>
+		      </th>
+			<th <%= sort_td_class_helper "code" %>>
+		        <%= sort_link_helper "Code", "code" %>
+		      </th>
+			<th <%= sort_td_class_helper "original_text" %>>
+		        <%= sort_link_helper "Original Text", "original_text" %>
+		      </th>
+			<th <%= sort_td_class_helper "web_text" %>>
+		        <%= sort_link_helper "Web Text", "web_text" %>
+		      </th>
+			<th <%= sort_td_class_helper "fromAleph" %>>
+		        <%= sort_link_helper "From Aleph?", "fromAleph" %>
+		      </th>
+	  </tr>
+  </thead>
+  <tbody>
+
+<% @sublibraries.each do |sublibrary| %>
+  <tr class="<%=cycle("even","odd") %>">
+	<td><%=h sublibrary.under_header if sublibrary.under_header != sublibrary.web_text %></td>
+    <td><span id="sublibrary_<%=sublibrary.id%>"><%if !sublibrary.meta_display_status?%><span class="grayed"><%end%><%=h sublibrary.code %><%if !sublibrary.meta_display_status? %> (Hidden)</span><%end%></span></td>
+    <td><%=h sublibrary.original_text %></td>
+    <td><%=h sublibrary.web_text %></td>
+    <td><%=h sublibrary.fromAleph %></td>
+    <td><%= link_to 'Show', sublibrary %></td>
+    <td><%= link_to 'Edit', edit_sublibrary_path(sublibrary) %></td>
+    <td><% if sublibrary.fromAleph? || sublibrary.code == "nyu_ag_noaleph_general" %><span class="grayed"><% end %><%= link_to_unless(sublibrary.fromAleph? || sublibrary.code == "nyu_ag_noaleph_general", 'Destroy', sublibrary, :confirm => 'Are you sure?', :method => :delete) %><% if sublibrary.fromAleph? || sublibrary.code == "nyu_ag_noaleph_general" %></span><% end %></td>
+ 	<td><span id="sublibrary_showhide_<%=sublibrary.id%>">
+		<%if sublibrary.meta_display_status? %>
+		<%= link_to_remote 'Hide', :url => {:controller=>"sublibraries",:action=>"toggle_display_status",:meta_display_status=>0,:id=>sublibrary.id}%>
+		<% else %>
+		<%= link_to_remote 'Reveal', :url => {:controller=>"sublibraries",:action=>"toggle_display_status",:meta_display_status=>1,:id=>sublibrary.id}%>
+		<% end %>
+		</span>
+	</td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<% end %>
+
+<%= will_paginate @sublibraries%>

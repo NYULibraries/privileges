@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/repos/apps/!svn/ver/2741/access_grid/tags/access_grid-release-1.1/app/views/permissions
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repos/apps/!svn/ver/2741/access_grid/tags/access_grid-release-1.1/app/views/permissions/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repos/apps/!svn/ver/2741/access_grid/tags/access_grid-release-1.1/app/views/permissions/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/repos/apps/!svn/ver/2741/access_grid/tags/access_grid-release-1.1/app/views/permissions/new.html.erb
+END
+_show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repos/apps/!svn/ver/2741/access_grid/tags/access_grid-release-1.1/app/views/permissions/_show.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repos/apps/!svn/ver/2741/access_grid/tags/access_grid-release-1.1/app/views/permissions/show.html.erb
+END

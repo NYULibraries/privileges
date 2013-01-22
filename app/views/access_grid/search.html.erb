@@ -1,0 +1,21 @@
+<h1><%= application_name%></h1>
+
+<%= render :partial => "access_grid/searchbox"  %>
+
+<h4><%= page_entries_info_sunspot @patron_statuses %></h4>
+
+<p><%= highlight("You searched for: #{params[:q]}", params[:q]) %></p>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+		<th>Patron type</th>
+	</thead>
+	<tbody>
+  <% @patron_statuses.hits.each do |patron_status| %>
+  	<tr>
+  		<td><%= highlight(link_to(patron_status.stored(:web_text), patron_status_link(patron_status.primary_key, patron_status.stored(:web_text))), params[:q])%></td>
+  	</tr>
+  <% end %>
+	</tbody>
+</table>
+

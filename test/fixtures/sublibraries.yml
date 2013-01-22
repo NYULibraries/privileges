@@ -1,0 +1,37 @@
+aleph_one:
+  code: TNSFO
+  original_text: New School Fogelman Library
+  web_text: New School Fogelman Library
+  from_aleph: true
+  visible: true
+  under_header: New School
+  
+aleph_nonvisible:
+  code: TNSGI
+  original_text: New School Gimbel Library
+  web_text: New School Gimbel Library
+  from_aleph: true
+  visible: false
+  under_header: New School
+
+noaleph_one:
+  code: nyu_ag_noaleph_dental
+  web_text: Waldmann Memorial Dental Library
+  from_aleph: false
+  visible: true
+  under_header: NYU
+
+noaleph_nonvisible:
+  code: nyu_ag_noaleph_law
+  web_text: The Law Library
+  from_aleph: false
+  visible: false
+  under_header: Other Libraries
+
+aleph_diffheader:
+  code: NYU50
+  original_text: NYU50
+  web_text: NYU Library
+  from_aleph: true
+  visible: true
+  under_header: 50Library

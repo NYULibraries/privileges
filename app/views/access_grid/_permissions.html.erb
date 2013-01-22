@@ -1,0 +1,23 @@
+<% if @sublibrary %>
+<h3><%= @sublibrary.web_text.html_safe %></h3>
+<div id="permissions_<%=@sublibrary.code%>" class="permissions_list">
+  <table class="table table-bordered table-striped"> 
+  	<thead>
+  		<th>Privilege</th>
+  		<th></th>
+  	</thead>
+  	<tbody>	
+  	<% unless @patron_status_permissions.count == 0 %>
+    	<% @patron_status_permissions.each do | ps_perm | %>
+      	<%= content_tag(:tr) do |c| %>
+      	  <td><%= ps_perm.permission_web_text.html_safe %></td>
+          <td><%= ps_perm.permission_value_web_text.html_safe %></td>
+  	    <% end %> 
+  	  <% end %>
+    <% else %>
+      <tr><td colspan="2">No privileges</td></tr>
+    <% end %>
+  	</tbody>
+  </table>
+</div>
+<% end %>

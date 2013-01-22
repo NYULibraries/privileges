@@ -1,0 +1,32 @@
+<h1>Listing permissions</h1>
+
+
+<div id="box_container">
+<ul id="list_permissions" class="list">
+<% @permissions.each do |permission| %>
+
+	<% content_tag_for :li, permission do %>
+    <h3><span class="handle_permissions_list"><%= image_tag("move.png")%></span> <span id="permission_span_<%=permission.id%>"><%if !permission.meta_display_status?%><span class="grayed"><%end%><%=h permission.web_text %><%if !permission.meta_display_status? %> (Hidden)</span><%end%></span></h3>	
+
+    <%= link_to 'Show', permission %> | 
+    <%= link_to 'Edit', edit_permission_path(permission) %> | 
+    <% if permission.fromAleph? %><span class="grayed"><% end %><%= link_to_unless(permission.fromAleph?, 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete) %><% if permission.fromAleph? %></span><% end %> |
+ 	<span id="permission_showhide_<%=permission.id%>">
+		<%if permission.meta_display_status? %>
+		<%= link_to_remote 'Hide', :url => {:controller=>"permissions",:action=>"toggle_display_status",:meta_display_status=>0,:id=>permission.id}%>
+		<% else %>
+		<%= link_to_remote 'Reveal', :url => {:controller=>"permissions",:action=>"toggle_display_status",:meta_display_status=>1,:id=>permission.id}%>
+		<% end %>
+		</span>
+	<% end %>
+<% end %>
+</ul>
+</div>
+<%= sortable_element "list_permissions",
+	 :handle => 'handle_permissions_list',
+     :url      => {:action=>"update_order"} %>
+
+
+<br />
+
+<%= link_to 'New permission', new_permission_path, :class => "nyulibrary_icons_add" %>

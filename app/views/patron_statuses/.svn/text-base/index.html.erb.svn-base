@@ -1,0 +1,18 @@
+<h1>Listing patron statuses</h1>
+
+<div id="patron_statuses">
+	<form name="sform" id="sform" action="" style="display:inline;">
+	<label for="item_name">Search by  <%= select_tag "filter", "<option>Web Text</option>,<option>Original Text</option>,<option>Code</option>,<option>Grouping</option>" %>: </label>
+	<%= text_field_tag(:query, params['query'], :size => 10, :id => 'query') %>
+
+	</form>
+
+	<div id="table">
+	<%= render :partial => "patron_statuses_list" %>
+	</div>
+
+
+</div>
+<br />
+
+<%= link_to 'New patron status', new_patron_status_path, :class=>"nyulibrary_icons_add" %>

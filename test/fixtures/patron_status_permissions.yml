@@ -1,0 +1,13 @@
+psp_aleph_one:                    
+  patron_status_code: 52       
+  sublibrary_code: TNSFO
+  permission_value: pv_aleph_one   
+  from_aleph: true                 
+  visible: true                    
+                                   
+psp_aleph_two:                 
+  patron_status_code: 52
+  sublibrary_code: TNSFO             
+  permission_value: pv_aleph_two  
+  from_aleph: true                 
+  visible: true 

@@ -1,0 +1,98 @@
+@import "nyulibraries";
+
+.hidden {
+  * {color: $nyuLibrariesLightBorderColor;}
+  & {color: $nyuLibrariesLightBorderColor;}
+}
+
+.column_list {
+  float: left;
+  width: 30%;
+}
+
+.grouping {
+  margin-left: -$paddingStandard;
+  margin-top: $paddingStandard /2;
+  list-style: none;
+  font-weight: bold;
+  &.first_group {
+    margin-top: 0;
+  }
+}
+
+textarea {
+  &.short_text_area {
+	  height: 100px;
+  }
+  &.wide_text_area {
+    width: 450px;
+  }
+  &.application_head_text_area, 
+  &.application_form_text_area {
+  	width: 500px;
+  	height: 70px;
+  	font-family: verdana, sans-serif;	
+  	font-size: 12px;
+  }
+}
+
+select {
+  max-width: 25em;
+}
+
+form#search_patron_statuses {
+  margin-bottom: 0;
+}
+
+.sidebar-section ul {
+  padding: $paddingStandard;
+}
+
+.q {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  line-height: 20px !important;
+}
+
+.sortable_list {
+  padding-left: 0 !important;
+  h4 {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  list-style: none;
+  li {
+    list-style: none;
+    margin-bottom: $paddingSmall;
+    padding-left: 0 !important;
+  }
+}
+
+ul#edit_permissions_list {
+  margin-left: 0;
+  h4 { padding-bottom: 3px; }
+  > li { padding: 5px 0; }
+}
+
+form label {
+  margin-left: 0;
+}
+
+.field_with_errors {
+  input {
+    @extend .alert;
+    @extend .alert-error;
+  }
+  label {
+    color: #B94A48;
+    font-weight:bold;
+  }
+}
+
+.foot-text { clear:left; }
+
+.is-hidden {
+  color: #ccc;
+}
+
+.patron_statuses_lists { padding: 0; }

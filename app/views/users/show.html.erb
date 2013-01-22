@@ -1,0 +1,30 @@
+<% h = @user.user_attributes %>
+<h1><%= @user.firstname %> <%= @user.lastname %> (<%= @user.username %>)</h1>
+
+<div id="show_user">
+<dl class="dl-horizontal">
+
+  <dt>NetID:</dt>
+  <dd><%=h @user.username %></dd>
+
+  <dt>First name:</dt>
+  <dd><%=h @user.firstname %></dd>
+
+  <dt>Last name:</dt>
+  <dd><%=h @user.lastname %></dd>
+
+  <dt>E-mail:</dt>
+  <dd><%=h @user.email %></dd>
+
+  <dt>Admin?</dt>
+  <dd>
+    <%= form_for @user, :remote => true, :class => "form-inline clearfix" do |f| %>
+    <%= f.check_box :access_grid_admin, :checked => h[:access_grid_admin], :disabled => (current_user.username == @user.username) %>
+    <button type="submit" data-remote="true" class="btn" <%= (current_user.username == @user.username) ? "disabled" : ""%>>Update</button>
+    <% end %>
+  </dd>
+    
+</dl>
+</div>
+<%= icon_tag :back %><%= link_to 'Back', users_path %>
+

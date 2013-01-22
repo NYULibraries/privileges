@@ -1,0 +1,24 @@
+<%= form_for(@permission) do |f| %>
+  <% if @permission.errors.any? %>  
+    <div id="error_explanation" class="alert alert-error">  
+      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this record from being saved:</h2>  
+      <ul>  
+      <% @permission.errors.full_messages.each do |msg| %>  
+        <li><%= msg %></li>  
+      <% end %>  
+      </ul>  
+    </div>  
+  <% end %>
+
+  <p>
+    <%= f.label :code %>
+    <%= f.text_field :code, :disabled => locals[:disable_code_field] %>
+  </p>
+  <p>
+    <%= f.label :web_text %>
+    <%= f.text_field :web_text %>
+  </p>
+  <p>
+    <button type="submit" class="btn">Save changes</button>
+  </p>
+<% end %>

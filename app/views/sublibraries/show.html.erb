@@ -1,0 +1,27 @@
+<h1><%=h @sublibrary.web_text.html_safe %></h1>
+
+<dl class="dl-horizontal">
+  
+<% if @sublibrary.from_aleph? %>
+  <dt>Code:</dt>
+  <dd><%=h @sublibrary.code %></dd>
+  <dt>Original text:</dt>
+  <dd><%=h @sublibrary.original_text %></dd>
+<% end %>
+
+  <dt>Web text:</dt>
+  <dd><%=h @sublibrary.web_text.html_safe %></dd>
+
+<% if @sublibrary.under_header? %>
+  <dt>Grouping:</dt>
+  <dd><%=h @sublibrary.under_header.html_safe %></dd>
+<% end %>
+
+  <dt>From Aleph?</dt>
+  <dd><%=h @sublibrary.from_aleph %></dd>
+  
+</dl>
+
+<%= icon_tag :edit %><%= link_to 'Edit', edit_sublibrary_path(@sublibrary) %> |
+<%= icon_tag :back %>
+<%= link_to 'Back', sublibraries_path %>

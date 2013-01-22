@@ -1,0 +1,36 @@
+<% if !@permission.from_aleph? %>
+	<%= form_for @permission_value do |f| %>
+	<% if @permission.errors.any? %>  
+    <div id="error_explanation" class="alert alert-error">  
+      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this record from being saved:</h2>  
+      <ul>  
+      <% @permission.errors.full_messages.each do |msg| %>  
+        <li><%= msg %></li>  
+      <% end %>  
+      </ul>  
+    </div>  
+  <% end %>
+	<p>
+		<h3><%=icon_tag :add %>Add Permission Value:</h3>
+		<table class="table table-striped table-bordered">
+			<thead>
+  			<tr>
+        		<th>Code</th>
+        		<th>Web text</th>
+        		<th>Actions</th>
+  			</tr>
+			</thead>
+			<tbody>
+  			<tr>
+        		<td><%= f.text_field :code %></td>
+        		<td>
+        		  <%= f.text_field :web_text %>
+        		  <%= f.hidden_field :permission_code, :value => @permission.code%>
+        		</td>
+        		<td><button type="submit" class="btn">Add permission value</button></td>
+  			</tr>
+			</tbody>
+		</table>
+	</p>
+	<% end %>
+<% end %>

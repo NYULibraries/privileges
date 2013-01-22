@@ -1,0 +1,9 @@
+services:
+  - memcached
+
+before_script:
+  - mysql -e 'create database nyu_privileges_guide_test;'
+
+rvm:
+  - "1.9.3"
+  - "1.9.2"

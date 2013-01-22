@@ -1,0 +1,34 @@
+aleph_one:
+  code: multiple_hold_permission
+  web_text: Multiple hold permission
+  from_aleph: true
+  visible: true
+  sort_order: 1
+  
+aleph_two:
+  code: photo_permission
+  web_text: Interlibrary Loans
+  from_aleph: true
+  visible: true
+  sort_order: 2
+  
+aleph_nonvisible:
+  code: renew_permission
+  web_text: Renewals
+  from_aleph: true
+  visible: false
+  sort_order: 3
+
+noaleph_one:
+  code: nyu_ag_noaleph_Page_and_Delivery_Services
+  web_text: Page and delivery services
+  from_aleph: false
+  visible: true
+  sort_order: 4
+
+noaleph_nonvisible:
+  code: nyu_ag_noaleph_lower_level_1
+  web_text: Library Access
+  from_aleph: false
+  visible: false
+  sort_order: 5

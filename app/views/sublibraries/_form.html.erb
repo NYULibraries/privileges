@@ -1,0 +1,37 @@
+<%= form_for(@sublibrary) do |f| %>
+<% if @sublibrary.errors.any? %>
+  <div id="error_explanation" class="alert alert-error">
+    <h2><%= pluralize(@sublibrary.errors.count, "error") %> prohibited this sublibrary from being saved:</h2>
+
+    <ul>
+    <% @sublibrary.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+  </div>
+  <% if @sublibrary.from_aleph? %>
+    <div class="field">
+      <%= f.label :original_text %>
+      <%= f.text_field :original_text, :disabled => true %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :web_text %>
+    <%= f.text_field :web_text %>
+  </div>
+ 	<div class="field">
+    <%= f.label :under_header, "Grouping" %>
+    <%= f.text_field :under_header %>
+  </div>
+  <div class="actions">
+    <button class="btn" type="submit">Save changes</button>
+  </div>
+<% end %>
+
+<br />

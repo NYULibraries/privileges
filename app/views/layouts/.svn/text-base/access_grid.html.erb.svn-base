@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Library Access Grid</title>
+  <link rel="SHORTCUT ICON" href="http://library.nyu.edu/favicon.ico" />
+  <%= stylesheet_link_tag 'access_grid' %>
+  <%= stylesheet_link_tag 'access_grid_frontend' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+<div id="header"></div>
+<div id="nav1">  
+    <ul class="floatLeft">
+    	<li><a href="http://library.nyu.edu">NYU Libraries</a></li>
+		<li>&gt;</li>
+    	<li><%=link_to_unless_current(get_sanitized_detail('page_title'), { :action => "display_index" , :controller => "access_grid"})%></a></li>
+	<% if request.request_uri.match(/login/)%>
+	<li>&gt;</li>
+    	<li>Login</li>	
+	<% end %>
+	<% if request.request_uri.match(/patrons/)%>
+	<li>&gt;</li>
+    	<li><%=@patron_status.web_text%></li>	
+	<% end %>
+	<% if request.request_uri.match(/search/)%>
+	<li>&gt;</li>
+    	<li>Search</li>	
+	<% end %>
+    </ul>
+	<ul class="floatRight">
+    	<li><%#= link_to "Log-out #{session[:user]}", logout_path, :class => 'nyulibrary_icons_logout' %></li>
+    </ul>
+</div>
+
+<div id="maincontent" class="clearBoth">
+
+<p class="flash"><%= flash[:notice] %></p>
+<p class="error"><%= flash[:error] %></p>
+<%= yield  %>
+</div>
+<div id="footer">NYU Division of Libraries</div>
+</body>
+</html>
+

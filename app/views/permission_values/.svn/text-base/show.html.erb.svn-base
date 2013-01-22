@@ -1,0 +1,23 @@
+<p>
+  <b>Permission:</b>
+  <%=h @permission_value.permission_code %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%=h @permission_value.code %>
+</p>
+
+<p>
+  <b>Web text:</b>
+  <%=h @permission_value.web_text %>
+</p>
+
+<p>
+  <b>From Aleph?</b>
+  <%=h @permission_value.fromAleph %>
+</p>
+
+
+<%= link_to 'Edit', edit_permission_value_path(@permission_value),:class => "nyulibrary_icons_wrench" %> |
+<%= link_to 'Back', @permission %>

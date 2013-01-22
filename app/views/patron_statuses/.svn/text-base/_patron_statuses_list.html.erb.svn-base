@@ -1,0 +1,56 @@
+<% if @total == 0 %>
+
+<p>No items found...</p>
+
+<% else %>
+
+<p>Total: <b><%= @total %></b></p>
+
+<%= will_paginate @patron_statuses%>
+<table>
+  <thead>
+  <tr>
+		<th <%= sort_td_class_helper "under_header" %>>
+	        <%= sort_link_helper "Grouping", "under_header" %>
+	      </th>
+		<th <%= sort_td_class_helper "code" %>>
+	        <%= sort_link_helper "Code", "code" %>
+	      </th>
+		<th <%= sort_td_class_helper "original_text" %>>
+	        <%= sort_link_helper "Original Text", "original_text" %>
+	      </th>
+		<th <%= sort_td_class_helper "web_text" %>>
+	        <%= sort_link_helper "Web Text", "web_text" %>
+	      </th>
+		<th <%= sort_td_class_helper "fromAleph" %>>
+	        <%= sort_link_helper "From Aleph?", "fromAleph" %>
+	      </th>
+  </tr>
+  </thead>
+  <tbody>
+<% @patron_statuses.each do |patron_status| %>
+  <tr class="<%=cycle("even","odd") %>">
+	<td><%=h patron_status.under_header %></td>
+    <td><span id="patron_status_<%=patron_status.id%>"><%if !patron_status.meta_display_status?%><span class="grayed"><%end%><%=h patron_status.code %><%if !patron_status.meta_display_status? %> (Hidden)</span><%end%></span></td>
+    <td><%=h patron_status.original_text %></td>
+    <td><%=h patron_status.web_text %></td>
+    <td><%=h patron_status.fromAleph %></td>
+    <td><%= link_to 'Show', patron_status %></td>
+    <td><%= link_to 'Edit', edit_patron_status_path(patron_status) %></td>
+    <td><%if patron_status.fromAleph?%><span class="grayed"><%end%><%= link_to_unless(patron_status.fromAleph?, 'Destroy', patron_status, :confirm => 'Are you sure?', :method => :delete) %><%if patron_status.fromAleph?%></span><%end%></td>
+ 	<td><span id="patron_status_showhide_<%=patron_status.id%>">
+		<%if patron_status.meta_display_status? %>
+		<%= link_to_remote 'Hide', :url => {:controller=>"patron_statuses",:action=>"toggle_display_status",:meta_display_status=>0,:id=>patron_status.id}%>
+		<% else %>
+		<%= link_to_remote 'Reveal', :url => {:controller=>"patron_statuses",:action=>"toggle_display_status",:meta_display_status=>1,:id=>patron_status.id}%>
+		<% end %>
+		</span>
+	</td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<% end %>
+
+<%= will_paginate @patron_statuses%>

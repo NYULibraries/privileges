@@ -1,0 +1,35 @@
+<p><%= page_entries_info_sunspot @patron_statuses %></p>
+
+<%= paginate @patron_statuses.hits %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+		<th><%= sortable "under_header", "Grouping"%></th>
+		<th><%= sortable "code"%></th>
+		<th><%= sortable "original_text"%></th>
+		<th><%= sortable "web_text"%></th>
+		<th><%= sortable "from_aleph", "From Aleph?"%></th>
+		<th colspan="4">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+<% @patron_statuses.results.each do |patron_status| %>
+  <tr class="<%=hidden_class(patron_status)%>">
+	  <td><%=h patron_status.under_header.html_safe unless patron_status.under_header.nil? %></td>
+    <td><%=h word_break(patron_status.code) %></td>
+    <td><%=h patron_status.original_text %></td>
+    <td><%=h patron_status.web_text.html_safe unless patron_status.web_text.nil? %></td>
+    <td><%=h patron_status.from_aleph %></td>
+    <td class="actions"><%= link_to 'Show', patron_status %></td>
+    <td class="actions"><%= link_to 'Edit', edit_patron_status_path(patron_status) %></td>
+    <td class="actions"><%= link_to_unless(patron_status.from_aleph?, 'Destroy', patron_status, data: { confirm: 'Are you sure?' }, :method => :delete) %></td>
+ 	  <td class="actions"><%= link_to "#{(patron_status.visible) ? 'Hide' : 'Reveal' }", patron_status_path(patron_status, params.merge(:patron_status => {:visible => !patron_status.visible})), :method => :put, :remote => true, :class => "toggle_visible" %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= paginate @patron_statuses.hits %>
+
+

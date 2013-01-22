@@ -1,0 +1,22 @@
+<h1>Listing application text</h1>
+
+<table class="table table-bordered table-striped"> 
+  <thead>
+  <tr>
+    <th>Description</th>
+    <th>Text</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+<% @application_details.each do |application_detail| %>
+  <tr class="<%= cycle("even","odd") %>">
+    <td><%= application_detail.description.html_safe %></td>
+    <td><%= print_formatted_html(application_detail.the_text) %></td>
+    <td><%= link_to 'Edit', edit_application_detail_path(application_detail) %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />

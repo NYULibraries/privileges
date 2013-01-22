@@ -1,0 +1,24 @@
+<h1>Editing permission value</h1>
+
+<% form_for(@permission_value) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :permission_code %><br />
+    <%= f.text_field :permission_code, :disabled=>true %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code, :disabled=>true %>
+  </p>
+  <p>
+    <%= f.label :web_text %><br />
+    <%= f.text_field :web_text %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @permission_value, :class => "nyulibrary_icons_magnifier" %> |
+<%= link_to 'Back', @permission %>

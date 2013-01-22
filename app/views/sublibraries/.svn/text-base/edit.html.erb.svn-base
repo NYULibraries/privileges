@@ -1,0 +1,29 @@
+<h1>Editing sub library</h1>
+
+<% form_for(@sublibrary) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code, :disabled => true %>
+  </p>
+<% if @sublibrary.fromAleph? %>
+  <p>
+    <%= f.label :original_text %><br />
+    <%= f.text_field :original_text, :disabled => true %>
+  </p>
+<% end %>
+  <p>
+    <%= f.label :web_text %><br />
+    <%= f.text_field :web_text %>
+  </p>
+ 	<p>
+    <%= f.label :under_header, "Grouping" %><br />
+    <%= f.text_field :under_header %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sublibrary, :class => "nyulibrary_icons_magnifier" %> |
+<%= link_to 'Back', sublibraries_path %>

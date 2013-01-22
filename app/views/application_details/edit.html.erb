@@ -1,0 +1,31 @@
+<h1>Editing application text</h1>
+
+<%= form_for(@application_detail) do |f| %>
+  <% if @application_detail.errors.any? %>  
+    <div id="error_explanation" class="alert alert-error">  
+      <h2><%= pluralize(@application_detail.errors.count, "error") %> prohibited this record from being saved:</h2>  
+      <ul>  
+      <% @application_detail.errors.full_messages.each do |msg| %>  
+        <li><%= msg %></li>  
+      <% end %>  
+      </ul>  
+    </div>  
+  <% end %>
+
+  <p>
+    <%= f.label :description %>
+    <div class="well">
+    <%= @application_detail.description.html_safe %>
+    </div>
+  </p>
+  <p>
+    <%= f.label :the_text %>
+    <%= f.text_area :the_text %>
+  </p>
+  <p>
+    <button class="btn" type="submit">Save changes</button>
+  </p>
+<% end %>
+
+<%= icon_tag :back %>
+<%= link_to 'Back', application_details_path %>

@@ -1,0 +1,42 @@
+<h1>Editing patron status</h1>
+
+<% form_for(@patron_status) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code, :disabled=>true %>
+  </p>
+<% if @patron_status.fromAleph? %>
+  <p>
+    <%= f.label :original_text %><br />
+    <%= f.text_field :original_text,:disabled=>true %>
+  </p>
+<% end %>
+  <p>
+    <%= f.label :web_text %><br />
+    <%= f.text_field :web_text %>
+  </p>
+  <p>
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %><br />
+<small>Enter a comma-delimited list of keywords to aid in the patron status search.</small>
+  </p>
+ 	<p>
+    <%= f.label :under_header, "Grouping" %><br />
+    <%= f.text_field :under_header %>
+  </p>
+	<p>
+    <%= f.label :id_type %><br />
+    <%= f.text_field :id_type %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @patron_status, :class=>"nyulibrary_icons_magnifier" %> |
+<%= link_to 'Back', patron_statuses_path %>

@@ -1,0 +1,67 @@
+<h1><%= @patron_status.web_text %></h1>
+
+<dl class="dl-horizontal">
+<% if @patron_status.code? %>
+
+  <dt>Code:</dt>
+  <dd><%=h @patron_status.code %></dd>
+  
+<% end %>
+
+<% if @patron_status.original_text? %>
+
+  <dt>Original text:</dt>
+  <dd><%=h @patron_status.original_text %></dd>
+
+<% end %>
+<% if @patron_status.web_text? %>
+
+  <dt>Web text:</dt>
+  <dd><%=h @patron_status.web_text.html_safe %></dd>
+
+<% end %>
+<% if @patron_status.keywords? %>
+
+  <dt>Keywords:</dt>
+  <dd><%=h @patron_status.keywords %></dd>
+
+<% end %>
+<% if @patron_status.description? %>
+
+  <dt>Description:</dt>
+  <dd><%=h @patron_status.description.html_safe %></dd>
+
+<% end %>
+<% if @patron_status.under_header? %>
+
+  <dt>Grouping:</dt>
+  <dd><%=h @patron_status.under_header.html_safe %></dd>
+
+<% end %>
+<% if @patron_status.id_type? %>
+
+  <dt>ID Type:</dt>
+  <dd><%=h @patron_status.id_type.html_safe %></dd>
+
+<% end %>
+
+  <dt>From Aleph?</dt>
+  <dd><%=h @patron_status.from_aleph %>
+
+
+  <dt>Permissions by Sub Library</dt>
+  <dd>
+    <%= form_tag patron_status_path, :class => "form-inline clearfix", :method => :get do %>
+        <%= select_tag 'sublibrary_code', options_for_select(@sublibraries.collect{ |s| [sublibrary_text(s), s.code] }, {:selected => params[:sublibrary_code]}), {:prompt => "Select a sublibrary" }%>
+        <button class="btn" type="submit">View permissions</button>
+    <% end %>
+  </dd>
+  
+</dl>
+<div id="permissions_chart"><%= render "permissions" %></div>
+
+<br />
+
+<%= icon_tag :edit %><%= link_to 'Edit', edit_patron_status_path(@patron_status) %> |
+<%= icon_tag :back %>
+<%= link_to 'Back', patron_statuses_path %>

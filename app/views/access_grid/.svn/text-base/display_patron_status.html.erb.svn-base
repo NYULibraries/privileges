@@ -1,0 +1,32 @@
+<h1><%= get_formatted_detail('page_title')%></h1>
+
+<div class="page_container">
+		<p><h2><%= get_sanitized_detail('patron_status_prefix')%><b><%= @patron_status.web_text%></b></h2>
+		<small><a href="<%=$APP_ROOT%>">Click here</a> if this is incorrect.</small></p>
+
+		<% #print formatted description and ID type if present %>
+		<%= simple_format(sanitize(@patron_status.description, :tags => %w(b strong i em br p a ul li), :attributes => %w(target href class))) if @patron_status.description? %>
+		<%= "<br />" unless @patron_status.description? %>
+		<br />
+		<%= ("<b>" + get_sanitized_detail('id_type_required') + "</b>") if @patron_status.id_type? %><%= @patron_status.id_type if @patron_status.id_type? %>
+		<%= "<br /><br />" if @patron_status.id_type? %>
+        <%
+		#The following code prints just privileges listed as "General"
+		%>
+		<!--p><b><%#= get_sanitized_detail('general_privileges_prefix')%></b></p>
+		<div id="general_permissions" class="permissions_list">
+			<table class="frontend_table">
+				<thead>
+					<th>Privilege</th>
+					<th></th>
+				</thead>
+				<%#= print_frontend_patron_status_permissions(true)%>       
+			</table>
+		</div>
+		<br /-->
+		<p><b><%= get_sanitized_detail('sublibrary_select')%></b></p>
+		<p>
+		<%= print_frontend_sublibraries %>
+	  </p>
+	  <div id="sublibrary_chart"> </div>
+</div>

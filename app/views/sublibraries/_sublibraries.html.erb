@@ -1,0 +1,35 @@
+<p><%= page_entries_info_sunspot @sublibraries %></p>
+
+<%= paginate @sublibraries.hits %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+	  <tr>
+  		<th><%= sortable "under_header", "Grouping"%></th>
+  		<th><%= sortable "code"%></th>
+  		<th><%= sortable "original_text"%></th>
+  		<th><%= sortable "sort_text", "Web text"%></th>
+  		<th><%= sortable "from_aleph", "From Aleph?"%></th>
+  		<th colspan="4">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+<% @sublibraries.results.each do |sublibrary| %>
+  <tr class="<%=hidden_class(sublibrary)%>">
+	  <td><%=h sublibrary.under_header unless sublibrary.under_header.eql? sublibrary.web_text %></td>
+    <td><%=h sublibrary.code %></td>
+    <td><%=h sublibrary.original_text %></td>
+    <td><%=h sublibrary.web_text.html_safe unless sublibrary.web_text.blank? %></td>
+    <td><%=h sublibrary.from_aleph %></td>
+    <td class="actions"><%= link_to 'Show', sublibrary %></td>
+    <td class="actions"><%= link_to 'Edit', edit_sublibrary_path(sublibrary) %></td>
+    <td class="actions"><%= link_to_unless(sublibrary.from_aleph?, 'Destroy', sublibrary, data: { confirm: 'Are you sure?' }, :method => :delete) %></td>
+    <td class="actions"><%= link_to "#{'Hide' if sublibrary.visible}#{'Reveal' unless sublibrary.visible}", sublibrary_path(sublibrary, params.merge(:sublibrary => { :visible => !sublibrary.visible })), :method => :put, :remote => true, :class => "toggle_visible" %></td>
+  </tr>
+<% end %>
+
+  </tbody>
+</table>
+
+<%= paginate @sublibraries.hits %>

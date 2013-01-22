@@ -1,0 +1,51 @@
+<%= form_for(@patron_status) do |f| %>
+  <% if @patron_status.errors.any? %>
+    <div id="error_explanation" class="alert alert-error">
+      <h2><%= pluralize(@patron_status.errors.count, "error") %> prohibited this patron status from being saved:</h2>
+
+      <ul>
+      <% @patron_status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code, :disabled => locals[:disable_code_field] %>
+  </div>
+  <% if @patron_status.from_aleph? %>
+  <div class="field">
+    <%= f.label :original_text %>
+    <%= f.text_field :original_text, :disabled => true %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :web_text %>
+    <%= f.text_field :web_text %>
+  </div>
+  <div class="field">
+    <%= f.label :keywords %>
+    <%= f.text_field :keywords %> <%= tooltip_tag(icon_tag(:info), "Enter a comma-delimited list of keywords to aid in the patron status search.") %>
+  </div>
+  <div class="field">
+    <%= f.label :under_header, "Grouping" %>
+    <%= f.text_field :under_header %>
+  </div>
+  <div class="field">
+    <%= f.label :id_type %>
+    <%= f.text_field :id_type %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <button type="submit" class="btn">Save changes</button>
+  </div>
+
+<% end %>
+
+<br />

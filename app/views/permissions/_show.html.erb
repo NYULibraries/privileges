@@ -1,0 +1,48 @@
+<h1><%= @permission.web_text%></h1>
+
+<dl class="dl-horizontal">
+  
+  <dt>Code:</dt>
+  <dd><%=h @permission.code %></dd>
+
+  <dt>Web text:</dt>
+  <dd><%=h @permission.web_text %></dd>
+
+  <dt>From Aleph?</dt>
+  <dd><%=h @permission.from_aleph %></dd>
+
+</dl>
+
+<h3>Permission Values:</h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+    	<th>Code</th>
+    	<th>Web text</th>
+    	<th>From Aleph?</th>
+    	<th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @permission_values.each do |pv| %>
+    <tr class="<%=cycle("even","odd") %>">
+  	<td><%= pv.code %></td>
+  	<td><%= pv.web_text.html_safe %></td>
+  	<td><%= pv.from_aleph %></td>
+  	<!--td><%= link_to 'Show', pv %></td-->
+  	<td><%= link_to 'Edit', edit_permission_value_path(pv) %></td>
+  	<td><%= link_to_unless(pv.from_aleph?, 'Destroy', pv, :data => { :confirm =>'Are you sure?' }, :method => :delete) %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= render "permission_values/new" %>
+
+<br />
+
+<%= icon_tag :edit %><%= link_to 'Edit', edit_permission_path(@permission) %> |
+<%= icon_tag :back %>
+<%= link_to 'Back', permissions_path %>

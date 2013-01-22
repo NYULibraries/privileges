@@ -1,0 +1,34 @@
+<h1>Editing permission value</h1>
+
+<%= form_for(@permission_value) do |f| %>
+  <% if @permission_value.errors.any? %>  
+    <div id="error_explanation" class="alert alert-error">  
+      <h2><%= pluralize(@permission_value.errors.count, "error") %> prohibited this record from being saved:</h2>  
+      <ul>  
+      <% @permission_value.errors.full_messages.each do |msg| %>  
+        <li><%= msg %></li>  
+      <% end %>  
+      </ul>  
+    </div>  
+  <% end %>
+
+  <p>
+    <%= f.label :permission_code %>
+    <%= f.text_field :permission_code, :disabled=>true %>
+  </p>
+  <p>
+    <%= f.label :code %>
+    <%= f.text_field :code, :disabled=>true %>
+  </p>
+  <p>
+    <%= f.label :web_text %>
+    <%= f.text_field :web_text %>
+  </p>
+  <p>
+   <button type="submit" class="btn">Update</button>
+  </p>
+<% end %>
+
+<%= icon_tag :show %><%= link_to 'Show', @permission_value %> |
+<%= icon_tag :back %>
+<%= link_to 'Back', @permission %>

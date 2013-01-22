@@ -1,0 +1,36 @@
+<%= form_tag(patron_status_permissions_path, :method => :post, :id => "add_patron_status_permission") do %>
+<%= hidden_field_tag "patron_status_permission[patron_status_code]", @patron_status.code %>
+<%= hidden_field_tag "patron_status_permission[sublibrary_code]", @sublibrary.code %>
+<%= hidden_field_tag "patron_status_permission[from_aleph]", 0 %>
+<% if @patron_status_permission.errors.any? %>  
+  <div id="error_explanation" class="alert alert-error">  
+    <h2><%= pluralize(@patron_status_permission.errors.count, "error") %> prohibited this record from being saved:</h2>  
+    <ul>  
+    <% @patron_status_permission.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+<% end %>
+<p>
+	<h3><%= icon_tag :add %>Add Permission:</h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+      		<th>Permission</th>
+      		<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+      		<td><%= collection_select(:permission_code, nil, @permissions, :code, :web_text, {:prompt => "Select a permission", :selected => params[:permission_code]}) %></td>
+      		<td id="permission_value_select"><%= render :partial => 'patron_statuses/permission_values'%></td>
+			</tr>
+			<tr>
+			    <td colspan="2"><button type="submit" class="btn">Add permission value</button></td>
+		  </tr>
+		</tbody>
+	</table>
+</p>
+
+<% end %>

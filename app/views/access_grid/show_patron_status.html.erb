@@ -1,0 +1,25 @@
+<h1><%= application_name %></h1>
+
+<dl class="dl-horizontal">
+  <dt><%= get_sanitized_detail('patron_status_prefix')%></dt>
+  <dd><%= @patron_status.web_text%></dd>
+  <dt></dt>
+  <dd><small><%= link_to "Click here", root_url %> if this is incorrect.</small></dd>
+<% if @patron_status.id_type? %>
+  <dt><%= get_sanitized_detail('id_type_required') %></dt>
+  <dd><%= print_sanitized_html(@patron_status.id_type) %></dd>
+<% end %>
+<% if @patron_status.description? %>
+  <dt>Description</dt>
+  <dd><%= print_formatted_html(@patron_status.description) %></dd>
+<% end %>
+  <dt>Privileges</dt>
+  <dd>
+    <%= form_tag patron_path, :method => :get, :remote => true, :id => "get_sublibrary_permissions", :class => "form-inline clearfix" do %>
+    <%= select_tag "sublibrary_code", grouped_sublibraries, { :prompt => get_sanitized_detail('sublibrary_select') } %>
+    <button type="submit" class="btn" data-remote="true">View permissions</button>
+    <% end %>
+  </dd>
+</dl>
+
+<div id="permissions_chart"><%= render "permissions" %></div>

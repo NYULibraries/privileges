@@ -1,0 +1,37 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  application_details:
+    create_success: "Application text was successfully created."
+    update_success: "Application text was successfully updated."
+    destory_success: "Application text was successfully destroyed."
+  patron_statuses:
+    create_success: "Patron status was successfully created."
+    update_success: "Patron status was successfully updated."
+    destory_success: "Patron status was successfully destroyed."
+  sublibraries:
+    create_success: "Sublibrary was successfully created."
+    update_success: "Sublibrary was successfully updated."
+    destory_success: "Sublibrary was successfully destroyed."
+  permissions:
+    create_success: "Permission was successfully created."
+    update_success: "Permission was successfully updated."
+    update_failure: "Permission could not be updated."
+    update_order_success: "Order updated."
+    destory_success: "Permission was successfully destroyed."
+  permission_values:
+    create_success: "Permission value was successfully created."
+    create_failure: "Missing fields."
+    update_success: "Permission value was successfully updated."
+    destory_success: "Permission value was successfully destroyed."
+  patron_status_permissions:
+    create_success: "Patron status permission was successfully created."
+    create_failure: "Missing fields."
+    update_success: "Patron status permission was successfully updated."
+    update_failure: "Could not update."
+    update_multiple_success: "Permissions updated."
+    destory_success: "Patron status permission was successfully destroyed."
+  users:
+    update_success: "User successfully updated."
+

@@ -1,0 +1,74 @@
+aleph_one:
+  code: 52
+  original_text: Ugly_Adjunct_Fac
+  web_text: Adjunct Faculty
+  description: specialdescription
+  from_aleph: true
+  visible: true
+  id_type: IDcard
+  under_header: Library
+  keywords: "Adjunct, Faculty, Adjunct Faculty, specialkeyword"
+  
+aleph_nonvisible:
+  code: 55
+  original_text: Master.s Student
+  web_text: Masters Degree Student
+  description: Desc doesn't matter
+  from_aleph: true
+  visible: false
+  id_type: IDcard
+  under_header: Library
+  keywords: "Graduate Student, Grad Student, Graduate Student, Masters Student, Masters, betternotbeabletofindme"
+  
+aleph_nowebtext:
+  code: "##"
+  from_aleph: true
+  visible: false
+
+aleph_nonnyu:
+  code: 17
+  original_text:  Consortium Undergraduate Student
+  web_text: Consortium Undergraduate Student
+  description: Desc doesn't matter
+  from_aleph: true
+  visible: true
+  id_type: Maroon or White ID Card
+  under_header: Cooper Union
+  keywords: "Cooper, Union, Cooper Union, Student"
+
+noaleph_one:
+  code: nyu_ag_noaleph_law
+  web_text: Law School Student
+  description: Desc doesn't matter
+  from_aleph: false
+  visible: true
+  id_type: IDcard
+  under_header: Law School
+  keywords: "Law School Student, Law School, NYU Law, Law"
+
+noaleph_nonvisible:
+  code: nyu_ag_noaleph_law_faculty
+  web_text: Law School Faculty
+  description: Desc doesn't matter
+  from_aleph: false
+  visible: false
+  id_type: IDcard
+  under_header: Law School
+  keywords: "Law School Faculty, Law, Law School"
+
+noaleph_nonnyu:
+  code: nyu_ag_noaleph_sponsored_borrower
+  web_text: Masters Degree Student
+  description: Desc doesn't matter
+  from_aleph: false
+  visible: true
+  id_type: Pass issued by Library Privileges Office
+  under_header: Other
+  keywords: "Sponsored, Sponsored Borrower, Borrower, Department, Departmental"
+
+noaleph_uniqueheader:
+  code: unique_code_here
+  web_text: Some kind of student
+  from_aleph: false
+  visible: true
+  under_header: specialheader

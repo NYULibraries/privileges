@@ -1,0 +1,19 @@
+<h1><%= @permission_value.web_text %></h1>
+
+<dl class="dl-horizontal">
+  <dt>Permission:</dt>
+  <dd><%=h @permission_value.permission_code %></dd>
+
+  <dt>Code:</dt>
+  <dd><%=h @permission_value.code %></dd>
+
+  <dt>Web text:</dt>
+  <dd><%=h @permission_value.web_text %></dd>
+
+  <dt>From Aleph?</dt>
+  <dd><%=h @permission_value.from_aleph %></dd>
+</dl>
+
+<%= icon_tag :edit %><%= link_to 'Edit', edit_permission_value_path(@permission_value) %> |
+<%= icon_tag :back %>
+<%= link_to 'Back', @permission %>

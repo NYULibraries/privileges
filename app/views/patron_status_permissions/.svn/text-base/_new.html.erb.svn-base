@@ -1,0 +1,25 @@
+<tr style="border: 0 !important;"><td colspan="4" style="border: 0 !important;">
+<table style="border: 0 !important;">
+	<thead>
+<tr>
+	<th colspan="2" class="nyulibrary_icons_add">Add new permission for sub library</th>
+</tr>
+	</thead>
+	<tbody>
+<tr>
+	<td style="border: 0 !important;"><%= collection_select(:permission, :code, Permission.find(:all, :conditions => "fromAleph='0'"), :code, :web_text, {:prompt => "Select a permission"}) %>	
+	<%= observe_field "permission_code", :update => "permission_value_select", :with =>
+	"permission_code", :url => { :controller => "patron_statuses", :action => "update_permission_values_select"}%>
+	</td>
+	<td style="border: 0 !important;">	
+	<span id="permission_value_select">
+	<%= render :partial => 'patron_statuses/permission_values_select'%>  	
+  	</span>
+	</td>
+</tr>
+<tr>
+	<td style="border:0;"><%= f.submit 'go'%></td>
+</tr>
+</tbody>
+</table>
+</tr></td>
