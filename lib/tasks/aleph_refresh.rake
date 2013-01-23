@@ -41,11 +41,13 @@ namespace :privileges_guide do
     ActiveRecord::Base.transaction do
       patrons.each do |adm, patron_statuses|
          patron_statuses.keys.each do |patron_status_code|
-          patron_in_db = PatronStatus.find_or_create_by_code(patron_status_code)
-          # If no Web Text exists in the database, then copy Web Text from ALEPH config
-          patron_web_text = (patron_in_db.web_text.nil?) ? patron_statuses[patron_status_code][:text] : patron_in_db.web_text
+          patron_in_db = PatronStatus.find_or_initialize_by_code(patron_status_code)
+          if patron_in_db.new_record?
+            # If no Web Text exists in the database, then copy Web Text from ALEPH config
+            patron_in_db.web_text = patron_statuses[patron_status_code][:text]
+            patron_in_db.visible = false # Default to hidden for new values
+          end
           patron_in_db.original_text = patron_statuses[patron_status_code][:text]
-          patron_in_db.web_text = patron_web_text
           patron_in_db.from_aleph = true # Flag as an ALEPH item
           patron_in_db.save
         end 
@@ -67,11 +69,13 @@ namespace :privileges_guide do
   def load_sublibraries(sublibraries, cleanup = false)
     ActiveRecord::Base.transaction do
      sublibraries.keys.each do |sublibrary_code|
-       sublibrary_in_db = Sublibrary.find_or_create_by_code(sublibrary_code)
-       # If no Web Text exists in the database, then copy Web Text from ALEPH config
-       sublibrary_web_text = (sublibrary_in_db.web_text.nil?) ? sublibraries[sublibrary_code][:text] : sublibrary_in_db.web_text
+       sublibrary_in_db = Sublibrary.find_or_initialize_by_code(sublibrary_code)
+       if sublibrary_in_db.new_record?
+         # If no Web Text exists in the database, then copy Web Text from ALEPH config
+         sublibrary_in_db.web_text = sublibraries[sublibrary_code][:text]
+         sublibrary_in_db.visible = false # Default to hidden for new values
+       end
        sublibrary_in_db.original_text = sublibraries[sublibrary_code][:text]
-       sublibrary_in_db.web_text = sublibrary_web_text
        sublibrary_in_db.from_aleph = true # Flag as an ALEPH item
        sublibrary_in_db.save
      end
@@ -112,10 +116,12 @@ namespace :privileges_guide do
                 #############################
                 # Find or create Permission objects by unique ALEPH code
                 permission_code = permission.to_s
-                permission_in_db = Permission.find_or_create_by_code(permission_code)
-                # If no Web Text exists in the database, then copy Code from ALEPH config, but replace underscores with spaces
-                permission_web_text = (permission_in_db.web_text.blank?) ? permission_code.capitalize.gsub("_"," ") : permission_in_db.web_text
-                permission_in_db.web_text = permission_web_text
+                permission_in_db = Permission.find_or_initialize_by_code(permission_code)
+                if permission_in_db.new_record?
+                  # If no Web Text exists in the database, then copy Code from ALEPH config, but replace underscores with spaces
+                  permission_in_db.web_text = permission_code.capitalize.gsub("_"," ")
+                  permission_in_db.visible = false
+                end
                 permission_in_db.from_aleph = true # Flag as an ALEPH item
                 permission_in_db.save
                 ##################################
@@ -123,10 +129,11 @@ namespace :privileges_guide do
                 ##################################
                 # Find or create PermissionValue objects by combined key permission_code, permission_value_code
                 permission_value_code = permissions[permission]
-                permission_value_in_db = PermissionValue.find_or_create_by_code_and_permission_code(permission_value_code, permission_code)
-                # If no Web Text exists in the database, then copy Code from ALEPH config
-                permission_value_web_text = (permission_value_in_db.web_text.blank?) ? permission_value_code : permission_value_in_db.web_text
-                permission_value_in_db.web_text = permission_value_web_text
+                permission_value_in_db = PermissionValue.find_or_initialize_by_code_and_permission_code(permission_value_code, permission_code)
+                if permission_value_in_db.new_record?
+                  # If no Web Text exists in the database, then copy Code from ALEPH config
+                  permission_value_in_db.web_text = permission_value_code
+                end
                 permission_value_in_db.from_aleph = true # Flag as an ALEPH item
                 permission_value_in_db.save
                 #########################################
