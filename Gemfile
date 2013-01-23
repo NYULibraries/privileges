@@ -50,7 +50,7 @@ gem "rails_config", "~> 0.3.2"
 gem 'authpds-nyu', "~> 0.2.5"
 
 # Aleph config gem
-gem 'exlibris-aleph', "~> 0.1.4"
+gem 'exlibris-aleph', "~> 0.1.5"
 
 # Pagination
 gem "kaminari", "~> 0.13"
@@ -69,6 +69,8 @@ gem 'mustache-rails', "~> 0.2.3", :require => 'mustache/railtie'
 
 # memcached
 gem 'dalli', "~> 2.5.0"
+
+gem "comma", "~> 3.0"
 
 
 

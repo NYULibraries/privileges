@@ -34,4 +34,5 @@ en:
     destroy_success: "Patron status permission was successfully destroyed."
   users:
     update_success: "User successfully updated."
+    clear_patron_data_success: "Cleared all non-admin patron data."
 

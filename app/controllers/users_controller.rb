@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.search(params[:q]).order(sort_column + " " + sort_direction).page(params[:page]).per(30)
+    
+    respond_to do |format|
+      format.html
+      format.csv { render :csv => @users, :filename => "privileges_guide_users" }
+    end
   end
 
   # GET /users/1
@@ -44,6 +49,13 @@ class UsersController < ApplicationController
       format.js { render :layout => false }
       format.html { redirect_to(@user) }
     end
+  end
+  
+  # Delete all non-admin patrons
+  def clear_patron_data
+    User.destroy_all("user_attributes not like '%:access_grid_admin: true%'")
+    flash[:success] = t('users.clear_patron_data_success')
+    redirect_to users_url
   end
 
   # Implement sort column function for this model

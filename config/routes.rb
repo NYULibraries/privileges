@@ -7,6 +7,8 @@ PrivilegesGuide::Application.routes.draw do
     resources :permissions
     resources :patron_statuses
     resources :application_details
+    
+    match "clear_patron_data", :to => "users#clear_patron_data"
   end
   
   resources :user_sessions

@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
     end
   end
   
+  # Create a CSV format
+  comma do
+    username
+    firstname
+    lastname
+    email
+  end
+  
 end
