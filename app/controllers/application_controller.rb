@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   
   # Prepend this string to all locallt created patron status titles
   def local_creation_prefix
-    "nyu_ag_noaleph_"
+    @local_creation_prefix ||= Settings.global.local_creation_prefix
   end
   helper_method :local_creation_prefix
   

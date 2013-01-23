@@ -68,12 +68,11 @@ desc "Cleanup git project"
 task :clean_git, :roles => :app do
   # Clean up non tracked git files that aren't explicitly ignoredgit 
   system "git clean -d -f"
-  system "rm -rf log/*.log"
 end
 
 desc "Generate rdocs and push rdocs and coverage to gh-pages"
 task :ghpages, :roles => :app do
-  system "bundle exec rake rdoc RAILS_ENV=#{rails_env} && bundle exec rake ghpages RAILS_ENV=#{rails_env}"
+  #system "bundle exec rake rdoc RAILS_ENV=#{rails_env} && bundle exec rake ghpages RAILS_ENV=#{rails_env}"
 end
 
 before "deploy", "rvm:install_ruby", "deploy:migrations"
