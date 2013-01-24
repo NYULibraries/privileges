@@ -42,9 +42,11 @@ class AccessGridController < ApplicationController
         :layout => false and return
       end
 	    format.js do
-	      render :layout => false and return if request.xhr?
+	      render :layout => false and return if request.xhr? and !performed?
 	    end
-	    format.html unless performed?
+	    format.html do
+	      render :show_patron_status if !request.xhr? and !performed?
+      end
     end
   end
   
