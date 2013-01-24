@@ -9,19 +9,11 @@ class SublibrariesController < ApplicationController
   # GET /sublibraries/1
   def show
     @sublibrary = Sublibrary.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   # GET /sublibraries/new
   def new
     @sublibrary = Sublibrary.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   # GET /sublibraries/1/edit
@@ -58,10 +50,10 @@ class SublibrariesController < ApplicationController
       if @sublibrary.update_attributes(params[:sublibrary])
         flash[:notice] = t('sublibraries.update_success')
         format.html { redirect_to @sublibrary }
-        format.js { render :nothing => true }
+        format.js { render :nothing => true } if request.xhr?
       else
         format.html { render :action => "edit" }
-        format.js { render :nothing => true }
+        format.js { render :nothing => true } if request.xhr?
       end
     end
   end

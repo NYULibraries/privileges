@@ -15,11 +15,17 @@ class PatronStatusPermissionsController < ApplicationController
     respond_to do |format|
       if @patron_status_permission.save
         # If ajax response is submitted, the partial is rerendered with @permission_values populated
-        format.js { render :layout => false }
-        format.html { redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), notice: t('patron_status_permissions.create_success') }
+        format.js { render :layout => false and return } if request.xhr?
+        format.html do
+          redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), 
+                      notice: t('patron_status_permissions.create_success') and return
+        end
       else  
-        format.js { render :layout => false }
-        format.html { redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code, :permission_code => params[:permission_code]), flash: {:error => t('patron_status_permissions.create_failure')} }
+        format.js { render :layout => false and return } if request.xhr?
+        format.html do 
+          redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code, :permission_code => params[:permission_code]), 
+                      flash: { :error => t('patron_status_permissions.create_failure') } and return
+        end
       end
     end
   end
@@ -35,11 +41,17 @@ class PatronStatusPermissionsController < ApplicationController
 
     respond_to do |format|
       if @patron_status_permission.update_attributes(params[:patron_status_permission])
-        format.js { render :nothing => true } # In the case where an ajax response is submitted just save the new value and do nothing
-        format.html { redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), notice: t('patron_status_permissions.update_success') }
+        format.js { render :layout => false and return } if request.xhr?# In the case where an ajax response is submitted just save the new value and do nothing
+        format.html do
+          redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), 
+                      notice: t('patron_status_permissions.update_success') and return
+        end
       else
-        format.js { render :nothing => true }
-        format.html { redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), flash: {:error => t('patron_status_permissions.update_failure')} }
+        format.js { render :layout => false and return }if request.xhr?
+        format.html do
+          redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), 
+                      flash: { :error => t('patron_status_permissions.update_failure') } and return
+        end
       end
     end
   end
@@ -58,7 +70,10 @@ class PatronStatusPermissionsController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), notice: t('patron_status_permissions.update_multiple_success') }
+      format.html do 
+        redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), 
+                    notice: t('patron_status_permissions.update_multiple_success') and return
+      end
     end
   end
 
@@ -70,7 +85,10 @@ class PatronStatusPermissionsController < ApplicationController
     @patron_status_permission.destroy
 
     respond_to do |format|
-      format.html { redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), notice: t('patron_status_permissions.destroy_success') }
+      format.html do 
+        redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code), 
+                    notice: t('patron_status_permissions.destroy_success') and return
+      end
     end
   end
 

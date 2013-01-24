@@ -6,10 +6,6 @@ class PermissionValuesController < ApplicationController
   def show
     @permission_value = PermissionValue.find(params[:id])
     @permission = Permission.find_by_code(@permission_value.permission_code)
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   # GET /permission_values/1/edit

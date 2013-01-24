@@ -15,17 +15,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     @user = User.find(params[:id]) if @user.nil?
-    
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
   
   # GET /users/1/edit
   def edit
     @user = User.find_by_username(params[:id])
-
-    redirect_to root_url and return
   end
 
   # DELETE /users/1
@@ -46,7 +40,7 @@ class UsersController < ApplicationController
     @user.update_attributes(:user_attributes => user_attributes)
 
     respond_to do |format|
-      format.js { render :layout => false }
+      format.js { render :layout => false } if request.xhr?
       format.html { redirect_to(@user) }
     end
   end
@@ -55,7 +49,7 @@ class UsersController < ApplicationController
   def clear_patron_data
     User.destroy_all("user_attributes not like '%:access_grid_admin: true%'")
     flash[:success] = t('users.clear_patron_data_success')
-    redirect_to users_url
+    redirect_to users_url and return
   end
 
   # Implement sort column function for this model

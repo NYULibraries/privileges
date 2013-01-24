@@ -19,7 +19,7 @@ $ ->
   $("#show_user").find("input[type='checkbox']").live 'change', ->
     $(this).closest("form").submit()
   $("a.toggle_visible").live 'click', ->
-    if ($(this).text() == "Hide") 
+    if ($.trim($(this).text()) == "Hide") 
       $(this).html("Reveal")
       $(this).prevAll("h4.permission_header:first").addClass("is-hidden")
       $(this).closest("tr").addClass("is-hidden")

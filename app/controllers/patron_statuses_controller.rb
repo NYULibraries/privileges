@@ -8,8 +8,11 @@ class PatronStatusesController < ApplicationController
     @patron_statuses = patron_statuses_search
     
     respond_to do |format|
-      format.json { render :json => @patron_statuses.results, :layout => false }
-      format.html 
+      format.json do
+        render :json => @patron_statuses.results, 
+               :layout => false and return
+      end
+      format.html
     end
   end
 
@@ -22,10 +25,6 @@ class PatronStatusesController < ApplicationController
     @sublibrary = sublibrary
     @patron_status_permission = PatronStatusPermission.new
     @patron_status_permissions = patron_status_permissions
-    
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   # GET /patron_statuses/new
@@ -71,10 +70,10 @@ class PatronStatusesController < ApplicationController
       if @patron_status.update_attributes(params[:patron_status])
         flash[:notice] =  t('patron_statuses.update_success')
         format.html { redirect_to @patron_status }
-        format.js { render :nothing => true }
+        format.js { render :nothing => true } if request.xhr?
       else
         format.html { render :action => "edit" }
-        format.js { render :nothing => true }
+        format.js { render :nothing => true } if request.xhr?
       end
     end
   end

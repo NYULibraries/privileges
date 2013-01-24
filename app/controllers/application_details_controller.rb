@@ -7,10 +7,6 @@ class ApplicationDetailsController < ApplicationController
   # GET /application_details
   def index
     @application_details = ApplicationDetail.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
   end
 
   # GET /application_details/1/edit

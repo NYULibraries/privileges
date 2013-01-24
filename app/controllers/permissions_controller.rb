@@ -6,10 +6,6 @@ class PermissionsController < ApplicationController
   # GET /permissions
   def index
     @permissions = Permission.by_sort_order
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
   end
 
   # GET /permissions/1
@@ -17,19 +13,11 @@ class PermissionsController < ApplicationController
     @permission = Permission.find(params[:id])
     @permission_values = PermissionValue.find_all_by_permission_code(@permission.code)
     @permission_value = PermissionValue.new
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   # GET /permissions/new
   def new
     @permission = Permission.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   # GET /permissions/1/edit
@@ -66,11 +54,11 @@ class PermissionsController < ApplicationController
       if @permission.update_attributes(params[:permission])
         flash[:notice] = t("permissions.update_success")
         format.html { redirect_to(@permission) }
-        format.js { render :nothing => true }
+        format.js { render :nothing => true } if request.xhr?
       else
         flash[:error] = t("permissions.update_failure")
         format.html { render :action => "edit" }
-        format.js { render :nothing => true }
+        format.js { render :nothing => true } if request.xhr?      
       end
     end
   end
@@ -84,8 +72,8 @@ class PermissionsController < ApplicationController
       end 
     end
     respond_to do |format|
-      format.js { render :layout => false }
-      format.html { redirect_to permissions_url, notice: t("permissions.update_order_success")  }
+      format.html { redirect_to permissions_url, notice: t("permissions.update_order_success") and return }
+      format.js { render :layout => false } if request.xhr?
     end
   end
 
