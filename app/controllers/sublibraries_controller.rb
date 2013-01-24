@@ -64,7 +64,7 @@ class SublibrariesController < ApplicationController
     @sublibrary.destroy
 
     respond_to do |format|
-      format.html { redirect_to sublibraries_url, notice: t('sublibraries.destory_success') }
+      format.html { redirect_to sublibraries_url, notice: t('sublibraries.destroy_success') }
     end
   end
 
