@@ -36,3 +36,6 @@ secret_token: '9f35d644c9e64245a7c54bf3d738a4159b79cccf684c2fdedfdfc4dfdadbfd3bd
 
 aleph_tabs:
   mnt: /mnt/aleph_stage_tab
+  
+cookie: 
+  domain: ".local"
