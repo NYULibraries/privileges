@@ -69,7 +69,6 @@ class AccessGridController < ApplicationController
   def redirect_to_patron_status
     #If current user exists and the user has not been previously redirected...
     if !session[:redirected_user] && !current_user.nil?
-      debugger
       #Redirect user to their patron status page
       params.merge!({:patron_status_code => current_user.user_attributes[:bor_status]})
       @patron_status = patron_statuses_hits.first

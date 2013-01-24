@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find_by_username(params[:id])
+    
+    redirect_to root_url and return
   end
 
   # DELETE /users/1
