@@ -2,7 +2,7 @@
 
 PrivilegesGuide::Application.config.session_store :cookie_store, key: '_privileges_guide_session', :domain => :all
 
-PrivilegesGuide::Application.config.session_store ActionDispatch::Session::CacheStore, :expire_after => 10.seconds
+#PrivilegesGuide::Application.config.session_store ActionDispatch::Session::CacheStore, :expire_after => 10.seconds
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
