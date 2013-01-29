@@ -5,6 +5,7 @@ services:
 
 before_script:
   - mysql -e 'create database nyu_privileges_guide_test;'
+  - bundle exec rake db:migrate
 
 rvm:
   - "1.9.3"
