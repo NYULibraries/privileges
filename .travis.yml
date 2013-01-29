@@ -5,7 +5,7 @@ services:
 
 before_script:
   - mysql -e 'create database nyu_privileges_guide_test;'
-  - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rake db:schema:load RAILS_ENV=test
 
 rvm:
   - "1.9.3"
