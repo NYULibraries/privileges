@@ -1,6 +1,7 @@
 # NYU Libraries Privileges Guide
 
 [![Build Status](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Production/badge/icon)](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Production/)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/NYULibraries/privileges_guide)
 
 The NYU Libraries Privileges Guide offers a Web interface for finding patron permissions for a given sublibrary/patron status combination. While it is optimized for NYU's permission system it can be distributed to any system using Aleph or can act independently as a privileges management system. It is a Ruby on Rails (>= 3.2) application with a Solr indexed backend (using Sunspot for integration with ActiveRecord and Websolr cloud solution as the index).
 
@@ -31,7 +32,7 @@ The Aleph tables with the permissions currently have to be mounted on the local 
 
 There is a nightly Jenkins cron job which loads in new values from Aleph and deletes those deleted from Aleph. These values are then reindexed into Solr. The build status for this cron follows:
 
-[![Build Status](http://jenkins1.bobst.nyu.edu/job/Reindex%20Privileges%20Guide/badge/icon)](http://jenkins1.bobst.nyu.edu/job/Reindex%20Privileges%20Guide/)
+[![Build Status](http://jenkins1.bobst.nyu.edu/job/Reindex%20Privileges%20Guide%20Production/badge/icon)](http://jenkins1.bobst.nyu.edu/job/Reindex%20Privileges%20Guide%20Production/)
 
 #### Indexing and delay
 Because all the permission data is indexed in a cloud implementation of Solr (i.e. WebSolr) there is a delay between when changes are saved by admins in the database and when the changes are reflected to frontend users. The actual indexing is also queued as a background job with [delayed_job](https://github.com/collectiveidea/delayed_job) so admins can continue their changes while the application does the heavy lifting. The delay might be several minutes, but the indexing ultimately allows for faster retrieval of the data.
