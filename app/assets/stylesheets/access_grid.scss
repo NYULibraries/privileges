@@ -36,8 +36,13 @@ textarea {
   }
 }
 
-select {
-  max-width: 25em;
+option[disabled],
+option:disabled {
+  color: #999;
+}
+
+select#sublibrary_code {
+  width: 100%;
 }
 
 form#search_patron_statuses {
