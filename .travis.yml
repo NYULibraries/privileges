@@ -6,6 +6,7 @@ services:
 before_script:
   - mysql -e 'create database nyu_privileges_guide_test;'
   - bundle exec rake db:schema:load RAILS_ENV=test
+  - curl https://raw.github.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=3.6.1 bash
 
 rvm:
   - "1.9.3"
