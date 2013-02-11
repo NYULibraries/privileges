@@ -77,5 +77,6 @@ end
 
 before "deploy", "rvm:install_ruby", "deploy:migrations"
 before "ghpages", "clean_git"
-after "deploy:restart", "deploy:restart_delayed_job"
 after "deploy", "ghpages", "deploy:cleanup", "deploy:passenger_symlink", "cache:clear", "cache:tmp_clear"
+after "deploy:restart", "deploy:restart_delayed_job"
+after "deploy:update", "newrelic:notice_deployment"
