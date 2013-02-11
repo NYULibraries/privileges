@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 3.2.12'
 
 gem 'mysql2', "~> 0.3.11"
 
@@ -33,6 +33,8 @@ group :test do
   gem 'ruby-prof' #For Benchmarking
 end
 
+gem 'json', "~> 1.7.7"
+
 gem 'debugger', :groups => [:development, :test]
 
 #gem 'nyulibraries_assets', :path => "/apps/nyulibraries_assets"
@@ -47,7 +49,7 @@ gem 'rvm-capistrano', "~> 1.2.7"
 gem "rails_config", "~> 0.3.2"
 
 # Authenticate gem
-gem 'authpds-nyu', "~> 0.2.5"
+gem 'authpds-nyu', "~> 0.2.8"
 
 # Aleph config gem
 gem 'exlibris-aleph', "~> 0.1.5"
