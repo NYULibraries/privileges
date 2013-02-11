@@ -2,6 +2,8 @@
 require "bundler/capistrano"
 # Load rvm-capistrano gem
 require "rvm/capistrano"
+# Newrelic
+require 'new_relic/recipes'
 
 # Environments
 set :stages, ["staging", "production"]
