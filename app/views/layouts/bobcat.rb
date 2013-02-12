@@ -37,7 +37,7 @@ module Views
       end
 
       def gauges_tracking_code
-        '511920f9f5a1f54888000004'
+        Settings.gauges.tracking_code
       end
 
       # Print breadcrumb navigation
