@@ -4,13 +4,9 @@ module Views
     class Bobcat < ActionView::Mustache
       # Meta tags to include in layout
       def meta
-        meta = '<!-- Mobile viewport optimization h5bp.com/ad -->
-        <meta name="HandheldFriendly" content="True">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-        <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
-        <meta http-equiv="cleartype" content="on">'.html_safe
-
+        meta = super
+        meta << tag(:meta, :name => "HandheldFriendly", :content => "True")
+        meta << tag(:meta, :name => "cleartype", :content => "on")
         meta << favicon_link_tag('https://library.nyu.edu/favicon.ico')
       end
       
@@ -41,7 +37,7 @@ module Views
       end
 
       def gauges_tracking_code
-        '51190f53108d7b115100000b'
+        '511920f9f5a1f54888000004'
       end
 
       # Print breadcrumb navigation
