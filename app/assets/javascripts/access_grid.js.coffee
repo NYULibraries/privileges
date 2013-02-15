@@ -8,17 +8,17 @@ $ ->
   }
   $("*[type='submit'][data-remote='true']").closest("tr").hide()
   $("*[type='submit'][data-remote='true']").hide()
-  $("#edit_patron_status_permissions").find("select").live 'change', ->
+  $("#edit_patron_status_permissions").on 'change', "select", ->
     $(this).closest("form").submit()
-  $("#patron_status_permission_new_form").find("select#permission_code_").live 'change', ->
+  $("#patron_status_permission_new_form").on 'change', "select#permission_code_", ->
     $.ajax {
       url: $(this).closest("form").attr "action"
       type: $(this).closest("form").attr "method"
       data: $(this).closest("form").serialize()
     }
-  $("#show_user").find("input[type='checkbox']").live 'change', ->
+  $("#show_user").on 'change', "input[type='checkbox']", ->
     $(this).closest("form").submit()
-  $("a.toggle_visible").live 'click', ->
+  $(document).on 'click', "a.toggle_visible", ->
     if ($.trim($(this).text()) == "Hide") 
       $(this).html("Reveal")
       $(this).prevAll("h4.permission_header:first").addClass("is-hidden")
@@ -31,7 +31,7 @@ $ ->
     source: (query, process) -> 
         $.getJSON($(".autocomplete_query").closest("form").attr("action") + ".json", { query: query }, process);
   }
-  $("#get_sublibrary_permissions").find("select").live 'change', -> 
+  $("#get_sublibrary_permissions").on 'change', "select", -> 
     $("#permissions_chart").children().hide()
     $("#permissions_chart").prepend($("<div />").attr({'id': 'permissions_progress'}).addClass("progress progress-striped active").append($("<div />").addClass("bar").css({width: '5%'})));
     setTimeout( -> 
