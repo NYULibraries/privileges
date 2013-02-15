@@ -27,7 +27,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
   test "should redirect nonadmin user to root" do
     current_user = UserSession.create(users(:nonadmin))
     get :index
-    assert_response 401 unless performed?
+    assert_redirected_to root_url
   end
 
   test "should get new" do
