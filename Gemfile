@@ -26,7 +26,7 @@ group :development do
 end
 
 group :test do
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', "~> 1.3.3"
   #Testing coverage
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
@@ -40,7 +40,7 @@ gem 'debugger', :groups => [:development, :test]
 #gem 'nyulibraries_assets', :path => "/apps/nyulibraries_assets"
 gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git'
 #gem 'nyulibraries_assets', :git => 'git://github.com/barnabyalter/nyulibraries_assets.git'
-gem 'jquery-rails', "~> 2.1.4"
+gem 'jquery-rails', "~> 2.2.0"
 
 # Deploy with Capistrano
 gem 'rvm-capistrano', "~> 1.2.7"
@@ -64,13 +64,13 @@ gem 'newrelic_rpm', "~> 3.5.3"
 gem 'sunspot_rails', "~> 1.3.3"
 
 # Background jobs
-gem 'delayed_job_active_record', "~> 0.3.3"
+gem 'delayed_job_active_record', "~> 0.4.3"
 gem 'daemons', "~> 1.1.9"
 
 gem 'mustache-rails', "~> 0.2.3", :require => 'mustache/railtie'
 
 # memcached
-gem 'dalli', "~> 2.5.0"
+gem 'dalli', "~> 2.6.2"
 
 gem "comma", "~> 3.0"
 

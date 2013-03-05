@@ -1,9 +1,11 @@
 # NYU Libraries Privileges Guide
 
 [![Build Status](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Production/badge/icon)](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Production/)
+
 [![Build Status](https://travis-ci.org/NYULibraries/privileges_guide.png?branch=master)](https://travis-ci.org/NYULibraries/privileges_guide)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/NYULibraries/privileges_guide)
 [![Dependency Status](https://gemnasium.com/NYULibraries/privileges_guide.png)](https://gemnasium.com/NYULibraries/privileges_guide)
+[![Code Climate](https://codeclimate.com/github/NYULibraries/privileges_guide.png)](https://codeclimate.com/github/NYULibraries/privileges_guide)
+[![Coverage Status](https://coveralls.io/repos/NYULibraries/privileges_guide/badge.png?branch=master)](https://coveralls.io/r/NYULibraries/privileges_guide)
 
 The NYU Libraries Privileges Guide offers a Web interface for finding patron permissions for a given sublibrary/patron status combination. While it is optimized for NYU's permission system it can be distributed to any system using Aleph or can act independently as a privileges management system. It is a Ruby on Rails (>= 3.2) application with a Solr indexed backend (using Sunspot for integration with ActiveRecord and Websolr cloud solution as the index).
 
