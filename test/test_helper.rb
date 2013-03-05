@@ -3,6 +3,8 @@ unless ENV['CI']
   require 'simplecov-rcov'
   SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
   SimpleCov.start
+  require 'coveralls'
+  Coveralls.wear!
 end
 
 ENV["RAILS_ENV"] ||= "test"
