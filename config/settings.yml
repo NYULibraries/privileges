@@ -18,7 +18,7 @@ capistrano:
 sunspot:
   solr:
     hostname: localhost
-    port: 8983
+    port: 8981
     log_level: WARNING
 
 newrelic:

@@ -21,7 +21,7 @@ staging:
 
 test:
   solr:
-    hostname: localhost
-    port: 8981
-    log_level: WARNING
+    hostname: <%= Settings.sunspot.solr.hostname %>
+    port: <%= Settings.sunspot.solr.port %>
+    log_level: <%= Settings.sunspot.solr.log_level %>
     

@@ -3,6 +3,7 @@ class SublibrariesController < ApplicationController
   
   # GET /sublibraries
   def index
+    debugger
     @sublibraries = sublibraries_search
   end
 

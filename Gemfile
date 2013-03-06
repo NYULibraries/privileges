@@ -31,7 +31,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'ruby-prof' #For Benchmarking
-  gem 'coveralls', "0.6.0", require: false
+  gem 'coveralls', "~> 0.6.2", :require => false
   #gem "vcr", "~> 2.4.0"
   #gem "webmock", "~> 1.11.0"
 end
@@ -42,7 +42,6 @@ gem 'debugger', :groups => [:development, :test]
 
 #gem 'nyulibraries_assets', :path => "/apps/nyulibraries_assets"
 gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => "v1.0"
-#gem 'nyulibraries_assets', :git => 'git://github.com/barnabyalter/nyulibraries_assets.git'
 gem 'jquery-rails', "~> 2.2.0"
 
 # Deploy with Capistrano
