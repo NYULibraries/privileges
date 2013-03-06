@@ -31,7 +31,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'ruby-prof' #For Benchmarking
-  gem 'coveralls', require: false
+  gem 'coveralls', "0.6.0", require: false
 end
 
 gem 'json', "~> 1.7.7"
