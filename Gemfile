@@ -32,8 +32,8 @@ group :test do
   gem 'simplecov-rcov', :require => false
   gem 'ruby-prof' #For Benchmarking
   gem 'coveralls', "0.6.0", require: false
-  gem "vcr"
-  gem "webmock"
+  #gem "vcr", "~> 2.4.0"
+  #gem "webmock", "~> 1.11.0"
 end
 
 gem 'json', "~> 1.7.7"
