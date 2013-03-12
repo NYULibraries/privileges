@@ -21,9 +21,12 @@ module Views
         catalog_javascripts = javascript_include_tag "application"
       end
 
-      # Generate link to application root
       def application
-        application = link_to title, root_path
+        strip_tags(application_name)
+      end
+      
+      def title
+        application
       end
       
       # Render the sidebar partial
