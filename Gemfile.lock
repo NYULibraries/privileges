@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/NYULibraries/nyulibraries_assets.git
-  revision: 188a6ab65e6b0d728d9ce8bef8f8378eabd5ed77
+  revision: e450f16069bd05aa2766d6ffe1b4b9158bbfb16d
   specs:
     nyulibraries_assets (1.0.3)
       bootstrap-sass (~> 2.3.0)
@@ -208,7 +208,7 @@ GEM
       sexp_processor (~> 4.1)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
-    sass (3.2.6)
+    sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
