@@ -1,7 +1,7 @@
 # app/views/layouts/bobcat.rb
 module Views
   module Layouts
-    class Bobcat < ActionView::Mustache
+    class Application < ActionView::Mustache
       # Meta tags to include in layout
       def meta
         meta = super
@@ -28,7 +28,7 @@ module Views
       
       # Render the sidebar partial
       def sidebar
-        render :partial => "shared/sidebar"
+        render :partial => "common/sidebar"
       end
       
       # Using Gauges?
@@ -52,7 +52,7 @@ module Views
       
       # Render footer partial
       def footer
-        render :partial => "shared/footer"
+        render :partial => "common/footer"
       end
       
       # Prepend modal dialog elements to the body
@@ -64,7 +64,7 @@ module Views
       # Prepend the flash message partial before yield
       def prepend_yield
         content_tag :div, :id => "main-flashses" do
-         render :partial => 'shared/flash_msg'
+         render :partial => 'common/flash_msg'
         end
       end
 

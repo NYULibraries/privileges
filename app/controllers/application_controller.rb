@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
 
   # Use nyu assets layout
-  layout "bobcat"
+  layout "application"
   
   protect_from_forgery
 
