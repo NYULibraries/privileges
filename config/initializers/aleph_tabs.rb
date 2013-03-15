@@ -1,1 +1,0 @@
-Exlibris::Aleph::TabHelper.init(Settings.aleph_tabs.mnt, ["NYU50", "NYU51"])
