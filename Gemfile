@@ -54,7 +54,7 @@ gem "rails_config", "~> 0.3.2"
 gem 'authpds-nyu', "~> 0.2.9"
 
 # Aleph config gem
-gem 'exlibris-aleph', "~> 0.1.5"
+gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.0.0'
 
 # Pagination
 gem "kaminari", "~> 0.13"
