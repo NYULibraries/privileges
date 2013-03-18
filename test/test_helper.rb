@@ -3,10 +3,10 @@ unless ENV['TRAVIS']
   require 'simplecov-rcov'
   SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
   SimpleCov.start
+else
+  require 'coveralls'
+  Coveralls.wear!
 end
-
-require 'coveralls'
-Coveralls.wear!
 
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
