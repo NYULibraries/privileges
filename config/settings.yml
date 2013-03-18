@@ -26,7 +26,7 @@ newrelic:
   app_name: 'Privileges Guide'
 
 login:
-  default_admins: []
+  default_admins: ["real_user"]
   pds_url: "https://login.library.nyu.edu"
   calling_system: "primo"
   
