@@ -1,4 +1,4 @@
-unless ENV['CI']
+unless ENV['TRAVIS']
   require 'simplecov'
   require 'simplecov-rcov'
   SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
