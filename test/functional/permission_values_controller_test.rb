@@ -5,7 +5,6 @@ class PermissionValuesControllerTest < ActionController::TestCase
  setup :activate_authlogic
  
  def setup
-   activate_authlogic
    current_user = UserSession.create(users(:admin))
    @perm_attrs = {:code => "newandunique", :web_text => "somethingnotblank", :permission_code => "multiple_hold_permission"}
  end
@@ -42,11 +41,13 @@ class PermissionValuesControllerTest < ActionController::TestCase
  end
 
  test "should get edit" do
-   get :edit, :id => PermissionValue.find(:first).id
-   
-   assert assigns(:permission)
-   assert assigns(:permission_value)
-   assert_response :success
+  VCR.use_cassette('edit permission value') do
+    get :edit, :id => PermissionValue.find(:first).id
+
+    assert assigns(:permission)
+    assert assigns(:permission_value)
+    assert_response :success
+  end
  end
 
  test "should update permission value" do
@@ -65,11 +66,13 @@ class PermissionValuesControllerTest < ActionController::TestCase
  end
 
  test "should destroy permission value" do
+  VCR.use_cassette('destroy permission value') do
    assert_difference('PermissionValue.count', -1) do
      delete :destroy, :id => PermissionValue.find(:first).id
    end
 
    assert_redirected_to permission_path(assigns(:permission))
+  end
  end
  
  

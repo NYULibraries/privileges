@@ -5,25 +5,26 @@ class SublibrariesControllerTest < ActionController::TestCase
   setup :activate_authlogic
 
   def setup
-   activate_authlogic
    current_user = UserSession.create(users(:admin))
   end
 
   test "should get index" do
-    #VCR.use_cassette('sublibraries') do
-    get :index
-    assert_not_nil assigns(:sublibraries)
-    assert assigns(:sublibraries).is_a? Sunspot::Search::StandardSearch
-    assert_response :success
-    assert_template :index
-    #end
+    VCR.use_cassette('get all admin sublibraries') do
+      get :index
+      assert_not_nil assigns(:sublibraries)
+      assert assigns(:sublibraries).is_a? Sunspot::Search::StandardSearch
+      assert_response :success
+      assert_template :index
+    end
   end
 
   test "should test sorting" do
-    get :index, :sort => "sort_text"
+    VCR.use_cassette('get sorted admin sublibraries') do
+      get :index, :sort => "sort_text"
   
-    assert assigns(:sublibraries)
-    assert_template :index
+      assert assigns(:sublibraries)
+      assert_template :index
+    end
   end
   
   test "should get new" do
@@ -34,12 +35,14 @@ class SublibrariesControllerTest < ActionController::TestCase
   end
   
   test "should create sublibrary" do
-   assert_difference('Sublibrary.count') do
-     post :create, :sublibrary => { :code => "uniqueness82937465", :from_aleph => true }
-   end
+    VCR.use_cassette('create sublibrary') do
+     assert_difference('Sublibrary.count') do
+       post :create, :sublibrary => { :code => "uniqueness82937465", :from_aleph => true }
+     end
   
-   assert_response :redirect
-   assert_redirected_to sublibrary_path(assigns(:sublibrary))
+     assert_response :redirect
+     assert_redirected_to sublibrary_path(assigns(:sublibrary))
+   end
   end
   
   test "should NOT create sublibrary" do
@@ -60,30 +63,38 @@ class SublibrariesControllerTest < ActionController::TestCase
   end
   
   test "should get edit" do
-   get :edit, :id => Sublibrary.find(:first).id
-   assert_response :success
+    VCR.use_cassette('edit sublibrary') do
+     get :edit, :id => Sublibrary.find(:first).id
+     assert_response :success
+   end
   end
   
   test "should update sublibrary" do
-   put :update, :id => sublibraries(:aleph_one)
-  
-   assert assigns(:sublibrary)
-   assert_redirected_to sublibrary_path(assigns(:sublibrary))
+    VCR.use_cassette('update sublibrary') do
+      put :update, :id => sublibraries(:aleph_one)
+
+      assert assigns(:sublibrary)
+      assert_redirected_to sublibrary_path(assigns(:sublibrary))
+    end
   end
   
   test "should NOT update sublibrary" do
-    put :update, :id => Sublibrary.find(:first).id, :sublibrary => { :web_text => nil, :from_aleph => false }
+    VCR.use_cassette('dont update sublibrary') do
+      put :update, :id => Sublibrary.find(:first).id, :sublibrary => { :web_text => nil, :from_aleph => false }
   
-    assert assigns(:sublibrary)
-    assert_template :edit
+      assert assigns(:sublibrary)
+      assert_template :edit
+    end
   end
   
   test "should destroy sublibrary" do
-   assert_difference('Sublibrary.count', -1) do
-     delete :destroy, :id => sublibraries(:aleph_one)
-   end
+    VCR.use_cassette('destroy sublibrary') do
+     assert_difference('Sublibrary.count', -1) do
+       delete :destroy, :id => sublibraries(:aleph_one)
+     end
   
-   assert_redirected_to sublibraries_path
+     assert_redirected_to sublibraries_path
+   end
   end
  
 end

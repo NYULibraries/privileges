@@ -5,7 +5,6 @@ class PermissionsControllerTest < ActionController::TestCase
   setup :activate_authlogic
   
   def setup
-    activate_authlogic
     current_user = UserSession.create(users(:admin))
   end
   
@@ -51,8 +50,10 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, :id => Permission.find(:first).id
-    assert_response :success
+    VCR.use_cassette('edit permission') do
+      get :edit, :id => Permission.find(:first).id
+      assert_response :success
+    end
   end
 
   test "should update permission" do
@@ -71,11 +72,13 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should destroy permission" do
-    assert_difference('Permission.count', -1) do
-      delete :destroy, :id => Permission.find(:first).id
-    end
+    VCR.use_cassette('destroy permission') do
+      assert_difference('Permission.count', -1) do
+        delete :destroy, :id => Permission.find(:first).id
+      end
 
-    assert_redirected_to permissions_path
+      assert_redirected_to permissions_path
+    end
   end
   
   test "should update order" do

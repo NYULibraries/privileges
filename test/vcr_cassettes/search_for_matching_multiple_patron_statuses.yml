@@ -1,0 +1,139 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://login.nyu.edu/sso/identity/getCookieNameForToken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Content-Length:
+      - '27'
+      Date:
+      - Mon, 18 Mar 2013 20:58:02 GMT
+    body:
+      encoding: US-ASCII
+      string: ! 'string=iPlanetDirectoryPro
+
+'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:02 GMT
+- request:
+    method: post
+    uri: http://localhost:8981/solr/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&q=Student&fl=%2A+score&qf=keywords_text+web_text_text+code_text&defType=dismax&start=0&rows=200
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '10481'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! "{'responseHeader'=>{'status'=>0,'QTime'=>3,'params'=>{'sort'=>'sort_header_ss
+        asc, web_text_ss asc','fl'=>'* score','start'=>'0','q'=>'Student','qf'=>'keywords_text
+        web_text_text code_text','wt'=>'ruby','fq'=>['type:PatronStatus','web_text_ss:[*
+        TO *]','visible_bs:true'],'defType'=>'dismax','rows'=>'200'}},'response'=>{'numFound'=>20,'start'=>0,'maxScore'=>21.33464,'docs'=>[{'id'=>'PatronStatus
+        71','description_ss'=>'NYU Alumni with a valid NYU Alumni membership card
+        are entitled to 3 free visits to Bobst Library. For expanded access privileges,
+        alumni may join the <a href=\"http://library.nyu.edu/alumni/friends.html\">Friends
+        of Bobst Program</a>. ','code_ss'=>'nyu_ag_noaleph_alumni','from_aleph_bs'=>false,'web_text_ss'=>'NYU
+        Alumni','under_header_ss'=>'NYU','visible_bs'=>true,'sort_header_ss'=>'!nyu','sublibraries_with_access_sms'=>['BFALE','BAFC','BOBST','BRES','BTAM'],'score'=>12.445208},{'id'=>'PatronStatus
+        5','description_ss'=>'','code_ss'=>'55','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        Masters Degree Student','under_header_ss'=>'NYU','visible_bs'=>true,'sort_header_ss'=>'!nyu','sublibraries_with_access_sms'=>['NCOUR','TNSSC','BFALE','NIFA','NYSID','BOBST','TNSFO','BAFC','CU','BRES','BTAM','NREI','TNSGI','BLCC','nyu_ag_noaleph_dental','nyu_ag_noaleph_law','nyu_ag_noaleph_medical','nyu_ag_noaleph_poly'],'score'=>21.33464},{'id'=>'PatronStatus
+        54','description_ss'=>'','code_ss'=>'54','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        PhD student','under_header_ss'=>'NYU','visible_bs'=>true,'sort_header_ss'=>'!nyu','sublibraries_with_access_sms'=>['NCOUR','TNSSC','BFALE','NIFA','NYSID','BOBST','TNSFO','BAFC','CU','BRES','BTAM','NREI','TNSGI','BLCC','nyu_ag_noaleph_dental','nyu_ag_noaleph_general','nyu_ag_noaleph_law','nyu_ag_noaleph_medical','nyu_ag_noaleph_poly','nyu_ag_noaleph_MaRLI'],'score'=>17.778868},{'id'=>'PatronStatus
+        14','description_ss'=>'','code_ss'=>'57','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        Undergraduate Student','under_header_ss'=>'NYU','visible_bs'=>true,'sort_header_ss'=>'!nyu','sublibraries_with_access_sms'=>['NCOUR','TNSSC','BFALE','NIFA','NYSID','BOBST','TNSFO','BAFC','CU','BRES','BTAM','NREI','TNSGI','BLCC','nyu_ag_noaleph_dental','nyu_ag_noaleph_general','nyu_ag_noaleph_law','nyu_ag_noaleph_medical','nyu_ag_noaleph_poly'],'score'=>17.600182},{'id'=>'PatronStatus
+        60','description_ss'=>'','code_ss'=>'nyu_ag_noaleph_dental_student','from_aleph_bs'=>false,'web_text_ss'=>'NYU
+        Dental Student','under_header_ss'=>'NYU Dental School','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        dental school','sublibraries_with_access_sms'=>['BFALE','NIFA','TNSSC','NCOUR','BAFC','TNSFO','NYSID','BOBST','BRES','BTAM','NREI','BLCC','TNSGI','nyu_ag_noaleph_dental','nyu_ag_noaleph_poly','nyu_ag_noaleph_law','nyu_ag_noaleph_medical'],'score'=>20.114492},{'id'=>'PatronStatus
+        58','description_ss'=>'','code_ss'=>'nyu_ag_noaleph_law','from_aleph_bs'=>false,'web_text_ss'=>'NYU
+        Law School Student','under_header_ss'=>'NYU Law School','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        law school','sublibraries_with_access_sms'=>['BFALE','NIFA','TNSSC','NCOUR','BOBST','BAFC','TNSFO','NYSID','BRES','BTAM','NREI','BLCC','TNSGI','nyu_ag_noaleph_dental','nyu_ag_noaleph_poly','nyu_ag_noaleph_law','nyu_ag_noaleph_medical'],'score'=>12.445208},{'id'=>'PatronStatus
+        62','description_ss'=>'','code_ss'=>'nyu_ag_noaleph_medical_student','from_aleph_bs'=>false,'web_text_ss'=>'NYU
+        Medical School Student','under_header_ss'=>'NYU Medical School','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        medical school','sublibraries_with_access_sms'=>['BFALE','NIFA','TNSSC','NCOUR','BAFC','TNSFO','NYSID','BOBST','BRES','BTAM','NREI','TNSGI','nyu_ag_noaleph_dental','BLCC','nyu_ag_noaleph_law','nyu_ag_noaleph_medical'],'score'=>15.085869},{'id'=>'PatronStatus
+        39','description_ss'=>'','code_ss'=>'74','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        Poly PHD Student','under_header_ss'=>'NYU Polytechnic','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        polytechnic','sublibraries_with_access_sms'=>['NCOUR','BFALE','NIFA','BOBST','BAFC','CU','BRES','BTAM','NREI','BLCC','nyu_ag_noaleph_poly','nyu_ag_noaleph_law','nyu_ag_noaleph_MaRLI'],'score'=>3.1468205},{'id'=>'PatronStatus
+        26','description_ss'=>'','code_ss'=>'72','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        Polytechnic Graduate Student','under_header_ss'=>'NYU Polytechnic','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        polytechnic','sublibraries_with_access_sms'=>['NCOUR','BFALE','NIFA','BOBST','BAFC','CU','BRES','BTAM','NREI','BLCC','nyu_ag_noaleph_poly','nyu_ag_noaleph_law'],'score'=>14.223094},{'id'=>'PatronStatus
+        3','description_ss'=>'','code_ss'=>'77','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        Polytechnic Undergraduate Student','under_header_ss'=>'NYU Polytechnic','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        polytechnic','sublibraries_with_access_sms'=>['NCOUR','BFALE','NIFA','BOBST','BAFC','CU','BRES','BTAM','NREI','BLCC','nyu_ag_noaleph_general','nyu_ag_noaleph_poly','nyu_ag_noaleph_law'],'score'=>3.1468205},{'id'=>'PatronStatus
+        78','description_ss'=>'NYU SCPS students who have officially declared their
+        candidacy for a certificate program and completed their application with SCPS
+        may qualify for an NYU ID card and be granted library privileges.\n\nGo to
+        <a href=\"http://www.scps.nyu.edu/certificate\">www.scps.nyu.edu/certificate</a>
+        for more information about NYU SCPS certificate programs and candidacy application
+        information.\n\n','code_ss'=>'nyu_ag_noaleph_SCPS_Certificate_Student','from_aleph_bs'=>false,'web_text_ss'=>'NYU
+        SCPS Certificate Student','under_header_ss'=>'NYU SCPS','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        scps','sublibraries_with_access_sms'=>['BFALE','BOBST','BTAM','BRES','BLCC'],'score'=>3.5984323},{'id'=>'PatronStatus
+        83','code_ss'=>'nyu_ag_noaleph_NYU_SCSP_Degree_Graduate_Student','from_aleph_bs'=>false,'web_text_ss'=>'NYU
+        SCPS Degree Graduate Student','under_header_ss'=>'NYU SCPS','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        scps','sublibraries_with_access_sms'=>['TNSSC','BFALE','NCOUR','NIFA','NYSID','TNSFO','BOBST','BAFC','CU','BRES','BTAM','NREI','TNSGI','nyu_ag_noaleph_dental','BLCC','nyu_ag_noaleph_medical','nyu_ag_noaleph_law','nyu_ag_noaleph_poly'],'score'=>20.114492},{'id'=>'PatronStatus
+        47','description_ss'=>'','code_ss'=>'64','from_aleph_bs'=>true,'web_text_ss'=>'NYU
+        SCPS Non-Degree Student','under_header_ss'=>'NYU SCPS','visible_bs'=>true,'sort_header_ss'=>'!nyu
+        scps','sublibraries_with_access_sms'=>['BFALE','BTAM'],'score'=>2.753468},{'id'=>'PatronStatus
+        36','description_ss'=>'','code_ss'=>'17','from_aleph_bs'=>true,'web_text_ss'=>'Cooper
+        Union Student','under_header_ss'=>'Cooper Union','visible_bs'=>true,'sort_header_ss'=>'cooper
+        union','sublibraries_with_access_sms'=>['NIFA','TNSSC','BFALE','NCOUR','BOBST','TNSFO','BAFC','NYSID','CU','BRES','BTAM','TNSGI','nyu_ag_noaleph_poly','nyu_ag_noaleph_law'],'score'=>14.223094},{'id'=>'PatronStatus
+        45','description_ss'=>'','code_ss'=>'07','from_aleph_bs'=>true,'web_text_ss'=>'Hebrew
+        Union Student','under_header_ss'=>'Hebrew Union','visible_bs'=>true,'sort_header_ss'=>'hebrew
+        union','sublibraries_with_access_sms'=>['BFALE','NIFA','BOBST','TNSFO','BAFC','BRES','BTAM','NREI','nyu_ag_noaleph_dental','nyu_ag_noaleph_law','nyu_ag_noaleph_medical'],'score'=>14.223094},{'id'=>'PatronStatus
+        15','description_ss'=>'Students enrolled in degree-granting programs in any
+        New School division. ','code_ss'=>'35','from_aleph_bs'=>true,'web_text_ss'=>'New
+        School Graduate Student','under_header_ss'=>'New School ','visible_bs'=>true,'sort_header_ss'=>'new
+        school ','sublibraries_with_access_sms'=>['NIFA','NCOUR','TNSSC','BFALE','NYSID','BOBST','TNSFO','BAFC','CU','BRES','BTAM','TNSGI','nyu_ag_noaleph_law'],'score'=>17.600182},{'id'=>'PatronStatus
+        23','description_ss'=>'Students enrolled in degree-granting programs in any
+        New School division. ','code_ss'=>'37','from_aleph_bs'=>true,'web_text_ss'=>'New
+        School Undergraduate Student','under_header_ss'=>'New School ','visible_bs'=>true,'sort_header_ss'=>'new
+        school ','sublibraries_with_access_sms'=>['NIFA','NCOUR','TNSSC','BFALE','NYSID','BOBST','TNSFO','BAFC','CU','BRES','BTAM','TNSGI','nyu_ag_noaleph_law'],'score'=>12.445208},{'id'=>'PatronStatus
+        46','description_ss'=>'','code_ss'=>'97','from_aleph_bs'=>true,'web_text_ss'=>'NYSID
+        Undergraduate and Graduate Student','under_header_ss'=>'NY School of Interior
+        Design','visible_bs'=>true,'sort_header_ss'=>'ny school of interior design','sublibraries_with_access_sms'=>['NCOUR','TNSSC','BFALE','NYSID','BOBST','TNSFO','BAFC','BRES','BTAM','TNSGI'],'score'=>12.445208},{'id'=>'PatronStatus
+        92','description_ss'=>'Manhattan Research Library Initiative (MaRLI) \n\nThe
+        New York Public Library and the libraries of Columbia University and New York
+        University have launched an initiative to expand access to collections and
+        better serve their users. The collaboration, dubbed the Manhattan Research
+        Library Initiative (MaRLI), will enable NYU and Columbia doctoral students,
+        full-time faculty and librarians, and vetted New York Public Library cardholders
+        with a demonstrable research need not met by currently available resources,
+        to borrow materials from all three institutions. To apply for borrowing privileges
+        at New York Public Library and NYU, please complete the online registration
+        form.  Your application will be forwarded to both institutions and your credentials
+        will be ready for pick up in two business days. For further information about
+        the initiative, including participating libraries, please see <a href = \"http://library.nyu.edu/marli\">http://library.nyu.edu/marli</a>.
+        ','code_ss'=>'84','from_aleph_bs'=>true,'web_text_ss'=>'Columbia PhD Student','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','sublibraries_with_access_sms'=>['TNSSC','NCOUR','NIFA','BFALE','NYSID','TNSFO','BOBST','BAFC','CU','BRES','BTAM','NREI','TNSGI','BLCC','nyu_ag_noaleph_MaRLI'],'score'=>3.1468205},{'id'=>'PatronStatus
+        69','description_ss'=>'Faculty, students, and professional staff of <a href=\"http://www.oclc.org/research/activities/shares/partners/default.htm\">SHARES
+        member institutions</a>, outside the metropolitan region have access privileges
+        to Bobst Library.','code_ss'=>'nyu_ag_noaleph_shares','from_aleph_bs'=>false,'web_text_ss'=>'OCLC
+        SHARES Student and Faculty','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','sublibraries_with_access_sms'=>['BFALE','NIFA','NCOUR','BAFC','BOBST','BRES','BTAM','nyu_ag_noaleph_dental','nyu_ag_noaleph_law'],'score'=>2.753468}]}}"
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:02 GMT
+recorded_with: VCR 2.4.0

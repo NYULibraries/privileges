@@ -1,3 +1,16 @@
+real_user:
+  username: <%= username = "real_user" %>
+  email: <%= username + "@university.edu" %>
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt(username + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  user_attributes: <%= {
+    :nyuidn => "DS34D", 
+    :primary_institution => "INST01",
+    :institutions => ["INST01"],
+    :bor_status => "52",
+    :aleph_permissions => {} }.to_yaml.inspect  %>
+
 nonadmin:
   username: <%= username = "nonadmin" %>
   email: <%= username + "@university.edu" %>
@@ -9,7 +22,7 @@ nonadmin:
     :primary_institution => "INST01",
     :institutions => ["INST01"],
     :bor_status => "52",
-		:aleph_permissions => {} }.to_yaml.inspect  %>
+    :aleph_permissions => {} }.to_yaml.inspect  %>
 
 admin:
   username: <%= username = "admin" %>

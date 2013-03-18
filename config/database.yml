@@ -1,26 +1,19 @@
 development: &development
-  adapter: mysql2
   host: <%= Settings.databases.host %>
   database: <%= Settings.databases.database %>
   username: <%= Settings.databases.username %>
   password: <%= Settings.databases.password %>
+  adapter: mysql2
   encoding: utf8
 
 test: 
-  adapter: mysql2
-  encoding: utf8
-  host: <%= Settings.databases.host %>
-  database: <%= Settings.databases.database %>
-  username: <%= Settings.databases.username %>
-  password: <%= Settings.databases.password %>
+  <<: *development
   
 staging:
   <<: *development
-  host: <%= Settings.databases.host %>
 
 production:  
   <<: *development
-  host: <%= Settings.databases.host %>
   
 
   

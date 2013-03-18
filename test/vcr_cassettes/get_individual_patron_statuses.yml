@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8981/solr/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&fq=code_ss%3A52&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=200&q=%2A%3A%2A
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '975'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>5,''params''=>{''sort''=>''sort_header_ss
+        asc, web_text_ss asc'',''start''=>''0'',''q''=>''*:*'',''wt''=>''ruby'',''fq''=>[''type:PatronStatus'',''web_text_ss:[*
+        TO *]'',''visible_bs:true'',''code_ss:52''],''rows''=>''200''}},''response''=>{''numFound''=>2,''start''=>0,''docs''=>[{''id''=>''PatronStatus
+        41'',''description_ss''=>'''',''code_ss''=>''52'',''from_aleph_bs''=>true,''web_text_ss''=>''NYU
+        Adjunct Faculty'',''under_header_ss''=>''NYU'',''visible_bs''=>true,''sort_header_ss''=>''!nyu'',''sublibraries_with_access_sms''=>[''NIFA'',''NCOUR'',''TNSSC'',''BFALE'',''NYSID'',''BOBST'',''TNSFO'',''BAFC'',''CU'',''BRES'',''BTAM'',''NREI'',''TNSGI'',''BLCC'',''nyu_ag_noaleph_dental'',''nyu_ag_noaleph_poly'',''nyu_ag_noaleph_law'',''nyu_ag_noaleph_medical'']},{''id''=>''PatronStatus
+        133703334'',''description_ss''=>''specialdescription'',''code_ss''=>''52'',''from_aleph_bs''=>true,''web_text_ss''=>''Get
+        some new text in here'',''under_header_ss''=>''Library'',''visible_bs''=>true,''sort_header_ss''=>''library'',''sublibraries_with_access_sms''=>[''TNSFO'']}]}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:02 GMT
+recorded_with: VCR 2.4.0

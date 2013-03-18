@@ -58,7 +58,7 @@ class AccessGridController < ApplicationController
     respond_to do |format|
 	    #If only one patron status is returned, redirect just to that one
 	    format.html do 
-	      redirect_to patron_status_link(@patron_statuses.results[0].id, @patron_statuses.results[0].web_text) and return if @patron_statuses.results.count == 1 
+	      redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 
 	    end
 	    format.json do 
 	      render :json => @patron_statuses.results.map(&:web_text), 

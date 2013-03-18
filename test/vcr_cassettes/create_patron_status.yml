@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8981/solr/update?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatus
+        1032573618</field><field name="type">PatronStatus</field><field name="type">ActiveRecord::Base</field><field
+        name="class_name">PatronStatus</field><field name="code_ss">uniqueness1203946</field><field
+        name="from_aleph_bs">false</field><field name="web_text_ss">Test2</field><field
+        name="under_header_ss">Other</field><field name="visible_bs">true</field><field
+        name="sort_header_ss">other</field><field name="web_text_text">Test2</field><field
+        name="code_text">uniqueness1203946</field></doc></add>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '44'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>4}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+- request:
+    method: post
+    uri: http://localhost:8981/solr/update?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><commit/>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '45'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>12}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+- request:
+    method: post
+    uri: http://localhost:8981/solr/update?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatus
+        1032573619</field><field name="type">PatronStatus</field><field name="type">ActiveRecord::Base</field><field
+        name="class_name">PatronStatus</field><field name="code_ss">uniqueness82937465</field><field
+        name="from_aleph_bs">true</field><field name="under_header_ss">Other</field><field
+        name="visible_bs">true</field><field name="sort_header_ss">other</field><field
+        name="code_text">uniqueness82937465</field></doc></add>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '44'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>4}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+- request:
+    method: post
+    uri: http://localhost:8981/solr/update?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><commit/>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '45'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>13}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+recorded_with: VCR 2.4.0

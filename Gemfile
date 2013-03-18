@@ -32,8 +32,8 @@ group :test do
   gem 'simplecov-rcov', :require => false
   gem 'ruby-prof' #For Benchmarking
   gem 'coveralls', "~> 0.6.2", :require => false
-  #gem "vcr", "~> 2.4.0"
-  #gem "webmock", "~> 1.11.0"
+  gem "vcr", "~> 2.4.0"
+  gem "webmock", "~> 1.11.0"
 end
 
 gem 'json', "~> 1.7.7"
@@ -75,6 +75,3 @@ gem 'mustache-rails', "~> 0.2.3", :require => 'mustache/railtie'
 gem 'dalli', "~> 2.6.2"
 
 gem "comma", "~> 3.0"
-
-
-

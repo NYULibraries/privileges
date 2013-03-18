@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8981/solr/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatusPermission&fq=patron_status_code_ss%3A52&fq=sublibrary_code_ss%3ATNSFO&fq=permission_visible_bs%3Atrue&start=0&rows=200&q=%2A%3A%2A
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '1468'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0,''params''=>{''wt''=>''ruby'',''start''=>''0'',''fq''=>[''type:PatronStatusPermission'',''patron_status_code_ss:52'',''sublibrary_code_ss:TNSFO'',''permission_visible_bs:true''],''q''=>''*:*'',''rows''=>''200''}},''response''=>{''numFound''=>6,''start''=>0,''docs''=>[{''id''=>''PatronStatusPermission
+        8719'',''patron_status_code_ss''=>''52'',''sublibrary_code_ss''=>''TNSFO'',''permission_value_id_is''=>2,''from_aleph_bs''=>true,''visible_bs''=>false,''permission_visible_bs''=>true},{''id''=>''PatronStatusPermission
+        8727'',''patron_status_code_ss''=>''52'',''sublibrary_code_ss''=>''TNSFO'',''permission_value_id_is''=>27,''from_aleph_bs''=>true,''visible_bs''=>true,''permission_visible_bs''=>true},{''id''=>''PatronStatusPermission
+        8729'',''patron_status_code_ss''=>''52'',''sublibrary_code_ss''=>''TNSFO'',''permission_value_id_is''=>28,''from_aleph_bs''=>true,''visible_bs''=>true,''permission_visible_bs''=>true},{''id''=>''PatronStatusPermission
+        8731'',''patron_status_code_ss''=>''52'',''sublibrary_code_ss''=>''TNSFO'',''permission_value_id_is''=>29,''from_aleph_bs''=>true,''visible_bs''=>true,''permission_visible_bs''=>true},{''id''=>''PatronStatusPermission
+        8732'',''patron_status_code_ss''=>''52'',''sublibrary_code_ss''=>''TNSFO'',''permission_value_id_is''=>16,''from_aleph_bs''=>true,''visible_bs''=>false,''permission_visible_bs''=>true},{''id''=>''PatronStatusPermission
+        14834'',''patron_status_code_ss''=>''52'',''sublibrary_code_ss''=>''TNSFO'',''permission_value_id_is''=>51,''from_aleph_bs''=>false,''visible_bs''=>true,''permission_visible_bs''=>true}]}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+- request:
+    method: post
+    uri: http://localhost:8981/solr/update?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatusPermission
+        832099394</field><field name="type">PatronStatusPermission</field><field name="type">ActiveRecord::Base</field><field
+        name="class_name">PatronStatusPermission</field><field name="patron_status_code_ss">55</field><field
+        name="sublibrary_code_ss">TNSFO</field><field name="permission_value_id_is">21502174</field><field
+        name="from_aleph_bs">true</field><field name="visible_bs">true</field><field
+        name="permission_visible_bs">true</field></doc></add>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '44'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>3}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+- request:
+    method: post
+    uri: http://localhost:8981/solr/update?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><commit/>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '45'
+      Server:
+      - Jetty(6.1.3)
+    body:
+      encoding: US-ASCII
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>10}}'
+    http_version: 
+  recorded_at: Mon, 18 Mar 2013 20:58:04 GMT
+recorded_with: VCR 2.4.0

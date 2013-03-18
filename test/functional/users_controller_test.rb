@@ -5,7 +5,6 @@ class UsersControllerTest < ActionController::TestCase
   setup :activate_authlogic
 
   def setup
-   activate_authlogic
    current_user = UserSession.create(users(:admin))
   end
 
