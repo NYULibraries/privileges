@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.13'
+gem 'rails', '3.2.13'
 
 gem 'mysql2', "~> 0.3.11"
 
@@ -11,7 +11,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', "~> 0.10.0"
+  gem 'therubyracer', "~> 0.11.4"
 
   gem 'uglifier', '>= 1.0.3'
   gem 'compass', '~> 0.12.1'
