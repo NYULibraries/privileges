@@ -22,7 +22,7 @@ end
 group :development do
   gem 'progress_bar'
   # To use debugger
-  gem 'reek'
+  #gem 'reek'
 end
 
 group :test do
@@ -60,7 +60,7 @@ gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :t
 gem "kaminari", "~> 0.13"
 
 # New Relic
-gem 'newrelic_rpm', "~> 3.5.3"
+gem 'newrelic_rpm', "~> 3.6.0"
 
 # Sunspot
 gem 'sunspot_rails', "~> 1.3.3"
