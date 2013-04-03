@@ -1,6 +1,0 @@
-<div class="searchBox floatLeft">
-<%= form_tag (search_path, :method => :get)%>
-<span>Search: </span><%= text_field_with_auto_complete :patron_status, :web_text, :autocomplete => "off" %>
-<%= submit_tag "Go" %>
-</form>
-</div>

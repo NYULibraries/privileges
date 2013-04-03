@@ -1,1 +1,0 @@
-<%= collection_select(:patron_status_permission, :permission_value_id, @permission_values, :id, :web_text, {:include_blank => "Select a permission value"}) %>
