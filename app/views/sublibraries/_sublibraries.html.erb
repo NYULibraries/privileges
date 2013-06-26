@@ -1,6 +1,6 @@
 <p><%= page_entries_info_sunspot @sublibraries %></p>
 
-<%= paginate @sublibraries.hits %>
+<%= paginate @sublibraries.hits, :theme => "bootstrap" %>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -32,4 +32,4 @@
   </tbody>
 </table>
 
-<%= paginate @sublibraries.hits %>
+<%= paginate @sublibraries.hits, :theme => "bootstrap" %>
