@@ -13,7 +13,3 @@ rvm:
   
 git:
   submodules: false
-
-notifications:
-  email:
-    - barnaby.alter@nyu.edu
