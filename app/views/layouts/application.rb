@@ -12,13 +12,12 @@ module Views
       
       # Stylesheets to include in layout
       def stylesheets
-        catalog_stylesheets = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Muli"
-        catalog_stylesheets += stylesheet_link_tag "application"
+        catalog_stylesheets
       end
-
+      
       # Javascripts to include in layout
       def javascripts
-        catalog_javascripts = javascript_include_tag "application"
+        catalog_javascripts
       end
 
       def application
@@ -32,11 +31,6 @@ module Views
       # Render the sidebar partial
       def sidebar
         render :partial => "common/sidebar"
-      end
-      
-      # Using Gauges?
-      def gauges?
-        (Rails.env.eql?("production") and (not gauges_tracking_code.nil?))
       end
 
       def gauges_tracking_code
@@ -60,8 +54,8 @@ module Views
       
       # Prepend modal dialog elements to the body
       def prepend_body
-        prepend_body = '<div class="modal-container"></div>'.html_safe
-        prepend_body << '<div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>'.html_safe
+        content_tag(:div, nil, :class => "modal-container")+
+        content_tag(:div, nil, :id => "ajax-modal", :class => "modal hide fade", :tabindex => "-1")
       end
       
       # Prepend the flash message partial before yield

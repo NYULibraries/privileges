@@ -4,6 +4,17 @@ module ApplicationHelper
   def application_name
     get_formatted_detail('page_title')
   end
+  
+  # Stylesheets to include in layout
+  def catalog_stylesheets
+    catalog_stylesheets = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Muli"
+    catalog_stylesheets += stylesheet_link_tag "application"
+  end
+
+  # Javascripts to include in layout
+  def catalog_javascripts
+    catalog_javascripts = javascript_include_tag "application"
+  end
 
   # Create a select tag with permission values and select the correct one based on this PatronStatusPermission
   def get_permission_value(ps_perm)
