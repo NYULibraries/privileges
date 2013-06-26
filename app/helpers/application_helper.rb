@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def application_title
+    get_formatted_detail('page_title')
+  end
+
   # Print formatted page title as application name
   def application_name
     get_formatted_detail('page_title')
