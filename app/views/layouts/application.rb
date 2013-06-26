@@ -20,12 +20,8 @@ module Views
         catalog_javascripts
       end
 
-      def application
+      def application_title
         strip_tags(application_name)
-      end
-      
-      def title
-        application
       end
       
       # Render the sidebar partial
