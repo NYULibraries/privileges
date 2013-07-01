@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://http://127.0.0.1:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><delete><id>PatronStatusPermission
@@ -22,17 +22,17 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 01 Jul 2013 22:31:25 GMT
+      - Mon, 01 Jul 2013 23:07:32 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>7}}'
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>4}}'
     http_version: 
-  recorded_at: Mon, 01 Jul 2013 22:31:25 GMT
+  recorded_at: Mon, 01 Jul 2013 23:07:32 GMT
 - request:
     method: post
-    uri: http://http://127.0.0.1:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><delete><id>PatronStatusPermission
@@ -52,17 +52,17 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 01 Jul 2013 22:31:25 GMT
+      - Mon, 01 Jul 2013 23:07:32 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>6}}'
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>5}}'
     http_version: 
-  recorded_at: Mon, 01 Jul 2013 22:31:25 GMT
+  recorded_at: Mon, 01 Jul 2013 23:07:32 GMT
 - request:
     method: post
-    uri: http://http://127.0.0.1:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -81,12 +81,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 01 Jul 2013 22:31:25 GMT
+      - Mon, 01 Jul 2013 23:07:32 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0}}'
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>5}}'
     http_version: 
-  recorded_at: Mon, 01 Jul 2013 22:31:25 GMT
+  recorded_at: Mon, 01 Jul 2013 23:07:32 GMT
 recorded_with: VCR 2.4.0
