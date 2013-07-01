@@ -48,8 +48,13 @@ require 'webmock'
 # have to tell webmock to let us. 
 WebMock.allow_net_connect!
 
+@@sunspot_host = Settings.sunspot.solr.hostname
+@@sunspot_path = Settings.sunspot.solr.path
+
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock 
+  c.filter_sensitive_data("http://127.0.0.1:8981") { @@sunspot_host }
+  c.filter_sensitive_data("/solr") { @@sunspot_path }
 end
