@@ -41,7 +41,7 @@ gem 'json', "~> 1.7.7"
 gem 'debugger', :groups => [:development]
 
 #gem 'nyulibraries_assets', :path => "/apps/nyulibraries_assets"
-gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.1.3'
+gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.1.9'
 gem 'jquery-rails', "~> 2.2.0"
 
 # Deploy with Capistrano

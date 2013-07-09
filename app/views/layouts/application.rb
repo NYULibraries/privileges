@@ -28,11 +28,6 @@ module Views
       def sidebar
         render :partial => "common/sidebar"
       end
-      
-      # Using Gauges?
-      def gauges?
-        (Rails.env.eql?("production") and (not gauges_tracking_code.nil?))
-      end
 
       def gauges_tracking_code
         Settings.gauges.tracking_code
@@ -47,12 +42,7 @@ module Views
         breadcrumbs << link_to_unless_current(@patron_status.web_text) unless @patron_status.nil? or is_in_admin_view?
         return breadcrumbs
       end
-      
-      # Render footer partial
-      def footer
-        render :partial => "common/footer"
-      end
-      
+    
       # Prepend modal dialog elements to the body
       def prepend_body
         content_tag(:div, nil, :class => "modal-container")+
