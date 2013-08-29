@@ -41,17 +41,15 @@ gem 'json', "~> 1.7.7"
 gem 'debugger', :groups => [:development]
 
 #gem 'nyulibraries_assets', :path => "/apps/nyulibraries_assets"
-gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.1.9'
+gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.1.15'
 gem 'jquery-rails', "~> 2.2.0"
-
-# Deploy with Capistrano
-gem 'rvm-capistrano', "~> 1.2.7"
 
 # For config settings
 gem "rails_config", "~> 0.3.2"
 
 # Authenticate gem
-gem 'authpds-nyu', "~> 0.2.9"
+#gem 'authpds-nyu', "~> 0.2.9"
+gem 'authpds-nyu', :git => "git@github.com:NYULibraries/authpds-nyu.git", :branch => "shibboleth"
 
 # Aleph config gem
 gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.0.0'
@@ -75,4 +73,4 @@ gem 'mustache-rails', "~> 0.2.3", :require => 'mustache/railtie'
 # memcached
 gem 'dalli', "~> 2.6.2"
 
-gem "comma", "~> 3.0"
+gem "comma", "~> 3.1"
