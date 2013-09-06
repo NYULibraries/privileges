@@ -32,10 +32,6 @@ The Aleph tables with the permissions currently have to be mounted on the local 
 
     Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", ["NYU50", "NYU51"])
 
-There is a nightly Jenkins cron job which loads in new values from Aleph and deletes those deleted from Aleph. These values are then reindexed into Solr. The build status for this cron follows:
-
-[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Development)](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Development/)
-
 #### Indexing and delay
 Because all the permission data is indexed in a cloud implementation of Solr (i.e. WebSolr) there is a delay between when changes are saved by admins in the database and when the changes are reflected to frontend users. The actual indexing is also queued as a background job with [delayed_job](https://github.com/collectiveidea/delayed_job) so admins can continue their changes while the application does the heavy lifting. The delay might be several minutes, but the indexing ultimately allows for faster retrieval of the data.
 
@@ -166,3 +162,12 @@ The following GET will retrieve all patron statuses listed for printing:
     
 Adding a `sublibrary_code=` param to the querystring will return a JSON representation of all patron statuses with access to the specified sublibrary.
 
+## Scheduled jobs
+
+There is a daily Jenkins cron job which loads in new values from Aleph and deletes those deleted from Aleph. These values are then reindexed into Solr. 
+
+The Development index is kicked off at **2am** each morning and the Production reindex triggers when the Development one has been successfully completed.
+
+The build status for this cron follows:
+
+[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Development)](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Development/)
