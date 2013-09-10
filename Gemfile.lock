@@ -1,11 +1,11 @@
 GIT
   remote: git://github.com/NYULibraries/exlibris-nyu.git
-  revision: 542c9c911a91a0381f9f6fe2b10596d9dab5ce6e
-  tag: v1.0.0
+  revision: 38df364a760f81948f62b19bd18c11d4c3278671
+  tag: v1.0.8
   specs:
-    exlibris-nyu (1.0.0)
-      exlibris-aleph (~> 1.0.4)
-      exlibris-primo (~> 1.0.7)
+    exlibris-nyu (1.0.8)
+      exlibris-aleph (~> 1.0.6)
+      exlibris-primo (~> 1.0.10)
       nokogiri (~> 1.5.6)
       rake (~> 10.0.3)
       require_all (~> 1.2.1)
@@ -203,8 +203,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     marc (0.5.1)
-    mime-types (1.24)
-    multi_json (1.7.9)
+    mime-types (1.25)
+    multi_json (1.8.0)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     mustache (0.99.4)
@@ -220,7 +220,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     netrc (0.7.7)
-    newrelic_rpm (3.6.6.147)
+    newrelic_rpm (3.6.7.152)
     nokogiri (1.5.10)
     nori (1.1.5)
     octokit (1.25.0)

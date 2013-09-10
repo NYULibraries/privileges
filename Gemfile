@@ -52,7 +52,7 @@ gem "rails_config", "~> 0.3.2"
 gem 'authpds-nyu', :git => "git@github.com:NYULibraries/authpds-nyu.git", :branch => "shibboleth"
 
 # Aleph config gem
-gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.0.0'
+gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.0.8'
 gem "rake_nyu", :git => "git://github.com/NYULibraries/rake_nyu.git"
 
 # Pagination
