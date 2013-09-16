@@ -44,8 +44,6 @@ gem 'debugger', :groups => [:development]
 gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.1.9'
 gem 'jquery-rails', "~> 2.2.0"
 
-# Deploy with Capistrano
-gem 'rvm-capistrano', "~> 1.2.7"
 
 # For config settings
 gem "rails_config", "~> 0.3.2"
@@ -55,7 +53,7 @@ gem 'authpds-nyu', "~> 0.2.9"
 
 # Aleph config gem
 gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.0.0'
-gem "rake_nyu", :git => "git://github.com/NYULibraries/rake_nyu.git"
+gem "nyulibraries_deploy", :git => "git://github.com/NYULibraries/nyulibraries_deploy.git", :tag => 'v2.0.1'
 
 # Pagination
 gem "kaminari", "~> 0.13"
