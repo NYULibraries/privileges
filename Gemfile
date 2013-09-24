@@ -53,7 +53,7 @@ gem 'authpds-nyu', "~> 0.2.9"
 
 # Aleph config gem
 gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.0.0'
-gem "nyulibraries_deploy", :git => "git://github.com/NYULibraries/nyulibraries_deploy.git", :tag => "v2.0.4"
+gem "nyulibraries_deploy", :git => "git://github.com/NYULibraries/nyulibraries_deploy.git", :tag => "v3.0.0"
 
 # Pagination
 gem "kaminari", "~> 0.13"
