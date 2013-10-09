@@ -6,18 +6,15 @@
 class AccessGridController < ApplicationController
   # Redirect authenticated user to their patron status
   before_filter :redirect_to_patron_status, :only => :index_patron_statuses
+  respond_to :html, :json, :js
     
   # GET /patrons
   # GET /patrons.json
   def index_patron_statuses
     @patron_statuses = patron_statuses_hits
     
-    respond_to do |format|
-      format.json do
-        render :json => patron_statuses_results, 
-        :layout => false and return
-      end
-      format.html
+    respond_with(@patron_statuses) do |format|
+      format.json { render :json => patron_statuses_results }
     end
   end
   
@@ -33,20 +30,9 @@ class AccessGridController < ApplicationController
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = patron_status_sublibrary_permissions
 	  
-    respond_to do |format|
-      format.json do 
-        render :json => {
-          :patron_status_permissions => @patron_status_permissions, 
-          :sublibrary => @sublibrary, 
-          :patron_status => @patron_status }, 
-        :layout => false and return
-      end
-	    format.js do
-	      render :layout => false and return if request.xhr? and !performed?
-	    end
-	    format.html do
-	      render :show_patron_status if !request.xhr? and !performed?
-      end
+	  respond_with(@patron_status) do |format|
+	    format.json { render :json => {:patron_status_permissions => @patron_status_permissions, :sublibrary => @sublibrary, :patron_status => @patron_status }, :layout => false }
+	    format.html { render :show_patron_status }
     end
   end
   
@@ -55,15 +41,10 @@ class AccessGridController < ApplicationController
     #Solr search based on params[:q]
     @patron_statuses = patron_statuses_search
 
-    respond_to do |format|
+    respond_with(@patron_statuses) do |format|
+      format.json { render :json => @patron_statuses.results.map(&:web_text), :layout => false }
 	    #If only one patron status is returned, redirect just to that one
-	    format.html do 
-	      redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 
-	    end
-	    format.json do 
-	      render :json => @patron_statuses.results.map(&:web_text), 
-	             :layout => false and return
-      end
+	    format.html { redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 }
     end
   end
   

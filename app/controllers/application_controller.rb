@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
 
-  # Use nyu assets layout
-  layout "application"
+  layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
   
   protect_from_forgery
 
@@ -46,7 +45,7 @@ class ApplicationController < ActionController::Base
   def current_user_dev
    @current_user ||= User.find_by_username("admin")
   end
-  alias :current_user :current_user_dev if Rails.env == "development"
+  #alias :current_user :current_user_dev if Rails.env == "development"
   
   # Global function for converting string to url-friendly strings
   def urlize abnormal
