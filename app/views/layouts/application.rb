@@ -14,6 +14,10 @@ module Views
         strip_tags(application_name)
       end
       
+      def gauges_tracking_code
+        Settings.gauges.tracking_code
+      end
+      
       # Print breadcrumb navigation
       def breadcrumbs
         breadcrumbs = super
