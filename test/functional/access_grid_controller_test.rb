@@ -2,7 +2,13 @@ require 'test_helper'
 
 class AccessGridControllerTest < ActionController::TestCase
 
-  setup :activate_authlogic
+  setup do
+    activate_authlogic
+    # Pretend we've already checked PDS/Shibboleth for the session
+    # and we have a session
+    @request.cookies[:attempted_sso] = { value: "true" }
+    @controller.session[:session_id] = "FakeSessionID"
+  end
 
   test "show all patron statuses list" do 
     VCR.use_cassette('get patron statuses') do

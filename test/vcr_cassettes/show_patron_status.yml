@@ -14,62 +14,42 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Server:
-      - Apache-Coyote/1.1
       Content-Type:
-      - text/plain;charset=UTF-8
-      Transfer-Encoding:
-      - chunked
-      Date:
-      - Mon, 01 Jul 2013 23:07:30 GMT
-      Connection:
-      - close
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '13685'
+      Server:
+      - Jetty(6.1.3)
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>2,''params''=>{''sort''=>''sort_text_ss
-        asc'',''fq''=>''type:Sublibrary'',''wt''=>''ruby'',''rows''=>''200'',''start''=>''0'',''q''=>''*:*''}},''response''=>{''numFound''=>82,''start''=>0,''docs''=>[{''id''=>''Sublibrary
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>4,''params''=>{''sort''=>''sort_text_ss
+        asc'',''start''=>''0'',''q''=>''*:*'',''wt''=>''ruby'',''fq''=>''type:Sublibrary'',''rows''=>''200''}},''response''=>{''numFound''=>45,''start''=>0,''docs''=>[{''id''=>''Sublibrary
+        674783531'',''code_ss''=>''uniqueness82937465'',''visible_bs''=>true,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
+        NYU Libraries'',''sort_header_ss''=>''other nyu libraries''},{''id''=>''Sublibrary
         674783528'',''code_ss''=>''uniqueness82937465'',''visible_bs''=>true,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries''},{''id''=>''Sublibrary
-        56'',''web_text_ss''=>''Avery Fisher Center'',''code_ss''=>''AFC'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''avery
-        fisher center''},{''id''=>''Sublibrary 37'',''web_text_ss''=>''<a href="http://www.poly.edu/research/library">Bern
+        16'',''code_ss''=>''BLEIS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
+        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''''},{''id''=>''Sublibrary
+        20'',''code_ss''=>''ALEPH'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
+        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''''},{''id''=>''Sublibrary
+        37'',''web_text_ss''=>''<a href="http://www.poly.edu/research/library">Bern
         Dibner Library at Polytechnic Institute of NYU</a>'',''code_ss''=>''nyu_ag_noaleph_poly'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>false,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''bern
-        dibner library at polytechnic institute of nyu''},{''id''=>''Sublibrary 57'',''web_text_ss''=>''Bobst
-        Acquisitions'',''code_ss''=>''BOBA'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''bobst
-        acquisitions''},{''id''=>''Sublibrary 59'',''web_text_ss''=>''Bobst Electronic'',''code_ss''=>''BOBE'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''bobst
-        electronic''},{''id''=>''Sublibrary 58'',''web_text_ss''=>''Bobst Serials'',''code_ss''=>''BOBS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''bobst
-        serials''},{''id''=>''Sublibrary 17'',''web_text_ss''=>''Brooklyn Historical
-        Society'',''code_ss''=>''KBHS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Brooklyn
+        dibner library at polytechnic institute of nyu''},{''id''=>''Sublibrary 17'',''web_text_ss''=>''Brooklyn
+        Historical Society'',''code_ss''=>''KBHS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Brooklyn
         Historical Society'',''sort_header_ss''=>''brooklyn historical society'',''sort_text_ss''=>''brooklyn
-        historical society''},{''id''=>''Sublibrary 61'',''web_text_ss''=>''Cooper
-        Union'',''code_ss''=>''CU1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''cooper
-        union''},{''id''=>''Sublibrary 23'',''web_text_ss''=>''<a href="http://library.cooper.edu/">Cooper
+        historical society''},{''id''=>''Sublibrary 23'',''web_text_ss''=>''<a href="http://library.cooper.edu/">Cooper
         Union Library</a>'',''code_ss''=>''CU'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Affiliated
         Libraries'',''sort_header_ss''=>''affiliated libraries'',''sort_text_ss''=>''cooper
         union library''},{''id''=>''Sublibrary 36'',''web_text_ss''=>''<a href="http://hsl.med.nyu.edu/">Ehrman
         Medical Library</a>'',''code_ss''=>''nyu_ag_noaleph_medical'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>false,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''ehrman
-        medical library''},{''id''=>''Sublibrary 62'',''web_text_ss''=>''Fales Library'',''code_ss''=>''BFAL1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''fales
-        library''},{''id''=>''Sublibrary 12'',''web_text_ss''=>''Inst for Study of
-        Anc World'',''code_ss''=>''NISAW'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Inst
+        medical library''},{''id''=>''Sublibrary 32'',''web_text_ss''=>''General'',''code_ss''=>''nyu_ag_noaleph_general'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>false,''under_header_ss''=>''General'',''sort_header_ss''=>''general'',''sort_text_ss''=>''general''},{''id''=>''Sublibrary
+        12'',''web_text_ss''=>''Inst for Study of Anc World'',''code_ss''=>''NISAW'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Inst
         for Study of Anc World'',''sort_header_ss''=>''inst for study of anc world'',''sort_text_ss''=>''inst
-        for study of anc world''},{''id''=>''Sublibrary 65'',''web_text_ss''=>''Inst
-        for Study of Anc World'',''code_ss''=>''NISA1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''inst
-        for study of anc world''},{''id''=>''Sublibrary 64'',''web_text_ss''=>''Inst
-        of Fine Arts Conserv'',''code_ss''=>''NIF2'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''inst
-        of fine arts conserv''},{''id''=>''Sublibrary 63'',''web_text_ss''=>''Institute
-        of Fine Arts'',''code_ss''=>''NIF1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''institute
-        of fine arts''},{''id''=>''Sublibrary 42'',''web_text_ss''=>''<a href = "http://marli.libguides.com/welcome">MaRLI:
-        Manhattan Research Library Initiative</a>'',''code_ss''=>''nyu_ag_noaleph_MaRLI'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>false,''under_header_ss''=>''Affiliated
+        for study of anc world''},{''id''=>''Sublibrary 42'',''web_text_ss''=>''<a
+        href = "http://marli.libguides.com/welcome">MaRLI: Manhattan Research Library
+        Initiative</a>'',''code_ss''=>''nyu_ag_noaleph_MaRLI'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>false,''under_header_ss''=>''Affiliated
         Libraries'',''sort_header_ss''=>''affiliated libraries'',''sort_text_ss''=>''marli:
         manhattan research library initiative''},{''id''=>''Sublibrary 6'',''web_text_ss''=>''Miscellaneous
         for cleanup'',''code_ss''=>''MISC'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Miscellaneous
@@ -77,18 +57,12 @@ http_interactions:
         for cleanup''},{''id''=>''Sublibrary 18'',''web_text_ss''=>''<a href="http://library.newschool.edu/fogelman/">New
         School Fogelman Library</a>'',''code_ss''=>''TNSFO'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Affiliated
         Libraries'',''sort_header_ss''=>''affiliated libraries'',''sort_text_ss''=>''new
-        school fogelman library''},{''id''=>''Sublibrary 66'',''web_text_ss''=>''New
-        School Fogelman Library'',''code_ss''=>''TNSF1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''new
         school fogelman library''},{''id''=>''Sublibrary 133703334'',''web_text_ss''=>''New
         School Fogelman Library'',''code_ss''=>''TNSFO'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''New
         School'',''sort_header_ss''=>''new school'',''sort_text_ss''=>''new school
         fogelman library''},{''id''=>''Sublibrary 29'',''web_text_ss''=>''<a href="http://library.newschool.edu/gimbel/">New
         School Gimbel Library</a>'',''code_ss''=>''TNSGI'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Affiliated
         Libraries'',''sort_header_ss''=>''affiliated libraries'',''sort_text_ss''=>''new
-        school gimbel library''},{''id''=>''Sublibrary 67'',''web_text_ss''=>''New
-        School Gimbel Library'',''code_ss''=>''TNSG1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''new
         school gimbel library''},{''id''=>''Sublibrary 7'',''web_text_ss''=>''New
         School Kellen Archives'',''code_ss''=>''TNSKE'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''New
         School Kellen Archives'',''sort_header_ss''=>''new school kellen archives'',''sort_text_ss''=>''new
@@ -101,27 +75,15 @@ http_interactions:
         school restricted''},{''id''=>''Sublibrary 10'',''web_text_ss''=>''<a href="http://library.newschool.edu/scherman/">New
         School Scherman Library</a>'',''code_ss''=>''TNSSC'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Affiliated
         Libraries'',''sort_header_ss''=>''affiliated libraries'',''sort_text_ss''=>''new
-        school scherman library''},{''id''=>''Sublibrary 68'',''web_text_ss''=>''New
-        School Scherman Library'',''code_ss''=>''TNSS1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''new
-        school scherman library''},{''id''=>''Sublibrary 69'',''web_text_ss''=>''New
-        School University, Acq'',''code_ss''=>''NEWA'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''new
-        school university, acq''},{''id''=>''Sublibrary 70'',''web_text_ss''=>''New
-        School University, Ser'',''code_ss''=>''NEWS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''new
-        school university, ser''},{''id''=>''Sublibrary 13'',''web_text_ss''=>''<a
+        school scherman library''},{''id''=>''Sublibrary 13'',''web_text_ss''=>''<a
         href="http://www.nysid.net/LIBRARY/Default.htm">New York School of Interior
         Design</a>'',''code_ss''=>''NYSID'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Affiliated
         Libraries'',''sort_header_ss''=>''affiliated libraries'',''sort_text_ss''=>''new
         york school of interior design''},{''id''=>''Sublibrary 2'',''web_text_ss''=>''New-York
         Historical Society'',''code_ss''=>''NYHS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''New-York
         Historical Society'',''sort_header_ss''=>''new-york historical society'',''sort_text_ss''=>''new-york
-        historical society''},{''id''=>''Sublibrary 72'',''web_text_ss''=>''NY School
-        of Interior Design'',''code_ss''=>''NYSI1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''ny
-        school of interior design''},{''id''=>''Sublibrary 43'',''web_text_ss''=>''NYU
-        Abu Dhabi (UAE) Annex'',''code_ss''=>''NADEX'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
+        historical society''},{''id''=>''Sublibrary 43'',''web_text_ss''=>''NYU Abu
+        Dhabi (UAE) Annex'',''code_ss''=>''NADEX'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
         abu dhabi (uae) annex''},{''id''=>''Sublibrary 40'',''web_text_ss''=>''NYU
         Abu Dhabi Equipment'',''code_ss''=>''NADEQ'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
@@ -129,23 +91,8 @@ http_interactions:
         abu dhabi equipment''},{''id''=>''Sublibrary 41'',''web_text_ss''=>''NYU Abu
         Dhabi Library (UAE)'',''code_ss''=>''NABUD'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        abu dhabi library (uae)''},{''id''=>''Sublibrary 52'',''web_text_ss''=>''NYU
-        Abu Dhabi Library (UAE)'',''code_ss''=>''NYUAB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        abu dhabi library (uae)''},{''id''=>''Sublibrary 79'',''web_text_ss''=>''NYU
-        Abu Dhabi Library (UAE)'',''code_ss''=>''NYUAD'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        abu dhabi library (uae)''},{''id''=>''Sublibrary 78'',''web_text_ss''=>''NYU
-        Abu Dhabi Media in NY'',''code_ss''=>''NAFC'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        abu dhabi media in ny''},{''id''=>''Sublibrary 83'',''web_text_ss''=>''NYU
-        Bellevue Hospital Library'',''code_ss''=>''NHHSP'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        bellevue hospital library''},{''id''=>''Sublibrary 44'',''web_text_ss''=>''NYU
-        Berlin (Germany)'',''code_ss''=>''NBERL'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        berlin (germany)''},{''id''=>''Sublibrary 14'',''web_text_ss''=>''<a href="http://library.nyu.edu/">NYU
-        Bobst</a>'',''code_ss''=>''BOBST'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
+        abu dhabi library (uae)''},{''id''=>''Sublibrary 14'',''web_text_ss''=>''<a
+        href="http://library.nyu.edu/">NYU Bobst</a>'',''code_ss''=>''BOBST'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         Bobst Library'',''sort_header_ss''=>''!nyu bobst library'',''sort_text_ss''=>''nyu
         bobst''},{''id''=>''Sublibrary 28'',''web_text_ss''=>''NYU Bobst 6th Floor
         Reference'',''code_ss''=>''BREF6'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
@@ -157,11 +104,9 @@ http_interactions:
         href ="http://www.nyu.edu/library/bobst/research/fales/">NYU Bobst Fales Library
         & Special Collections</a>'',''code_ss''=>''BFALE'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         Bobst Library'',''sort_header_ss''=>''!nyu bobst library'',''sort_text_ss''=>''nyu
-        bobst fales library & special collections''},{''id''=>''Sublibrary 75'',''web_text_ss''=>''NYU
-        Bobst Library 6th Fl'',''code_ss''=>''REF6'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        bobst library 6th fl''},{''id''=>''Sublibrary 31'',''web_text_ss''=>''<a href="http://library.nyu.edu/services/erc.html">NYU
-        Bobst Library Computer Center (BLCC) </a>'',''code_ss''=>''BLCC'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
+        bobst fales library & special collections''},{''id''=>''Sublibrary 31'',''web_text_ss''=>''<a
+        href="http://library.nyu.edu/services/erc.html">NYU Bobst Library Computer
+        Center (BLCC) </a>'',''code_ss''=>''BLCC'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         Bobst Library'',''sort_header_ss''=>''!nyu bobst library'',''sort_text_ss''=>''nyu
         bobst library computer center (blcc) ''},{''id''=>''Sublibrary 26'',''web_text_ss''=>''<a
         href="http://stage.library.nyu.edu:8000/services/reserves.html">NYU Bobst
@@ -174,19 +119,8 @@ http_interactions:
         bobst tamiment library & robert f. wagner labor archives''},{''id''=>''Sublibrary
         8'',''web_text_ss''=>''<a href="http://cims.nyu.edu/library/">NYU Courant</a>'',''code_ss''=>''NCOUR'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        courant''},{''id''=>''Sublibrary 60'',''web_text_ss''=>''NYU Courant'',''code_ss''=>''NCOU1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        courant''},{''id''=>''Sublibrary 84'',''web_text_ss''=>''NYU Ehrman Medical
-        Library'',''code_ss''=>''NHMED'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        ehrman medical library''},{''id''=>''Sublibrary 45'',''web_text_ss''=>''NYU
-        Florence (Italy)'',''code_ss''=>''NFLOR'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        florence (italy)''},{''id''=>''Sublibrary 82'',''web_text_ss''=>''NYU Hospital
-        Joint Diseases'',''code_ss''=>''NHHJD'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        hospital joint diseases''},{''id''=>''Sublibrary 9'',''web_text_ss''=>''NYU
-        IFA Conservation Center'',''code_ss''=>''NIFAC'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
+        courant''},{''id''=>''Sublibrary 9'',''web_text_ss''=>''NYU IFA Conservation
+        Center'',''code_ss''=>''NIFAC'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         Institute of Fine Arts - Conservation '',''sort_header_ss''=>''!nyu institute
         of fine arts - conservation '',''sort_text_ss''=>''nyu ifa conservation center''},{''id''=>''Sublibrary
         5'',''web_text_ss''=>''NYU Institute of Fine Arts'',''code_ss''=>''NIFA'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>true,''under_header_ss''=>''Other
@@ -202,62 +136,15 @@ http_interactions:
         la pietra library (italy)''},{''id''=>''Sublibrary 15'',''web_text_ss''=>''NYU
         Library'',''code_ss''=>''NYU50'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         50 Library'',''sort_header_ss''=>''!nyu 50 library'',''sort_text_ss''=>''nyu
-        library''},{''id''=>''Sublibrary 46'',''web_text_ss''=>''NYU London (England)'',''code_ss''=>''NLOND'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        london (england)''},{''id''=>''Sublibrary 81'',''web_text_ss''=>''NYU Nelson
-        Institute Library'',''code_ss''=>''NHENV'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        nelson institute library''},{''id''=>''Sublibrary 55'',''web_text_ss''=>''NYU
-        NSHNG Restricted EResouces'',''code_ss''=>''SWEB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        nshng restricted eresouces''},{''id''=>''Sublibrary 22'',''web_text_ss''=>''NYU
-        Offsite Storage'',''code_ss''=>''NOFFS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
+        library''},{''id''=>''Sublibrary 22'',''web_text_ss''=>''NYU Offsite Storage'',''code_ss''=>''NOFFS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         Offsite Storage'',''sort_header_ss''=>''!nyu offsite storage'',''sort_text_ss''=>''nyu
-        offsite storage''},{''id''=>''Sublibrary 47'',''web_text_ss''=>''NYU Poly'',''code_ss''=>''NPOLY'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        poly''},{''id''=>''Sublibrary 48'',''web_text_ss''=>''NYU Prague (Czech Republic)'',''code_ss''=>''NPRAG'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        prague (czech republic)''},{''id''=>''Sublibrary 21'',''web_text_ss''=>''NYU
-        Restricted'',''code_ss''=>''BWEB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
+        offsite storage''},{''id''=>''Sublibrary 21'',''web_text_ss''=>''NYU Restricted'',''code_ss''=>''BWEB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         Restricted'',''sort_header_ss''=>''!nyu restricted'',''sort_text_ss''=>''nyu
-        restricted''},{''id''=>''Sublibrary 50'',''web_text_ss''=>''NYU Shanghai Library
-        (China)'',''code_ss''=>''NSHNG'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        shanghai library (china)''},{''id''=>''Sublibrary 71'',''web_text_ss''=>''NYU
-        Shanghai Library (China)'',''code_ss''=>''NYUSH'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        shanghai library (china)''},{''id''=>''Sublibrary 49'',''web_text_ss''=>''NYU
-        Shanghai Library Equipment'',''code_ss''=>''NSHEQ'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        shanghai library equipment''},{''id''=>''Sublibrary 80'',''web_text_ss''=>''NYU
-        Waldmann Dental Library'',''code_ss''=>''NHDEN'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        waldmann dental library''},{''id''=>''Sublibrary 51'',''web_text_ss''=>''NYU
-        Washington, D.C.'',''code_ss''=>''NWADC'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu
-        washington, d.c.''},{''id''=>''Sublibrary 85'',''web_text_ss''=>''NYU52'',''code_ss''=>''NYU52'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu52''},{''id''=>''Sublibrary
-        54'',''web_text_ss''=>''NYUAD Ctr for Sci & Eng (UAE)'',''code_ss''=>''NYUSE'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyuad
-        ctr for sci & eng (uae)''},{''id''=>''Sublibrary 77'',''web_text_ss''=>''NYUAD
-        Ctr for Sci & Eng (UAE)'',''code_ss''=>''NADSE'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyuad
-        ctr for sci & eng (uae)''},{''id''=>''Sublibrary 53'',''web_text_ss''=>''NYUAD
-        Sama Fac Offices (UAE)'',''code_ss''=>''NYUSS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyuad
-        sama fac offices (uae)''},{''id''=>''Sublibrary 76'',''web_text_ss''=>''NYUAD
-        Sama Fac Offices (UAE)'',''code_ss''=>''NADSS'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyuad
-        sama fac offices (uae)''},{''id''=>''Sublibrary 73'',''web_text_ss''=>''Real
-        Estate Institute'',''code_ss''=>''REI'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''real
-        estate institute''},{''id''=>''Sublibrary 39'',''web_text_ss''=>''Restricted
-        Electronic Resource'',''code_ss''=>''NWEB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
+        restricted''},{''id''=>''Sublibrary 38'',''web_text_ss''=>''NYU51'',''code_ss''=>''NYU51'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
+        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''nyu51''},{''id''=>''Sublibrary
+        39'',''web_text_ss''=>''Restricted Electronic Resource'',''code_ss''=>''NWEB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''restricted
-        electronic resource''},{''id''=>''Sublibrary 74'',''web_text_ss''=>''Tamiment
-        Library'',''code_ss''=>''BTA1'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Other
-        NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''tamiment
-        library''},{''id''=>''Sublibrary 35'',''web_text_ss''=>''<a href="http://www.law.nyu.edu/library/index.htm">The
+        electronic resource''},{''id''=>''Sublibrary 35'',''web_text_ss''=>''<a href="http://www.law.nyu.edu/library/index.htm">The
         Law Library</a>'',''code_ss''=>''nyu_ag_noaleph_law'',''visible_bs''=>true,''visible_frontend_bs''=>true,''from_aleph_bs''=>false,''under_header_ss''=>''Other
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''the
         law library''},{''id''=>''Sublibrary 27'',''web_text_ss''=>''Unrestricted'',''code_ss''=>''WEB'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''Unrestricted'',''sort_header_ss''=>''unrestricted'',''sort_text_ss''=>''unrestricted''},{''id''=>''Sublibrary
@@ -266,5 +153,5 @@ http_interactions:
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''waldmann
         memorial dental library''}]}}'
     http_version: 
-  recorded_at: Mon, 01 Jul 2013 23:07:31 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Wed, 09 Oct 2013 19:04:09 GMT
+recorded_with: VCR 2.6.0

@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
 
-  # Use nyu assets layout
-  layout "application"
+  layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
   
   protect_from_forgery
 

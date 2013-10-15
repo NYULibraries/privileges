@@ -9,30 +9,15 @@ module Views
         meta << tag(:meta, :name => "cleartype", :content => "on")
         meta << favicon_link_tag('https://library.nyu.edu/favicon.ico')
       end
-      
-      # Stylesheets to include in layout
-      def stylesheets
-        catalog_stylesheets
-      end
-      
-      # Javascripts to include in layout
-      def javascripts
-        catalog_javascripts
-      end
 
       def application_title
         strip_tags(application_name)
       end
       
-      # Render the sidebar partial
-      def sidebar
-        render :partial => "common/sidebar"
-      end
-
       def gauges_tracking_code
         Settings.gauges.tracking_code
       end
-
+      
       # Print breadcrumb navigation
       def breadcrumbs
         breadcrumbs = super

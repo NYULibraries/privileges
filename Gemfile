@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
-gem 'mysql2', "~> 0.3.11"
+gem 'mysql2', '~> 0.3.11'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -11,12 +11,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', "~> 0.11.4"
+  gem 'therubyracer', '~> 0.12.0'
 
   gem 'uglifier', '>= 1.0.3'
   gem 'compass', '~> 0.12.1'
-  gem 'compass-rails', "~> 1.0.3"
-  gem 'yui-compressor', "~> 0.9.6"
+  gem 'compass-rails', '~> 1.0.3'
+  gem 'yui-compressor', '~> 0.12.0'
 end
 
 group :development do
@@ -26,51 +26,47 @@ group :development do
 end
 
 group :test do
-  gem 'sunspot_solr', "~> 1.3.3"
+  gem 'sunspot_solr', '~> 1.3.3'
   #Testing coverage
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'ruby-prof' #For Benchmarking
-  gem 'coveralls', "~> 0.6.2", :require => false
-  gem "vcr", "~> 2.4.0"
-  gem "webmock", "~> 1.11.0"
+  gem 'coveralls', '~> 0.7.0', :require => false
+  gem 'vcr', '~> 2.6.0'
+  gem 'webmock', '~> 1.14.0'
 end
 
-gem 'json', "~> 1.8.0"
+gem 'json', '~> 1.8.0'
 
 gem 'debugger', :groups => [:development]
 
-#gem 'nyulibraries_assets', :path => "/apps/nyulibraries_assets"
-gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.2.0'
-gem 'jquery-rails', "~> 2.2.0"
-
+gem 'jquery-rails', '~> 3.0.4'
+gem 'jquery-ui-rails', '~> 4.0.0'
 
 # For config settings
-gem "rails_config", "~> 0.3.2"
+gem 'rails_config', '~> 0.3.2'
 
-# Authenticate gem
-gem 'authpds-nyu', :git => "https://github.com/NYULibraries/authpds-nyu" , :tag => "v1.1.2"
-
-# Aleph config gem
-gem "exlibris-nyu", :git => "git://github.com/NYULibraries/exlibris-nyu.git", :tag => 'v1.1.1'
-gem "nyulibraries_deploy", :git => "git://github.com/NYULibraries/nyulibraries_deploy.git", :branch => "development"
+gem 'exlibris-nyu', :git => 'git://github.com/NYULibraries/exlibris-nyu.git', :tag => 'v1.1.1'
+gem 'authpds-nyu', :git => 'git://github.com/NYULibraries/authpds-nyu.git', :tag => 'v1.1.2'
+gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.2.0'
+gem 'nyulibraries_deploy', :git => 'git://github.com/NYULibraries/nyulibraries_deploy.git', :branch => 'development'
 
 # Pagination
-gem "kaminari", "~> 0.13"
+gem 'kaminari', '~> 0.13'
 
 # New Relic
-gem 'newrelic_rpm', "~> 3.6.0"
+gem 'newrelic_rpm', '~> 3.6.0'
 
 # Sunspot
-gem 'sunspot_rails', "~> 1.3.3"
+gem 'sunspot_rails', '~> 1.3.3'
 
 # Background jobs
-gem 'delayed_job_active_record', "~> 0.4.3"
-gem 'daemons', "~> 1.1.9"
+gem 'delayed_job_active_record', '~> 0.4.3'
+gem 'daemons', '~> 1.1.9'
 
-gem 'mustache-rails', "~> 0.2.3", :require => 'mustache/railtie'
+gem 'mustache-rails', '~> 0.2.3', :require => 'mustache/railtie'
 
 # memcached
-gem 'dalli', "~> 2.6.2"
+gem 'dalli', '~> 2.6.2'
 
-gem "comma", "~> 3.0"
+gem 'comma', '~> 3.2.0'

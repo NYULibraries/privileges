@@ -14,6 +14,11 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :index
   end
+  
+  test "should get CSV from index" do
+    get :index, :format => :csv
+    assert_response :success
+  end
 
   test "search returns result" do
     get :index, :search => "admin"
