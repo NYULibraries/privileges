@@ -1,3 +1,4 @@
+require 'json'
 # This class controls the frontend functions for 
 # displaying privileges and searching. It also 
 # offers a JSON API for searching and retrieving 
