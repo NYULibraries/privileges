@@ -12,11 +12,7 @@ class UserSession < Authlogic::Session::Base
   
   # Hook to determine if we should attempt to establish a PDS session
   def attempt_sso?
-    if controller.request.format.json?
-      return false
-    else
-      super
-    end
+    (controller.request.format.json?) ? false : super
   end
 
 end 
