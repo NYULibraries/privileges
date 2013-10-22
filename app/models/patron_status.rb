@@ -29,6 +29,9 @@ class PatronStatus < ActiveRecord::Base
   has_many :permissions,
            :through => :patron_status_permissions
   
+  has_many :permission_values,
+           :through => :permissions
+  
   # The Sunspot searchable object with contidional auto_index
   searchable :auto_index => Utilities::Common::index? do
     text :keywords, :boost => 5.0

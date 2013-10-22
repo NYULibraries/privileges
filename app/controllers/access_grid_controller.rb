@@ -12,9 +12,10 @@ class AccessGridController < ApplicationController
   # GET /patrons.json
   def index_patron_statuses
     @patron_statuses = patron_statuses_hits
+    json_response = (params[:pretty]) ? JSON.pretty_generate(patron_statuses_results) : patron_statuses_results
     
     respond_with(@patron_statuses) do |format|
-      format.json { render :json => patron_statuses_results }
+      format.json { render :json => json_response }
     end
   end
   
@@ -31,8 +32,11 @@ class AccessGridController < ApplicationController
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = patron_status_sublibrary_permissions
 	  
+	  hash_response = {:patron_status_permissions => @patron_status_permissions, :sublibrary => @sublibrary, :patron_status => @patron_status }
+	  json_response = (params[:pretty]) ? JSON.pretty_generate(hash_response) : hash_response
+	  
 	  respond_with(@patron_status) do |format|
-	    format.json { render :json => {:patron_status_permissions => @patron_status_permissions, :sublibrary => @sublibrary, :patron_status => @patron_status }, :layout => false }
+	    format.json { render :json => json_response, :layout => false }
 	    format.html { render :show_patron_status }
     end
   end
@@ -41,9 +45,11 @@ class AccessGridController < ApplicationController
   def search
     #Solr search based on params[:q]
     @patron_statuses = patron_statuses_search
+    
+    json_response = (params[:pretty]) ? JSON.pretty_generate(@patron_statuses.results.map(&:web_text)) : @patron_statuses.results.map(&:web_text)
 
     respond_with(@patron_statuses) do |format|
-      format.json { render :json => @patron_statuses.results.map(&:web_text), :layout => false }
+      format.json { render :json => json_response, :layout => false }
 	    #If only one patron status is returned, redirect just to that one
 	    format.html { redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 }
     end
