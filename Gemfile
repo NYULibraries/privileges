@@ -16,7 +16,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass', '~> 0.12.1'
   gem 'compass-rails', '~> 1.0.3'
-  gem 'yui-compressor', '~> 0.12.0'
+  gem 'yui-compressor', '~> 0.b12.0'
 end
 
 group :development do
