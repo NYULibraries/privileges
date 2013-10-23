@@ -11,8 +11,7 @@ class AccessGridController < ApplicationController
   # GET /patrons
   # GET /patrons.json
   def index_patron_statuses
-    @patron_statuses = patron_statuses_hits
-    
+    @patron_statuses = patron_statuses_hits    
     respond_with(@patron_statuses) do |format|
       format.json { render :json => patron_statuses_results }
     end
@@ -22,7 +21,8 @@ class AccessGridController < ApplicationController
   # GET /patrons/1.json
   # GET /patrons/1.js
   def show_patron_status
-    @patron_status = PatronStatus.find(params[:id])
+    @patron_status = PatronStatus.find_by_code(params[:patron_status_code]) unless params[:patron_status_code].blank?
+    @patron_status = PatronStatus.find(params[:id]) if @patron_status.blank?
     # Add patron status code to parameters so sublibrary search get only those with access
     params.merge!({:patron_status_code => @patron_status.code})
     @sublibraries_with_access = sublibraries_with_access
