@@ -11,6 +11,9 @@ test:
   
 staging:
   <<: *development
+  
+qa:
+  <<: *development
 
 production:  
   <<: *development
