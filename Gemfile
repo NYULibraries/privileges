@@ -46,7 +46,7 @@ gem 'jquery-ui-rails', '~> 4.1.0'
 # For config settings
 gem 'rails_config', '~> 0.3.3'
 
-gem 'exlibris-nyu', :git => 'git://github.com/NYULibraries/exlibris-nyu.git', :tag => 'v1.1.1'
+gem 'exlibris-nyu', :git => 'git://github.com/NYULibraries/exlibris-nyu.git', :branch => "alephbeta"
 gem 'authpds-nyu', :git => 'git://github.com/NYULibraries/authpds-nyu.git', :tag => 'v1.1.2'
 gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.2.0'
 gem 'nyulibraries_deploy', :git => 'git://github.com/NYULibraries/nyulibraries_deploy.git', :tag => 'v3.2.0'

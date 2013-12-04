@@ -10,12 +10,12 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/exlibris-nyu.git
-  revision: 67a4ed5a40fc0aee4822104417cbc5383840e663
-  tag: v1.1.1
+  revision: b6c205484143353482716167cb0b37b99d983c5c
+  branch: alephbeta
   specs:
-    exlibris-nyu (1.1.1)
+    exlibris-nyu (1.1.2)
       exlibris-aleph (~> 1.1.0)
-      exlibris-primo (~> 1.1.1)
+      exlibris-primo (~> 1.1.2)
       nokogiri (~> 1.6.0)
       require_all (~> 1.3.1)
 

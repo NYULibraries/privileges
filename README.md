@@ -2,10 +2,10 @@
 
 [![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Production)](http://jenkins1.bobst.nyu.edu/view/Production/job/Privileges%20Guide%20Production/)
 
-[![Build Status](https://travis-ci.org/NYULibraries/privileges_guide.png?branch=master)](https://travis-ci.org/NYULibraries/privileges_guide)
-[![Dependency Status](https://gemnasium.com/NYULibraries/privileges_guide.png)](https://gemnasium.com/NYULibraries/privileges_guide)
-[![Code Climate](https://codeclimate.com/github/NYULibraries/privileges_guide.png)](https://codeclimate.com/github/NYULibraries/privileges_guide)
-[![Coverage Status](https://coveralls.io/repos/NYULibraries/privileges_guide/badge.png?branch=master)](https://coveralls.io/r/NYULibraries/privileges_guide)
+[![Build Status](https://travis-ci.org/NYULibraries/privileges.png?branch=master)](https://travis-ci.org/NYULibraries/privileges)
+[![Dependency Status](https://gemnasium.com/NYULibraries/privileges.png)](https://gemnasium.com/NYULibraries/privileges)
+[![Code Climate](https://codeclimate.com/github/NYULibraries/privileges.png)](https://codeclimate.com/github/NYULibraries/privileges)
+[![Coverage Status](https://coveralls.io/repos/NYULibraries/privileges/badge.png?branch=master)](https://coveralls.io/r/NYULibraries/privileges)
 
 The NYU Libraries Privileges Guide offers a Web interface for finding patron permissions for a given sublibrary/patron status combination. While it is optimized for NYU's permission system it can be distributed to any system using Aleph or can act independently as a privileges management system. It is a Ruby on Rails (>= 3.2) application with a Solr indexed backend (using Sunspot for integration with ActiveRecord and Websolr cloud solution as the index).
 
@@ -46,8 +46,8 @@ __Example of patron permission API__
 
 Gets the permissions associated with a certain patron status.
 
-    /privileges_guide/patrons/71.json
-    /privileges_guide/patrons/71-nyu-alumni.json
+    /patrons/71.json
+    /patrons/71-nyu-alumni.json
 
 Both give the following JSON output with basic information:
 
@@ -72,7 +72,7 @@ Both give the following JSON output with basic information:
     
 Adding a sublibrary will give you the permissions:
 
-    /privileges_guide/patrons/71.json?sublibrary_code=BOBST
+    /patrons/71.json?sublibrary_code=BOBST
 
 With output:
 
@@ -160,7 +160,7 @@ __Example of patron statuses API__
 
 The following GET will retrieve all patron statuses listed for printing:
 
-    /privileges_guide/patrons.json
+    /patrons.json
     
 Adding a `sublibrary_code=` param to the querystring will return a JSON representation of all patron statuses with access to the specified sublibrary.
 
