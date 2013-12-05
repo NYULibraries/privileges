@@ -71,3 +71,11 @@ gem 'mustache-rails', '~> 0.2.3', :require => 'mustache/railtie'
 gem 'dalli', '~> 2.6.2'
 
 gem 'comma', '~> 3.2.0'
+
+# Peek and plugins
+gem 'peek'
+gem 'peek-git'
+gem 'peek-mysql2'
+gem 'peek-dalli'
+gem 'peek-performance_bar'
+gem 'peek-rblineprof'
