@@ -46,7 +46,7 @@ gem 'jquery-ui-rails', '~> 4.1.0'
 # For config settings
 gem 'rails_config', '~> 0.3.3'
 
-gem 'exlibris-nyu', :git => 'git://github.com/NYULibraries/exlibris-nyu.git', :branch => "alephbeta"
+gem 'exlibris-nyu', :git => 'git://github.com/NYULibraries/exlibris-nyu.git', :tag => 'v1.1.1'
 gem 'authpds-nyu', :git => 'git://github.com/NYULibraries/authpds-nyu.git', :tag => 'v1.1.2'
 gem 'nyulibraries_assets', :git => 'git://github.com/NYULibraries/nyulibraries_assets.git', :tag => 'v1.2.0'
 gem 'nyulibraries_deploy', :git => 'git://github.com/NYULibraries/nyulibraries_deploy.git', :tag => 'v3.2.0'
@@ -71,11 +71,3 @@ gem 'mustache-rails', '~> 0.2.3', :require => 'mustache/railtie'
 gem 'dalli', '~> 2.6.2'
 
 gem 'comma', '~> 3.2.0'
-
-# Peek and plugins
-gem 'peek'
-gem 'peek-git'
-gem 'peek-mysql2'
-gem 'peek-dalli'
-gem 'peek-performance_bar'
-gem 'peek-rblineprof'
