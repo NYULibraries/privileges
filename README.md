@@ -1,6 +1,6 @@
 # NYU Libraries Privileges Guide
 
-[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Production)](http://jenkins1.bobst.nyu.edu/view/Production/job/Privileges%20Guide%20Production/)
+[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Production Deploy)](http://jenkins1.bobst.nyu.edu/view/Production/job/Privileges%20Guide%20Production%20Deploy/)
 
 [![Build Status](https://travis-ci.org/NYULibraries/privileges.png?branch=master)](https://travis-ci.org/NYULibraries/privileges)
 [![Dependency Status](https://gemnasium.com/NYULibraries/privileges.png)](https://gemnasium.com/NYULibraries/privileges)
@@ -37,7 +37,7 @@ The Aleph tables with the permissions currently have to be mounted on the local 
 #### Indexing and delay
 Because all the permission data is indexed in a cloud implementation of Solr (i.e. WebSolr) there is a delay between when changes are saved by admins in the database and when the changes are reflected to frontend users. The actual indexing is also queued as a background job with [delayed_job](https://github.com/collectiveidea/delayed_job) so admins can continue their changes while the application does the heavy lifting. The delay might be several minutes, but the indexing ultimately allows for faster retrieval of the data.
 
-### [Frontend](https://web1.library.nyu.edu/privileges_guide)
+### [Frontend](https://privileges.library.nyu.edu)
 
 ### APIs
 The Privileges Guide offers JSON search and view APIs.
@@ -170,6 +170,6 @@ There is a daily Jenkins cron job which loads in new values from Aleph and delet
 
 The Development index is kicked off at **2am** each morning and the Production reindex triggers when the Development one has been successfully completed.
 
-The build status for this cron follows:
+The build status for this job:
 
-[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Development)](http://jenkins1.bobst.nyu.edu/job/Privileges%20Guide%20Development/)
+[![Build Status](http://jenkins.library.nyu.edu/buildStatus/icon?job=Privileges Guide Production Solr Reindex Cron)](http://jenkins.library.nyu.edu/view/Crons/job/Privileges%20Guide%20Production%20Solr%20Reindex%20Cron/)
