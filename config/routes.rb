@@ -1,4 +1,6 @@
 PrivilegesGuide::Application.routes.draw do
+  mount Peek::Railtie => '/peek'
+  
   scope "admin" do
     resources :sublibraries
     resources :users
