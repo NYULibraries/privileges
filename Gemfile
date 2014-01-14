@@ -58,7 +58,7 @@ gem 'kaminari', '~> 0.15.0'
 gem 'newrelic_rpm', '~> 3.6.0'
 
 # Sunspot
-gem 'sunspot_rails', '~> 1.3.3'
+gem 'sunspot_rails', '~> 2.1.0'
 
 # Background jobs
 gem 'delayed_job_active_record', '~> 0.4.3'

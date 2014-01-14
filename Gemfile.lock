@@ -299,12 +299,13 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sunspot (1.3.3)
+    sunspot (2.1.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
-    sunspot_rails (1.3.3)
+    sunspot_rails (2.1.0)
       nokogiri
-      sunspot (= 1.3.3)
+      rails (>= 3)
+      sunspot (= 2.1.0)
     sunspot_solr (1.3.3)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
@@ -368,7 +369,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simplecov
   simplecov-rcov
-  sunspot_rails (~> 1.3.3)
+  sunspot_rails (~> 2.1.0)
   sunspot_solr (~> 1.3.3)
   therubyracer (~> 0.12.0)
   uglifier (>= 1.0.3)
