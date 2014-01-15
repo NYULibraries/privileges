@@ -55,6 +55,6 @@ VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock 
-  c.filter_sensitive_data("localhost:8981") { @@sunspot_host }
-  c.filter_sensitive_data("/solr/default") { @@sunspot_path }
+  #c.filter_sensitive_data("localhost:8981") { @@sunspot_host }
+  #c.filter_sensitive_data("/solr/default") { @@sunspot_path }
 end
