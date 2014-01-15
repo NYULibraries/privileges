@@ -1,7 +1,5 @@
 # NYU Libraries Privileges Guide
 
-[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=Privileges Guide Production Deploy)](http://jenkins1.bobst.nyu.edu/view/Production/job/Privileges%20Guide%20Production%20Deploy/)
-
 [![Build Status](https://travis-ci.org/NYULibraries/privileges.png?branch=master)](https://travis-ci.org/NYULibraries/privileges)
 [![Dependency Status](https://gemnasium.com/NYULibraries/privileges.png)](https://gemnasium.com/NYULibraries/privileges)
 [![Code Climate](https://codeclimate.com/github/NYULibraries/privileges.png)](https://codeclimate.com/github/NYULibraries/privileges)
