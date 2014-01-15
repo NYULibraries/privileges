@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=200&q=%2A%3A%2A
@@ -21,12 +21,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:33 GMT
+      - Wed, 15 Jan 2014 21:15:07 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! "{'responseHeader'=>{'status'=>0,'QTime'=>4,'params'=>{'sort'=>'sort_header_ss
+      string: ! "{'responseHeader'=>{'status'=>0,'QTime'=>0,'params'=>{'sort'=>'sort_header_ss
         asc, web_text_ss asc','fq'=>['type:PatronStatus','web_text_ss:[* TO *]','visible_bs:true'],'wt'=>'ruby','rows'=>'200','start'=>'0','q'=>'*:*'}},'response'=>{'numFound'=>61,'start'=>0,'docs'=>[{'id'=>'PatronStatus
         41','description_ss'=>'','code_ss'=>'52','from_aleph_bs'=>true,'web_text_ss'=>'NYU
         Adjunct Faculty','under_header_ss'=>'NYU','visible_bs'=>true,'sort_header_ss'=>'!nyu','sublibraries_with_access_sms'=>['NIFA','NCOUR','TNSSC','BFALE','NYSID','BOBST','TNSFO','BAFC','CU','BRES','BTAM','NREI','TNSGI','BLCC','nyu_ag_noaleph_dental','nyu_ag_noaleph_poly','nyu_ag_noaleph_law','nyu_ag_noaleph_medical']},{'id'=>'PatronStatus
@@ -257,5 +257,5 @@ http_interactions:
         SHARES Student and Faculty','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','sublibraries_with_access_sms'=>['BFALE','NIFA','NCOUR','BAFC','BOBST','BTAM','BRES','nyu_ag_noaleph_dental','nyu_ag_noaleph_law']},{'id'=>'PatronStatus
         1032573618','code_ss'=>'uniqueness1203946','from_aleph_bs'=>false,'web_text_ss'=>'Test2','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other'}]}}"
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:34 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:08 GMT
 recorded_with: VCR 2.8.0

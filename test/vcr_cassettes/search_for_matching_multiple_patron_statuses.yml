@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&q=Student&fl=%2A+score&qf=keywords_text+web_text_text+code_text&defType=edismax&start=0&rows=200
@@ -21,7 +21,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:33 GMT
+      - Wed, 15 Jan 2014 21:15:07 GMT
       Connection:
       - close
     body:
@@ -107,5 +107,5 @@ http_interactions:
         to Bobst Library.','code_ss'=>'nyu_ag_noaleph_shares','from_aleph_bs'=>false,'web_text_ss'=>'OCLC
         SHARES Student and Faculty','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','sublibraries_with_access_sms'=>['BFALE','NIFA','NCOUR','BAFC','BOBST','BTAM','BRES','nyu_ag_noaleph_dental','nyu_ag_noaleph_law'],'score'=>4.448752}]}}"
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:33 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:07 GMT
 recorded_with: VCR 2.8.0

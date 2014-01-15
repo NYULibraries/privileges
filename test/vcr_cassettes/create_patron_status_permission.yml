@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/default/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatusPermission
@@ -26,17 +26,17 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:34 GMT
+      - Wed, 15 Jan 2014 21:15:08 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>10}}'
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>13}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:35 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:09 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/default/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -55,12 +55,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:34 GMT
+      - Wed, 15 Jan 2014 21:15:08 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>4}}'
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:35 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:09 GMT
 recorded_with: VCR 2.8.0

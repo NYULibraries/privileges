@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&sort=web_text_ss+asc&start=0&rows=30&q=%2A%3A%2A
@@ -26,17 +26,17 @@ http_interactions:
         Y2h1bmtlZA==
       !binary "RGF0ZQ==":
       - !binary |-
-        V2VkLCAxNSBKYW4gMjAxNCAyMDowNTozNiBHTVQ=
+        V2VkLCAxNSBKYW4gMjAxNCAyMToxNToxMSBHTVQ=
       !binary "Q29ubmVjdGlvbg==":
       - !binary |-
         Y2xvc2U=
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4xLCdw
-        YXJhbXMnPT57J2ZxJz0+Wyd0eXBlOlBhdHJvblN0YXR1cycsJ3dlYl90ZXh0
-        X3NzOlsqIFRPICpdJ10sJ3d0Jz0+J3J1YnknLCdyb3dzJz0+JzMwJywnc3Rh
-        cnQnPT4nMCcsJ3NvcnQnPT4nd2ViX3RleHRfc3MgYXNjJywncSc9PicqOion
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4wLCdw
+        YXJhbXMnPT57J3NvcnQnPT4nd2ViX3RleHRfc3MgYXNjJywnZnEnPT5bJ3R5
+        cGU6UGF0cm9uU3RhdHVzJywnd2ViX3RleHRfc3M6WyogVE8gKl0nXSwnd3Qn
+        PT4ncnVieScsJ3Jvd3MnPT4nMzAnLCdzdGFydCc9PicwJywncSc9PicqOion
         fX0sJ3Jlc3BvbnNlJz0+eydudW1Gb3VuZCc9Pjk2LCdzdGFydCc9PjAsJ2Rv
         Y3MnPT5beydpZCc9PidQYXRyb25TdGF0dXMgNjQnLCdkZXNjcmlwdGlvbl9z
         cyc9PidUaGUgPGEgaHJlZj0iaHR0cDovL3d3dy5zY3BzLm55dS5lZHUvYXJl
@@ -370,5 +370,5 @@ http_interactions:
         SUZBJywnTkNPVVInLCdUTlNTQycsJ05ZU0lEJywnQk9CU1QnLCdUTlNGTycs
         J0JBRkMnLCdDVScsJ0JSRVMnLCdOUkVJJywnVE5TR0knLCdCTENDJ119XX19
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:37 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:12 GMT
 recorded_with: VCR 2.8.0

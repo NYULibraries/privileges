@@ -20,6 +20,7 @@ sunspot:
     hostname: localhost
     port: 8981
     log_level: WARNING
+    path: /solr/default
 
 newrelic:
   api_key: 

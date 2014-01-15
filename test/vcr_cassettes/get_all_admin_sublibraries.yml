@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3ASublibrary&sort=sort_header_ss+asc%2C+sort_text_ss+asc&start=0&rows=30&q=%2A%3A%2A
@@ -21,13 +21,13 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:39 GMT
+      - Wed, 15 Jan 2014 21:15:15 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0,''params''=>{''sort''=>''sort_header_ss
-        asc, sort_text_ss asc'',''fq''=>''type:Sublibrary'',''wt''=>''ruby'',''rows''=>''30'',''start''=>''0'',''q''=>''*:*''}},''response''=>{''numFound''=>85,''start''=>0,''docs''=>[{''id''=>''Sublibrary
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0,''params''=>{''fq''=>''type:Sublibrary'',''wt''=>''ruby'',''rows''=>''30'',''start''=>''0'',''sort''=>''sort_header_ss
+        asc, sort_text_ss asc'',''q''=>''*:*''}},''response''=>{''numFound''=>85,''start''=>0,''docs''=>[{''id''=>''Sublibrary
         15'',''web_text_ss''=>''NYU Library'',''code_ss''=>''NYU50'',''visible_bs''=>false,''visible_frontend_bs''=>false,''from_aleph_bs''=>true,''under_header_ss''=>''NYU
         50 Library'',''sort_header_ss''=>''!nyu 50 library'',''sort_text_ss''=>''nyu
         library''},{''id''=>''Sublibrary 28'',''web_text_ss''=>''NYU Bobst 6th Floor
@@ -121,5 +121,5 @@ http_interactions:
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''bern
         dibner library at polytechnic institute of nyu''}]}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:39 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:15 GMT
 recorded_with: VCR 2.8.0

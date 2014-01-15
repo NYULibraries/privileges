@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&fq=code_ss%3A52&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=200&q=%2A%3A%2A
@@ -21,12 +21,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:33 GMT
+      - Wed, 15 Jan 2014 21:15:07 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>11,''params''=>{''sort''=>''sort_header_ss
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>23,''params''=>{''sort''=>''sort_header_ss
         asc, web_text_ss asc'',''fq''=>[''type:PatronStatus'',''web_text_ss:[* TO
         *]'',''visible_bs:true'',''code_ss:52''],''wt''=>''ruby'',''rows''=>''200'',''start''=>''0'',''q''=>''*:*''}},''response''=>{''numFound''=>2,''start''=>0,''docs''=>[{''id''=>''PatronStatus
         41'',''description_ss''=>'''',''code_ss''=>''52'',''from_aleph_bs''=>true,''web_text_ss''=>''NYU
@@ -34,5 +34,5 @@ http_interactions:
         133703334'',''description_ss''=>''specialdescription'',''code_ss''=>''52'',''from_aleph_bs''=>true,''web_text_ss''=>''Get
         some new text in here'',''under_header_ss''=>''Library'',''visible_bs''=>true,''sort_header_ss''=>''library'',''sublibraries_with_access_sms''=>[''TNSFO'']}]}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:33 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:07 GMT
 recorded_with: VCR 2.8.0

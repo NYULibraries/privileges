@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3ASublibrary&sort=sort_header_ss+asc%2C+sort_text_ss+asc&start=0&rows=30&q=%2A%3A%2A
@@ -21,7 +21,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:39 GMT
+      - Wed, 15 Jan 2014 21:15:15 GMT
       Connection:
       - close
     body:
@@ -121,10 +121,10 @@ http_interactions:
         NYU Libraries'',''sort_header_ss''=>''other nyu libraries'',''sort_text_ss''=>''bern
         dibner library at polytechnic institute of nyu''}]}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:40 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:15 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/default/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">Sublibrary
@@ -152,17 +152,17 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:39 GMT
+      - Wed, 15 Jan 2014 21:15:16 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
       string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>1}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:40 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:16 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/update?wt=ruby
+    uri: http://localhost:8981/solr/default/update?wt=ruby
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -181,12 +181,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:39 GMT
+      - Wed, 15 Jan 2014 21:15:16 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>6}}'
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:40 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:16 GMT
 recorded_with: VCR 2.8.0

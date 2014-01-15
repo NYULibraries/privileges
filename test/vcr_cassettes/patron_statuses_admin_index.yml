@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/select?wt=ruby
+    uri: http://localhost:8981/solr/default/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=30&q=%2A%3A%2A
@@ -21,14 +21,14 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 15 Jan 2014 20:05:35 GMT
+      - Wed, 15 Jan 2014 21:15:10 GMT
       Connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>0,''params''=>{''fq''=>[''type:PatronStatus'',''web_text_ss:[*
-        TO *]''],''wt''=>''ruby'',''rows''=>''30'',''start''=>''0'',''sort''=>''sort_header_ss
-        asc, web_text_ss asc'',''q''=>''*:*''}},''response''=>{''numFound''=>96,''start''=>0,''docs''=>[{''id''=>''PatronStatus
+      string: ! '{''responseHeader''=>{''status''=>0,''QTime''=>1,''params''=>{''sort''=>''sort_header_ss
+        asc, web_text_ss asc'',''fq''=>[''type:PatronStatus'',''web_text_ss:[* TO
+        *]''],''wt''=>''ruby'',''rows''=>''30'',''start''=>''0'',''q''=>''*:*''}},''response''=>{''numFound''=>96,''start''=>0,''docs''=>[{''id''=>''PatronStatus
         41'',''description_ss''=>'''',''code_ss''=>''52'',''from_aleph_bs''=>true,''web_text_ss''=>''NYU
         Adjunct Faculty'',''under_header_ss''=>''NYU'',''visible_bs''=>true,''sort_header_ss''=>''!nyu'',''sublibraries_with_access_sms''=>[''NIFA'',''NCOUR'',''TNSSC'',''BFALE'',''NYSID'',''BOBST'',''TNSFO'',''BAFC'',''CU'',''BRES'',''BTAM'',''NREI'',''TNSGI'',''BLCC'',''nyu_ag_noaleph_dental'',''nyu_ag_noaleph_poly'',''nyu_ag_noaleph_law'',''nyu_ag_noaleph_medical'']},{''id''=>''PatronStatus
         34'',''description_ss''=>'''',''code_ss''=>''51'',''from_aleph_bs''=>true,''web_text_ss''=>''NYU
@@ -112,5 +112,5 @@ http_interactions:
         Polytechnic Staff'',''under_header_ss''=>''NYU Polytechnic'',''visible_bs''=>true,''sort_header_ss''=>''!nyu
         polytechnic'',''sublibraries_with_access_sms''=>[''NCOUR'',''BFALE'',''BOBST'',''BAFC'',''BRES'',''BTAM'',''NREI'',''BLCC'',''nyu_ag_noaleph_poly'',''nyu_ag_noaleph_law'']}]}}'
     http_version: 
-  recorded_at: Wed, 15 Jan 2014 20:05:36 GMT
+  recorded_at: Wed, 15 Jan 2014 21:15:10 GMT
 recorded_with: VCR 2.8.0
