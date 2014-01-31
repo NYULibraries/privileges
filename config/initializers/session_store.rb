@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-PrivilegesGuide::Application.config.session_store :cookie_store, key: '_privileges_guide_session', :domain => Settings.cookie.domain
+PrivilegesGuide::Application.config.session_store :cookie_store, key: '_privileges_guide_session'
 
 #PrivilegesGuide::Application.config.session_store ActionDispatch::Session::CacheStore, :expire_after => 10.seconds
 
