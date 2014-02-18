@@ -30,7 +30,7 @@ GIT
       institutions (~> 0.1.1)
 
 GIT
-  remote: git://github.com/NYULibraries/nyulibraries_deploy.git
+  remote: git://github.com/NYULibraries/nyulibraries-deploy.git
   revision: 1ff5afb37d3451d3a676e1678399659d9f6369a4
   tag: v4.0.0
   specs:
