@@ -17,7 +17,7 @@ class UserSession < Authlogic::Session::Base
 
   private
   def default_admins
-    (Figs.env['PRIVILEGES_DEFAULT_ADMINS'] || [])
+    (Figs.env['PRIVILEGES_DEFAULT_ADMINS'] || ['real_user'])
   end
 
 end
