@@ -1,3 +1,3 @@
 # Default require
-require 'nyulibraries/deploy/capistrano'
+require 'formaggio/capistrano'
 set :app_title, "privileges"
