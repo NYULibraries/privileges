@@ -14,6 +14,8 @@ require 'figs'
 Figs.load(stage: Rails.env) unless ENV['TRAVIS']
 
 module PrivilegesGuide
+  LOCAL_CREATION_PREFIX = 'nyu_ag_noaleph_'
+
   class Application < Rails::Application
     #config.middleware.use Rack::Pjax
     # Settings in config/environments/* take precedence over those specified here.

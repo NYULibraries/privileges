@@ -10,16 +10,16 @@ class ApplicationController < ActionController::Base
   include Searchers::PatronStatus
   include Searchers::Sublibrary
   include Searchers::PatronStatusPermission
-  
+
   helper :all # include all helpers, all the time
 
   layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
-  
+
   protect_from_forgery
 
   #Authpds user functions
   include Authpds::Controllers::AuthpdsController
-  
+
   # Filter users to root if not admin
   def authenticate_admin
     if !is_admin?
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     end
   end
   protected :authenticate_admin
-  
+
   # Return true if user is marked as admin
   def is_admin
   	if current_user.nil? or !current_user.user_attributes[:access_grid_admin]
@@ -39,14 +39,14 @@ class ApplicationController < ActionController::Base
     end
   end
   alias :is_admin? :is_admin
-  helper_method :is_admin?  
+  helper_method :is_admin?
 
   # For dev purposes
   def current_user_dev
    @current_user ||= User.find_by_username("admin")
   end
   alias :current_user :current_user_dev if Rails.env == "development"
-  
+
   # Global function for converting string to url-friendly strings
   def urlize abnormal
     # Turns "Adjunct Faculty" to "adjunct-faculty"
@@ -54,33 +54,33 @@ class ApplicationController < ActionController::Base
   end
   helper_method :urlize
   protected :urlize
-  
+
   # Reusable method for linking to the patron status based on a normalized url containing the title
   def patron_status_link id, web_text
      patron_path("#{id}-#{urlize(web_text)}")
   end
   helper_method :patron_status_link
   protected :patron_status_link
-  
+
   # Prepend this string to all locallt created patron status titles
   def local_creation_prefix
-    @local_creation_prefix ||= Settings.global.local_creation_prefix
+    @local_creation_prefix ||= PrivilegesGuide::LOCAL_CREATION_PREFIX
   end
   helper_method :local_creation_prefix
-  
+
   # Protect against SQL injection by forcing column to be an actual column name in the model
   def sort_column klass, default_column = "title_sort"
     klass.constantize.column_names.include?(params[:sort]) ? params[:sort] : default_column
   end
   protected :sort_column
-  
+
   # Protect against SQL injection by forcing direction to be valid
   def sort_direction default_direction = "asc"
     %w[asc desc].include?(params[:direction]) ? params[:direction] : default_direction
   end
   helper_method :sort_direction
   protected :sort_direction
-  
+
   # Return boolean matching the url to find out if we are in the admin view
   def is_in_admin_view
     !request.path.match("/admin").nil?
