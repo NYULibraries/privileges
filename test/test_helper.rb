@@ -18,9 +18,9 @@ class User
   def nyuidn
     user_attributes[:nyuidn]
   end
-  
+
   def error; end
-  
+
   def uid
     username
   end
@@ -28,7 +28,7 @@ end
 
 class ActiveSupport::TestCase
   fixtures :all
-  
+
   def set_dummy_pds_user(user_session)
     user_session.instance_variable_set("@pds_user".to_sym, users(:real_user))
   end
@@ -40,21 +40,16 @@ end
 # back. Useful for efficiency, also useful for
 # testing code against API's that not everyone
 # has access to -- the responses can be cached
-# and re-used. 
+# and re-used.
 require 'vcr'
 require 'webmock'
 
 # To allow us to do real HTTP requests in a VCR.turned_off, we
-# have to tell webmock to let us. 
+# have to tell webmock to let us.
 WebMock.allow_net_connect!
-
-@@sunspot_host = Settings.sunspot.solr.hostname
-@@sunspot_path = Settings.sunspot.solr.path
 
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
-  c.hook_into :webmock 
-  #c.filter_sensitive_data("localhost:8981") { @@sunspot_host }
-  #c.filter_sensitive_data("/solr/default") { @@sunspot_path }
+  c.hook_into :webmock
 end
