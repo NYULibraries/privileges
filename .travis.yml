@@ -4,7 +4,7 @@ services:
   - memcached
 
 before_script:
-  - mysql -e 'create database access_grid;'
+  - mysql -e 'create database access_grid_test;'
   - bundle exec rake db:schema:load RAILS_ENV=test
 
 rvm:
