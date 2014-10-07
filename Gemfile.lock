@@ -30,13 +30,14 @@ GIT
       institutions (~> 0.1.1)
 
 GIT
-  remote: git://github.com/NYULibraries/nyulibraries-deploy.git
-  revision: 1ff5afb37d3451d3a676e1678399659d9f6369a4
-  tag: v4.0.0
+  remote: git://github.com/NYULibraries/formaggio.git
+  revision: 5606a4a9061830d0dfc7356c03c2ca65a95af13c
+  tag: v1.0.0
   specs:
-    nyulibraries-deploy (3.2.5)
+    formaggio (1.0.0)
       cap_git_tools (~> 0.9.1)
       capistrano (~> 2.15.5)
+      figs (~> 2.0)
       git (~> 1.2.5)
       mail (~> 2.5.4)
       newrelic_rpm (~> 3.6)
@@ -275,7 +276,7 @@ GEM
       mime-types (>= 1.16)
     rsolr (1.0.10)
       builder (>= 2.1.2)
-    rvm-capistrano (1.5.1)
+    rvm-capistrano (1.5.4)
       capistrano (~> 2.15.4)
     safe_yaml (1.0.3)
     sass (3.2.19)
@@ -351,6 +352,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 0.4.3)
   exlibris-nyu!
   figs (~> 2.0.2)
+  formaggio!
   jquery-rails (~> 3.1.0)
   jquery-ui-rails (~> 4.2.1)
   json (~> 1.8.0)
@@ -360,7 +362,6 @@ DEPENDENCIES
   mysql2 (~> 0.3.16)
   newrelic_rpm (~> 3.8.0)
   nyulibraries-assets!
-  nyulibraries-deploy!
   peek
   peek-dalli
   peek-git
