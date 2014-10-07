@@ -9,7 +9,13 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+require 'figs'
+# Don't run this initializer on travis.
+Figs.load(stage: Rails.env) unless ENV['TRAVIS']
+
 module PrivilegesGuide
+  LOCAL_CREATION_PREFIX = 'nyu_ag_noaleph_'
+
   class Application < Rails::Application
     #config.middleware.use Rack::Pjax
     # Settings in config/environments/* take precedence over those specified here.
@@ -59,7 +65,6 @@ module PrivilegesGuide
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
   end
 end
-

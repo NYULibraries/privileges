@@ -20,6 +20,22 @@ GIT
       require_all (~> 1.3.1)
 
 GIT
+  remote: git://github.com/NYULibraries/formaggio.git
+  revision: 5606a4a9061830d0dfc7356c03c2ca65a95af13c
+  tag: v1.0.0
+  specs:
+    formaggio (1.0.0)
+      cap_git_tools (~> 0.9.1)
+      capistrano (~> 2.15.5)
+      figs (~> 2.0)
+      git (~> 1.2.5)
+      mail (~> 2.5.4)
+      newrelic_rpm (~> 3.6)
+      rake (~> 10.1.0)
+      require_all (~> 1.3.0)
+      rvm-capistrano (~> 1.5.0)
+
+GIT
   remote: git://github.com/NYULibraries/nyulibraries-assets.git
   revision: c9f706815aacb82a3b145d16f20603c79107f9ad
   tag: v2.0.1
@@ -28,21 +44,6 @@ GIT
       bootstrap-sass (>= 2.2.0, < 2.3.1.1)
       compass (~> 0.12.2)
       institutions (~> 0.1.1)
-
-GIT
-  remote: git://github.com/NYULibraries/nyulibraries-deploy.git
-  revision: 1ff5afb37d3451d3a676e1678399659d9f6369a4
-  tag: v4.0.0
-  specs:
-    nyulibraries-deploy (3.2.5)
-      cap_git_tools (~> 0.9.1)
-      capistrano (~> 2.15.5)
-      git (~> 1.2.5)
-      mail (~> 2.5.4)
-      newrelic_rpm (~> 3.6)
-      rake (~> 10.1.0)
-      require_all (~> 1.3.0)
-      rvm-capistrano (~> 1.5.0)
 
 GIT
   remote: git://github.com/josh/mustache-rails.git
@@ -166,6 +167,9 @@ GEM
       nokogiri (~> 1.6.0)
       require_all (~> 1.3.1)
       savon (~> 2.2.0)
+    figs (2.0.2)
+      git (~> 1.2.6)
+      rake (~> 10.1)
     fssm (0.2.10)
     git (1.2.6)
     gyoku (1.0.0)
@@ -254,8 +258,6 @@ GEM
       activesupport (= 3.2.18)
       bundler (~> 1.0)
       railties (= 3.2.18)
-    rails_config (0.4.2)
-      activesupport (>= 3.0)
     railties (3.2.18)
       actionpack (= 3.2.18)
       activesupport (= 3.2.18)
@@ -274,7 +276,7 @@ GEM
       mime-types (>= 1.16)
     rsolr (1.0.10)
       builder (>= 2.1.2)
-    rvm-capistrano (1.5.1)
+    rvm-capistrano (1.5.4)
       capistrano (~> 2.15.4)
     safe_yaml (1.0.3)
     sass (3.2.19)
@@ -349,6 +351,8 @@ DEPENDENCIES
   debugger
   delayed_job_active_record (~> 0.4.3)
   exlibris-nyu!
+  figs (~> 2.0.2)
+  formaggio!
   jquery-rails (~> 3.1.0)
   jquery-ui-rails (~> 4.2.1)
   json (~> 1.8.0)
@@ -358,7 +362,6 @@ DEPENDENCIES
   mysql2 (~> 0.3.16)
   newrelic_rpm (~> 3.8.0)
   nyulibraries-assets!
-  nyulibraries-deploy!
   peek
   peek-dalli
   peek-git
@@ -367,7 +370,6 @@ DEPENDENCIES
   peek-rblineprof
   progress_bar
   rails (= 3.2.18)
-  rails_config (~> 0.4.2)
   sass-rails (~> 3.2.3)
   simplecov
   simplecov-rcov

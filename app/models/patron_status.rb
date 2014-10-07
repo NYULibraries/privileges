@@ -1,20 +1,20 @@
-# This class defines the patron status type, 
+# This class defines the patron status type,
 # the top level data type of this application
 class PatronStatus < ActiveRecord::Base
   include Utilities::Common
-  
+
   attr_accessible :web_text, :keywords, :under_header, :id_type, :description, :visible
-  
+
   #Validations
   validates :code, :presence => true, :uniqueness => true
   validate :web_text_required_if_not_from_aleph
   validate :code_is_only_prefix
-  
+
   # Required web_text if not from Aleph
   def web_text_required_if_not_from_aleph; errors.add(:web_text, "can't be blank") if (!from_aleph and web_text.blank?); end
   # This makes sure the code is seen as blank if it just equals the namespace prefix
-  def code_is_only_prefix; errors.add(:code, "can't be blank") if (code == Settings.global.local_creation_prefix); end
-  
+  def code_is_only_prefix; errors.add(:code, "can't be blank") if (code == PrivilegesGuide::LOCAL_CREATION_PREFIX); end
+
   # Has many patron status permissions associated with it
   has_many :patron_status_permissions,
            :primary_key => "code",
@@ -25,13 +25,13 @@ class PatronStatus < ActiveRecord::Base
   has_many :sublibraries,
            :through => :patron_status_permissions
 
-  # Has many permissions where patron status permissions ties them together           
+  # Has many permissions where patron status permissions ties them together
   has_many :permissions,
            :through => :patron_status_permissions
-  
+
   has_many :permission_values,
            :through => :permissions
-  
+
   # The Sunspot searchable object with contidional auto_index
   searchable :auto_index => Utilities::Common::index? do
     text :keywords, :boost => 5.0
