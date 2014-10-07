@@ -13,11 +13,11 @@ module Views
       def application_title
         strip_tags(application_name)
       end
-      
+
       def gauges_tracking_code
-        Settings.gauges.tracking_code
+        ENV['GAUGES_TOKEN']
       end
-      
+
       # Print breadcrumb navigation
       def breadcrumbs
         breadcrumbs = super
@@ -27,12 +27,12 @@ module Views
         breadcrumbs << link_to_unless_current(@patron_status.web_text) unless @patron_status.nil? or is_in_admin_view?
         return breadcrumbs
       end
-    
+
       # Prepend modal dialog elements to the body
       def prepend_body
         render 'common/prepend_body'
       end
-      
+
       # Prepend the flash message partial before yield
       def prepend_yield
         content_tag :div, :id => "main-flashses" do
@@ -45,7 +45,7 @@ module Views
       def show_tabs
         false
       end
-  
+
     end
   end
 end
