@@ -4,12 +4,12 @@ services:
   - memcached
 
 before_script:
-  - mysql -e 'create database nyu_privileges_guide_test;'
+  - mysql -e 'create database access_grid;'
   - bundle exec rake db:schema:load RAILS_ENV=test
 
 rvm:
   - "1.9.3"
   - "2.0.0"
-  
+
 git:
   submodules: false
