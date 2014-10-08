@@ -28,3 +28,13 @@ RDoc::Task.new(:rdoc) do |rdoc|
 end
 
 task :default => :test
+
+# We need to add the coveralls task in the Rakefile
+# because we want to make sure we append it to the very
+# end of the default task
+if Rails.env.test?
+  # Add the coveralls task as the default with the appropriate prereqs
+  require 'coveralls/rake/task'
+  Coveralls::RakeTask.new
+  task default: 'coveralls:push'
+end
