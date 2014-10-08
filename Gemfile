@@ -20,13 +20,6 @@ gem 'mustache', '0.99.4'
 gem 'mustache-rails', github: 'josh/mustache-rails', require: 'mustache/railtie'
 gem 'dalli', '~> 2.7.2'
 gem 'comma', '~> 3.2.1'
-# Peek and plugins
-gem 'peek'
-gem 'peek-git'
-gem 'peek-mysql2'
-gem 'peek-dalli'
-gem 'peek-performance_bar'
-gem 'peek-rblineprof'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
