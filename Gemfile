@@ -44,5 +44,8 @@ end
 
 group :development do
   gem 'progress_bar'
-  gem 'debugger'
+end
+
+group :development, :test do
+  gem 'pry', '~> 0.10.1'
 end
