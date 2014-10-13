@@ -10,7 +10,7 @@ gem 'exlibris-nyu', :git => 'git://github.com/NYULibraries/exlibris-nyu.git', :t
 gem 'authpds-nyu', :git => 'git://github.com/NYULibraries/authpds-nyu.git', :tag => 'v1.1.3'
 gem 'nyulibraries-assets', :git => 'git://github.com/NYULibraries/nyulibraries-assets.git', :tag => 'v2.0.1'
 gem 'figs', '~> 2.0.2'
-gem 'formaggio', github: 'NYULibraries/formaggio', :tag => 'v1.0.0'
+gem 'formaggio', github: 'NYULibraries/formaggio', :tag => 'v1.0.1'
 gem 'kaminari', '~> 0.15.0'
 gem 'newrelic_rpm', '~> 3.8.0'
 gem 'sunspot_rails', '~> 2.1.1'
