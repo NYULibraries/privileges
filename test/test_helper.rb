@@ -1,9 +1,4 @@
-unless ENV['TRAVIS']
-  require 'simplecov'
-  require 'simplecov-rcov'
-  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-  SimpleCov.start
-else
+if ENV['TRAVIS']
   require 'coveralls'
   Coveralls.wear!
 end
