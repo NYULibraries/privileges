@@ -68,7 +68,7 @@ class PermissionsController < ApplicationController
   def update_order
     if params[:permissions]
       params[:permissions].each_with_index do |id, index|
-        Permission.update_all(['sort_order=?', index+1],['id=?',id])
+        Permission.find(id).update(sort_order: index+1)
       end
     end
     respond_to do |format|
