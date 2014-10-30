@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class PatronStatusesControllerTest < ActionController::TestCase
-  
+
   setup :activate_authlogic
- 
+
   def setup
    current_user = UserSession.create(users(:admin))
   end
@@ -17,16 +17,16 @@ class PatronStatusesControllerTest < ActionController::TestCase
       assert_template :index
     end
   end
-  
+
   test "should test sorting" do
     VCR.use_cassette('get sorted admin patron statuses') do
       get :index, :sort => "web_text"
-      
+
       assert assigns(:patron_statuses)
       assert_template :index
     end
   end
-  
+
   test "should redirect nonadmin user to root" do
     current_user = UserSession.create(users(:nonadmin))
     get :index
@@ -34,11 +34,11 @@ class PatronStatusesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-   get :new  
+   get :new
    assert_not_nil assigns(:patron_status)
    assert_template "new"
   end
-  
+
   test "should get edit action" do
     VCR.use_cassette('edit patron status') do
      get :edit, :id => PatronStatus.first.id
@@ -55,14 +55,14 @@ class PatronStatusesControllerTest < ActionController::TestCase
 
      assert_response :redirect
      assert_redirected_to patron_status_path(assigns(:patron_status))
-   
+
      # If not from aleph, this should create without web_text
      assert_difference('PatronStatus.count') do
         post :create, :patron_status => { :code => "uniqueness82937465", :from_aleph => true }
      end
    end
   end
-  
+
   test "should NOT create patron status" do
     assert_no_difference('PatronStatus.count') do
        post :create, :patron_status => { :code => nil, :web_text => "Test2" }
@@ -82,7 +82,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
      assert_template "show"
    end
   end
-  
+
   test "should show patron status permissions" do
     VCR.use_cassette('show patron status') do
      get :show, :id => PatronStatus.first.id, :sublibrary_code => sublibraries(:aleph_one).code
@@ -90,8 +90,8 @@ class PatronStatusesControllerTest < ActionController::TestCase
      assert assigns(:patron_status_permissions)
      assert_template "show"
    end
-  end  
-  
+  end
+
   test "should update patron status" do
     VCR.use_cassette('update patron status') do
       put :update, :id => PatronStatus.first.id, :patron_status => { :web_text => "Get some new text in here" }

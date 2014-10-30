@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
 
-  serialize :user_attributes  
+  serialize :user_attributes
 
   acts_as_authentic do |c|
     c.validations_scope = :username
     c.validate_password_field = false
-    c.require_password_confirmation = false  
+    c.require_password_confirmation = false
     c.disable_perishable_token_maintenance = true
   end
-  
+
   def self.search(search)
     if search
       q = "%#{search}%"
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
       all
     end
   end
-  
+
   # Create a CSV format
   comma do
     username
@@ -25,5 +25,5 @@ class User < ActiveRecord::Base
     lastname
     email
   end
-  
+
 end

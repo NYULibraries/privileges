@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class PermissionValuesControllerTest < ActionController::TestCase
-  
+
  setup :activate_authlogic
- 
+
  def setup
    current_user = UserSession.create(users(:admin))
    @perm_attrs = {:code => "newandunique", :web_text => "somethingnotblank", :permission_code => "multiple_hold_permission"}
@@ -20,7 +20,7 @@ class PermissionValuesControllerTest < ActionController::TestCase
    assert_response :redirect
    assert_redirected_to permission_path(assigns(:permission))
  end
- 
+
  test "should NOT create permission value" do
    assert_no_difference('PermissionValue.count') do
      post :create, :permission_value => @perm_attrs.merge({:code => nil})
@@ -74,6 +74,6 @@ class PermissionValuesControllerTest < ActionController::TestCase
    assert_redirected_to permission_path(assigns(:permission))
   end
  end
- 
- 
+
+
 end

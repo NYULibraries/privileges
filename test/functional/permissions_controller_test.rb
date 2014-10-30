@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class PermissionsControllerTest < ActionController::TestCase
-  
+
   setup :activate_authlogic
-  
+
   def setup
     current_user = UserSession.create(users(:admin))
   end
-  
+
   test "should get index" do
    get :index
 
@@ -31,7 +31,7 @@ class PermissionsControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_redirected_to permission_path(assigns(:permission))
   end
-  
+
   test "should NOT create permission" do
     assert_no_difference('Permission.count') do
       post :create, :permission => {:code => nil, :from_aleph => true}
@@ -62,7 +62,7 @@ class PermissionsControllerTest < ActionController::TestCase
     assert assigns(:permission)
     assert_redirected_to permission_path(assigns(:permission))
   end
-  
+
   test "should NOT update permission" do
     put :update, :id => Permission.first.id, :permission => {:code => nil }
 
@@ -74,19 +74,19 @@ class PermissionsControllerTest < ActionController::TestCase
   test "should destroy permission" do
     VCR.use_cassette('destroy permission') do
       assert_difference('Permission.count', -1) do
-        delete :destroy, :id => Permission.find(:first).id
+        delete :destroy, :id => Permission.first.id
       end
 
       assert_redirected_to permissions_path
     end
   end
-  
+
   test "should update order" do
     post :update_order, :permissions => [permissions(:aleph_two).id, permissions(:aleph_one).id]
-    
+
     assert_equal permissions(:aleph_two).id, Permission.by_sort_order.first.id
     assert_equal permissions(:aleph_one).id, Permission.by_sort_order.offset(1).limit(1).first.id
     assert_redirected_to permissions_url
   end
-  
+
 end
