@@ -6,10 +6,10 @@ class PatronStatusesController < ApplicationController
   # GET /patron_statuses.json
   def index
     @patron_statuses = patron_statuses_search
-    
+
     respond_to do |format|
       format.json do
-        render :json => @patron_statuses.results, 
+        render :json => @patron_statuses.results,
                :layout => false and return
       end
       format.html
@@ -40,7 +40,7 @@ class PatronStatusesController < ApplicationController
   # POST /patron_statuses
   def create
     @patron_status = PatronStatus.new
-    
+
     @patron_status.code = "#{prefix}#{params[:patron_status][:code]}"
     @patron_status.web_text = params[:patron_status][:web_text]
     @patron_status.keywords = params[:patron_status][:keywords]
@@ -93,17 +93,17 @@ class PatronStatusesController < ApplicationController
     super "PatronStatus", ""
   end
   helper_method :sort_column
-  
+
   # Retreive this @patron_status patron_status_permissions with additional information joined in for display
   def patron_status_permissions
     @patron_status_permissions ||= @patron_status.patron_status_permissions.joins(:permission_value => :permission).where(:permissions=>{:visible=>true}, :sublibrary_code => sublibrary.code).order("permissions.sort_order asc") unless sublibrary.nil?
   end
   private :patron_status_permissions
-  
+
   def prefix
     #This handles local creation of patron statuses by adding a namespace prefix, namely nyu_ag_noaleph_
     @prefix ||= (!params[:patron_status][:from_aleph].nil?) ? local_creation_prefix : ""
   end
   private :prefix
-  
+
 end

@@ -61,7 +61,7 @@ class PermissionValuesController < ApplicationController
       format.html { redirect_to @permission }
     end
   end
-  
+
   def prefix
     @prefix ||= (!params[:permission_value][:from_aleph]) ? local_creation_prefix : ""
   end

@@ -2,7 +2,7 @@
 # each permission has a set of possible values (PermissionValues)
 class PermissionsController < ApplicationController
   before_filter :authenticate_admin
-  
+
   # GET /permissions
   def index
     @permissions = Permission.by_sort_order
@@ -58,18 +58,18 @@ class PermissionsController < ApplicationController
       else
         flash[:error] = t("permissions.update_failure")
         format.html { render :action => "edit" }
-        format.js { render :nothing => true } if request.xhr?      
+        format.js { render :nothing => true } if request.xhr?
       end
     end
   end
-  
+
   # PUT /permissions/update_order
   # PUT /permissions/update_order.js
   def update_order
     if params[:permissions]
       params[:permissions].each_with_index do |id, index|
         Permission.update_all(['sort_order=?', index+1],['id=?',id])
-      end 
+      end
     end
     respond_to do |format|
       format.html { redirect_to permissions_url, notice: t("permissions.update_order_success") and return }
@@ -86,7 +86,7 @@ class PermissionsController < ApplicationController
       format.html { redirect_to permissions_url, notice: t("permissions.delete_succes") }
     end
   end
-  
+
   def prefix
     #This handles local creation of patron statuses by adding a namespace prefix, namely nyu_ag_noaleph_
     @prefix ||= (!params[:permission][:from_aleph].nil?) ? local_creation_prefix : ""
