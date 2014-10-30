@@ -1,7 +1,6 @@
 class PermissionValue < ActiveRecord::Base
   include Utilities::Common
 
-  # attr_accessible :code, :web_text, :from_aleph, :permission_code
   default_scope { order('web_text ASC') }
 
   #Validations
