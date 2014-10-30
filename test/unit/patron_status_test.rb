@@ -28,7 +28,7 @@ class PatronStatusTest < ActiveSupport::TestCase
   
   test "has many patron status permissions" do
     assert @existing_patron_status.patron_status_permissions.count > 0
-    assert_equal @existing_patron_status.patron_status_permissions, PatronStatusPermission.find_all_by_patron_status_code(@existing_patron_status.code)
+    assert_equal @existing_patron_status.patron_status_permissions, PatronStatusPermission.where(patron_status_code: @existing_patron_status.code)
   end
   
   test "has many sublibraries" do

@@ -21,7 +21,7 @@ class PermissionValuesController < ApplicationController
     @permission_value.from_aleph = (params[:permission_value][:from_aleph]) ? params[:permission_value][:from_aleph] : false
 
     @permission = Permission.find_by_code(@permission_value.permission_code)
-    @permission_values = PermissionValue.find_all_by_permission_code(@permission.code)
+    @permission_values = PermissionValue.where(permission_code: @permission.code)
 
     respond_to do |format|
       if @permission_value.save

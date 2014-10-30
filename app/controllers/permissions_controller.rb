@@ -11,7 +11,7 @@ class PermissionsController < ApplicationController
   # GET /permissions/1
   def show
     @permission = Permission.find(params[:id])
-    @permission_values = PermissionValue.find_all_by_permission_code(@permission.code)
+    @permission_values = PermissionValue.where(permission_code: @permission.code)
     @permission_value = PermissionValue.new
   end
 

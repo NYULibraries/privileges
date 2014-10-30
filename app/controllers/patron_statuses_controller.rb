@@ -20,7 +20,7 @@ class PatronStatusesController < ApplicationController
   def show
     @patron_status = PatronStatus.find(params[:id])
     @permissions = Permission.visible.where(:from_aleph => false)
-    @permission_values = PermissionValue.find_all_by_permission_code(params[:permission_code])
+    @permission_values = PermissionValue.where(permission_code: params[:permission_code])
     @sublibraries = Sublibrary.search{ order_by(:sort_text, :asc) }.results
     @sublibrary = sublibrary
     @patron_status_permission = PatronStatusPermission.new

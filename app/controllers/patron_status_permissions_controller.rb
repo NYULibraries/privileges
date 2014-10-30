@@ -10,8 +10,8 @@ class PatronStatusPermissionsController < ApplicationController
     @patron_status_permission = PatronStatusPermission.new(params[:patron_status_permission])
     @sublibrary = Sublibrary.find_by_code(params[:patron_status_permission][:sublibrary_code])
     @patron_status = PatronStatus.find_by_code(params[:patron_status_permission][:patron_status_code])
-    @permission_values = PermissionValue.find_all_by_permission_code(params[:permission_code])
-    
+    @permission_values = PermissionValue.where(permission_code: params[:permission_code])
+
     respond_to do |format|
       if @patron_status_permission.save
         # If ajax response is submitted, the partial is rerendered with @permission_values populated
@@ -36,7 +36,7 @@ class PatronStatusPermissionsController < ApplicationController
     @patron_status_permission = PatronStatusPermission.find(params[:id])
     @sublibrary = Sublibrary.find_by_code(@patron_status_permission.sublibrary_code)
     @patron_status = PatronStatus.find_by_code(@patron_status_permission.patron_status_code)
-    @permission_values = PermissionValue.find_all_by_permission_code(params[:permission_code])
+    @permission_values = PermissionValue.where(permission_code: params[:permission_code])
     @patron_status_permissions = patron_status_permissions_search(@patron_status.code, @sublibrary.code) unless @sublibrary.nil?
 
     respond_to do |format|
