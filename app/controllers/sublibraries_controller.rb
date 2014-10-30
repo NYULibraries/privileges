@@ -75,7 +75,11 @@ class SublibrariesController < ApplicationController
 
   private
   def sublibrary_params
-    params.require(:sublibrary).permit(:code, :web_text, :from_aleph, :under_header, :visible)
+    if params[:sublibrary].present?
+      params.require(:sublibrary).permit(:code, :web_text, :from_aleph, :under_header, :visible)
+    else
+      {}
+    end
   end
 
   def prefix

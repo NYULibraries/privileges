@@ -89,7 +89,11 @@ class PermissionsController < ApplicationController
 
   private
   def permission_params
-    params.require(:permission).permit(:code, :from_aleph, :visible, :web_text)
+    if params[:permission].present?
+      params.require(:permission).permit(:code, :from_aleph, :visible, :web_text)
+    else
+      {}
+    end
   end
 
   def prefix
