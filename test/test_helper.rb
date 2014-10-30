@@ -14,7 +14,7 @@ require 'rails/test_help'
 require 'authlogic'
 require 'authlogic/test_case'
 
-class User
+class User < ActiveRecord::Base
   def nyuidn
     user_attributes[:nyuidn]
   end
