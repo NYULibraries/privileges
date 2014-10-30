@@ -51,7 +51,7 @@ class PermissionsController < ApplicationController
     @permissions = Permission.by_sort_order
 
     respond_to do |format|
-      if @permission.update_attributes(params[:permission])
+      if @permission.update_attributes(permission_params)
         flash[:notice] = t("permissions.update_success")
         format.html { redirect_to(@permission) }
         format.js { render :nothing => true } if request.xhr?
@@ -87,10 +87,13 @@ class PermissionsController < ApplicationController
     end
   end
 
+  private
+  def permission_params
+    params.require(:permission).permit(:code, :from_aleph, :visible, :web_text)
+  end
+
   def prefix
     #This handles local creation of patron statuses by adding a namespace prefix, namely nyu_ag_noaleph_
     @prefix ||= (!params[:permission][:from_aleph].nil?) ? local_creation_prefix : ""
   end
-  private :prefix
-
 end
