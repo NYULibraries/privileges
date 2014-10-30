@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
       q = "%#{search}%"
       where('firstname LIKE ? || lastname LIKE ? || username LIKE ? || email LIKE ?', q, q, q, q)
     else
-      scoped
+      all
     end
   end
   
