@@ -1,6 +1,5 @@
 class Sublibrary < ActiveRecord::Base
   include Utilities::Common
-  # attr_accessible :code, :web_text, :from_aleph, :under_header, :visible
 
   # Defines a scope of visible sublibraries where the web text is not null or blank and the visible flag is set to true
   scope :visible, where("sublibraries.web_text <> ? AND NOT(sublibraries.web_text IS NULL) and sublibraries.visible", "")
