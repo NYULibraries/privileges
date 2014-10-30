@@ -7,7 +7,7 @@ class PatronStatusPermissionsController < ApplicationController
   # POST /patron_status_permissions
   # POST /patron_status_permissions.js
   def create
-    @patron_status_permission = PatronStatusPermission.new(params[:patron_status_permission])
+    @patron_status_permission = PatronStatusPermission.new(patron_status_permission_params)
     @sublibrary = Sublibrary.find_by_code(params[:patron_status_permission][:sublibrary_code])
     @patron_status = PatronStatus.find_by_code(params[:patron_status_permission][:patron_status_code])
     @permission_values = PermissionValue.where(permission_code: params[:permission_code])
@@ -40,7 +40,7 @@ class PatronStatusPermissionsController < ApplicationController
     @patron_status_permissions = patron_status_permissions_search(@patron_status.code, @sublibrary.code) unless @sublibrary.nil?
 
     respond_to do |format|
-      if @patron_status_permission.update_attributes(params[:patron_status_permission])
+      if @patron_status_permission.update_attributes(patron_status_permission_params)
         format.js { render :layout => false and return } if request.xhr?# In the case where an ajax response is submitted just save the new value and do nothing
         format.html do
           redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code),
@@ -92,4 +92,12 @@ class PatronStatusPermissionsController < ApplicationController
     end
   end
 
+  private
+  def patron_status_permission_params
+    if params[:patron_status_permission].present?
+      params.require(:patron_status_permission).permit(:patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible)
+    else
+      {}
+    end
+  end
 end
