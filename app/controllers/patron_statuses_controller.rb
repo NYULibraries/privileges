@@ -67,7 +67,7 @@ class PatronStatusesController < ApplicationController
     @patron_statuses = patron_statuses_results
 
     respond_to do |format|
-      if @patron_status.update_attributes(params[:patron_status])
+      if @patron_status.update_attributes(patron_status_params)
         flash[:notice] =  t('patron_statuses.update_success')
         format.html { redirect_to @patron_status }
         format.js { render :nothing => true } if request.xhr?
@@ -94,16 +94,23 @@ class PatronStatusesController < ApplicationController
   end
   helper_method :sort_column
 
+
+  private
+  def patron_status_params
+    if params[:patron_status].present?
+      params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible)
+    else
+      {}
+    end
+  end
+
   # Retreive this @patron_status patron_status_permissions with additional information joined in for display
   def patron_status_permissions
     @patron_status_permissions ||= @patron_status.patron_status_permissions.joins(:permission_value => :permission).where(:permissions=>{:visible=>true}, :sublibrary_code => sublibrary.code).order("permissions.sort_order asc") unless sublibrary.nil?
   end
-  private :patron_status_permissions
 
   def prefix
     #This handles local creation of patron statuses by adding a namespace prefix, namely nyu_ag_noaleph_
     @prefix ||= (!params[:patron_status][:from_aleph].nil?) ? local_creation_prefix : ""
   end
-  private :prefix
-
 end
