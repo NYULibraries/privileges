@@ -1,8 +1,8 @@
 @import "nyulibraries";
 
 .hidden {
-  * {color: $nyuLibrariesLightBorderColor;}
-  & {color: $nyuLibrariesLightBorderColor;}
+  * {color: $nyulibraries-border-color-light;}
+  & {color: $nyulibraries-border-color-light;}
 }
 
 .column_list {
@@ -11,8 +11,8 @@
 }
 
 .grouping {
-  margin-left: -$paddingStandard;
-  margin-top: $paddingStandard /2;
+  margin-left: -$padding-base-horizontal;
+  margin-top: $padding-base-vertical /2;
   list-style: none;
   font-weight: bold;
   &.first_group {
@@ -27,11 +27,11 @@ textarea {
   &.wide_text_area {
     width: 450px;
   }
-  &.application_head_text_area, 
+  &.application_head_text_area,
   &.application_form_text_area {
   	width: 500px;
   	height: 70px;
-  	font-family: verdana, sans-serif;	
+  	font-family: verdana, sans-serif;
   	font-size: 12px;
   }
 }
@@ -50,7 +50,7 @@ form#search_patron_statuses {
 }
 
 .sidebar-section ul {
-  padding: $paddingStandard;
+  padding: $padding-base-vertical $padding-base-horizontal;
 }
 
 .q {
@@ -68,7 +68,7 @@ form#search_patron_statuses {
   list-style: none;
   li {
     list-style: none;
-    margin-bottom: $paddingSmall;
+    margin-bottom: $padding-small-vertical;
     padding-left: 0 !important;
   }
 }
@@ -86,7 +86,7 @@ form label {
 .field_with_errors {
   input {
     @extend .alert;
-    @extend .alert-error;
+    @extend .alert-danger;
   }
   label {
     color: #B94A48;
