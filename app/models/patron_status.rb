@@ -3,7 +3,7 @@
 class PatronStatus < ActiveRecord::Base
   include Utilities::Common
 
-  attr_accessible :web_text, :keywords, :under_header, :id_type, :description, :visible
+  # attr_accessible :web_text, :keywords, :under_header, :id_type, :description, :visible
 
   #Validations
   validates :code, :presence => true, :uniqueness => true

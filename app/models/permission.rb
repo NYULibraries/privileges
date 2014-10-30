@@ -1,7 +1,7 @@
 class Permission < ActiveRecord::Base
   include Utilities::Common
 
-  attr_accessible :code, :from_aleph, :visible, :web_text
+  # attr_accessible :code, :from_aleph, :visible, :web_text
 
   #Validations
   validates :code, :presence => true, :uniqueness => true

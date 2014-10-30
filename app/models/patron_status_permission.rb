@@ -2,9 +2,9 @@
 # it is the primary associative table in this application
 class PatronStatusPermission < ActiveRecord::Base
   include Utilities::Common
-  
-  attr_accessible :patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible
-  
+
+  # attr_accessible :patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible
+
   #Validations
   validates_presence_of :patron_status_code, :permission_value_id, :sublibrary_code
   
