@@ -43,7 +43,7 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should show permission" do
-    get :show, :id => Permission.find(:first).id
+    get :show, :id => Permission.first.id
     assert_not_nil assigns(:permission)
     assert_response :success
     assert_template :show
@@ -51,20 +51,20 @@ class PermissionsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     VCR.use_cassette('edit permission') do
-      get :edit, :id => Permission.find(:first).id
+      get :edit, :id => Permission.first.id
       assert_response :success
     end
   end
 
   test "should update permission" do
-    put :update, :id => Permission.find(:first).id, :permission => {:code => "uniquecode1234"}
+    put :update, :id => Permission.first.id, :permission => {:code => "uniquecode1234"}
 
     assert assigns(:permission)
     assert_redirected_to permission_path(assigns(:permission))
   end
   
   test "should NOT update permission" do
-    put :update, :id => Permission.find(:first).id, :permission => {:code => nil }
+    put :update, :id => Permission.first.id, :permission => {:code => nil }
 
     assert assigns(:permission)
     assert_not_nil flash[:error]

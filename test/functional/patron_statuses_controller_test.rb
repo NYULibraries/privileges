@@ -41,7 +41,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
   
   test "should get edit action" do
     VCR.use_cassette('edit patron status') do
-     get :edit, :id => PatronStatus.find(:first).id
+     get :edit, :id => PatronStatus.first.id
      assert_not_nil assigns(:patron_status)
      assert_template "edit"
    end
@@ -72,7 +72,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
 
   test "should show patron status" do
     VCR.use_cassette('show patron status') do
-     get :show, :id => PatronStatus.find(:first).id
+     get :show, :id => PatronStatus.first.id
      assert assigns(:patron_status)
      assert assigns(:sublibraries)
      assert assigns(:permissions)
@@ -85,7 +85,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
   
   test "should show patron status permissions" do
     VCR.use_cassette('show patron status') do
-     get :show, :id => PatronStatus.find(:first).id, :sublibrary_code => sublibraries(:aleph_one).code
+     get :show, :id => PatronStatus.first.id, :sublibrary_code => sublibraries(:aleph_one).code
      assert assigns(:sublibrary)
      assert assigns(:patron_status_permissions)
      assert_template "show"
@@ -94,7 +94,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
   
   test "should update patron status" do
     VCR.use_cassette('update patron status') do
-      put :update, :id => PatronStatus.find(:first).id, :patron_status => { :web_text => "Get some new text in here" }
+      put :update, :id => PatronStatus.first.id, :patron_status => { :web_text => "Get some new text in here" }
 
       assert assigns(:patron_status)
       assert_equal assigns(:patron_status).web_text, "Get some new text in here"
@@ -113,7 +113,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
   test "should destroy patron status" do
     VCR.use_cassette('destroy patron status') do
       assert_difference('PatronStatus.count', -1) do
-        delete :destroy, :id => PatronStatus.find(:first).id
+        delete :destroy, :id => PatronStatus.first.id
       end
 
       assert_redirected_to patron_statuses_path

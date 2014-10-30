@@ -26,14 +26,14 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test "should get edit action" do
-    get :edit, :id => User.find(:first).username
+    get :edit, :id => User.first.username
 
     assert assigns(:user)
-    assert_redirected_to root_path  
+    assert_redirected_to root_path
   end
 
   test "should show user" do
-    get :show, :id => User.find(:first).id
+    get :show, :id => User.first.id
     assert_not_nil assigns(:user)
     assert_response :success
     assert_template :show

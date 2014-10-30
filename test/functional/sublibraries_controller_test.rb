@@ -64,7 +64,7 @@ class SublibrariesControllerTest < ActionController::TestCase
   
   test "should get edit" do
     VCR.use_cassette('edit sublibrary') do
-     get :edit, :id => Sublibrary.find(:first).id
+     get :edit, :id => Sublibrary.first.id
      assert_response :success
    end
   end
@@ -80,8 +80,8 @@ class SublibrariesControllerTest < ActionController::TestCase
   
   test "should NOT update sublibrary" do
     VCR.use_cassette('dont update sublibrary') do
-      put :update, :id => Sublibrary.find(:first).id, :sublibrary => { :web_text => nil, :from_aleph => false }
-  
+      put :update, :id => Sublibrary.first.id, :sublibrary => { :web_text => nil, :from_aleph => false }
+
       assert assigns(:sublibrary)
       assert_template :edit
     end
