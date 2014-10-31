@@ -35,7 +35,7 @@ $ ->
     $("#permissions_chart").children().hide()
     $("#permissions_chart").prepend($("<div />").attr({'id': 'permissions_progress'}).addClass("progress").append($("<div />").addClass("progress-bar progress-bar-striped active").css({width: '5%'})));
     setTimeout( ->
-      $("#permissions_progress > div.bar").css({width: "98%"})
+      $("#permissions_progress > div.progress-bar").css({width: "98%"})
     , 0)
     $(this).closest("form").submit ->
       success: ->
