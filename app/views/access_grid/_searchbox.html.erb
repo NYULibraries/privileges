@@ -1,13 +1,10 @@
 <div id="search" class="search">
 <h2><%= application_name%></h2>
-<%= form_tag search_path, :class => "form-inline clearfix", :id => "search_patron_statuses", :method => :get do %>
-  <div class="input-append pull-left">
-    <label for="q" class="hide-text"><%= strip_tags(get_formatted_detail('searchbox_header'))%>...</label>
-    <input class="search_q q autocomplete_query" autocomplete="off" id="q" name="q" placeholder="<%= strip_tags(get_formatted_detail('searchbox_header'))%>..." type="text">
-    <button type="submit" class="btn btn-primary search-btn" id="search">
-    <span class="submit-search-text">Search</span>
-      <i class="icon-search icon-white"></i>
-    </button>
-  </div>
+<%= form_tag search_path, class: 'form-inline clearfix', id: 'search_patron_statuses', method: :get do %>
+  <p>
+    <label for="q" class="sr-only"><%= strip_tags(get_formatted_detail('searchbox_header'))%>...</label>
+    <input class="search_q q autocomplete_query form-control" autocomplete="off" id="q" name="q" placeholder="<%= strip_tags(get_formatted_detail('searchbox_header'))%>..." type="text">
+    <input type="submit" class="btn btn-primary search-btn" id="search" value="Search" />
+  </p>
 <% end %>
 </div>
