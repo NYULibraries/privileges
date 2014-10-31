@@ -31,9 +31,9 @@ $ ->
   #   source: (query, process) ->
   #       $.getJSON($(".autocomplete_query").closest("form").attr("action") + ".json", { query: query }, process);
   # }
-  $("#get_sublibrary_permissions").on 'change', "select", -> 
+  $("#get_sublibrary_permissions").on 'change', "select", ->
     $("#permissions_chart").children().hide()
-    $("#permissions_chart").prepend($("<div />").attr({'id': 'permissions_progress'}).addClass("progress progress-striped active").append($("<div />").addClass("bar").css({width: '5%'})));
+    $("#permissions_chart").prepend($("<div />").attr({'id': 'permissions_progress'}).addClass("progress").append($("<div />").addClass("progress-bar progress-bar-striped active").css({width: '5%'})));
     setTimeout( ->
       $("#permissions_progress > div.bar").css({width: "98%"})
     , 0)
