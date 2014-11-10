@@ -1,8 +1,6 @@
 class Permission < ActiveRecord::Base
   include Utilities::Common
 
-  attr_accessible :code, :from_aleph, :visible, :web_text
-
   #Validations
   validates :code, :presence => true, :uniqueness => true
   validate :web_text_required_if_not_from_aleph
@@ -31,8 +29,8 @@ class Permission < ActiveRecord::Base
            :through => :patron_status_permissions
 
   #Named scopes
-  scope :by_sort_order, :order => 'sort_order ASC, web_text ASC'
-  scope :visible, :conditions => ["visible = ?", 1]
+  scope :by_sort_order, ->{ order 'sort_order ASC, web_text ASC' }
+  scope :visible, ->{ where visible: 1 }
 
   # Reindex patron statuses and patron status permissions that are
   # associated with this permission when it has been changed

@@ -16,7 +16,8 @@
   <dt>Privileges</dt>
   <dd>
     <%= form_tag patron_path, :method => :get, :remote => true, :id => "get_sublibrary_permissions", :class => "form-inline clearfix" do %>
-    <%= select_tag "sublibrary_code", grouped_sublibraries, { :prompt => get_sanitized_detail('sublibrary_select') } %>
+    <%= select_tag "sublibrary_code", grouped_sublibraries,
+      {prompt: get_sanitized_detail('sublibrary_select'), class: 'form-control' } %>
     <button type="submit" class="btn" data-remote="true">View permissions</button>
     <% end %>
   </dd>

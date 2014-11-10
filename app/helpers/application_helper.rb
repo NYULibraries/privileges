@@ -4,18 +4,19 @@ module ApplicationHelper
   def application_name
     get_formatted_detail('page_title')
   end
-  
+
   # Create a select tag with permission values and select the correct one based on this PatronStatusPermission
   def get_permission_value(ps_perm)
    permission_values = ps_perm.permission.permission_values
-   select_tag "update_permission_ids[#{ps_perm.id}]", options_for_select(permission_values.collect{ |pv| [pv.web_text.html_safe, pv.id] }, {:selected => ps_perm.permission_value_id}), {:prompt => "Select a permission value" }
+   select_tag "update_permission_ids[#{ps_perm.id}]", options_for_select(permission_values.collect{ |pv| [pv.web_text.html_safe, pv.id] }, {:selected => ps_perm.permission_value_id}),
+    {prompt: "Select a permission value", class: 'form-control'}
   end
 
   # Format and santitize detail from database
   def get_formatted_detail(purpose, css = nil)
    simple_format(get_sanitized_detail(purpose), :class => css)
   end
-  
+
   # Fetch application detail text by purpose
   def detail_by_purpose(purpose)
     ApplicationDetail.find_by_purpose(purpose)
@@ -47,7 +48,7 @@ module ApplicationHelper
   def hidden_class(inst)
    "is-hidden" unless inst.visible
   end
-  
+
   # Generate an abbr tag for long words
   def word_break word
     if word.length > 10
@@ -56,14 +57,14 @@ module ApplicationHelper
       word
     end
   end
-  
+
   # Generate link to sorting action
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     direction_icon = (direction.eql? "desc") ? :sort_desc : :sort_asc
-    search = params[:search]  
+    search = params[:search]
     html = link_to title, params.merge(:sort => column, :direction => direction, :page => nil, :id => ""), {:class => css_class}
     html << icon_tag(direction_icon) if column == sort_column
     return html

@@ -5,7 +5,7 @@
 
   <dt>Code:</dt>
   <dd><%=h @patron_status.code %></dd>
-  
+
 <% end %>
 
 <% if @patron_status.original_text? %>
@@ -52,11 +52,12 @@
   <dt>Permissions by Sub Library</dt>
   <dd>
     <%= form_tag patron_status_path, :class => "form-inline clearfix", :method => :get do %>
-        <%= select_tag 'sublibrary_code', options_for_select(@sublibraries.collect{ |s| [sublibrary_text(s), s.code] }, {:selected => params[:sublibrary_code]}), {:prompt => "Select a sublibrary" }%>
+        <%= select_tag 'sublibrary_code', options_for_select(@sublibraries.collect{ |s| [sublibrary_text(s), s.code] }, {:selected => params[:sublibrary_code]}),
+          {prompt: "Select a sublibrary", class: 'form-control' }%>
         <button class="btn" type="submit">View permissions</button>
     <% end %>
   </dd>
-  
+
 </dl>
 <div id="permissions_chart"><%= render "permissions" %></div>
 

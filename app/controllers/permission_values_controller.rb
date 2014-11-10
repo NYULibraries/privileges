@@ -16,12 +16,12 @@ class PermissionValuesController < ApplicationController
 
   # POST /permission_values
   def create
-    @permission_value = PermissionValue.new(params[:permission_value])
+    @permission_value = PermissionValue.new(permission_value_params)
     @permission_value.code = "#{prefix}#{params[:permission_value][:code]}"
     @permission_value.from_aleph = (params[:permission_value][:from_aleph]) ? params[:permission_value][:from_aleph] : false
 
     @permission = Permission.find_by_code(@permission_value.permission_code)
-    @permission_values = PermissionValue.find_all_by_permission_code(@permission.code)
+    @permission_values = PermissionValue.where(permission_code: @permission.code)
 
     respond_to do |format|
       if @permission_value.save
@@ -42,7 +42,7 @@ class PermissionValuesController < ApplicationController
     @permission = Permission.find_by_code(@permission_value.permission_code)
 
     respond_to do |format|
-      if @permission_value.update_attributes(params[:permission_value])
+      if @permission_value.update_attributes(permission_value_params)
         flash[:notice] = t("permission_values.update_success")
         format.html { redirect_to(@permission) }
       else
@@ -61,9 +61,17 @@ class PermissionValuesController < ApplicationController
       format.html { redirect_to @permission }
     end
   end
-  
+
+  private
+  def permission_value_params
+    if params[:permission_value].present?
+      params.require(:permission_value).permit(:code, :web_text, :from_aleph, :permission_code)
+    else
+      {}
+    end
+  end
+
   def prefix
     @prefix ||= (!params[:permission_value][:from_aleph]) ? local_creation_prefix : ""
   end
-  private :prefix
 end

@@ -3,7 +3,7 @@
 <%= hidden_field_tag "patron_status_permission[sublibrary_code]", @sublibrary.code %>
 <%= hidden_field_tag "patron_status_permission[from_aleph]", 0 %>
 <% if @patron_status_permission.errors.any? %>  
-  <div id="error_explanation" class="alert alert-error">  
+  <div id="error_explanation" class="alert alert-danger">  
     <h2><%= pluralize(@patron_status_permission.errors.count, "error") %> prohibited this record from being saved:</h2>  
     <ul>  
     <% @patron_status_permission.errors.full_messages.each do |msg| %>  

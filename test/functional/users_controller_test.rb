@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  
+
   setup :activate_authlogic
 
   def setup
@@ -14,7 +14,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :index
   end
-  
+
   test "should get CSV from index" do
     get :index, :format => :csv
     assert_response :success
@@ -24,21 +24,21 @@ class UsersControllerTest < ActionController::TestCase
     get :index, :search => "admin"
     assert_not_nil assigns(:users)
   end
-  
+
   test "should get edit action" do
-    get :edit, :id => User.find(:first).username
+    get :edit, :id => User.first.username
 
     assert assigns(:user)
-    assert_redirected_to root_path  
+    assert_redirected_to root_path
   end
 
   test "should show user" do
-    get :show, :id => User.find(:first).id
+    get :show, :id => User.first.id
     assert_not_nil assigns(:user)
     assert_response :success
     assert_template :show
   end
-  
+
   test "should toggle user admin status" do
     put :update, :id => users(:nonadmin).id, :user => { :access_grid_admin => 1 }
 
@@ -54,5 +54,5 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
-   
+
 end

@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'authlogic'
+username = 'admin'
+if Rails.env.development? and User.find_by_username(username).nil?
+  salt = Authlogic::Random.hex_token
+  user = User.create!({
+    username: username,
+    firstname: 'Dev',
+    lastname: 'Eloper',
+    email: 'dev.eloper@library.edu',
+    password_salt: salt,
+    crypted_password: Authlogic::CryptoProviders::Sha512.encrypt(username + salt),
+    persistence_token: Authlogic::Random.hex_token,
+  })
+  user.user_attributes = {
+    nyuidn: (ENV['BOR_ID'] || 'BOR_ID'),
+    primary_institution: :NYU,
+    institutions: [:NYU],
+    bor_status: '51',
+    access_grid_admin: true
+  }
+  user.save!
+end

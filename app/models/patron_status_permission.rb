@@ -2,29 +2,27 @@
 # it is the primary associative table in this application
 class PatronStatusPermission < ActiveRecord::Base
   include Utilities::Common
-  
-  attr_accessible :patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible
-  
+
   #Validations
   validates_presence_of :patron_status_code, :permission_value_id, :sublibrary_code
-  
+
   # Belongs to a particular permission_value and maintains that id
   belongs_to :permission_value
-  
+
   # Belongs to a sublibrary
-  belongs_to :sublibrary, 
+  belongs_to :sublibrary,
           :primary_key => "code",
           :foreign_key => "sublibrary_code",
           :touch => true
-  
+
   # Belongs to a patron status
-  belongs_to :patron_status, 
+  belongs_to :patron_status,
           :primary_key => "code",
           :foreign_key => "patron_status_code",
           :touch => true
-  
+
   # Has one permission  through the permission value id
-  has_one :permission, 
+  has_one :permission,
           :through => :permission_value
 
   # The Sunspot searchable index
@@ -38,8 +36,8 @@ class PatronStatusPermission < ActiveRecord::Base
       permission_value.permission.visible
     end
   end
-  
-  # Reindex patron status and sublibrary 
+
+  # Reindex patron status and sublibrary
   # associated with this patron status permision when it has been changed
   after_save :reindex_associations
   after_destroy :reindex_associations
@@ -51,5 +49,3 @@ class PatronStatusPermission < ActiveRecord::Base
   end
   private :reindex_associations
 end
-
-

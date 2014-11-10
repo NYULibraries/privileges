@@ -1,6 +1,6 @@
 <%= form_for(@sublibrary) do |f| %>
 <% if @sublibrary.errors.any? %>
-  <div id="error_explanation" class="alert alert-error">
+  <div id="error_explanation" class="alert alert-danger">
     <h2><%= pluralize(@sublibrary.errors.count, "error") %> prohibited this sublibrary from being saved:</h2>
 
     <ul>

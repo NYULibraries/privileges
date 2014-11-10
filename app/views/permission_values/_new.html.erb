@@ -1,7 +1,7 @@
 <% if !@permission.from_aleph? %>
 	<%= form_for @permission_value do |f| %>
 	<% if @permission.errors.any? %>  
-    <div id="error_explanation" class="alert alert-error">  
+    <div id="error_explanation" class="alert alert-danger">  
       <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this record from being saved:</h2>  
       <ul>  
       <% @permission.errors.full_messages.each do |msg| %>  

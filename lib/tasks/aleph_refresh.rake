@@ -1,29 +1,27 @@
-#TODO: Separate into modules and class functions to simplify 
+#TODO: Separate into modules and class functions to simplify
 namespace :privileges_guide do
 
   desc "Refresh Aleph DB Config"
   task :load_aleph => :environment do
-    
-    start = Time.now
-    
-    Rake::Task['exlibris:aleph:refresh'].execute
 
-    tab_helper = Exlibris::Aleph::TabHelper.instance
-    patron_permissions = tab_helper.patron_permissions
-    patrons = tab_helper.patrons
-    sublibraries = tab_helper.sub_libraries
-    
+    start = Time.now
+
+    tables_manager = Exlibris::Aleph::TablesManager.instance
+    patron_circulation_policies = tables_manager.patron_circulation_policies
+    patron_statuses = tables_manager.patron_statuses
+    sublibraries = tables_manager.sub_libraries
+
     FileUtils.mkdir_p File.join(Rails.root, "tmp/pids")
     pid_file = "#{Rails.root}/tmp/pids/load_aleph.pid"
     raise 'pid file exists!' if File.exists? pid_file
     File.open(pid_file, 'w'){|f| f.write Process.pid}
     begin
       plog "Loading patron statuses..."
-      load_patron_statuses(patrons, cleanup = true)
+      load_patron_statuses(patron_statuses, cleanup = true)
       plog "Loading sub libraries..."
       load_sublibraries(sublibraries, cleanup = true)
       plog "Loading patron permissions..."
-      load_patron_status_permissions(patron_permissions, cleanup = true)
+      load_patron_status_permissions(patron_circulation_policies, cleanup = true)
       plog "Task completed in: #{Time.now - start}\n\n"
       plog "SUCCESS"
     rescue
@@ -32,136 +30,140 @@ namespace :privileges_guide do
     ensure
       File.delete pid_file
     end
-    
+
   end
-  
+
   # Find or create PatronStatus objects by unique ALEPH code
-  def load_patron_statuses(patrons, cleanup = false)
-    all_patron_statuses_in_aleph = []
+  def load_patron_statuses(patron_statuses_by_adm, cleanup = false)
+    all_codes = []
     ActiveRecord::Base.transaction do
-      patrons.each do |adm, patron_statuses|
-         patron_statuses.keys.each do |patron_status_code|
-          patron_in_db = PatronStatus.find_or_initialize_by_code(patron_status_code)
-          if patron_in_db.new_record?
-            # If no Web Text exists in the database, then copy Web Text from ALEPH config
-            patron_in_db.web_text = patron_statuses[patron_status_code][:text]
-            patron_in_db.visible = false # Default to hidden for new values
+      patron_statuses_by_adm.each do |adm, patron_statuses|
+        patron_statuses.each do |patron_status|
+          patron_status_record =
+            PatronStatus.find_or_initialize_by(code: patron_status.code)
+          if patron_status_record.new_record?
+            # If no Web Text exists in the database,
+            # then copy Web Text from ALEPH config
+            patron_status_record.web_text = patron_status.display
+            patron_status_record.visible = false # Default to hidden for new values
           end
-          patron_in_db.original_text = patron_statuses[patron_status_code][:text]
-          patron_in_db.from_aleph = true # Flag as an ALEPH item
-          patron_in_db.save
-        end 
-        all_patron_statuses_in_aleph |= patron_statuses.keys
+          patron_status_record.original_text = patron_status.display
+          patron_status_record.from_aleph = true # Flag as an ALEPH item
+          patron_status_record.save
+        end
+        all_codes |= patron_statuses.map(&:code)
       end
     end
     if cleanup
       plog "Cleaning up patron statuses..."
-      #Find all patron statuses previously loaded from aleph
-      existing_patron_statuses_from_aleph = PatronStatus.where(:from_aleph => true).map(&:code)
-      plog "Deleting patron statuses: #{existing_patron_statuses_from_aleph - all_patron_statuses_in_aleph.uniq}"
-      #Delete all statuses which were previouly loaded from aleph, but are no longer in aleph
-      deleted_patron_statuses = PatronStatus.destroy_all(:code => existing_patron_statuses_from_aleph - all_patron_statuses_in_aleph.uniq, :from_aleph => true)
+      # Get the unique codes
+      all_codes.uniq!
+      # Find all patron statuses previously loaded from aleph
+      old_codes = PatronStatus.where(from_aleph: true).map(&:code)
+      # Determine the ones that have been deleted from Aleph since the last load
+      deleted_codes = all_codes - old_codes
+      plog "Deleting patron statuses with codes: #{deleted_codes}"
+      #Delete them from Privileges
+      deleted_patron_statuses =
+        PatronStatus.destroy_all(code: deleted_codes, from_aleph: true)
       plog "Deleted #{deleted_patron_statuses.count} patron statuses"
     end
-  end 
-      
+  end
+
   # Find or craete Sublibrary objects by unique ALEPH code
   def load_sublibraries(sublibraries, cleanup = false)
     ActiveRecord::Base.transaction do
-     sublibraries.keys.each do |sublibrary_code|
-       sublibrary_in_db = Sublibrary.find_or_initialize_by_code(sublibrary_code)
-       if sublibrary_in_db.new_record?
-         # If no Web Text exists in the database, then copy Web Text from ALEPH config
-         sublibrary_in_db.web_text = sublibraries[sublibrary_code][:text]
-         sublibrary_in_db.visible = false # Default to hidden for new values
-       end
-       sublibrary_in_db.original_text = sublibraries[sublibrary_code][:text]
-       sublibrary_in_db.from_aleph = true # Flag as an ALEPH item
-       sublibrary_in_db.save
-     end
+      sublibraries.each do |sublibrary|
+        sublibrary_record =
+          Sublibrary.find_or_initialize_by(code: sublibrary.code)
+        if sublibrary_record.new_record?
+          # If no Web Text exists in the database,
+          # then copy Web Text from ALEPH config
+          sublibrary_record.web_text = sublibrary.display
+          sublibrary_record.visible = false # Default to hidden for new values
+        end
+        sublibrary_record.original_text = sublibrary.display
+        sublibrary_record.from_aleph = true # Flag as an ALEPH item
+        sublibrary_record.save
+      end
     end
     if cleanup
       plog "Cleaning up sublibraries..."
-      #Find all sublibraries previously loaded from aleph
-      existing_sublibraries_from_aleph = Sublibrary.where(:from_aleph => true).map(&:code)
-      plog "Deleting sublibraries: #{existing_sublibraries_from_aleph - sublibraries.keys}"
+      # Grab the sublibrary codes that were given
+      all_codes = sublibraries.map(&:code).uniq
+      # Find all sublibraries previously loaded from aleph
+      old_codes = Sublibrary.where(from_aleph: true).map(&:code)
+      # Determine the ones that have been deleted from Aleph since the last load
+      deleted_codes = all_codes - old_codes
+      plog "Deleting sublibraries with codes: #{deleted_codes}"
       #Delete all sublibraries which were previouly loaded from aleph, but are no longer in aleph
-      deleted_sublibraries = Sublibrary.destroy_all(:code => existing_sublibraries_from_aleph - sublibraries.keys, :from_aleph => true)
+      deleted_sublibraries =
+        Sublibrary.destroy_all(code: deleted_codes, from_aleph: true)
       plog "Deleted #{deleted_sublibraries.count} sublibraries"
     end
   end
-  
-  def load_patron_status_permissions(patron_permissions, cleanup = false)
-    all_permission_codes, all_permission_values = [], []
-    #Loop through all patron permissions for each ADM
+
+  def load_patron_status_permissions(patron_circulation_policies_by_adm, cleanup = false)
+    permission_mappings = {
+      loan_permission: :borrow,
+      photo_permission: :photocopy,
+      multiple_hold_permission: :request_multiple,
+      hold_permission: :request,
+      renew_permission: :renew,
+      hold_request_permission_for_item_on_shelf: :request_on_shelf,
+      item_booking_permission: :book
+    }
+    all_codes = permission_mappings.keys
+    all_value_codes = {}
+    # Loop through all patron circulation policies
     ActiveRecord::Base.transaction do
-      patron_permissions.each do |adm, tab31|
-        #Loop through each set of tab31 keys, which are organized by sublibrary code
-        tab31.keys.each do |sublibrary_code|
-          #Loop through each sublibrary to get patron status permissions for that sublibrary
-          tab31[sublibrary_code].keys.each do |patron_status_code|
-            #These are the permissions for this sublibrary/patron status pair, saved as a hash
-            permissions = tab31[sublibrary_code][patron_status_code]
-            #This is the sublibrary
-            sublibrary_code = permissions[:sub_library]
-            #This is the patron status
-            patron_status_code = permissions[:patron_status]
-            #Loop through each of these permissions
-            permissions.keys.each do |permission|
-              unless permission == :sub_library || permission == :patron_status
-                all_permission_codes.push(permission.to_s)
-                all_permission_values.push({permission.to_sym => permissions[permission]})
-                #############################
-                # 1. Find/Create Permission #
-                #############################
-                # Find or create Permission objects by unique ALEPH code
-                permission_code = permission.to_s
-                permission_in_db = Permission.find_or_initialize_by_code(permission_code)
-                if permission_in_db.new_record?
-                  # If no Web Text exists in the database, then copy Code from ALEPH config, but replace underscores with spaces
-                  permission_in_db.web_text = permission_code.capitalize.gsub("_"," ")
-                  permission_in_db.visible = false
-                end
-                permission_in_db.from_aleph = true # Flag as an ALEPH item
-                permission_in_db.save
-                ##################################
-                # 2. Find/Create PermissionValue #
-                ##################################
-                # Find or create PermissionValue objects by combined key permission_code, permission_value_code
-                permission_value_code = permissions[permission]
-                permission_value_in_db = PermissionValue.find_or_initialize_by_code_and_permission_code(permission_value_code, permission_code)
-                if permission_value_in_db.new_record?
-                  # If no Web Text exists in the database, then copy Code from ALEPH config
-                  permission_value_in_db.web_text = permission_value_code
-                end
-                permission_value_in_db.from_aleph = true # Flag as an ALEPH item
-                permission_value_in_db.save
-                #########################################
-                # 3. Find/Create PatronStatusPermission # 
-                #########################################
-                # After we've either created or found Permission and PermissionValue, create PatronStatusPermission
-                patron_status_permission_in_db = PatronStatusPermission.find_or_create_by_patron_status_code_and_sublibrary_code_and_permission_value_id(patron_status_code, sublibrary_code, permission_value_in_db.id)
-                patron_status_permission_in_db.from_aleph = true # Flag as an ALEPH item
-                patron_status_permission_in_db.save
-              end
+      patron_circulation_policies_by_adm.each do |adm, patron_circulation_policies|
+        patron_circulation_policies.each do |patron_circulation_policy|
+          identifier = patron_circulation_policy.identifier
+          privileges = patron_circulation_policy.privileges
+          patron_status = identifier.status
+          sublibrary = identifier.sub_library
+          permission_mappings.each do |code, attribute|
+            value_code = privileges.send(attribute)
+            all_value_codes[code] = value_code
+            #############################
+            # 1. Find/Create Permission #
+            #############################
+            # Find or create Permission objects by unique ALEPH code
+            permission_record = Permission.find_or_initialize_by(code: code)
+            if permission_record.new_record?
+              # If no Web Text exists in the database, then copy Code from ALEPH config, but replace underscores with spaces
+              permission_record.web_text = code.to_s.capitalize.gsub("_"," ")
+              permission_record.visible = false
             end
+            permission_record.from_aleph = true # Flag as an ALEPH item
+            permission_record.save
+            ##################################
+            # 2. Find/Create PermissionValue #
+            ##################################
+            # Find or create PermissionValue objects by combined key permission_code, permission_value_code
+            permission_value_record =
+              permission_record.permission_values.find_or_initialize_by(code: value_code)
+            if permission_value_record.new_record?
+              # If no Web Text exists in the database, then copy Code from ALEPH config
+              permission_value_record.web_text = value_code
+            end
+            permission_value_record.from_aleph = true # Flag as an ALEPH item
+            permission_value_record.save
+            #########################################
+            # 3. Find/Create PatronStatusPermission #
+            #########################################
+            # After we've either created or found Permission and PermissionValue, create PatronStatusPermission
+            patron_status_permission_record =
+              permission_value_record.patron_status_permissions.find_or_create_by(patron_status_code: patron_status.code, sublibrary_code: sublibrary.code)
+            patron_status_permission_record.from_aleph = true # Flag as an ALEPH item
+            patron_status_permission_record.save
           end
         end
       end
     end
-    if cleanup
-      plog "Cleaning up permissions..."
-      #Find all permissions previously loaded from aleph
-      existing_permissions_from_aleph = Permission.where(:from_aleph => true).map(&:code)
-      plog "Deleting permissions: #{existing_permissions_from_aleph - all_permission_codes.uniq}"
-      deleted_permissions = Permission.destroy_all(:code => existing_permissions_from_aleph - all_permission_codes.uniq, :from_aleph => true)
-      plog "Deleted #{deleted_permissions.count} permissions"
-      #
-      #
-      # Deleting permissions deletes permission values
-    end
   end
-  
+
   def plog log_me
     logger.info "[#{Time.now}] #{log_me}"
   end
@@ -169,6 +171,5 @@ namespace :privileges_guide do
   def logger
     @logger ||= Logger.new("#{Rails.root}/log/aleph_refresh.log")
   end
- 
-end
 
+end
