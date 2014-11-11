@@ -28,7 +28,7 @@ class Permission < ActiveRecord::Base
   has_many :patron_statuses,
            :through => :patron_status_permissions
 
-  #Named scopes
+  # Named scopes
   scope :by_sort_order, ->{ order 'sort_order ASC, web_text ASC' }
   scope :visible, ->{ where visible: 1 }
 
@@ -38,8 +38,8 @@ class Permission < ActiveRecord::Base
   after_destroy :reindex_associations
   def reindex_associations
     unless Utilities::Common::running_from_rake?
-      patron_statuses.each {|ps| ps.delay.index!}
-      patron_status_permissions.each {|psp| psp.delay.index!}
+      patron_statuses.delay.each {|ps| ps.delay.index!}
+      patron_status_permissions.delay.each {|psp| psp.delay.index!}
     end
   end
   private :reindex_associations
