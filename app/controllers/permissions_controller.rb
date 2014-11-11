@@ -56,7 +56,7 @@ class PermissionsController < ApplicationController
         format.html { redirect_to(@permission) }
         format.js { render :nothing => true } if request.xhr?
       else
-        flash[:error] = t("permissions.update_failure")
+        flash[:danger] = t("permissions.update_failure")
         format.html { render :action => "edit" }
         format.js { render :nothing => true } if request.xhr?
       end
