@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_admin
-  
+
   # GET /users
   def index
-    @users = User.search(params[:q]).order(sort_column + " " + sort_direction).page(params[:page]).per(30)
-    
+    @users = User.order(sort_column + " " + sort_direction).page(params[:page]).per(30)
+    @users = @users.with_query(params[:q]) unless params[:q].blank?
+
     respond_to do |format|
       format.html
       format.csv { render :csv => @users, :filename => "privileges_guide_users" }
@@ -16,11 +17,11 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
     @user = User.find(params[:id]) if @user.nil?
   end
-  
+
   # GET /users/1/edit
   def edit
     @user = User.find_by_username(params[:id])
-    
+
     redirect_to root_url and return
   end
 
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
       format.html { redirect_to(@user) }
     end
   end
-  
+
   # Delete all non-admin patrons
   def clear_patron_data
     User.destroy_all("user_attributes not like '%:access_grid_admin: true%'")
@@ -59,5 +60,5 @@ class UsersController < ApplicationController
     super "User", "lastname"
   end
   helper_method :sort_column
-  
+
 end

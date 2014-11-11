@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>4.1.0'
+gem 'rails', '~> 4.1.0'
 
 # Use MySQL for the database
 gem 'mysql2', '~> 0.3.16'
@@ -25,6 +25,9 @@ gem 'therubyracer', '~> 0.12.0'
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 2.0.0'
+
+# Use acts as indexed to search models
+gem 'acts_as_indexed', '~> 0.8.3'
 
 # Use mustache for templating
 # Fix to 0.99.4 cuz 0.99.5 broke my shit.

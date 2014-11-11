@@ -9,14 +9,7 @@ class User < ActiveRecord::Base
     c.disable_perishable_token_maintenance = true
   end
 
-  def self.search(search)
-    if search
-      q = "%#{search}%"
-      where('firstname LIKE ? || lastname LIKE ? || username LIKE ? || email LIKE ?', q, q, q, q)
-    else
-      all
-    end
-  end
+  acts_as_indexed fields: [:firstname, :lastname, :username, :email]
 
   # Create a CSV format
   comma do
