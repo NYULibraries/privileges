@@ -38,8 +38,8 @@ class Permission < ActiveRecord::Base
   after_destroy :reindex_associations
   def reindex_associations
     unless Utilities::Common::running_from_rake?
-      patron_statuses.delay.each {|ps| ps.delay.index!}
-      patron_status_permissions.delay.each {|psp| psp.delay.index!}
+      patron_statuses.each {|ps| ps.delay.index!}
+      patron_status_permissions.each {|psp| psp.delay.index!}
     end
   end
   private :reindex_associations
