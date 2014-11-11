@@ -1,7 +1,7 @@
 $ ->
   new window.nyulibraries.Tooltip('.record-help').html(false).trigger('hover').init()
   $('ul#edit_permissions_list').sortable {
-    handle: "i.icon-move"
+    handle: "i.glyphicon.glyphicon-move"
     update: -> $(this).closest("form").submit()
     opacity: 0.4
     cursor: 'move'
@@ -27,9 +27,9 @@ $ ->
       $(this).html("Hide")
       $(this).prevAll("h4.permission_header:first").removeClass("is-hidden")
       $(this).closest("tr").removeClass("is-hidden")
-  # $(".autocomplete_query").typeahead {
+  # $(".typeahead").typeahead {
   #   source: (query, process) ->
-  #       $.getJSON($(".autocomplete_query").closest("form").attr("action") + ".json", { query: query }, process);
+  #     $.getJSON($(".typeahead").closest("form").attr("action") + ".json", { query: query }, process);
   # }
   $("#get_sublibrary_permissions").on 'change', "select", ->
     $("#permissions_chart").children().hide()
