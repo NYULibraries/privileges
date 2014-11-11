@@ -1,5 +1,8 @@
 language: ruby
 
+env:
+  - SOLR_URL='http://localhost:8981/solr/default'
+
 bundler_args: --without development
 
 services:
@@ -10,8 +13,6 @@ before_script:
   - bundle exec rake db:schema:load RAILS_ENV=test
 
 rvm:
-  - "1.9.3"
-  - "2.0.0"
-
-git:
-  submodules: false
+  - 1.9.3
+  - 2.0.0
+  - 2.1.3
