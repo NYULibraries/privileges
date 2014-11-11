@@ -24,7 +24,7 @@ class PatronStatusPermissionsController < ApplicationController
         format.js { render :layout => false and return } if request.xhr?
         format.html do
           redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code, :permission_code => params[:permission_code]),
-                      flash: { :error => t('patron_status_permissions.create_failure') } and return
+                      flash: { :danger => t('patron_status_permissions.create_failure') } and return
         end
       end
     end
@@ -50,7 +50,7 @@ class PatronStatusPermissionsController < ApplicationController
         format.js { render :layout => false and return }if request.xhr?
         format.html do
           redirect_to patron_status_path(@patron_status, :sublibrary_code => sublibrary_code),
-                      flash: { :error => t('patron_status_permissions.update_failure') } and return
+                      flash: { :danger => t('patron_status_permissions.update_failure') } and return
         end
       end
     end

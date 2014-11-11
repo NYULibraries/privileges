@@ -1,10 +1,15 @@
 <div id="search" class="search">
 <h2><%= application_name%></h2>
 <%= form_tag search_path, class: 'form-inline clearfix', id: 'search_patron_statuses', method: :get do %>
-  <p>
-    <label for="q" class="sr-only"><%= strip_tags(get_formatted_detail('searchbox_header'))%>...</label>
-    <input class="search_q q autocomplete_query form-control" autocomplete="off" id="q" name="q" placeholder="<%= strip_tags(get_formatted_detail('searchbox_header'))%>..." type="text">
-    <input type="submit" class="btn btn-primary search-btn" id="search" value="Search" />
-  </p>
+  <div class="input-group col-sm-8">
+    <label for="q" class="sr-only"><%= strip_tags(get_formatted_detail('searchbox_header'))%></label>
+    <%= text_field_tag :q, params[:q], class: "form-control", placeholder: strip_tags(get_formatted_detail('searchbox_header')) %>
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-primary search-btn form-control" id="search">
+        <span class="submit-search-text">Search</span>
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </span>
+  </div>
 <% end %>
 </div>

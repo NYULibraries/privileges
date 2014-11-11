@@ -67,7 +67,7 @@ class PermissionsControllerTest < ActionController::TestCase
     put :update, :id => Permission.first.id, :permission => {:code => nil }
 
     assert assigns(:permission)
-    assert_not_nil flash[:error]
+    assert_not_nil flash[:danger]
     assert_template :edit
   end
 

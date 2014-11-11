@@ -1,24 +1,24 @@
-<%= form_tag({:controller => "permissions", :action => "update_order"}, :method => :post, :remote => true) do %>
+<%= form_tag({:controller => "permissions", :action => "update_order"}, :method => :patch, :remote => true) do %>
 
   <ul id="edit_permissions_list" class="sortable_list">
-    
+
   <% @permissions.each do |permission| %>
-  
+
   	<%= content_tag_for :li, permission do %>
   	  <%= hidden_field_tag "permissions[]", permission.id %>
-      <h4 id="permission_span_<%=permission.id%>" class="permission_header <%=hidden_class(permission)%>"><i class="icon-move"></i>&nbsp;<%=h permission.web_text %></h4>	
-      <%= link_to 'Show', permission %> | 
-      <%= link_to 'Edit', edit_permission_path(permission) %> | 
-      <%= link_to_unless permission.from_aleph?, "Destroy", permission, :data => { :confirm =>'Are you sure?' }, :method => :delete%> | 
+      <h4 id="permission_span_<%=permission.id%>" class="permission_header <%=hidden_class(permission)%>"><i class="glyphicon glyphicon-move"></i>&nbsp;<%=h permission.web_text %></h4>
+      <%= link_to 'Show', permission %> |
+      <%= link_to 'Edit', edit_permission_path(permission) %> |
+      <%= link_to_unless permission.from_aleph?, "Destroy", permission, :data => { :confirm =>'Are you sure?' }, :method => :delete%> |
       <%= link_to permission_path(permission, :permission => {:visible => !permission.visible}), :method => :put, :remote => true, :class => "toggle_visible" do %>
           <%= (permission.visible?) ? "Hide" : "Reveal" %>
         <% end %>
   	<% end %>
-  	
+
   <% end %>
-  
+
   </ul>
-  
-  <button class="btn" type="submit" data-remote="true">Save changes</button>
+
+  <button class="btn btn-default" type="submit" data-remote="true">Save changes</button>
 
 <% end %>

@@ -30,7 +30,7 @@ class PermissionValuesController < ApplicationController
       else
         #If failed, set the code back to user-entered code, without prefix
         @permission_value.code = params[:permission_value][:code]
-        flash[:error] = t("permission_values.create_failure")
+        flash[:danger] = t("permission_values.create_failure")
         format.html { redirect_to @permission }
       end
     end

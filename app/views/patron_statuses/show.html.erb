@@ -52,9 +52,15 @@
   <dt>Permissions by Sub Library</dt>
   <dd>
     <%= form_tag patron_status_path, :class => "form-inline clearfix", :method => :get do %>
+      <div class="row">
+        <div class="col-sm-8">
         <%= select_tag 'sublibrary_code', options_for_select(@sublibraries.collect{ |s| [sublibrary_text(s), s.code] }, {:selected => params[:sublibrary_code]}),
           {prompt: "Select a sublibrary", class: 'form-control' }%>
-        <button class="btn" type="submit">View permissions</button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-default" type="submit">View permissions</button>
+        </div>
+      </div>
     <% end %>
   </dd>
 

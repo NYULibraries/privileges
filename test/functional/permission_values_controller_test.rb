@@ -29,7 +29,7 @@ class PermissionValuesControllerTest < ActionController::TestCase
    assert assigns(:permission)
    assert_response :redirect
    assert_redirected_to permission_path(assigns(:permission))
-   assert_not_nil flash[:error]
+   assert_not_nil flash[:danger]
  end
 
  test "should show permission value" do

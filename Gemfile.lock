@@ -81,6 +81,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts_as_indexed (0.8.3)
     addressable (2.3.6)
     akami (1.2.2)
       gyoku (>= 0.4.0)
@@ -379,6 +380,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_indexed (~> 0.8.3)
   authpds-nyu!
   better_errors (~> 2.0.0)
   binding_of_caller (~> 0.7.2)

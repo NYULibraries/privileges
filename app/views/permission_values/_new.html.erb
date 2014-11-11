@@ -1,14 +1,14 @@
 <% if !@permission.from_aleph? %>
 	<%= form_for @permission_value do |f| %>
-	<% if @permission.errors.any? %>  
-    <div id="error_explanation" class="alert alert-danger">  
-      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this record from being saved:</h2>  
-      <ul>  
-      <% @permission.errors.full_messages.each do |msg| %>  
-        <li><%= msg %></li>  
-      <% end %>  
-      </ul>  
-    </div>  
+	<% if @permission.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this record from being saved:</h2>
+      <ul>
+      <% @permission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
 	<p>
 		<h3><%=icon_tag :add %>Add Permission Value:</h3>
@@ -22,12 +22,12 @@
 			</thead>
 			<tbody>
   			<tr>
-        		<td><%= f.text_field :code %></td>
+        		<td><%= f.text_field :code, class: "form-control" %></td>
         		<td>
-        		  <%= f.text_field :web_text %>
+        		  <%= f.text_field :web_text, class: "form-control" %>
         		  <%= f.hidden_field :permission_code, :value => @permission.code%>
         		</td>
-        		<td><button type="submit" class="btn">Add permission value</button></td>
+        		<td><button type="submit" class="btn btn-default">Add permission value</button></td>
   			</tr>
 			</tbody>
 		</table>

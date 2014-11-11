@@ -28,7 +28,7 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
 
        assert_response :redirect
        assert_redirected_to patron_status_path(assigns(:patron_status), :sublibrary_code => assigns(:sublibrary_code))
-       assert_not_nil flash[:error]
+       assert_not_nil flash[:danger]
     end
    end
 
@@ -47,7 +47,7 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
 
       assert_response :redirect
       assert_redirected_to patron_status_path(assigns(:patron_status), :sublibrary_code => assigns(:sublibrary_code))
-      assert_not_nil flash[:error]
+      assert_not_nil flash[:danger]
     end
   end
 
