@@ -1,30 +1,30 @@
 <h1>Editing application text</h1>
 
 <%= form_for(@application_detail) do |f| %>
-  <% if @application_detail.errors.any? %>  
-    <div id="error_explanation" class="alert alert-danger">  
-      <h2><%= pluralize(@application_detail.errors.count, "error") %> prohibited this record from being saved:</h2>  
-      <ul>  
-      <% @application_detail.errors.full_messages.each do |msg| %>  
-        <li><%= msg %></li>  
-      <% end %>  
-      </ul>  
-    </div>  
+  <% if @application_detail.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@application_detail.errors.count, "error") %> prohibited this record from being saved:</h2>
+      <ul>
+      <% @application_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
 
-  <p>
-    <%= f.label :description %>
-    <div class="well">
-    <%= @application_detail.description.html_safe %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Description</div>
+    <div class="panel-body">
+      <%= @application_detail.description.html_safe %>
     </div>
-  </p>
-  <p>
+  </div>
+  <div class="form-group">
     <%= f.label :the_text %>
-    <%= f.text_area :the_text, :rows => 3 %>
-  </p>
-  <p>
-    <button class="btn" type="submit">Save changes</button>
-  </p>
+    <%= f.text_area :the_text, :rows => 10, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-default" type="submit">Save changes</button>
+  </div>
 <% end %>
 
 <%= icon_tag :back %>

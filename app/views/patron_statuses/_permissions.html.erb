@@ -2,12 +2,12 @@
 
 <h3><%= sublibrary_text(@sublibrary) %></h3>
 <div id="permissions_<%=@sublibrary.code%>">
-  <%= form_tag({:controller => "patron_status_permissions", :action => "update_multiple"}, :method => :post, :remote => true, :id => "edit_patron_status_permissions") do %>
+  <%= form_tag({:controller => "patron_status_permissions", :action => "update_multiple"}, :method => :patch, :remote => true, :id => "edit_patron_status_permissions") do %>
 
 	<%= hidden_field_tag "patron_status_permission[patron_status_code]", @patron_status.code %>
 	<%= hidden_field_tag "patron_status_permission[sublibrary_code]", @sublibrary.code %>
 	<%= hidden_field_tag "patron_status_permission[from_aleph]", 0 %>
-	
+
 	<table class="table table-bordered table-striped">
 		<thead>
 		  <tr>
@@ -38,6 +38,3 @@
 </div>
 
 <% end %>
-
-
-

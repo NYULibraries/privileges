@@ -35,9 +35,9 @@ module Views
 
       # Prepend the flash message partial before yield
       def prepend_yield
-        content_tag :div, :id => "main-flashses" do
-         render :partial => 'common/flash_msg'
-        end
+        # content_tag :div, :id => "main-flashses" do
+        #  render :partial => 'common/flash_msg'
+        # end
       end
 
       # Boolean for whether or not to show tabs

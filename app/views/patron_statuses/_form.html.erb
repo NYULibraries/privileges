@@ -10,40 +10,40 @@
       </ul>
     </div>
   <% end %>
-  
-  
-  <div class="field">
+
+
+  <div class="form-group">
     <%= f.label :code %>
-    <%= f.text_field :code, :disabled => locals[:disable_code_field] %>
+    <%= f.text_field :code, :disabled => locals[:disable_code_field], class: "form-control" %>
   </div>
   <% if @patron_status.from_aleph? %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :original_text %>
-    <%= f.text_field :original_text, :disabled => true %>
+    <%= f.text_field :original_text, :disabled => true, class: "form-control" %>
   </div>
   <% end %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :web_text %>
-    <%= f.text_field :web_text %>
+    <%= f.text_field :web_text, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :keywords %>
-    <%= f.text_field :keywords %> <%= tooltip_tag(icon_tag(:info), "Enter a comma-delimited list of keywords to aid in the patron status search.") %>
+  <div class="form-group">
+    <%= f.label :keywords %> <%= tooltip_tag(icon_tag(:info), "Enter a comma-delimited list of keywords to aid in the patron status search.") %>
+    <%= f.text_field :keywords, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :under_header, "Grouping" %>
-    <%= f.text_field :under_header %>
+    <%= f.text_field :under_header, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :id_type %>
-    <%= f.text_field :id_type %>
+    <%= f.text_field :id_type, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, :rows => 3 %>
+    <%= f.text_area :description, :rows => 3, class: "form-control" %>
   </div>
   <div class="actions">
-    <button type="submit" class="btn">Save changes</button>
+    <button type="submit" class="btn btn-default">Save changes</button>
   </div>
 
 <% end %>
