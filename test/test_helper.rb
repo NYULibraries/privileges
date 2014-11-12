@@ -44,7 +44,7 @@ require 'webmock'
 WebMock.allow_net_connect!
 
 VCR.configure do |c|
-  c.default_cassette_options = { :record => :none, :allow_playback_repeats => true }
+  c.default_cassette_options = { :record => :new_episodes, :allow_playback_repeats => true }
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock
