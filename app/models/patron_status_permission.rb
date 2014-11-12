@@ -36,16 +36,5 @@ class PatronStatusPermission < ActiveRecord::Base
       permission_value.permission.visible
     end
   end
-
-  # Reindex patron status and sublibrary
-  # associated with this patron status permision when it has been changed
-  after_save :reindex_associations
-  after_destroy :reindex_associations
-  def reindex_associations
-    unless Utilities::Common::running_from_rake?
-      patron_status.delay.index!
-      sublibrary.delay.index!
-    end
-  end
-  private :reindex_associations
+  
 end

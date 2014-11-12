@@ -1,7 +1,7 @@
 class Permission < ActiveRecord::Base
   include Utilities::Common
 
-  #Validations
+  # Validations
   validates :code, :presence => true, :uniqueness => true
   validate :web_text_required_if_not_from_aleph
   validate :code_is_only_prefix
@@ -31,17 +31,5 @@ class Permission < ActiveRecord::Base
   # Named scopes
   scope :by_sort_order, ->{ order 'sort_order ASC, web_text ASC' }
   scope :visible, ->{ where visible: 1 }
-
-  # Reindex patron statuses and patron status permissions that are
-  # associated with this permission when it has been changed
-  after_save :reindex_associations
-  after_destroy :reindex_associations
-  def reindex_associations
-    unless Utilities::Common::running_from_rake?
-      patron_statuses.each {|ps| ps.delay.index!}
-      patron_status_permissions.each {|psp| psp.delay.index!}
-    end
-  end
-  private :reindex_associations
 
 end
