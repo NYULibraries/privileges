@@ -64,10 +64,6 @@ gem 'newrelic_rpm', '~> 3.9.0'
 # Use Sunspot for search
 gem 'sunspot_rails', '~> 2.1.1'
 
-gem 'delayed_job_active_record', '~> 4.0.2'
-
-gem 'daemons', '~> 1.1.9'
-
 group :test do
   gem 'sunspot_solr', '~> 2.1.0'
   gem 'coveralls', '~> 0.7.0', :require => false
