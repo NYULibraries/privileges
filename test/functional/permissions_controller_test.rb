@@ -57,10 +57,12 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should update permission" do
-    put :update, :id => Permission.first.id, :permission => {:code => "uniquecode1234"}
+    VCR.use_cassette('update permission') do
+      put :update, :id => Permission.first.id, :permission => {:code => "uniquecode1234"}
 
-    assert assigns(:permission)
-    assert_redirected_to permission_path(assigns(:permission))
+      assert assigns(:permission)
+      assert_redirected_to permission_path(assigns(:permission))
+    end
   end
 
   test "should NOT update permission" do
@@ -82,11 +84,13 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should update order" do
-    post :update_order, :permissions => [permissions(:aleph_two).id, permissions(:aleph_one).id]
+    VCR.use_cassette('update order permission') do
+      post :update_order, :permissions => [permissions(:aleph_two).id, permissions(:aleph_one).id]
 
-    assert_equal permissions(:aleph_two).id, Permission.by_sort_order.first.id
-    assert_equal permissions(:aleph_one).id, Permission.by_sort_order.offset(1).limit(1).first.id
-    assert_redirected_to permissions_url
+      assert_equal permissions(:aleph_two).id, Permission.by_sort_order.first.id
+      assert_equal permissions(:aleph_one).id, Permission.by_sort_order.offset(1).limit(1).first.id
+      assert_redirected_to permissions_url
+    end
   end
 
 end

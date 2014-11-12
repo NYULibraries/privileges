@@ -51,11 +51,13 @@ class PermissionValuesControllerTest < ActionController::TestCase
  end
 
  test "should update permission value" do
-   put :update, :id => PermissionValue.first.id, :permission_value => @perm_attrs
+   VCR.use_cassette('update permission value') do
+     put :update, :id => PermissionValue.first.id, :permission_value => @perm_attrs
 
-   assert assigns(:permission_value)
-   assert assigns(:permission)
-   assert_redirected_to permission_path(assigns(:permission))
+     assert assigns(:permission_value)
+     assert assigns(:permission)
+     assert_redirected_to permission_path(assigns(:permission))
+   end
  end
 
  test "should NOT update permission value" do

@@ -24,16 +24,4 @@ class PermissionValue < ActiveRecord::Base
   has_many :patron_statuses,
            :through => :patron_status_permissions
 
-  # Reindex patron statuses and patron status permissions that are
-  # associated with this permission value when it has been changed
-  after_save :reindex_associations
-  after_destroy :reindex_associations
-  def reindex_associations
-    unless Utilities::Common::running_from_rake?
-      patron_status_permissions.each {|psp| psp.delay.index!}
-      patron_statuses.each {|ps| ps.delay.index!}
-    end
-  end
-  private :reindex_associations
-
 end
