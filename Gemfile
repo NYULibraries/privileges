@@ -37,11 +37,12 @@ gem 'mustache-rails', github: 'josh/mustache-rails', require: 'mustache/railtie'
 # Use Exlibris::Nyu for NYU Exlibris customizations, etc.
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
-# Use AuthPDS for authentication and authorization
-gem 'authpds-nyu', github: 'NYULibraries/authpds-nyu', :tag => 'v2.0.1'
+# Use Devise & OAuth2
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries'
+gem 'devise', '~> 3.4.1'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.0.4'
+gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.1.1'
 
 # Deploy the application with Formaggio deploy recipes
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.0.1'
@@ -64,12 +65,8 @@ gem 'newrelic_rpm', '~> 3.9.0'
 # Use Sunspot for search
 gem 'sunspot_rails', '~> 2.1.1'
 
-group :test do
-  gem 'sunspot_solr', '~> 2.1.0'
-  gem 'coveralls', '~> 0.7.0', :require => false
-  gem 'vcr', '~> 2.9.0'
-  gem 'webmock', '~> 1.20.0'
-end
+# Development solr instance from Sunspot
+gem 'sunspot_solr', '~> 2.1.1', group: [:test, :development]
 
 group :development do
   gem 'better_errors', '~> 2.0.0'
@@ -77,9 +74,25 @@ group :development do
   gem 'progress_bar', '~> 1.0.3'
 end
 
-group :development, :test do
+group :development, :test, :cucumber do
   gem 'rspec-rails', '~> 3.1.0'
+  # Phantomjs for headless browser testing
+  gem 'phantomjs', '>= 1.9.0'
+  gem 'poltergeist', '~> 1.5.0'
+  # Use factory girl for creating models
   gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'database_cleaner', '~> 1.3.0'
+  # Use pry-debugger as the REPL and for debugging
   gem 'pry', '~> 0.10.1'
+end
+
+group :test, :cucumber do
+  gem 'cucumber-rails', require: false
+  gem 'simplecov', require: false
+  gem 'simplecov-rcov', require: false
+  gem 'coveralls', '~> 0.7.0', require: false
+  gem 'vcr', '~> 2.9.3'
+  gem 'webmock', '~> 1.19.0'
+  gem 'selenium-webdriver', '~> 2.43.0'
+  gem 'pickle', '~> 0.4.11'
+  gem 'database_cleaner', '~> 1.3.0'
 end
