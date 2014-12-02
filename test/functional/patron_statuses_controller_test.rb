@@ -2,10 +2,10 @@ require 'test_helper'
 
 class PatronStatusesControllerTest < ActionController::TestCase
 
-  setup :activate_authlogic
 
   def setup
-   current_user = UserSession.create(users(:admin))
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -28,7 +28,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
   end
 
   test "should redirect nonadmin user to root" do
-    current_user = UserSession.create(users(:nonadmin))
+    sign_in users(:nonadmin)
     get :index
     assert_redirected_to root_url
   end

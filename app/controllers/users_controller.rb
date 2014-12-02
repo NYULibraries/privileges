@@ -22,7 +22,9 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find_by_username(params[:id])
-    respond_with(@user, location: root_url)
+    respond_with(@user) do |format|
+      format.html { redirect_to root_url }
+    end
   end
 
   # DELETE /users/1

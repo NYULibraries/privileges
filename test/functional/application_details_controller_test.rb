@@ -2,10 +2,9 @@ require 'test_helper'
 
 class ApplicationDetailsControllerTest < ActionController::TestCase
 
-  setup :activate_authlogic
-
   def setup
-   current_user = UserSession.create(users(:admin))
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:admin)
   end
 
   test "should get index" do

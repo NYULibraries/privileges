@@ -7,13 +7,12 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
 class ActiveSupport::TestCase
   fixtures :all
-
-  def set_dummy_pds_user(user_session)
-    user_session.instance_variable_set("@pds_user".to_sym, users(:real_user))
-  end
-
 end
 
 # VCR is used to 'record' HTTP interactions with

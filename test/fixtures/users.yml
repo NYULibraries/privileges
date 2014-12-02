@@ -3,14 +3,14 @@ real_user:
   email: <%= username + "@university.edu" %>
   aleph_id: "DS34D"
   patron_status: "52"
-  institution_code: "INST01"
+  institution_code: "NYU"
 
 nonadmin:
   username: <%= username = "nonadmin" %>
   email: <%= username + "@university.edu" %>
   aleph_id: "N000"
   patron_status: "52"
-  institution_code: "INST01"
+  institution_code: "NYU"
 
 admin:
   username: <%= username = "admin" %>
@@ -20,4 +20,4 @@ admin:
   admin: true
   aleph_id: "N001"
   patron_status: "nonstatus"
-  institution_code: "INST01"
+  institution_code: "NYU"

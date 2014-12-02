@@ -2,10 +2,9 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
 
-  setup :activate_authlogic
-
   def setup
-   current_user = UserSession.create(users(:admin))
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:admin)
   end
 
   test "should get index" do
@@ -40,7 +39,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should toggle user admin status" do
-    put :update, :id => users(:nonadmin).id, :user => { :access_grid_admin => 1 }
+    put :update, :id => users(:nonadmin).id, :user => { :admin => 1 }
 
     assert assigns(:user)
     assert_redirected_to user_path(assigns(:user))
