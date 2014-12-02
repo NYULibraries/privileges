@@ -44,6 +44,11 @@ class ApplicationController < ActionController::Base
   end
   alias :current_user :current_user_dev if Rails.env == "development"
 
+  # Alias new_session_path as login_path for default devise config
+  def new_session_path(scope)
+    login_path
+  end
+
   # Global function for converting string to url-friendly strings
   def urlize abnormal
     # Turns "Adjunct Faculty" to "adjunct-faculty"
