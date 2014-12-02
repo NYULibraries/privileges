@@ -17,9 +17,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  #Authpds user functions
-  include Authpds::Controllers::AuthpdsController
-
   # Filter users to root if not admin
   def authenticate_admin
     if !is_admin?
