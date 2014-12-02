@@ -19,30 +19,22 @@ class ApplicationController < ActionController::Base
 
   # Filter users to root if not admin
   def authenticate_admin
-    if !is_admin?
-      redirect_to root_url and return unless performed?
-    else
-      return true
-    end
+    return true if is_admin?
+    redirect_to root_url and return unless is_admin? && performed?
   end
   protected :authenticate_admin
 
   # Return true if user is marked as admin
-  def is_admin
-  	if current_user.nil? or !current_user.user_attributes[:access_grid_admin]
-      return false
-    else
-      return true
-    end
+  def is_admin?
+    @is_admin ||= (current_user.present? && current_user.admin?)
   end
-  alias :is_admin? :is_admin
   helper_method :is_admin?
 
   # For dev purposes
   def current_user_dev
-   @current_user ||= User.new(email: "abYY", firstname: "Annibale", user_attributes: { access_grid_admin: true })
+   @current_user ||= User.new(email: "abYY", firstname: "Annibale", admin: true)
   end
-  alias :current_user :current_user_dev if Rails.env == "development"
+  alias :current_user :current_user_dev if Rails.env.development?
 
   # Alias new_session_path as login_path for default devise config
   def new_session_path(scope)

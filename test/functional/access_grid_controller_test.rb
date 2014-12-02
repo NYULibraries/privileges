@@ -10,7 +10,7 @@ class AccessGridControllerTest < ActionController::TestCase
     @controller.session[:session_id] = "FakeSessionID"
   end
 
-  test "show all patron statuses list" do 
+  test "show all patron statuses list" do
     VCR.use_cassette('get patron statuses') do
       get :index_patron_statuses
       assert assigns(:patron_statuses)
@@ -19,12 +19,12 @@ class AccessGridControllerTest < ActionController::TestCase
     end
   end
 
-  test "redirect to individual patron status" do 
+  test "redirect to individual patron status" do
     VCR.use_cassette('get individual patron statuses') do
       current_user = UserSession.create(users(:nonadmin))
       get :index_patron_statuses
       assert assigns(:patron_status)
-      assert_equal assigns(:patron_status).stored(:code), users(:nonadmin).user_attributes[:bor_status]
+      assert_equal assigns(:patron_status).stored(:code), users(:nonadmin).patron_status
 
       assert_redirected_to patron_path("#{assigns(:patron_status).primary_key}-#{@controller.send(:urlize, assigns(:patron_status).stored(:web_text))}")
     end
@@ -42,7 +42,7 @@ class AccessGridControllerTest < ActionController::TestCase
     end
   end
 
-  test "show individual patron status with sublibrary permissions" do 
+  test "show individual patron status with sublibrary permissions" do
     VCR.use_cassette('show individual patron statuses with sublibrary permissions') do
       get :show_patron_status, :id => patron_statuses(:aleph_one), :sublibrary_code => sublibraries(:aleph_one).code
       assert assigns(:sublibrary)
@@ -54,7 +54,7 @@ class AccessGridControllerTest < ActionController::TestCase
 
   test "search for patron status and redirect to search results" do
     VCR.use_cassette('search for matching multiple patron statuses') do
-      get :search, :q => "Student" 
+      get :search, :q => "Student"
       assert assigns(:patron_statuses)
       assert assigns(:patron_statuses).total > 0
 

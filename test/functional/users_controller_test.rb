@@ -44,7 +44,7 @@ class UsersControllerTest < ActionController::TestCase
 
     assert assigns(:user)
     assert_redirected_to user_path(assigns(:user))
-    assert assigns(:user).user_attributes[:access_grid_admin], "Admin attr was not toggled"
+    assert assigns(:user).admin, "Admin attr was not toggled"
   end
 
   test "should destroy user" do

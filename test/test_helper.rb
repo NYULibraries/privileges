@@ -6,20 +6,6 @@ end
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'authlogic'
-require 'authlogic/test_case'
-
-class User < ActiveRecord::Base
-  def nyuidn
-    user_attributes[:nyuidn]
-  end
-
-  def error; end
-
-  def uid
-    username
-  end
-end
 
 class ActiveSupport::TestCase
   fixtures :all

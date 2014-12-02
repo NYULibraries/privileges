@@ -1,22 +1,22 @@
-# This class controls the frontend functions for 
-# displaying privileges and searching. It also 
-# offers a JSON API for searching and retrieving 
+# This class controls the frontend functions for
+# displaying privileges and searching. It also
+# offers a JSON API for searching and retrieving
 # Patron Statuses and their associated privileges.
 #
 class AccessGridController < ApplicationController
   # Redirect authenticated user to their patron status
   before_filter :redirect_to_patron_status, :only => :index_patron_statuses
   respond_to :html, :json, :js
-    
+
   # GET /patrons
   # GET /patrons.json
   def index_patron_statuses
-    @patron_statuses = patron_statuses_hits    
+    @patron_statuses = patron_statuses_hits
     respond_with(@patron_statuses) do |format|
       format.json { render :json => patron_statuses_results }
     end
   end
-  
+
   # GET /patrons/1
   # GET /patrons/1.json
   # GET /patrons/1.js
@@ -29,13 +29,13 @@ class AccessGridController < ApplicationController
     @sublibraries = sublibraries_hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = patron_status_sublibrary_permissions
-	  
+
 	  respond_with(@patron_status) do |format|
 	    format.json { render :json => {:patron_status_permissions => @patron_status_permissions, :sublibrary => @sublibrary, :patron_status => @patron_status }, :layout => false }
 	    format.html { render :show_patron_status }
     end
   end
-  
+
   # GET /search?q=
   def search
     #Solr search based on params[:q]
@@ -47,13 +47,13 @@ class AccessGridController < ApplicationController
 	    format.html { redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 }
     end
   end
-  
+
   # Redirect to user's patron status as found in the database on first login
   def redirect_to_patron_status
     #If current user exists and the user has not been previously redirected...
     if !session[:redirected_user] && !current_user.nil?
       #Redirect user to their patron status page
-      params.merge!({:patron_status_code => current_user.user_attributes[:bor_status]})
+      params.merge!({:patron_status_code => current_user.patron_status)
       @patron_status = patron_statuses_hits.first
       session[:redirected_user] = true #Set this session variable so that the user does not get redirected infinitely and the user can choose other statuses
       unless @patron_status.nil?
@@ -63,6 +63,3 @@ class AccessGridController < ApplicationController
   end
 
 end
-
-
-

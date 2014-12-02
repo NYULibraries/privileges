@@ -4,7 +4,7 @@
 # for searching a Sunspot index of sublibraries
 module Searchers
   module Sublibrary
-      
+
       # Retrieve actual records from sunspot search
       def sublibraries_results
         @sublibraries_results ||= sublibraries_search.results
@@ -19,7 +19,7 @@ module Searchers
       def sublibrary_code
         @sublibrary_code ||= @sublibrary.code unless @sublibrary.nil?
       end
-      
+
       # Shortcut for retrieving sublibrary object
       def sublibrary
         @sublibrary ||= ::Sublibrary.find_by_code(params[:sublibrary_code]) if params[:sublibrary_code].present?
@@ -46,11 +46,11 @@ module Searchers
           with(:visible_frontend, true)
           # Default sort
           order_by(:sort_header, :asc)
-          order_by(:sort_text, :asc)  
+          order_by(:sort_text, :asc)
         end
         }
       end
-      
+
 
   end
 end

@@ -1,7 +1,7 @@
 <% if is_admin? %>
 <%= sidebar_section("admin_panel", content_tag(:h2, "Admin Panel"), true) do %>
     <ul class="admin_options">
-        <li><%= link_to "Manage Users", users_url %></li>            
+        <li><%= link_to "Manage Users", users_url %></li>
         <li><%= link_to "Manage Patron Statuses", patron_statuses_url %></li>
         <li><%= link_to "Manage Sublibraries", sublibraries_url %></li>
         <li><%= link_to "Manage Permissions", permissions_url %></li>
