@@ -1,18 +1,37 @@
 language: ruby
 
-env:
-  - SOLR_URL='http://localhost:8981/solr/default'
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.3
+  - 2.1.5
 
-bundler_args: --without development
+env:
+  - SOLR_URL='http://localhost:8984/solr/test'
 
 services:
   - memcached
 
 before_script:
   - mysql -e 'create database access_grid_test;'
-  - bundle exec rake db:schema:load RAILS_ENV=test
+  - RAILS_ENV=test bundle exec rake db:schema:load
+  - bundle exec sunspot-solr start -p 8984
+  - sleep 100
 
-rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.3
+after_script:
+  - bundle exec sunspot-solr stop -p 8984
+
+bundler_args: --without development
+
+script: "RAILS_ENV=test bundle exec rake"
+
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.org#libtechnyu"
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
+  email:
+    - web.services@library.nyu.edu
