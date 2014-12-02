@@ -6,6 +6,7 @@ end
 
 Before('@patron_status') do
   FactoryGirl.create(:patron_status)
+  PatronStatus.reindex
 end
 
 Given(/^I am logged in$/) do
