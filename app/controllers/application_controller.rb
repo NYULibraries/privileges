@@ -30,12 +30,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :is_admin?
 
-  # For dev purposes
-  def current_user_dev
-   @current_user ||= User.new(email: "abYY", firstname: "Annibale", admin: true)
-  end
-  alias :current_user :current_user_dev if Rails.env.development?
-
   # Alias new_session_path as login_path for default devise config
   def new_session_path(scope)
     login_path
