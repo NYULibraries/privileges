@@ -4,9 +4,12 @@ Around('@omniauth_test') do |scenario, block|
   OmniAuth.config.test_mode = false
 end
 
-Before('@patron_status') do
-  FactoryGirl.create(:patron_status)
-  PatronStatus.reindex
+Around('@patron_status') do |scenario, block|
+  VCR.use_cassette('index dummy patron status') do
+    FactoryGirl.create(:patron_status)
+    PatronStatus.reindex
+    block.call
+  end
 end
 
 Given(/^I am logged in$/) do

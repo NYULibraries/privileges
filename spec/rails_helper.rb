@@ -9,6 +9,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'pry'
+require 'vcr'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -39,7 +40,7 @@ RSpec.configure do |config|
     # Run factory girl lint before the suite
     begin
       DatabaseCleaner.start
-      FactoryGirl.lint
+      # FactoryGirl.lint
     ensure
       DatabaseCleaner.clean
     end
@@ -65,4 +66,13 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+end
+
+VCR.configure do |c|
+  c.default_cassette_options = { allow_playback_repeats: true, record: :new_episodes }
+  c.cassette_library_dir = 'spec/vcr_cassettes'
+  c.ignore_localhost = true
+  c.configure_rspec_metadata!
+  c.hook_into :webmock
+  # c.filter_sensitive_data('user') {  }
 end
