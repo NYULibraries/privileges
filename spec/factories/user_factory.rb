@@ -7,5 +7,6 @@ FactoryGirl.define do
     lastname 'Eloper'
     institution_code 'NYU'
     patron_status '51'
+    provider 'nyulibraries'
   end
 end
