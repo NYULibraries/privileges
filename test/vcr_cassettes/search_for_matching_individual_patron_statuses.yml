@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/select?wt=ruby
+    uri: http://localhost:8984/solr/test/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&q=NYU+Adjunct+Faculty&fl=%2A+score&qf=keywords_text+web_text_text+code_text&defType=edismax&start=0&rows=200

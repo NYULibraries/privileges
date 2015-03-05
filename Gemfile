@@ -45,7 +45,7 @@ gem 'devise', '~> 3.4.1'
 gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.1.1'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.3.0'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.4.0'
 
 # Use Kaminari for pagination
 gem 'kaminari', '~> 0.16.0'
