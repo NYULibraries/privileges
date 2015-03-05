@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/select?wt=ruby
+    uri: http://localhost:8984/solr/test/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3ASublibrary&sort=sort_header_ss+asc%2C+sort_text_ss+asc&start=0&rows=30&q=%2A%3A%2A

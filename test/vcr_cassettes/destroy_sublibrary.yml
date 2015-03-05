@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><delete><id>PatronStatusPermission
@@ -27,7 +27,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatus
@@ -61,7 +61,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -85,7 +85,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">Sublibrary
@@ -118,7 +118,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -142,7 +142,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><delete><id>PatronStatusPermission
@@ -167,7 +167,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatus
@@ -200,7 +200,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -224,7 +224,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">Sublibrary
@@ -257,7 +257,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -281,7 +281,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><delete><id>Sublibrary 133703334</id></delete>
@@ -305,7 +305,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
