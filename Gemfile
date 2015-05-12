@@ -65,6 +65,8 @@ gem 'sunspot_rails', '~> 2.1.1'
 # Development solr instance from Sunspot
 gem 'sunspot_solr', '~> 2.1.1', group: [:test, :development]
 
+gem 'aescrypt', '~> 1.0.0'
+
 group :development do
   gem 'better_errors', '~> 2.0.0'
   gem 'binding_of_caller', '~> 0.7.2'

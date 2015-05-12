@@ -11,11 +11,25 @@ class ApplicationController < ActionController::Base
   include Searchers::Sublibrary
   include Searchers::PatronStatusPermission
 
+  prepend_before_filter :check_loggedin_sso
+
   helper :all # include all helpers, all the time
 
   layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
 
   protect_from_forgery
+
+  def check_loggedin_sso
+    if user_signed_in?
+      if loggedin_cookie_set?
+        redirect_to logout_url
+      end
+    end
+  end
+
+  def loggedin_cookie_set?
+    cookies['_login_sso'] == AESCrypt.encrypt(current_user.username, ENV['LOGOUT_SHARED_SECRET'])
+  end
 
   # Filter users to root if not admin
   def authenticate_admin

@@ -83,6 +83,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_indexed (0.8.3)
     addressable (2.3.7)
+    aescrypt (1.0.0)
     akami (1.2.2)
       gyoku (>= 0.4.0)
       nokogiri
@@ -429,6 +430,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_indexed (~> 0.8.3)
+  aescrypt (~> 1.0.0)
   better_errors (~> 2.0.0)
   binding_of_caller (~> 0.7.2)
   coffee-rails (~> 4.1.0)
