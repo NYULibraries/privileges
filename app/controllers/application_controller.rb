@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  prepend_before_filter :check_loggedin_sso
+  prepend_before_filter :check_loggedin_sso, except: [:destroy]
   def check_loggedin_sso
     if user_signed_in? && !loggedin_cookie_set?
       redirect_to logout_url(no_redirect: true)
@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     unless params[:no_redirect] || !ENV['SSO_LOGOUT_URL']
       ENV['SSO_LOGOUT_URL']
+    else
+      super(resource_or_scope)
     end
   end
 
