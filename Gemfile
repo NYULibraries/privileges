@@ -24,7 +24,7 @@ gem 'uglifier', '~> 2.5.0'
 gem 'therubyracer', '~> 0.12.0'
 
 # Use the Compass CSS framework for sprites, etc.
-gem 'compass-rails', '~> 2.0.0'
+gem 'compass-rails', '2.0.1'
 
 # Use acts as indexed to search models
 gem 'acts_as_indexed', '~> 0.8.3'
@@ -67,6 +67,8 @@ gem 'sunspot_solr', '~> 2.1.1', group: [:test, :development]
 
 gem 'aescrypt', '~> 1.0.0'
 
+# gem 'foreman', '~> 0.78.0'
+
 group :development do
   gem 'better_errors', '~> 2.0.0'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -77,7 +79,7 @@ group :development, :test, :cucumber do
   gem 'rspec-rails', '~> 3.1.0'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
-  gem 'poltergeist', '~> 1.5.0'
+  gem 'poltergeist', '~> 1.6.0'
   # Use factory girl for creating models
   gem 'factory_girl_rails', '~> 4.5.0'
   # Use pry-debugger as the REPL and for debugging
