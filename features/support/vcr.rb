@@ -10,7 +10,7 @@ VCR.configure do |c|
   end
   c.hook_into :webmock
   c.cassette_library_dir = 'features/cassettes'
-  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :once }
+  c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :none }
   c.allow_http_connections_when_no_cassette = true
 end
 

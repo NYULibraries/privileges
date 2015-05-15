@@ -18,9 +18,9 @@ Feature: Log in/out links
     Then I should see a logout link
     And I should see "Log-out Dev" as the text of the logout link
 
-  @omniauth_test @patron_status
-  Scenario: A non aleph logged in user should have access denied
-    Given I am logged in as a non aleph user
+  @omniauth_test
+  Scenario: A guest user should see a login link
+    Given I am not logged in
     And I am on the homepage
-    Then I should see a logout link
-    And I should see "Log-out Dev" as the text of the logout link
+    Then I should see a login link
+    And I should see "Login" as the text of the login link
