@@ -1,7 +1,3 @@
-Before('@omniauth_test') do
-  page.cookies['_login_sso'] = AESCrypt.encrypt(omniauth_hash.uid, ENV['LOGOUT_SHARED_SECRET']).chop
-end
-
 Around('@omniauth_test') do |scenario, block|
   OmniAuth.config.test_mode = true
   block.call
@@ -18,6 +14,7 @@ end
 
 Given(/^I am logged in$/) do
   OmniAuth.config.mock_auth[:nyulibraries] = omniauth_hash
+  create_cookie('_login_sso', AESCrypt.encrypt(omniauth_hash[:uid], ENV['LOGOUT_SHARED_SECRET']))
   visit '/login'
 end
 

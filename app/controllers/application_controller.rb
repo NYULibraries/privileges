@@ -17,13 +17,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  prepend_before_filter :check_loggedin_sso, except: [:destroy]
-  def check_loggedin_sso
-    if user_signed_in? && !loggedin_cookie_set?
-      redirect_to logout_url(no_redirect: true)
-    end
-  end
-
   def after_sign_out_path_for(resource_or_scope)
     unless params[:no_redirect] || !ENV['SSO_LOGOUT_URL']
       ENV['SSO_LOGOUT_URL']
@@ -31,11 +24,6 @@ class ApplicationController < ActionController::Base
       super(resource_or_scope)
     end
   end
-
-  def loggedin_cookie_set?
-    cookies['_login_sso'] == AESCrypt.encrypt(current_user.username, ENV['LOGOUT_SHARED_SECRET'])
-  end
-  private :loggedin_cookie_set?
 
   # Filter users to root if not admin
   def authenticate_admin

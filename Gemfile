@@ -65,8 +65,6 @@ gem 'sunspot_rails', '~> 2.1.1'
 # Development solr instance from Sunspot
 gem 'sunspot_solr', '~> 2.1.1', group: [:test, :development]
 
-gem 'aescrypt', '~> 1.0.0'
-
 # gem 'foreman', '~> 0.78.0'
 
 group :development do
