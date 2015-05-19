@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def after_sign_out_path_for(resource_or_scope)
-    unless params[:no_redirect] || !ENV['SSO_LOGOUT_URL']
+    unless !ENV['SSO_LOGOUT_URL']
       ENV['SSO_LOGOUT_URL']
     else
       super(resource_or_scope)
