@@ -4,6 +4,7 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
 
   def setup
     @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies["_check_passive_login"] = true
     @psp_perm_attrs = {:sublibrary_code => sublibraries(:aleph_one).code, :permission_value_id => permission_values(:pv_nonaleph_one).id, :patron_status_code => patron_statuses(:aleph_nonvisible).code}
     sign_in users(:admin)
   end

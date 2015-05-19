@@ -5,6 +5,7 @@ class PatronStatusesControllerTest < ActionController::TestCase
 
   def setup
     @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies["_check_passive_login"] = true
     sign_in users(:admin)
   end
 
