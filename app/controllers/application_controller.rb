@@ -7,6 +7,7 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
+  prepend_before_filter :passive_login
   include Searchers::PatronStatus
   include Searchers::Sublibrary
   include Searchers::PatronStatusPermission
@@ -16,6 +17,17 @@ class ApplicationController < ActionController::Base
   layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
 
   protect_from_forgery
+
+  def passive_login
+    if !cookies[:_check_passive_login]
+      cookies[:_check_passive_login] = true
+      redirect_to passive_login_url
+    end
+  end
+
+  def passive_login_url
+    "#{ENV['PASSIVE_LOGIN_URL']}?client_id=#{ENV['APP_ID']}&return_uri=#{request.url}&login_path=#{Rails.application.config.action_controller.relative_url_root}/login"
+  end
 
   # Filter users to root if not admin
   def authenticate_admin
