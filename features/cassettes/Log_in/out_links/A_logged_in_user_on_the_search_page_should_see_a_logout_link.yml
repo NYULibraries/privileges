@@ -120,4 +120,28 @@ http_interactions:
         {'responseHeader'=>{'status'=>0,'QTime'=>3},'response'=>{'numFound'=>1,'start'=>0,'docs'=>[{'id'=>'PatronStatus 1','description_ss'=>'Something here','code_ss'=>'51','from_aleph_bs'=>true,'web_text_ss'=>'Administrator','under_header_ss'=>'All things must pass','visible_bs'=>true,'sort_header_ss'=>'all things must pass','_version_'=>'1494831637112815616'}]}}
     http_version: 
   recorded_at: Fri, 15 May 2015 20:30:07 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&fq=visible_bs%3Atrue&fq=code_ss%3A51&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=200&q=*%3A*
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>46},'response'=>{'numFound'=>0,'start'=>0,'docs'=>[]}}
+    http_version: 
+  recorded_at: Wed, 20 May 2015 17:15:10 GMT
 recorded_with: VCR 2.9.3
