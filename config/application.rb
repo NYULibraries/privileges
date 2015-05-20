@@ -11,7 +11,6 @@ require 'figs'
 Figs.load(stage: Rails.env) unless ENV['TRAVIS']
 
 module PrivilegesGuide
-  EXAMPLE_ORIGIN = 'example.com'
   LOCAL_CREATION_PREFIX = 'nyu_ag_noaleph_'
 
   class Application < Rails::Application
@@ -26,15 +25,6 @@ module PrivilegesGuide
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    whitelisted_origins = Rails.env.test? ?
-    PrivilegesGuide::EXAMPLE_ORIGIN : (["http://ws-balter.bobst.nyu.edu:3000"] || [])
-
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins *whitelisted_origins
-        resource '/sso_logout', headers: :any, methods: [:delete], expose: 'X-CSRF-Token'
-      end
-    end
 
     # Autoload the lib path
     config.autoload_paths += %W(#{config.root}/lib)

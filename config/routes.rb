@@ -25,7 +25,4 @@ Rails.application.routes.draw do
   get 'patrons(.:format)' => 'access_grid#index_patron_statuses', as: :patrons
 
   root to: 'access_grid#index_patron_statuses'
-
-  # Endpoint that login can hit to remotely log user out
-  delete 'sso_logout' => 'users/omniauth_logout#sso_logout', constraints: { format: :json }
 end

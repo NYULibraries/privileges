@@ -5,9 +5,6 @@ gem 'rails', '~> 4.1.0'
 # Use MySQL for the database
 gem 'mysql2', '~> 0.3.16'
 
-# Add CORS support
-gem 'rack-cors', '~> 0.2.0', require: 'rack/cors'
-
 # Use SCSS for stylesheets
 # Locked in at beta1 release because major release doesn't play nice with compass-rails yet
 gem 'sass-rails', '5.0.0.beta1'
