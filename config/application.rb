@@ -27,7 +27,7 @@ module PrivilegesGuide
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     whitelisted_origins = Rails.env.test? ?
-      Eshelf::EXAMPLE_ORIGIN : (["http://ws-balter.bobst.nyu.edu:3000"] || [])
+    PrivilegesGuide::EXAMPLE_ORIGIN : (["http://ws-balter.bobst.nyu.edu:3000"] || [])
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
