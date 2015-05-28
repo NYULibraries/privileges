@@ -32,7 +32,7 @@ gem 'acts_as_indexed', '~> 0.8.3'
 # Use mustache for templating
 # Fix to 0.99.4 cuz 0.99.5 broke my shit.
 gem 'mustache', '0.99.4'
-gem 'mustache-rails', github: 'josh/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
+gem 'mustache-rails', github: 'NYULibraries/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
 
 # Use Exlibris::Nyu for NYU Exlibris customizations, etc.
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
