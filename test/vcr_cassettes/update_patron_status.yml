@@ -82,4 +82,86 @@ http_interactions:
         {'responseHeader'=>{'status'=>0,'QTime'=>21}}
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=30&q=*%3A*
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>0},'response'=>{'numFound'=>2,'start'=>0,'docs'=>[{'id'=>'PatronStatus 1','description_ss'=>'Something here','code_ss'=>'51','from_aleph_bs'=>true,'web_text_ss'=>'Administrator','under_header_ss'=>'All things must pass','visible_bs'=>true,'sort_header_ss'=>'all things must pass','_version_'=>'1494831637112815616'},{'id'=>'PatronStatus 1032573618','code_ss'=>'uniqueness1203946','from_aleph_bs'=>false,'web_text_ss'=>'Test2','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','_version_'=>'1504245576048312320'}]}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:31 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=ruby
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatus
+        133703334</field><field name="type">PatronStatus</field><field name="type">ActiveRecord::Base</field><field
+        name="class_name">PatronStatus</field><field name="description_ss">specialdescription</field><field
+        name="original_text_s">Ugly_Adjunct_Fac</field><field name="code_ss">52</field><field
+        name="from_aleph_bs">true</field><field name="web_text_ss">Get some new text
+        in here</field><field name="under_header_ss">Library</field><field name="visible_bs">true</field><field
+        name="sort_header_ss">library</field><field name="sublibraries_with_access_sms">TNSFO</field><field
+        boost="5.0" name="keywords_text">Adjunct, Faculty, Adjunct Faculty, specialkeyword</field><field
+        name="web_text_text">Get some new text in here</field><field name="code_text">52</field><field
+        name="description_text">specialdescription</field><field name="under_header_text">Library</field><field
+        name="original_text_text">Ugly_Adjunct_Fac</field></doc></add>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>4}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:31 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=ruby
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><commit/>
+    headers:
+      Content-Type:
+      - text/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>17}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:31 GMT
 recorded_with: VCR 2.9.3
