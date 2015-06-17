@@ -60,10 +60,10 @@ gem 'comma', '~> 3.2.0'
 gem 'newrelic_rpm', '~> 3.9.0'
 
 # Use Sunspot for search
-gem 'sunspot_rails', '~> 2.1.1'
+gem 'sunspot_rails', '~> 2.2.0'
 
 # Development solr instance from Sunspot
-gem 'sunspot_solr', '~> 2.1.1', group: [:test, :development]
+gem 'sunspot_solr', '~> 2.2.0', group: [:test, :development]
 
 group :development do
   gem 'better_errors', '~> 2.0.0'
