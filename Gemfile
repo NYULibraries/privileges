@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.11'
 
 # Use MySQL for the database
 gem 'mysql2', '~> 0.3.16'
 
 # Use SCSS for stylesheets
-gem 'sass-rails',   '>= 5.0.0.beta1'
+gem 'sass-rails',   '5.0.0.beta1'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
