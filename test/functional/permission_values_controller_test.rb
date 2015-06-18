@@ -4,6 +4,7 @@ class PermissionValuesControllerTest < ActionController::TestCase
 
  def setup
    @request.env["devise.mapping"] = Devise.mappings[:user]
+   @request.cookies["_check_passive_login"] = true
    sign_in users(:admin)
    @perm_attrs = {:code => "newandunique", :web_text => "somethingnotblank", :permission_code => "multiple_hold_permission"}
  end
