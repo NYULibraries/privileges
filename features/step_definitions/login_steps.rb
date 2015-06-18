@@ -47,7 +47,6 @@ Then(/^I should see "(.*?)" as the text of the logout link$/) do |text|
 end
 
 Then(/^I should see the login page in the current window$/) do
-  pending
   expect(page).to have_text 'Select your affiliation'
 end
 
@@ -57,4 +56,13 @@ end
 
 When(/^I click the login link$/) do
   click_on "Login"
+end
+
+When(/^I click on "(.*?)"$/) do |link|
+  click_on link
+end
+
+Then(/^I should be logged out$/) do
+  page.save_screenshot 'screenshot.png'
+  expect(page).to have_text 'LOGGED OUT'
 end
