@@ -63,6 +63,5 @@ When(/^I click on "(.*?)"$/) do |link|
 end
 
 Then(/^I should be logged out$/) do
-  page.save_screenshot 'screenshot.png'
   expect(page).to have_text 'LOGGED OUT'
 end
