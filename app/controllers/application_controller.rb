@@ -24,11 +24,7 @@ class ApplicationController < ActionController::Base
       redirect_to passive_login_url
     end
   end
-
-  def passive_login_url
-    "#{ENV['PASSIVE_LOGIN_URL']}?client_id=#{ENV['APP_ID']}&return_uri=#{request.url}&login_path=#{Rails.application.config.action_controller.relative_url_root}/login"
-  end
-
+  
   # Filter users to root if not admin
   def authenticate_admin
     return true if is_admin?
@@ -87,5 +83,19 @@ class ApplicationController < ActionController::Base
   end
   alias :is_in_admin_view? :is_in_admin_view
   helper_method :is_in_admin_view?
+
+  private
+
+  def passive_login_url
+    "#{ENV['PASSIVE_LOGIN_URL']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}&login_path=#{login_path_escaped}"
+  end
+
+  def request_url_escaped
+    CGI::escape(request.url)
+  end
+
+  def login_path_escaped
+    CGI::escape("#{Rails.application.config.action_controller.relative_url_root}/login")
+  end
 
 end
