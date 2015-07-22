@@ -42,7 +42,7 @@ gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 
 gem 'devise', '~> 3.4.1'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.4.2'
+gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.4.3'
 
 # Deploy the application with Formaggio deploy recipes
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.4.0'
