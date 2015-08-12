@@ -7,7 +7,7 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
-  prepend_before_filter :passive_login
+  prepend_before_filter :passive_login, unless: -> { request.format.js? || request.format.json? }
   include Searchers::PatronStatus
   include Searchers::Sublibrary
   include Searchers::PatronStatusPermission
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       redirect_to passive_login_url
     end
   end
-  
+
   # Filter users to root if not admin
   def authenticate_admin
     return true if is_admin?
