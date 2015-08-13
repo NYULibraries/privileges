@@ -1,5 +1,5 @@
 class UserSession < Authlogic::Session::Base
-  pds_url (ENV['PDS_URL'] || 'https://login.library.nyu.edu')
+  pds_url (ENV['PDS_URL'] || 'https://pds.library.nyu.edu')
   calling_system 'primo'
   anonymous false
 
