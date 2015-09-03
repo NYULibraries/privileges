@@ -68,5 +68,5 @@ When(/^I click on "(.*?)"$/) do |link|
 end
 
 Then(/^I should be logged out$/) do
-  expect(page).to have_text 'LOGGED OUT'
+  expect(page).to have_text 'Almost logged out'
 end
