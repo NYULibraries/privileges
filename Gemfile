@@ -38,7 +38,7 @@ gem 'mustache-rails', github: 'NYULibraries/mustache-rails', require: 'mustache/
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v1.1.2'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
 gem 'devise', '~> 3.4.1'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
