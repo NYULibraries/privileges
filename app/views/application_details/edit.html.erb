@@ -15,7 +15,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Description</div>
     <div class="panel-body">
-      <%= @application_detail.description.html_safe %>
+      <%= sanitize(@application_detail.description.html_safe) %>
     </div>
   </div>
   <div class="form-group">
