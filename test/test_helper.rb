@@ -6,28 +6,13 @@ end
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'authlogic'
-require 'authlogic/test_case'
 
-class User < ActiveRecord::Base
-  def nyuidn
-    user_attributes[:nyuidn]
-  end
-
-  def error; end
-
-  def uid
-    username
-  end
+class ActionController::TestCase
+  include Devise::TestHelpers
 end
 
 class ActiveSupport::TestCase
   fixtures :all
-
-  def set_dummy_pds_user(user_session)
-    user_session.instance_variable_set("@pds_user".to_sym, users(:real_user))
-  end
-
 end
 
 # VCR is used to 'record' HTTP interactions with
@@ -44,7 +29,7 @@ require 'webmock'
 WebMock.allow_net_connect!
 
 VCR.configure do |c|
-  c.default_cassette_options = { :record => :new_episodes, :allow_playback_repeats => true }
+  c.default_cassette_options = { :record => :once, :allow_playback_repeats => true }
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock

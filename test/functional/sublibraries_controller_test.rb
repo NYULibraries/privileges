@@ -2,10 +2,10 @@ require 'test_helper'
 
 class SublibrariesControllerTest < ActionController::TestCase
 
-  setup :activate_authlogic
-
   def setup
-   current_user = UserSession.create(users(:admin))
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies["_check_passive_login"] = true
+    sign_in users(:admin)
   end
 
   test "should get index" do

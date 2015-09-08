@@ -5,5 +5,8 @@ FactoryGirl.define do
     email { "#{username}@example.com" }
     firstname 'Dev'
     lastname 'Eloper'
+    institution_code 'NYU'
+    patron_status '51'
+    provider 'nyulibraries'
   end
 end

@@ -1,15 +1,10 @@
 class User < ActiveRecord::Base
-
-  serialize :user_attributes
-
-  acts_as_authentic do |c|
-    c.validations_scope = :username
-    c.validate_password_field = false
-    c.require_password_confirmation = false
-    c.disable_perishable_token_maintenance = true
-  end
+  # Login with NYULibraris OAuth provider
+  devise :omniauthable, omniauth_providers: [:nyulibraries]
 
   acts_as_indexed fields: [:firstname, :lastname, :username, :email]
+
+  scope :non_admin, -> { where.not(admin: true) }
 
   # Create a CSV format
   comma do

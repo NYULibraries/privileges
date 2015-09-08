@@ -3,11 +3,8 @@ require 'test_helper'
 class AccessGridControllerTest < ActionController::TestCase
 
   setup do
-    activate_authlogic
-    # Pretend we've already checked PDS/Shibboleth for the session
-    # and we have a session
-    @request.cookies[:attempted_sso] = { value: "true" }
-    @controller.session[:session_id] = "FakeSessionID"
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.cookies["_check_passive_login"] = true
   end
 
   test "show all patron statuses list" do
@@ -21,10 +18,10 @@ class AccessGridControllerTest < ActionController::TestCase
 
   test "redirect to individual patron status" do
     VCR.use_cassette('get individual patron statuses') do
-      current_user = UserSession.create(users(:nonadmin))
+      sign_in users(:nonadmin)
       get :index_patron_statuses
       assert assigns(:patron_status)
-      assert_equal assigns(:patron_status).stored(:code), users(:nonadmin).user_attributes[:bor_status]
+      assert_equal assigns(:patron_status).stored(:code), users(:nonadmin).patron_status
 
       assert_redirected_to patron_path("#{assigns(:patron_status).primary_key}-#{@controller.send(:urlize, assigns(:patron_status).stored(:web_text))}")
     end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/select?wt=ruby
+    uri: http://localhost:8984/solr/test/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B%2A+TO+%2A%5D&fq=visible_bs%3Atrue&fq=sublibraries_with_access_sms%3ATNSFO&fq=code_ss%3A52&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=200&q=%2A%3A%2A
@@ -26,7 +26,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:23 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/select?wt=ruby
+    uri: http://localhost:8984/solr/test/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3ASublibrary&fq=visible_frontend_bs%3Atrue&sort=sort_header_ss+asc%2C+sort_text_ss+asc&start=0&rows=200&q=%2A%3A%2A
@@ -50,7 +50,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:23 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/select?wt=ruby
+    uri: http://localhost:8984/solr/test/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatusPermission&fq=patron_status_code_ss%3A52&fq=sublibrary_code_ss%3ATNSFO&fq=permission_visible_bs%3Atrue&fq=visible_bs%3Atrue&start=0&rows=200&q=%2A%3A%2A

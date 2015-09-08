@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/select?wt=ruby
+    uri: http://localhost:8984/solr/test/select?wt=ruby
     body:
       encoding: US-ASCII
       string: fq=type%3APatronStatusPermission&fq=patron_status_code_ss%3A52&fq=sublibrary_code_ss%3ATNSFO&fq=permission_visible_bs%3Atrue&start=0&rows=200&q=%2A%3A%2A
@@ -26,7 +26,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatusPermission
@@ -55,7 +55,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">PatronStatus
@@ -90,7 +90,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>
@@ -114,7 +114,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><add><doc><field name="id">Sublibrary
@@ -147,7 +147,7 @@ http_interactions:
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
     method: post
-    uri: http://localhost:8981/solr/default/update?wt=ruby
+    uri: http://localhost:8984/solr/test/update?wt=ruby
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><commit/>

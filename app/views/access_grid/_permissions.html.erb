@@ -1,5 +1,5 @@
 <% if @sublibrary %>
-<h3><%= @sublibrary.web_text.html_safe %></h3>
+<h3><%= sanitize(@sublibrary.web_text.html_safe) %></h3>
 <div id="permissions_<%=@sublibrary.code%>" class="permissions_list">
   <table class="table table-bordered table-striped">
   	<thead>
