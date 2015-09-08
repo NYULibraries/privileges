@@ -72,4 +72,76 @@ http_interactions:
         {'responseHeader'=>{'status'=>0,'QTime'=>11},'response'=>{'numFound'=>4,'start'=>0,'docs'=>[{'id'=>'PatronStatusPermission 8727','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>27,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013956'},{'id'=>'PatronStatusPermission 8729','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>28,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013958'},{'id'=>'PatronStatusPermission 8731','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>29,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013960'},{'id'=>'PatronStatusPermission 14834','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>51,'from_aleph_bs'=>false,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497892977672194'}]}}
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:23 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&fq=visible_bs%3Atrue&fq=sublibraries_with_access_sms%3ATNSFO&fq=code_ss%3A52&sort=sort_header_ss+asc%2C+web_text_ss+asc&start=0&rows=200&q=*%3A*
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>1,'start'=>0,'docs'=>[{'id'=>'PatronStatus 133703334','description_ss'=>'specialdescription','code_ss'=>'52','from_aleph_bs'=>true,'web_text_ss'=>'Get some new text in here','under_header_ss'=>'Library','visible_bs'=>true,'sort_header_ss'=>'library','sublibraries_with_access_sms'=>['TNSFO'],'_version_'=>'1504245576586231808'}]}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:33 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3ASublibrary&fq=visible_frontend_bs%3Atrue&sort=sort_header_ss+asc%2C+sort_text_ss+asc&start=0&rows=200&q=*%3A*
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>3,'start'=>0,'docs'=>[{'id'=>'Sublibrary 674783527','web_text_ss'=>'Waldmann Memorial Dental Library','code_ss'=>'nyu_ag_noaleph_dental','visible_bs'=>true,'visible_frontend_bs'=>true,'from_aleph_bs'=>false,'under_header_ss'=>'NYU','sort_header_ss'=>'!nyu','sort_text_ss'=>'waldmann memorial dental library','_version_'=>'1494831386083721216'},{'id'=>'Sublibrary 39149540','web_text_ss'=>'NYU Library','code_ss'=>'NYU50','visible_bs'=>true,'visible_frontend_bs'=>true,'from_aleph_bs'=>true,'under_header_ss'=>'50Library','sort_header_ss'=>'50library','sort_text_ss'=>'nyu library','_version_'=>'1494831386073235456'},{'id'=>'Sublibrary 133703334','web_text_ss'=>'New School Fogelman Library','code_ss'=>'TNSFO','visible_bs'=>true,'visible_frontend_bs'=>true,'from_aleph_bs'=>true,'under_header_ss'=>'New School','sort_header_ss'=>'new school','sort_text_ss'=>'new school fogelman library','_version_'=>'1504245577054945280'}]}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:33 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatusPermission&fq=patron_status_code_ss%3A52&fq=sublibrary_code_ss%3ATNSFO&fq=permission_visible_bs%3Atrue&fq=visible_bs%3Atrue&start=0&rows=200&q=*%3A*
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>0,'start'=>0,'docs'=>[]}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:33 GMT
 recorded_with: VCR 2.9.3

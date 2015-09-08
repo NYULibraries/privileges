@@ -103,4 +103,28 @@ http_interactions:
         SHARES Student and Faculty','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','sublibraries_with_access_sms'=>['BAFC','BRES','BFALE','NIFA','BOBST','BTAM','NCOUR','nyu_ag_noaleph_dental','nyu_ag_noaleph_law'],'_version_'=>'1484497850193674240','score'=>2.5122554}]}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:23 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=ruby
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&q=Student&fl=*+score&qf=keywords_text+web_text_text+code_text&defType=edismax&start=0&rows=200
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>0,'start'=>0,'maxScore'=>0.0,'docs'=>[]}}
+    http_version: 
+  recorded_at: Wed, 17 Jun 2015 16:59:33 GMT
 recorded_with: VCR 2.9.3
