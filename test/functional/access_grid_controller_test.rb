@@ -4,7 +4,6 @@ class AccessGridControllerTest < ActionController::TestCase
 
   setup do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @request.cookies["_check_passive_login"] = true
   end
 
   test "show all patron statuses list" do
