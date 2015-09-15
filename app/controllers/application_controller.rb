@@ -7,6 +7,7 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
+  prepend_before_filter :passive_login, unless: -> { request.format.js? || request.format.json? }
   include Searchers::PatronStatus
   include Searchers::Sublibrary
   include Searchers::PatronStatusPermission
@@ -16,6 +17,13 @@ class ApplicationController < ActionController::Base
   layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
 
   protect_from_forgery
+
+  def passive_login
+    if !cookies[:_check_passive_login]
+      cookies[:_check_passive_login] = true
+      redirect_to passive_login_url
+    end
+  end
 
   # Filter users to root if not admin
   def authenticate_admin
@@ -88,6 +96,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def passive_login_url
+    "#{ENV['LOGIN_URL']}#{ENV['PASSIVE_LOGIN_PATH']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}"
+  end
+  
   def request_url_escaped
     CGI::escape(request.url)
   end
