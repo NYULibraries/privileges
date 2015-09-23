@@ -18,7 +18,7 @@ gem 'jquery-rails', '~> 3.1.0'
 gem 'jquery-ui-rails', '~> 5.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 2.5.0'
+gem 'uglifier', '~> 2.7.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', '~> 0.12.0'
