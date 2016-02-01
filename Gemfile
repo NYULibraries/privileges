@@ -39,7 +39,7 @@ gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
-gem 'devise', '~> 3.4.1'
+gem 'devise', '~> 3.5.4'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries-assets', github: 'NYULibraries/nyulibraries-assets', tag: 'v4.4.3'
