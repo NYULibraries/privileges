@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/nyulibraries_errors.git
-  revision: b349ea2102119166bfd2e22fa96b134f6495dbdf
+  revision: 99f4bb34493da983100dc20be10f185ca6f97449
   specs:
     nyulibraries_errors (0.0.1)
 
