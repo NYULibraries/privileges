@@ -3,7 +3,7 @@
 # offers a JSON API for searching and retrieving
 # Patron Statuses and their associated privileges.
 #
-class AccessGridController < ApplicationController
+class PrivilegesController < ApplicationController
   # Redirect authenticated user to their patron status
   before_filter :redirect_to_patron_status, :only => :index_patron_statuses
   respond_to :html, :json, :js

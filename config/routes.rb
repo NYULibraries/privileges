@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   patch 'permissions/update_order' => 'permissions#update_order'
   patch 'patron_status_permissions/update_multiple' => 'patron_status_permissions#update_multiple'
 
-  get 'search' => 'access_grid#search', as: :search
-  get 'patrons/:id' => 'access_grid#show_patron_status', as: :patron
-  get 'patrons(.:format)' => 'access_grid#index_patron_statuses', as: :patrons
+  get 'search' => 'privileges#search', as: :search
+  get 'patrons/:id' => 'privileges#show_patron_status', as: :patron
+  get 'patrons(.:format)' => 'privileges#index_patron_statuses', as: :patrons
 
-  root to: 'access_grid#index_patron_statuses'
+  root to: 'privileges#index_patron_statuses'
 end
