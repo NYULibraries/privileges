@@ -7,7 +7,7 @@ privileges: &privileges
   host: <%= (ENV['PRIVILEGES_DB_HOST'] || 'localhost') %>
   username: <%= (ENV['PRIVILEGES_DB_USER'] || 'root') %>
   password: <%= (ENV['PRIVILEGES_DB_PASSWORD'] || '') %>
-  database: <%= (ENV['PRIVILEGES_DB_DATABASE'] || 'access_grid') %>
+  database: <%= (ENV['PRIVILEGES_DB_DATABASE'] || 'privileges') %>
 
 development: &development
   <<: *privileges
@@ -19,7 +19,7 @@ test: &test
   <<: *privileges
   username: <%= (ENV['PRIVILEGES_DB_USER'] || ENV['JENKINS_DB_USER'] || 'root') %>
   password: <%= (ENV['PRIVILEGES_DB_PASSWORD'] || ENV['JENKINS_DB_PASSWORD'] || '') %>
-  database: <%= (ENV['PRIVILEGES_DB_DATABASE'] || 'access_grid_test') %>
+  database: <%= (ENV['PRIVILEGES_DB_DATABASE'] || 'privileges_test') %>
 
 cucumber:
   <<: *test

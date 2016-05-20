@@ -13,7 +13,7 @@ services:
   - memcached
 
 before_script:
-  - mysql -e 'create database access_grid_test;'
+  - mysql -e 'create database privileges_test;'
   - RAILS_ENV=test bundle exec rake db:schema:load
   - bundle exec sunspot-solr start -p 8984
   - sleep 100
@@ -26,13 +26,6 @@ bundler_args: --without development
 script: "RAILS_ENV=test bundle exec rake"
 
 notifications:
-  irc:
-    channels:
-      - "irc.freenode.org#libtechnyu"
-    template:
-      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
-      - "Change view : %{compare_url}"
-      - "Build details : %{build_url}"
   email:
     - lib-webservices@nyu.edu
 
