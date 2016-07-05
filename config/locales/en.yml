@@ -21,6 +21,8 @@
 
 
 en:
+  nyulibraries_errors:
+    application_title: Privileges Guide
   application_details:
     create_success: "Application text was successfully created."
     update_success: "Application text was successfully updated."
