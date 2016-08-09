@@ -78,7 +78,7 @@ group :development, :test, :cucumber do
   gem 'rspec-rails', '~> 3.1.0'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
-  gem 'poltergeist', '~> 1.5.0'
+  gem 'poltergeist', '~> 1.10.0'
   # Use factory girl for creating models
   gem 'factory_girl_rails', '~> 4.5.0'
   # Use pry-debugger as the REPL and for debugging
