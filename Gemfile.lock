@@ -34,22 +34,32 @@ GIT
       mustache (~> 0.99.4)
 
 GIT
-  remote: git://github.com/NYULibraries/nyulibraries-assets.git
-  revision: 91cc320fa400ad720d5c41e11ea705cc41986256
-  tag: v4.4.3
-  specs:
-    nyulibraries-assets (4.4.3)
-      bootstrap-sass (~> 3.2.0.2)
-      compass (~> 1.0.1)
-      font-awesome-rails (~> 4.2.0.0)
-      institutions (~> 0.1.3)
-
-GIT
   remote: git://github.com/NYULibraries/nyulibraries_errors.git
   revision: c77c8c8a8699d5af7ceb2775fe6ac7aa81f6a5f5
   tag: v1.0.0
   specs:
     nyulibraries_errors (1.0.0)
+
+GIT
+  remote: git://github.com/NYULibraries/nyulibraries_javascripts.git
+  revision: b7391f5bdd52ef2633015e747750369dd7c585e8
+  specs:
+    nyulibraries_javascripts (0.0.1)
+
+GIT
+  remote: git://github.com/NYULibraries/nyulibraries_stylesheets.git
+  revision: 685447959d5514d8d374e89b530c3051b74b73db
+  specs:
+    nyulibraries_stylesheets (0.0.0)
+      bootstrap-sass (~> 3.2)
+      compass (>= 1.0.1)
+
+GIT
+  remote: git://github.com/NYULibraries/nyulibraries_templates.git
+  revision: b36dfe044223630ab79f431dd3266a663a95401d
+  specs:
+    nyulibraries_templates (0.0.1)
+      rails (>= 4)
 
 GIT
   remote: git://github.com/NYULibraries/omniauth-nyulibraries.git
@@ -103,6 +113,8 @@ GEM
       gyoku (>= 0.4.0)
       nokogiri
     arel (6.0.3)
+    autoprefixer-rails (6.5.1.1)
+      execjs
     bcrypt (3.1.11)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -110,8 +122,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     cap_git_tools (0.9.1)
       capistrano (~> 2.0)
@@ -223,8 +236,6 @@ GEM
     figs (2.0.3)
       git (~> 1.2.6)
       rake (~> 10.1)
-    font-awesome-rails (4.2.0.0)
-      railties (>= 3.2, < 5.0)
     foreman (0.78.0)
       thor (~> 0.19.1)
     gherkin (4.0.0)
@@ -242,10 +253,6 @@ GEM
       rack
       socksify
     i18n (0.7.0)
-    institutions (0.1.3)
-      ipaddr_range_set (~> 0.10.0)
-      require_all (~> 1.3.1)
-    ipaddr_range_set (0.10.0)
     iso-639 (0.2.8)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -497,8 +504,10 @@ DEPENDENCIES
   mustache-rails!
   mysql2 (~> 0.3.16)
   newrelic_rpm (~> 3.9.0)
-  nyulibraries-assets!
   nyulibraries_errors!
+  nyulibraries_javascripts!
+  nyulibraries_stylesheets!
+  nyulibraries_templates!
   omniauth-nyulibraries!
   phantomjs (>= 1.9.0)
   pickle (~> 0.4.11)
