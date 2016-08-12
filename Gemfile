@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.14.2'
+gem 'rails', '~> 4.2.0'
 
 # Use MySQL for the database
 gem 'mysql2', '~> 0.3.16'
@@ -78,7 +78,7 @@ group :development, :test, :cucumber do
   gem 'rspec-rails', '~> 3.1.0'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
-  gem 'poltergeist', '~> 1.5.0'
+  gem 'poltergeist', '~> 1.10.0'
   # Use factory girl for creating models
   gem 'factory_girl_rails', '~> 4.5.0'
   # Use pry-debugger as the REPL and for debugging
@@ -95,4 +95,6 @@ group :test, :cucumber do
   gem 'selenium-webdriver', '~> 2.43.0'
   gem 'pickle', '~> 0.4.11'
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'rails-perftest'
+  gem 'ruby-prof'
 end
