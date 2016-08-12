@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.14.2'
+gem 'rails', '~> 4.2.0'
 
 # Use MySQL for the database
 gem 'mysql2', '~> 0.3.16'
@@ -95,4 +95,6 @@ group :test, :cucumber do
   gem 'selenium-webdriver', '~> 2.43.0'
   gem 'pickle', '~> 0.4.11'
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'rails-perftest'
+  gem 'ruby-prof'
 end
