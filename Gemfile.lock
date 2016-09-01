@@ -41,6 +41,15 @@ GIT
     nyulibraries_errors (1.0.0)
 
 GIT
+  remote: git://github.com/NYULibraries/nyulibraries_institutions.git
+  revision: a120b0a668125d7b5ccbb104a57c177879e56521
+  branch: feature/improve_tests
+  specs:
+    nyulibraries_institutions (0.0.0)
+      institutions (~> 0.1.3)
+      rails (>= 4)
+
+GIT
   remote: git://github.com/NYULibraries/nyulibraries_javascripts.git
   revision: b7391f5bdd52ef2633015e747750369dd7c585e8
   specs:
@@ -56,7 +65,8 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/nyulibraries_templates.git
-  revision: b36dfe044223630ab79f431dd3266a663a95401d
+  revision: a668821e097ea754c0cb26b2899ab6ead828e730
+  branch: feature/better_testing
   specs:
     nyulibraries_templates (0.0.1)
       rails (>= 4)
@@ -253,6 +263,10 @@ GEM
       rack
       socksify
     i18n (0.7.0)
+    institutions (0.1.3)
+      ipaddr_range_set (~> 0.10.0)
+      require_all (~> 1.3.1)
+    ipaddr_range_set (0.10.0)
     iso-639 (0.2.8)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -505,6 +519,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.16)
   newrelic_rpm (~> 3.9.0)
   nyulibraries_errors!
+  nyulibraries_institutions!
   nyulibraries_javascripts!
   nyulibraries_stylesheets!
   nyulibraries_templates!
