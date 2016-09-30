@@ -18,6 +18,11 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  def current_user_dev
+    @current_user ||= User.find_by_username('admin')
+  end
+  alias_method :current_user, :current_user_dev if Rails.env.development?
+
   def passive_login
     if !cookies[:_check_passive_login]
       cookies[:_check_passive_login] = true
