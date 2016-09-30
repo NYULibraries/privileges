@@ -31,6 +31,10 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
+  # Include the Devise test helpers
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
+
   config.before(:suite) do
     # Startout by trucating all the tables
     DatabaseCleaner.clean_with :truncation

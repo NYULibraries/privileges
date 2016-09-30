@@ -8,5 +8,9 @@ FactoryGirl.define do
     institution_code 'NYU'
     patron_status '51'
     provider 'nyulibraries'
+
+    factory :admin do
+      admin true
+    end
   end
 end
