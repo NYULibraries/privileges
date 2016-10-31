@@ -43,8 +43,8 @@ gem 'devise', '~> 3.5.4'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets'
-gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', branch: 'feature/improve_tests'
-gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', branch: 'feature/better_testing'
+gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions'
+gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates'
 gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts'
 gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
 
