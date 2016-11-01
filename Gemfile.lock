@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: git://github.com/NYULibraries/nyulibraries_stylesheets.git
-  revision: 685447959d5514d8d374e89b530c3051b74b73db
+  revision: cf9f0aa9f38c593e97149c2a85398921348e3166
   specs:
     nyulibraries_stylesheets (0.0.0)
       bootstrap-sass (~> 3.2)
@@ -370,7 +370,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
-    rb-fsevent (0.9.7)
+    rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     ref (2.0.0)
