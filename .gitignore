@@ -17,7 +17,7 @@ public/assets
 *.sql
 *.pid
 solr
-app/assets/images/icons-*.png
+app/assets/images/nyulibraries_stylesheets/icons-*.png
 config/aleph
 .DS_Store
 
