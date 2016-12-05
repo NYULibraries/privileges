@@ -32,24 +32,24 @@ gem 'acts_as_indexed', '~> 0.8.3'
 # Use mustache for templating
 # Fix to 0.99.4 cuz 0.99.5 broke my shit.
 gem 'mustache', '0.99.4'
-gem 'mustache-rails', github: 'NYULibraries/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
+gem 'mustache-rails', git: 'https://github.com/NYULibraries/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
 
 # Use Exlibris::Nyu for NYU Exlibris customizations, etc.
-gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
+gem 'exlibris-nyu', git: 'https://github.com/NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
+gem 'omniauth-nyulibraries', git: 'https://github.com/NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
 gem 'devise', '~> 3.5.4'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets'
-gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions'
-gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates'
-gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts'
-gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
+gem 'nyulibraries_stylesheets', git: 'https://github.com/NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.0'
+gem 'nyulibraries_institutions', git: 'https://github.com/NYULibraries/nyulibraries_institutions', tag: 'v1.0.0'
+gem 'nyulibraries_templates', git: 'https://github.com/NYULibraries/nyulibraries_templates', tag: 'v1.0.0'
+gem 'nyulibraries_javascripts', git: 'https://github.com/NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
+gem 'nyulibraries_errors', git: 'https://github.com/NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.2'
+gem 'formaggio', git: 'https://github.com/NYULibraries/formaggio', tag: 'v1.5.2'
 
 # Use Kaminari for pagination
 gem 'kaminari', '~> 0.16.0'
