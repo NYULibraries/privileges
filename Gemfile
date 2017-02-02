@@ -64,9 +64,9 @@ gem 'sunspot_rails', '~> 2.2.0'
 gem 'foreman', '~> 0.83'
 
 group :development do
-  gem 'better_errors', '~> 2.0.0'
+  gem 'better_errors', '~> 2.1.0'
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'progress_bar', '~> 1.0.3'
+  gem 'progress_bar', '~> 1.1.0'
 end
 
 group :development, :test, :cucumber do
@@ -77,21 +77,18 @@ group :development, :test, :cucumber do
 end
 
 group :test, :cucumber do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.5.0'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
-  gem 'poltergeist', '~> 1.10.0'
+  gem 'poltergeist', '~> 1.13.0'
   # Use factory girl for creating models
-  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'factory_girl_rails', '~> 4.8.0'
   gem 'cucumber-rails', require: false
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
-  gem 'coveralls', '~> 0.7.0', require: false
-  gem 'vcr', '~> 2.9.3'
-  gem 'webmock', '~> 1.19.0'
+  gem 'coveralls', '~> 0.8.0', require: false
+  gem 'vcr', '~> 3.0.0'
+  gem 'webmock', '~> 2.3.0'
   gem 'selenium-webdriver', '~> 3.0.5'
-  gem 'pickle', '~> 0.4.11'
-  gem 'database_cleaner', '~> 1.3.0'
-  # gem 'rails-perftest'
-  # gem 'ruby-prof'
+  gem 'database_cleaner', '~> 1.5.0'
 end
