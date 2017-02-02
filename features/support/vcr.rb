@@ -12,6 +12,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'features/cassettes'
   c.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:method, :uri, :body], record: :once }
   c.allow_http_connections_when_no_cassette = true
+  c.ignore_localhost = true
 end
 
 VCR.cucumber_tags do |t|

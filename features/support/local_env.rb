@@ -29,7 +29,7 @@ if ENV['IN_BROWSER']
   # IN_BROWSER=true PAUSE=1 bundle exec cucumber
   Capybara.register_driver :selenium do |app|
     http_client = Selenium::WebDriver::Remote::Http::Default.new
-    http_client.timeout = 120
+    http_client.read_timeout = 120
     Capybara::Selenium::Driver.new(app, :browser => :firefox, :http_client => http_client)
   end
   Capybara.default_driver = :selenium

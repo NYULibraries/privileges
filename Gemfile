@@ -3,28 +3,28 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.2.0'
 
 # Use MySQL for the database
-gem 'mysql2', '~> 0.3.16'
+gem 'mysql2', '~> 0.4.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.0'
 
 # Use jQuery as the JavaScript library
-gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-rails', '~> 4.2.0'
 
 # Use jQuery UI as well
-gem 'jquery-ui-rails', '~> 5.0.2'
+gem 'jquery-ui-rails', '~> 6.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 2.7.0'
+gem 'uglifier', '~> 3.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', '~> 0.12.0'
 
 # Use the Compass CSS framework for sprites, etc.
-gem 'compass-rails', '~> 2.0.0'
+gem 'compass-rails', '~> 3.0.0'
 
 # Use acts as indexed to search models
 gem 'acts_as_indexed', '~> 0.8.3'
@@ -33,15 +33,15 @@ gem 'acts_as_indexed', '~> 0.8.3'
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', github: 'https://github.com/NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
-gem 'devise', '~> 3.5.4'
+gem 'omniauth-nyulibraries', path: '/apps/omniauth-nyulibraries' #github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
+gem 'devise', '~> 4.2.0'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.0'
-gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.0'
-gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.0.0'
+gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.1'
+gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.1'
+gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.0.1'
 gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
-gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
+gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.1'
 
 # Deploy the application with Formaggio deploy recipes
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.2'
@@ -53,15 +53,15 @@ gem 'kaminari', '~> 0.16.0'
 gem 'dalli', '~> 2.7.0'
 
 # Create CSVs from models
-gem 'comma', '~> 3.2.0'
+gem 'comma', '~> 4.0.0'
 
 # New Relic performance monitoring
-gem 'newrelic_rpm', '~> 3.9.0'
+gem 'newrelic_rpm', '~> 3.18'
 
 # Use Sunspot for search
 gem 'sunspot_rails', '~> 2.2.0'
 
-gem 'foreman', '~> 0.78.0'
+gem 'foreman', '~> 0.83'
 
 group :development do
   gem 'better_errors', '~> 2.0.0'
@@ -72,7 +72,6 @@ end
 group :development, :test, :cucumber do
   # Use pry-debugger as the REPL and for debugging
   gem 'pry', '~> 0.10.1'
-  gem 'rb-readline'
   # Development solr instance from Sunspot
   gem 'sunspot_solr', '~> 2.2.0'
 end
@@ -90,9 +89,9 @@ group :test, :cucumber do
   gem 'coveralls', '~> 0.7.0', require: false
   gem 'vcr', '~> 2.9.3'
   gem 'webmock', '~> 1.19.0'
-  gem 'selenium-webdriver', '~> 2.43.0'
+  gem 'selenium-webdriver', '~> 3.0.5'
   gem 'pickle', '~> 0.4.11'
   gem 'database_cleaner', '~> 1.3.0'
-  gem 'rails-perftest'
-  gem 'ruby-prof'
+  # gem 'rails-perftest'
+  # gem 'ruby-prof'
 end
