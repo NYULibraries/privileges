@@ -12,6 +12,10 @@ env:
     - LOGIN_URL=https://dev.login.library.nyu.edu
     - SSO_LOGOUT_PATH=/logout
 
+before_install:
+  - gem update bundler
+  - bundle config --local github.https true
+
 before_script:
   - mysql -e 'create database privileges_test;'
   - RAILS_ENV=test bundle exec rake db:schema:load
