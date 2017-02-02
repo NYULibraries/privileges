@@ -6,7 +6,7 @@ gem 'rails', '~> 4.2.0'
 gem 'mysql2', '~> 0.3.16'
 
 # Use SCSS for stylesheets
-gem 'sass-rails',   '5.0.0.beta1'
+gem 'sass-rails', '~> 5.0.6'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
@@ -29,27 +29,22 @@ gem 'compass-rails', '~> 2.0.0'
 # Use acts as indexed to search models
 gem 'acts_as_indexed', '~> 0.8.3'
 
-# Use mustache for templating
-# Fix to 0.99.4 cuz 0.99.5 broke my shit.
-gem 'mustache', '0.99.4'
-gem 'mustache-rails', git: 'https://github.com/NYULibraries/mustache-rails', require: 'mustache/railtie', tag: 'v0.2.3'
-
 # Use Exlibris::Nyu for NYU Exlibris customizations, etc.
-gem 'exlibris-nyu', git: 'https://github.com/NYULibraries/exlibris-nyu', tag: 'v2.1.3'
+gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', git: 'https://github.com/NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
+gem 'omniauth-nyulibraries', github: 'https://github.com/NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
 gem 'devise', '~> 3.5.4'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries_stylesheets', git: 'https://github.com/NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.0'
-gem 'nyulibraries_institutions', git: 'https://github.com/NYULibraries/nyulibraries_institutions', tag: 'v1.0.0'
-gem 'nyulibraries_templates', git: 'https://github.com/NYULibraries/nyulibraries_templates', tag: 'v1.0.0'
-gem 'nyulibraries_javascripts', git: 'https://github.com/NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
-gem 'nyulibraries_errors', git: 'https://github.com/NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
+gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.0'
+gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.0'
+gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.0.0'
+gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
+gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.0'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', git: 'https://github.com/NYULibraries/formaggio', tag: 'v1.5.2'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.2'
 
 # Use Kaminari for pagination
 gem 'kaminari', '~> 0.16.0'
@@ -66,9 +61,6 @@ gem 'newrelic_rpm', '~> 3.9.0'
 # Use Sunspot for search
 gem 'sunspot_rails', '~> 2.2.0'
 
-# Development solr instance from Sunspot
-gem 'sunspot_solr', '~> 2.2.0', group: [:test, :development]
-
 gem 'foreman', '~> 0.78.0'
 
 group :development do
@@ -78,17 +70,20 @@ group :development do
 end
 
 group :development, :test, :cucumber do
+  # Use pry-debugger as the REPL and for debugging
+  gem 'pry', '~> 0.10.1'
+  gem 'rb-readline'
+  # Development solr instance from Sunspot
+  gem 'sunspot_solr', '~> 2.2.0'
+end
+
+group :test, :cucumber do
   gem 'rspec-rails', '~> 3.1.0'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
   gem 'poltergeist', '~> 1.10.0'
   # Use factory girl for creating models
   gem 'factory_girl_rails', '~> 4.5.0'
-  # Use pry-debugger as the REPL and for debugging
-  gem 'pry', '~> 0.10.1'
-end
-
-group :test, :cucumber do
   gem 'cucumber-rails', require: false
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
