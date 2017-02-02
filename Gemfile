@@ -33,7 +33,7 @@ gem 'acts_as_indexed', '~> 0.8.3'
 gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', path: '/apps/omniauth-nyulibraries' #github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.0.0'
 gem 'devise', '~> 4.2.0'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
