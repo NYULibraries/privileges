@@ -7,8 +7,7 @@ describe 'routes for users' do
     it do
       should route_to({
         controller: 'users/omniauth_callbacks',
-        action: 'passthru',
-        provider: 'nyulibraries'
+        action: 'passthru'
         })
     end
   end
@@ -18,8 +17,7 @@ describe 'routes for users' do
     it do
       should route_to({
         controller: 'users/omniauth_callbacks',
-        action: 'passthru',
-        provider: 'nyulibraries'
+        action: 'passthru'
         })
     end
   end
@@ -33,5 +31,5 @@ describe 'routes for users' do
     subject { post('/users/auth/nyulibraries/callback') }
     it { should route_to({controller: 'users/omniauth_callbacks', action: 'nyulibraries'}) }
   end
-  
+
 end
