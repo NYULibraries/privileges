@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  devise :trackable
   # Login with NYULibraris OAuth provider
   devise :omniauthable, omniauth_providers: [:nyulibraries]
 
