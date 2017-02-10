@@ -1,5 +1,10 @@
 # Change Log
 
+## 2017-02-10
+
+- Setup rake task to clean out old users: `rake privileges:cleanup:users`
+- Move aleph_load rake task into appropriate namespace: `rake privileges:load_aleph`
+
 ## 2016-09-30
 
 - Change `web_text` field from `:string` to `:text` on `PermissionValues` table to allow for longer descriptions
