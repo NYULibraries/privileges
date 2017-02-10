@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   acts_as_indexed fields: [:firstname, :lastname, :username, :email]
 
   scope :non_admin, -> { where.not(admin: true) }
+  scope :admin, -> { where(admin: true) }
+  scope :inactive, -> { where("last_sign_in_at IS NULL OR last_sign_in_at < ?", 1.year.ago) }
 
   # Create a CSV format
   comma do

@@ -8,6 +8,7 @@ FactoryGirl.define do
     institution_code 'NYU'
     patron_status '51'
     provider 'nyulibraries'
+    last_sign_in_at Time.now
 
     factory :admin do
       admin true

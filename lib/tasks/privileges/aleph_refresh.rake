@@ -1,5 +1,5 @@
 #TODO: Separate into modules and class functions to simplify
-namespace :privileges_guide do
+namespace :privileges do
 
   desc "Refresh Aleph DB Config"
   task :load_aleph => :environment do
