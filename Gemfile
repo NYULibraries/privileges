@@ -89,6 +89,6 @@ group :test, :cucumber do
   gem 'coveralls', '~> 0.8.0', require: false
   gem 'vcr', '~> 3.0.0'
   gem 'webmock', '~> 2.3.0'
-  gem 'selenium-webdriver', '~> 3.0.5'
+  gem 'selenium-webdriver', '~> 3.1.0'
   gem 'database_cleaner', '~> 1.5.0'
 end
