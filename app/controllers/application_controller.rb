@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   prepend_before_filter :passive_login, unless: -> { request.format.js? || request.format.json? }
   include Searchers::PatronStatus
   include Searchers::Sublibrary
-  include Searchers::PatronStatusPermission
 
   helper :all # include all helpers, all the time
 
