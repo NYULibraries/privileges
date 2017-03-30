@@ -5,7 +5,7 @@ class PatronStatusesController < ApplicationController
   # GET /patron_statuses
   # GET /patron_statuses.json
   def index
-    @patron_statuses = patron_statuses_search
+    @patron_statuses = patron_status_search.search
 
     respond_to do |format|
       format.json do
@@ -64,7 +64,7 @@ class PatronStatusesController < ApplicationController
   # PUT /patron_statuses/1.js
   def update
     @patron_status = PatronStatus.find(params[:id])
-    @patron_statuses = patron_statuses_results
+    @patron_statuses = patron_status_search.results
 
     respond_to do |format|
       if @patron_status.update_attributes(patron_status_params)
@@ -93,6 +93,12 @@ class PatronStatusesController < ApplicationController
     super "PatronStatus", ""
   end
   helper_method :sort_column
+
+  protected
+
+  def patron_status_search
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, sort_column: sort_column, sort_direction: sort_direction, admin_view: (is_admin? && is_in_admin_view?))
+  end
 
 
   private

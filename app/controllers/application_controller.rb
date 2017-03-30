@@ -8,7 +8,6 @@
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
   prepend_before_filter :passive_login, unless: -> { request.format.js? || request.format.json? }
-  include Searchers::PatronStatus
   include Searchers::Sublibrary
 
   helper :all # include all helpers, all the time
@@ -103,6 +102,13 @@ class ApplicationController < ActionController::Base
   end
   alias :is_in_admin_view? :is_in_admin_view
   helper_method :is_in_admin_view?
+
+  protected
+
+  def patron_status_search
+    # @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, sort_column: sort_column, sort_direction: sort_direction, admin_view: (is_admin? && is_in_admin_view?))
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, admin_view: (is_admin? && is_in_admin_view?))
+  end
 
   private
 

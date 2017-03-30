@@ -11,7 +11,7 @@ class PrivilegesController < ApplicationController
   # GET /patrons
   # GET /patrons.json
   def index_patron_statuses
-    @patron_statuses = patron_statuses_hits
+    @patron_statuses = patron_status_search.hits
     respond_with(@patron_statuses) do |format|
       format.json { render :json => patron_statuses_results }
     end
@@ -25,7 +25,7 @@ class PrivilegesController < ApplicationController
     @patron_status = PatronStatus.find(params[:id]) if @patron_status.blank?
     # Add patron status code to parameters so sublibrary search get only those with access
     params.merge!({:patron_status_code => @patron_status.code})
-    @sublibraries_with_access = sublibraries_with_access
+    @sublibraries_with_access = patron_status_search.sublibraries_with_access
     @sublibraries = sublibraries_hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = Privileges::Search::PatronStatusPermissionSearch.new(@patron_status.code, @sublibrary.code).sublibrary_permissions if @sublibrary
@@ -39,7 +39,7 @@ class PrivilegesController < ApplicationController
   # GET /search?q=
   def search
     #Solr search based on params[:q]
-    @patron_statuses = patron_statuses_search
+    @patron_statuses = patron_status_search.search
 
     respond_with(@patron_statuses) do |format|
       format.json { render :json => @patron_statuses.results.map(&:web_text), :layout => false }
@@ -54,7 +54,7 @@ class PrivilegesController < ApplicationController
     if !session[:redirected_user] && !current_user.nil?
       #Redirect user to their patron status page
       params.merge!({:patron_status_code => current_user.patron_status})
-      @patron_status = patron_statuses_hits.first
+      @patron_status = patron_status_search.hits.first
       session[:redirected_user] = true #Set this session variable so that the user does not get redirected infinitely and the user can choose other statuses
       unless @patron_status.nil?
         redirect_to patron_status_link(@patron_status.primary_key, @patron_status.stored(:web_text)) and return unless performed?
