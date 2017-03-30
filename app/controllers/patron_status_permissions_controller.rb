@@ -37,7 +37,7 @@ class PatronStatusPermissionsController < ApplicationController
     @sublibrary = Sublibrary.find_by_code(@patron_status_permission.sublibrary_code)
     @patron_status = PatronStatus.find_by_code(@patron_status_permission.patron_status_code)
     @permission_values = PermissionValue.where(permission_code: params[:permission_code])
-    @patron_status_permissions = Privileges::Search::PatronStatusPermissions.new(@patron_status.code, @sublibrary.code, admin_view: (is_admin? && is_in_admin_view?)).search if @sublibrary
+    @patron_status_permissions = Privileges::Search::PatronStatusPermissionSearch.new(@patron_status.code, @sublibrary.code, admin_view: (is_admin? && is_in_admin_view?)).search if @sublibrary
     respond_to do |format|
       if @patron_status_permission.update_attributes(patron_status_permission_params)
         format.js { render :layout => false and return } if request.xhr?# In the case where an ajax response is submitted just save the new value and do nothing

@@ -1,6 +1,6 @@
 module Privileges
   module Search
-    class PatronStatusPermissions
+    class PatronStatusPermissionSearch
       attr_accessor :patron_status_code, :sublibrary_code, :admin_view
 
       def initialize(patron_status_code, sublibrary_code, admin_view: false)
