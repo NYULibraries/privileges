@@ -30,7 +30,7 @@ gem 'compass-rails', '~> 3.0.0'
 gem 'acts_as_indexed', '~> 0.8.3'
 
 # Use Exlibris::Nyu for NYU Exlibris customizations, etc.
-gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.1.3'
+gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'
