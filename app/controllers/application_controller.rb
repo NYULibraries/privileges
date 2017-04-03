@@ -8,7 +8,6 @@
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
   prepend_before_filter :passive_login, unless: -> { request.format.js? || request.format.json? }
-  include Searchers::Sublibrary
 
   helper :all # include all helpers, all the time
 

@@ -99,4 +99,14 @@ class PatronStatusPermissionsController < ApplicationController
       {}
     end
   end
+
+  # Shortcut for retrieving sublibrary code if it exists
+  def sublibrary_code
+    @sublibrary_code ||= @sublibrary.code unless @sublibrary.nil?
+  end
+
+  # Shortcut for retrieving sublibrary object
+  def sublibrary
+    @sublibrary ||= ::Sublibrary.find_by_code(params[:sublibrary_code]) if params[:sublibrary_code].present?
+  end
 end

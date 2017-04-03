@@ -3,7 +3,7 @@ class SublibrariesController < ApplicationController
 
   # GET /sublibraries
   def index
-    @sublibraries = sublibraries_search
+    @sublibraries = sublibrary_search.search
   end
 
   # GET /sublibraries/1
@@ -44,7 +44,7 @@ class SublibrariesController < ApplicationController
   # PUT /sublibraries/1.js
   def update
     @sublibrary = Sublibrary.find(params[:id])
-    @sublibraries = sublibraries_results
+    @sublibraries = sublibrary_search.results
 
     respond_to do |format|
       if @sublibrary.update_attributes(sublibrary_params)
@@ -74,6 +74,10 @@ class SublibrariesController < ApplicationController
   helper_method :sort_column
 
   private
+  def sublibrary_search
+    @sublibrary_search ||= Privileges::Search::SublibrarySearch.new_from_params(params)
+  end
+
   def sublibrary_params
     if params[:sublibrary].present?
       params.require(:sublibrary).permit(:code, :web_text, :from_aleph, :under_header, :visible)
@@ -81,6 +85,8 @@ class SublibrariesController < ApplicationController
       {}
     end
   end
+
+  
 
   def prefix
     #This handles local creation of patron statuses by adding a namespace prefix, namely nyu_ag_noaleph_

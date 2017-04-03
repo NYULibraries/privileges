@@ -5,7 +5,7 @@ module Privileges
       attr_accessor *FIELDS
 
       def self.new_from_params(params, **options)
-        new **params.symbolize_keys.merge(options).slice(*FIELDS)
+        new **params.compact.symbolize_keys.merge(options).slice(*FIELDS)
       end
 
       def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, sort_column: :title_search, sort_direction: :asc, admin_view: false)

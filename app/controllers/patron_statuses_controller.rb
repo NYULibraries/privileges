@@ -102,6 +102,11 @@ class PatronStatusesController < ApplicationController
 
 
   private
+  # Shortcut for retrieving sublibrary object
+  def sublibrary
+    @sublibrary ||= ::Sublibrary.find_by_code(params[:sublibrary_code]) if params[:sublibrary_code].present?
+  end
+
   def patron_status_params
     if params[:patron_status].present?
       params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible)

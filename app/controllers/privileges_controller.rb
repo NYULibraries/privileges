@@ -26,7 +26,7 @@ class PrivilegesController < ApplicationController
     # Add patron status code to parameters so sublibrary search get only those with access
     params.merge!({:patron_status_code => @patron_status.code})
     @sublibraries_with_access = patron_status_search.sublibraries_with_access
-    @sublibraries = sublibraries_hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
+    @sublibraries = Privileges::Search::SublibrarySearch.new_from_params(params).hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = Privileges::Search::PatronStatusPermissionSearch.new(@patron_status.code, @sublibrary.code).sublibrary_permissions if @sublibrary
 
