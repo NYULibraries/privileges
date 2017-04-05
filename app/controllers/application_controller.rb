@@ -102,14 +102,11 @@ class ApplicationController < ActionController::Base
   alias :is_in_admin_view? :is_in_admin_view
   helper_method :is_in_admin_view?
 
-  protected
+  private
 
   def patron_status_search
-    # @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, sort_column: sort_column, sort_direction: sort_direction, admin_view: (is_admin? && is_in_admin_view?))
-    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, admin_view: (is_admin? && is_in_admin_view?))
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, admin_view: admin_view?)
   end
-
-  private
 
   def logout_path
     if ENV['LOGIN_URL'].present? && ENV['SSO_LOGOUT_PATH'].present?
@@ -123,6 +120,10 @@ class ApplicationController < ActionController::Base
 
   def request_url_escaped
     CGI::escape(request.url)
+  end
+
+  def admin_view?
+    is_admin? && is_in_admin_view?
   end
 
 end

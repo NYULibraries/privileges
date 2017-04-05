@@ -94,14 +94,12 @@ class PatronStatusesController < ApplicationController
   end
   helper_method :sort_column
 
-  protected
+  private
 
   def patron_status_search
-    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, sort_column: sort_column, sort_direction: sort_direction, admin_view: (is_admin? && is_in_admin_view?))
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, sort_column: sort_column, sort_direction: sort_direction, admin_view: admin_view?)
   end
 
-
-  private
   # Shortcut for retrieving sublibrary object
   def sublibrary
     @sublibrary ||= ::Sublibrary.find_by_code(params[:sublibrary_code]) if params[:sublibrary_code].present?
