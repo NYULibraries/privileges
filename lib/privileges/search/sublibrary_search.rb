@@ -30,25 +30,25 @@ module Privileges
       # Sunspot Sublibraries search
       def search
         ::Sublibrary.search {
-        # Options for admin sublibraries search
-        if admin_view
-          # Full text search possible on default fields
-          fulltext q
-          # Sort by both fields if no sorting fn used
-          unless sort.present?
+          # Options for admin sublibraries search
+          if admin_view
+            # Full text search possible on default fields
+            fulltext q
+            # Sort by both fields if no sorting fn used
+            unless sort.present?
+              order_by(:sort_header, :asc)
+              order_by(:sort_text, :asc)
+            else
+              order_by(sort_column.to_sym, sort_direction.to_sym)
+            end
+            paginate page: page, per_page: 30
+          else
+            # Only visible
+            with(:visible_frontend, true)
+            # Default sort
             order_by(:sort_header, :asc)
             order_by(:sort_text, :asc)
-          else
-            order_by(sort_column.to_sym, sort_direction.to_sym)
           end
-          paginate page: page, per_page: 30
-        else
-          # Only visible
-          with(:visible_frontend, true)
-          # Default sort
-          order_by(:sort_header, :asc)
-          order_by(:sort_text, :asc)
-        end
         }
       end
 
