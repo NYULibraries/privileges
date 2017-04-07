@@ -13,5 +13,10 @@ dependencies:
     - bundle exec sunspot-solr start -p 8984
     - sleep 10
 test:
+  override:
+    - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
+    - RAILS_ENV=test bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
+    - RAILS_ENV=test bundle exec rake test
   post:
     - bundle exec rake coveralls:push
