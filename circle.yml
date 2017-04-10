@@ -14,7 +14,7 @@ dependencies:
     - sleep 10
 test:
   override:
-    - RAILS_ENV=test bundle exec rspec --format progress --format -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+    - RAILS_ENV=test bundle exec rspec --color --format progress
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
     - RAILS_ENV=test bundle exec cucumber --format pretty --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
     - RAILS_ENV=test bundle exec rake test
