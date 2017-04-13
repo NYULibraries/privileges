@@ -1,21 +1,20 @@
 module Privileges
   module Search
     class PatronStatusSearch
-      FIELDS = [:q, :sort, :page, :patron_status_code, :sublibrary_code, :sort_column, :sort_direction, :admin_view]
+      FIELDS = [:q, :sort, :page, :patron_status_code, :sublibrary_code, :direction, :admin_view]
       attr_accessor *FIELDS
 
       def self.new_from_params(params, **options)
         new **params.compact.symbolize_keys.merge(options).slice(*FIELDS)
       end
 
-      def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, sort_column: :title_search, sort_direction: :asc, admin_view: false)
+      def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, direction: :asc, admin_view: false)
         @q = q
         @sort = sort
         @page = page
         @patron_status_code = patron_status_code
         @sublibrary_code = sublibrary_code
-        @sort_column = sort_column
-        @sort_direction = sort_direction
+        @direction = direction
         @admin_view = admin_view
       end
 
@@ -57,7 +56,7 @@ module Privileges
               order_by(:web_text, :asc)
             # Sort by sort parameter
             else
-              order_by(sort_column.to_sym, sort_direction.to_sym)
+              order_by(sort.to_sym, direction.to_sym)
             end
             paginate page: page, per_page: 30
 

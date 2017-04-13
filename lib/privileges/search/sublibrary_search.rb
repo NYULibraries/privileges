@@ -1,18 +1,17 @@
 module Privileges
   module Search
     class SublibrarySearch
-      FIELDS = [:q, :sort, :sort_column, :sort_direction, :page, :admin_view]
+      FIELDS = [:q, :sort, :direction, :page, :admin_view]
       attr_accessor *FIELDS
 
       def self.new_from_params(params, **options)
         new **params.compact.symbolize_keys.merge(options).slice(*FIELDS)
       end
 
-      def initialize(q: nil, sort: nil, sort_column: :title_search, sort_direction: :asc, page: 1, admin_view: false)
+      def initialize(q: nil, sort: nil, direction: :asc, page: 1, admin_view: false)
         @q = q
         @sort = sort
-        @sort_column = sort_column
-        @sort_direction = sort_direction
+        @direction = direction
         @page = page
         @admin_view = admin_view
       end
@@ -39,7 +38,7 @@ module Privileges
               order_by(:sort_header, :asc)
               order_by(:sort_text, :asc)
             else
-              order_by(sort_column.to_sym, sort_direction.to_sym)
+              order_by(sort.to_sym, direction.to_sym)
             end
             paginate page: page, per_page: 30
           else
