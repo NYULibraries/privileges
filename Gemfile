@@ -78,6 +78,7 @@ end
 
 group :test, :cucumber do
   gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-its'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
   gem 'poltergeist', '~> 1.14.0'

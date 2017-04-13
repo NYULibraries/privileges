@@ -380,6 +380,9 @@ GEM
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
@@ -508,6 +511,7 @@ DEPENDENCIES
   progress_bar (~> 1.1.0)
   pry (~> 0.10.1)
   rails (~> 4.2.0)
+  rspec-its
   rspec-rails (~> 3.5.0)
   sass-rails (~> 5.0.6)
   selenium-webdriver (~> 3.1.0)
@@ -521,4 +525,4 @@ DEPENDENCIES
   webmock (~> 2.3.0)
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
