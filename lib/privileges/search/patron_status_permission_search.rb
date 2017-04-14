@@ -21,7 +21,7 @@ module Privileges
 
       # Shortcut to get patron status permissions hits
       def hits
-        @hits ||= search.hits
+        @hits ||= solr_search.hits
       end
 
       # def cached_patron_status_permissions_search(patron_status_code, sublibrary_code)
@@ -37,7 +37,7 @@ module Privileges
       # end
 
       # Perform Sunspot PatronStatusPermissions search
-      def search
+      def solr_search
         ::PatronStatusPermission.search {
           # Find permission for this combo of status/library
           with(:patron_status_code, patron_status_code)

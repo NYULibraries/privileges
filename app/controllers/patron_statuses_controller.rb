@@ -5,7 +5,7 @@ class PatronStatusesController < ApplicationController
   # GET /patron_statuses
   # GET /patron_statuses.json
   def index
-    @patron_statuses = patron_status_search.search
+    @patron_statuses = patron_status_search.solr_search
 
     respond_to do |format|
       format.json do

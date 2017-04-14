@@ -24,12 +24,12 @@ module Privileges
 
       # Shortcut for retrieving patron status results from database
       def results
-        @results ||= search.results
+        @results ||= solr_search.results
       end
 
       # Shortcut for retrieving patron status hits
       def hits
-        @hits ||= search.hits
+        @hits ||= solr_search.hits
       end
 
       # # Get patron status code if it exists
@@ -43,7 +43,7 @@ module Privileges
       end
 
       # Sunspot Patron Statuses search
-      def search
+      def solr_search
         ::PatronStatus.search {
           # We don't want nil values for admin or non admin
           without(:web_text, nil)

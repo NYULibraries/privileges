@@ -39,7 +39,7 @@ class PrivilegesController < ApplicationController
   # GET /search?q=
   def search
     #Solr search based on params[:q]
-    @patron_statuses = patron_status_search.search
+    @patron_statuses = patron_status_search.solr_search
 
     respond_with(@patron_statuses) do |format|
       format.json { render :json => @patron_statuses.results.map(&:web_text), :layout => false }

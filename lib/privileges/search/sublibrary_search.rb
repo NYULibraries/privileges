@@ -18,16 +18,16 @@ module Privileges
 
       # Retrieve actual records from sunspot search
       def results
-        @results ||= search.results
+        @results ||= solr_search.results
       end
 
       # Shortcut for retrieving hits from sunspot search
       def hits
-        @hits ||= search.hits
+        @hits ||= solr_search.hits
       end
 
       # Sunspot Sublibraries search
-      def search
+      def solr_search
         ::Sublibrary.search {
           # Options for admin sublibraries search
           if admin_view

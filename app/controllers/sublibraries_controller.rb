@@ -3,7 +3,7 @@ class SublibrariesController < ApplicationController
 
   # GET /sublibraries
   def index
-    @sublibraries = sublibrary_search.search
+    @sublibraries = sublibrary_search.solr_search
   end
 
   # GET /sublibraries/1
@@ -85,8 +85,6 @@ class SublibrariesController < ApplicationController
       {}
     end
   end
-
-  
 
   def prefix
     #This handles local creation of patron statuses by adding a namespace prefix, namely nyu_ag_noaleph_
