@@ -75,7 +75,7 @@ class SublibrariesController < ApplicationController
 
   private
   def sublibrary_search
-    @sublibrary_search ||= Privileges::Search::SublibrarySearch.new_from_params(params)
+    @sublibrary_search ||= Privileges::Search::SublibrarySearch.new_from_params(params, admin_view: admin_view?)
   end
 
   def sublibrary_params
