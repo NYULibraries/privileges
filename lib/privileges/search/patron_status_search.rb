@@ -1,11 +1,14 @@
 module Privileges
   module Search
     class PatronStatusSearch
-      FIELDS = [:q, :sort, :page, :patron_status_code, :sublibrary_code, :direction, :admin_view]
-      attr_accessor *FIELDS
+      PARAM_FIELDS = [:q, :sort, :page, :patron_status_code, :sublibrary_code, :direction]
+      attr_reader *PARAM_FIELDS
+      attr_reader :admin_view
 
       def self.new_from_params(params, **options)
-        new **params.compact.symbolize_keys.merge(options).slice(*FIELDS)
+        nonempty_params = params.compact.select{|k,v| v.present? }
+        filtered_params = nonempty_params.symbolize_keys.slice(*PARAM_FIELDS)
+        new **filtered_params.merge(options)
       end
 
       def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, direction: :asc, admin_view: false)
@@ -16,10 +19,6 @@ module Privileges
         @sublibrary_code = sublibrary_code
         @direction = direction
         @admin_view = admin_view
-      end
-
-      def page
-        @page || 1
       end
 
       # Shortcut for retrieving patron status results from database

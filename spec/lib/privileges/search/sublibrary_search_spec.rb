@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Privileges::Search::SublibrarySearch do
-  let(:search){ Privileges::Search::SublibrarySearch.new(**options) }
+  let(:search){ described_class.new(**options) }
   let(:options){ {} }
 
   describe "self.new_from_params" do
