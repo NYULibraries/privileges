@@ -5,7 +5,58 @@ describe Privileges::Search::SublibrarySearch do
   let(:options){ {} }
 
   describe "self.new_from_params" do
-    pending
+    let(:params){ ActionController::Parameters.new(params_hash) }
+
+    context "given just params" do
+      subject{ described_class.new_from_params(params) }
+
+      context "with nonempty values" do
+        let(:params_hash){ {q: "some text", sort: "original_text", direction: "desc", page: 4, admin_view: true} }
+
+        it { is_expected.to be_a described_class }
+        its(:q){ is_expected.to eq "some text" }
+        its(:sort){ is_expected.to eq "original_text" }
+        its(:direction){ is_expected.to eq "desc" }
+        its(:page){ is_expected.to eq 4 }
+        # don't assign admin_view from params
+        its(:admin_view){ is_expected.to eq false }
+      end
+
+      context "with empty values" do
+        let(:params_hash){ {q: "", sort: "", direction: "", page: "", admin_view: ""} }
+
+        it { is_expected.to be_a described_class }
+        its(:q){ is_expected.to eq nil }
+        its(:sort){ is_expected.to eq nil }
+        its(:direction){ is_expected.to eq :asc }
+        its(:page){ is_expected.to eq 1 }
+        its(:admin_view){ is_expected.to eq false }
+      end
+
+      context "when empty" do
+        let(:params_hash){ {} }
+
+        it { is_expected.to be_a described_class }
+        its(:q){ is_expected.to eq nil }
+        its(:sort){ is_expected.to eq nil }
+        its(:direction){ is_expected.to eq :asc }
+        its(:page){ is_expected.to eq 1 }
+        its(:admin_view){ is_expected.to eq false }
+      end
+    end
+
+    context "given params and options" do
+      subject{ described_class.new_from_params(params, **options) }
+      let(:params_hash){ {q: "some text", sort: "original_text", direction: "desc", page: 4} }
+      let(:options){ {admin_view: true} }
+
+      it { is_expected.to be_a described_class }
+      its(:q){ is_expected.to eq "some text" }
+      its(:sort){ is_expected.to eq "original_text" }
+      its(:direction){ is_expected.to eq "desc" }
+      its(:page){ is_expected.to eq 4 }
+      its(:admin_view){ is_expected.to eq true }
+    end
   end
 
   describe "results" do

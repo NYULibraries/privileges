@@ -5,7 +5,9 @@ module Privileges
       attr_accessor *FIELDS
 
       def self.new_from_params(params, **options)
-        new **params.compact.symbolize_keys.merge(options).slice(*FIELDS)
+        nonempty_params = params.compact.select{|k,v| v.present? }
+        filtered_params = nonempty_params.symbolize_keys.slice(:q, :sort, :direction, :page)
+        new **filtered_params.merge(options).slice(*FIELDS)
       end
 
       def initialize(q: nil, sort: nil, direction: :asc, page: 1, admin_view: false)
