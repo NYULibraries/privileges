@@ -68,7 +68,11 @@ class PrivilegesController < ApplicationController
   end
 
   def patron_status_permission_search
-    @patron_status_permission_search ||= Privileges::Search::PatronStatusPermissionSearch.new(@patron_status.code, @sublibrary.code, admin_view: admin_view?) if @patron_status && @sublibrary
+    @patron_status_permission_search ||= Privileges::Search::PatronStatusPermissionSearch.new(
+      patron_status_code: @patron_status&.code,
+      sublibrary_code: @sublibrary&.code,
+      admin_view: admin_view?
+    )
   end
 
 end
