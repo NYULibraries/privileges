@@ -1,6 +1,6 @@
 module Privileges
   module Search
-    class SublibrarySearch
+    class SublibrarySearch < Base
       PARAM_FIELDS = [:q, :sort, :direction, :page]
       attr_reader *PARAM_FIELDS
       attr_reader :admin_view
@@ -17,16 +17,6 @@ module Privileges
         @direction = direction
         @page = page
         @admin_view = admin_view
-      end
-
-      # Retrieve actual records from sunspot search
-      def results
-        @results ||= solr_search.results
-      end
-
-      # Shortcut for retrieving hits from sunspot search
-      def hits
-        @hits ||= solr_search.hits
       end
 
       # Sunspot Sublibraries search

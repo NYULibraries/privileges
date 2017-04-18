@@ -1,6 +1,6 @@
 module Privileges
   module Search
-    class PatronStatusPermissionSearch
+    class PatronStatusPermissionSearch < Base
       attr_accessor :patron_status_code, :sublibrary_code, :admin_view
 
       def initialize(patron_status_code: nil, sublibrary_code: nil, admin_view: false)
@@ -17,11 +17,6 @@ module Privileges
         @sublibrary_permissions = ::PatronStatusPermission
           .select("patron_status_permissions.*, permissions.web_text as permission_web_text, permission_values.web_text as permission_value_web_text")
           .joins(:permission_value => :permission).where(:id => hits.map(&:to_param)).order("permissions.sort_order asc")
-      end
-
-      # Shortcut to get patron status permissions hits
-      def hits
-        @hits ||= solr_search.hits
       end
 
       # def cached_patron_status_permissions_search(patron_status_code, sublibrary_code)

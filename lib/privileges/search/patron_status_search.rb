@@ -1,6 +1,6 @@
 module Privileges
   module Search
-    class PatronStatusSearch
+    class PatronStatusSearch < Base
       PARAM_FIELDS = [:q, :sort, :page, :patron_status_code, :sublibrary_code, :direction]
       attr_reader *PARAM_FIELDS
       attr_reader :admin_view
@@ -20,21 +20,6 @@ module Privileges
         @direction = direction
         @admin_view = admin_view
       end
-
-      # Shortcut for retrieving patron status results from database
-      def results
-        @results ||= solr_search.results
-      end
-
-      # Shortcut for retrieving patron status hits
-      def hits
-        @hits ||= solr_search.hits
-      end
-
-      # # Get patron status code if it exists
-      # def patron_status_code
-      #   @patron_status_code ||= @patron_status.code unless @patron_status.nil?
-      # end
 
       # Retrive a list of sublibraries this patron status has access to
       def sublibraries_with_access
