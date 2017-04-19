@@ -22,30 +22,30 @@ http_interactions:
       encoding: UTF-8
       string: |
         {'responseHeader'=>{'status'=>0,'QTime'=>16},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>32.12741,'docs'=>[{'id'=>'PatronStatus 41','description_ss'=>'','code_ss'=>'52','from_aleph_bs'=>true,'web_text_ss'=>'NYU Adjunct Faculty','under_header_ss'=>'NYU','visible_bs'=>true,'sort_header_ss'=>'!nyu','sublibraries_with_access_sms'=>['NIFA','NCOUR','TNSSC','NYSID','BOBST','TNSFO','BAFC','CU','BRES','TNSGI','BLCC','nyu_ag_noaleph_poly','BFALE','BTAM','nyu_ag_noaleph_dental','nyu_ag_noaleph_law','nyu_ag_noaleph_medical','NREI'],'_version_'=>'1484500671285690368','score'=>32.12741}]}}
-    http_version: 
+    http_version:
   recorded_at: Wed, 12 Nov 2014 16:53:23 GMT
-- request:
-    method: post
-    uri: http://localhost:8984/solr/test/select?wt=ruby
-    body:
-      encoding: US-ASCII
-      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&q=NYU+Adjunct+Faculty&fl=*+score&qf=keywords_text+web_text_text+code_text&defType=edismax&start=0&rows=200
-    headers:
-      Content-Type:
-      - application/x-www-form-urlencoded; charset=UTF-8
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - text/plain;charset=UTF-8
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>4},'response'=>{'numFound'=>0,'start'=>0,'maxScore'=>0.0,'docs'=>[]}}
-    http_version: 
-  recorded_at: Wed, 17 Jun 2015 16:59:33 GMT
+# - request:
+#     method: post
+#     uri: http://localhost:8984/solr/test/select?wt=ruby
+#     body:
+#       encoding: US-ASCII
+#       string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&fq=visible_bs%3Atrue&sort=sort_header_ss+asc%2C+web_text_ss+asc&q=NYU+Adjunct+Faculty&fl=*+score&qf=keywords_text+web_text_text+code_text&defType=edismax&start=0&rows=200
+#     headers:
+#       Content-Type:
+#       - application/x-www-form-urlencoded; charset=UTF-8
+#   response:
+#     status:
+#       code: 200
+#       message: OK
+#     headers:
+#       Content-Type:
+#       - text/plain;charset=UTF-8
+#       Transfer-Encoding:
+#       - chunked
+#     body:
+#       encoding: UTF-8
+#       string: |
+#         {'responseHeader'=>{'status'=>0,'QTime'=>4},'response'=>{'numFound'=>0,'start'=>0,'maxScore'=>0.0,'docs'=>[]}}
+#     http_version:
+#   recorded_at: Wed, 17 Jun 2015 16:59:33 GMT
 recorded_with: VCR 2.9.3

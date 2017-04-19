@@ -4,10 +4,10 @@ module PaginationHelper
   # Will convert it to something kaminari can deal with (using #paginate_params), and
   # then call kaminari page_entries_info with that. Other arguments (options and block) same as
   # kaminari paginate, passed on through.
-  def page_entries_info_sunspot(response, options = {}, &block)
-    per_page = response.results.count
+  def page_entries_info_sunspot(search, options = {}, &block)
+    per_page = search.results.count
     per_page = 1 if per_page < 1
-    current_page = (response.results.offset / per_page).ceil + 1
-    page_entries_info Kaminari.paginate_array(response.results, total_count: response.total).page(current_page).per(per_page), options, &block
+    current_page = (search.results.offset / per_page).ceil + 1
+    page_entries_info Kaminari.paginate_array(search.results, total_count: search.total).page(current_page).per(per_page), options, &block
   end
 end

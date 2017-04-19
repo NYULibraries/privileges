@@ -1,6 +1,6 @@
 <%= render :partial => "privileges/searchbox"  %>
 
-<h4><%= page_entries_info_sunspot @patron_statuses %></h4>
+<h4><%= page_entries_info_sunspot @patron_status_search %></h4>
 
 <p><%= highlight("You searched for: #{params[:q]}", params[:q]) %></p>
 
@@ -9,7 +9,7 @@
 		<th>Patron type</th>
 	</thead>
 	<tbody>
-  <% @patron_statuses.hits.each do |patron_status| %>
+  <% @patron_status_search.hits.each do |patron_status| %>
   	<tr>
   		<td><%= highlight(link_to(patron_status.stored(:web_text), patron_status_link(patron_status.primary_key, patron_status.stored(:web_text))), params[:q])%></td>
   	</tr>

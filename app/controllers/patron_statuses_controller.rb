@@ -5,11 +5,11 @@ class PatronStatusesController < ApplicationController
   # GET /patron_statuses
   # GET /patron_statuses.json
   def index
-    @patron_statuses = patron_status_search.solr_search
+    @patron_status_search = patron_status_search
 
     respond_to do |format|
       format.json do
-        render :json => @patron_statuses.results,
+        render :json => @patron_status_search.results,
                :layout => false and return
       end
       format.html

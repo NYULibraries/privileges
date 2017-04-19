@@ -5,16 +5,16 @@
 <div class="patron_statuses_lists container-fluid">
   <div class="row">
     <% last_header = nil %>
-    <% @patron_statuses.in_groups(3, false) do |group| %>
-    <%= content_tag(:div, class: "col-md-4") do %>
-    <ul>
-      <% group.each do |patron_status| %>
-      <% if last_header != patron_status.stored(:under_header) %><li class="grouping"><%= patron_status.stored(:under_header) %></li><% end %>
-      <li><%= link_to(patron_status.stored(:web_text), patron_status_link(patron_status.primary_key, patron_status.stored(:web_text))) %></li>
-      <% last_header = patron_status.stored(:under_header) %>
+    <% @patron_status_search.hits.in_groups(3, false) do |group| %>
+      <%= content_tag(:div, class: "col-md-4") do %>
+        <ul>
+          <% group.each do |patron_status| %>
+            <% if last_header != patron_status.stored(:under_header) %><li class="grouping"><%= patron_status.stored(:under_header) %></li><% end %>
+            <li><%= link_to(patron_status.stored(:web_text), patron_status_link(patron_status.primary_key, patron_status.stored(:web_text))) %></li>
+            <% last_header = patron_status.stored(:under_header) %>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-    <% end %>
     <% end %>
   </div>
 </div>

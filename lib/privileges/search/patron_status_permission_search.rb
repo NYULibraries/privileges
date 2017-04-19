@@ -11,12 +11,12 @@ module Privileges
 
       # Join patron status permissions retrieved from Sunspot search to additional elements needed for display
       def sublibrary_permissions
-        return unless @sublibrary_code
+        return unless sublibrary_code
         return @sublibrary_permissions if @sublibrary_permissions
         #Get only fields required to show permission relation to user after sunspot searching returns hits
         @sublibrary_permissions = ::PatronStatusPermission
           .select("patron_status_permissions.*, permissions.web_text as permission_web_text, permission_values.web_text as permission_value_web_text")
-          .joins(:permission_value => :permission).where(:id => hits.map(&:to_param)).order("permissions.sort_order asc")
+          .joins(permission_value: :permission).where(id: hits.map(&:to_param)).order("permissions.sort_order asc")
       end
 
       # def cached_patron_status_permissions_search(patron_status_code, sublibrary_code)

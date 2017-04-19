@@ -11,9 +11,9 @@ class PrivilegesController < ApplicationController
   # GET /patrons
   # GET /patrons.json
   def index_patron_statuses
-    @patron_statuses = patron_status_search.hits
-    respond_with(@patron_statuses) do |format|
-      format.json { render :json => patron_statuses_results }
+    @patron_status_search = patron_status_search
+    respond_with(@patron_status_search.hits) do |format|
+      format.json { render json: @patron_status_search.results }
     end
   end
 
@@ -39,12 +39,18 @@ class PrivilegesController < ApplicationController
   # GET /search?q=
   def search
     #Solr search based on params[:q]
-    @patron_statuses = patron_status_search.solr_search
+    @patron_status_search = patron_status_search
 
-    respond_with(@patron_statuses) do |format|
-      format.json { render :json => @patron_statuses.results.map(&:web_text), :layout => false }
+    respond_to do |format|
+      format.json { render json: @patron_status_search.results.map(&:web_text), layout: false }
 	    #If only one patron status is returned, redirect just to that one
-	    format.html { redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 }
+	    format.html do
+        if @patron_status_search.total == 1
+          patron_status_hit = @patron_status_search.hits.first
+	        redirect_to patron_status_link(patron_status_hit.to_param, patron_status_hit.stored(:web_text))
+          return
+        end
+	    end
     end
   end
 
