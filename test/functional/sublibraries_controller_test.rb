@@ -10,8 +10,8 @@ class SublibrariesControllerTest < ActionController::TestCase
   test "should get index" do
     VCR.use_cassette('get all admin sublibraries') do
       get :index
-      assert_not_nil assigns(:sublibraries)
-      assert assigns(:sublibraries).is_a? Sunspot::Search::StandardSearch
+      assert_not_nil assigns(:sublibrary_search)
+      assert assigns(:sublibrary_search).is_a? Privileges::Search::SublibrarySearch
       assert_response :success
       assert_template :index
     end
@@ -21,7 +21,7 @@ class SublibrariesControllerTest < ActionController::TestCase
     VCR.use_cassette('get sorted admin sublibraries') do
       get :index, :sort => "sort_text"
 
-      assert assigns(:sublibraries)
+      assert assigns(:sublibrary_search)
       assert_template :index
     end
   end

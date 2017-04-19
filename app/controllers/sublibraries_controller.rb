@@ -3,7 +3,7 @@ class SublibrariesController < ApplicationController
 
   # GET /sublibraries
   def index
-    @sublibraries = sublibrary_search.solr_search
+    @sublibrary_search = sublibrary_search
   end
 
   # GET /sublibraries/1
