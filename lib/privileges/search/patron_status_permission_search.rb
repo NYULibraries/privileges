@@ -33,7 +33,7 @@ module Privileges
 
       # Perform Sunspot PatronStatusPermissions search
       def solr_search
-        ::PatronStatusPermission.search {
+        ::PatronStatusPermission.search do
           # Find permission for this combo of status/library
           with(:patron_status_code, patron_status_code)
           with(:sublibrary_code, sublibrary_code)
@@ -41,7 +41,7 @@ module Privileges
           with(:permission_visible, true)
           # Show hidden patron status permission to admin users in the admin panel
           with(:visible, true) unless admin_view
-        }
+        end
       end
 
       # def patron_status_permissions_search_cache_key(patron_status_code, sublibrary_code)

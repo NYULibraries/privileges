@@ -28,7 +28,7 @@ module Privileges
 
       # Sunspot Patron Statuses search
       def solr_search
-        ::PatronStatus.search {
+        ::PatronStatus.search do
           # We don't want nil values for admin or non admin
           without(:web_text, nil)
           # Options for admin patron status search
@@ -57,7 +57,7 @@ module Privileges
             order_by(:sort_header, :asc)
             order_by(:web_text, :asc)
           end
-        }
+        end
       end
     end
   end

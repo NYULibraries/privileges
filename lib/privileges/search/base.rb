@@ -14,6 +14,10 @@ module Privileges
       def hits
         @hits ||= solr_search.hits
       end
+
+      def solr_search
+        raise "You must define solr_search in your subclass of Privileges::Search::Base"
+      end
     end
   end
 end
