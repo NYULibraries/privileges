@@ -4,69 +4,6 @@ describe Privileges::Search::PatronStatusSearch do
   let(:search){ described_class.new(**options) }
   let(:options){ {} }
 
-  describe "self.new_from_params" do
-    let(:params){ ActionController::Parameters.new(params_hash) }
-
-    context "given just params" do
-      subject{ described_class.new_from_params(params) }
-
-      context "with nonempty values" do
-        let(:params_hash){ {q: "some text", sort: "original_text", direction: "desc", sublibrary_code: "abcd", patron_status_code: "wxyz", page: 4, admin_view: true} }
-
-        it { is_expected.to be_a described_class }
-        its(:q){ is_expected.to eq "some text" }
-        its(:sort){ is_expected.to eq "original_text" }
-        its(:direction){ is_expected.to eq "desc" }
-        its(:page){ is_expected.to eq 4 }
-        its(:sublibrary_code){ is_expected.to eq "abcd" }
-        its(:patron_status_code){ is_expected.to eq "wxyz" }
-        # don't assign admin_view from params
-        its(:admin_view){ is_expected.to eq false }
-      end
-
-      context "with empty values" do
-        let(:params_hash){ {q: "", sort: "", direction: "", page: "", sublibrary_code: "", patron_status_code: "", admin_view: ""} }
-
-        it { is_expected.to be_a described_class }
-        its(:q){ is_expected.to eq nil }
-        its(:sort){ is_expected.to eq nil }
-        its(:direction){ is_expected.to eq :asc }
-        its(:page){ is_expected.to eq 1 }
-        its(:sublibrary_code){ is_expected.to eq nil }
-        its(:patron_status_code){ is_expected.to eq nil }
-        its(:admin_view){ is_expected.to eq false }
-      end
-
-      context "when empty" do
-        let(:params_hash){ {} }
-
-        it { is_expected.to be_a described_class }
-        its(:q){ is_expected.to eq nil }
-        its(:sort){ is_expected.to eq nil }
-        its(:direction){ is_expected.to eq :asc }
-        its(:page){ is_expected.to eq 1 }
-        its(:sublibrary_code){ is_expected.to eq nil }
-        its(:patron_status_code){ is_expected.to eq nil }
-        its(:admin_view){ is_expected.to eq false }
-      end
-    end
-
-    context "given params and options" do
-      subject{ described_class.new_from_params(params, **options) }
-      let(:params_hash){ {q: "some text", sort: "original_text", direction: "desc", page: 4, sublibrary_code: "abcd", patron_status_code: "wxyz"} }
-      let(:options){ {admin_view: true} }
-
-      it { is_expected.to be_a described_class }
-      its(:q){ is_expected.to eq "some text" }
-      its(:sort){ is_expected.to eq "original_text" }
-      its(:direction){ is_expected.to eq "desc" }
-      its(:page){ is_expected.to eq 4 }
-      its(:sublibrary_code){ is_expected.to eq "abcd" }
-      its(:patron_status_code){ is_expected.to eq "wxyz" }
-      its(:admin_view){ is_expected.to eq true }
-    end
-  end
-
   describe "results" do
     subject{ search.results }
     let(:solr_search){ instance_double Sunspot::Search::StandardSearch, results: results }

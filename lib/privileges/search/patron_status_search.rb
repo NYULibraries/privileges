@@ -1,15 +1,9 @@
 module Privileges
   module Search
     class PatronStatusSearch < Base
-      PARAM_FIELDS = [:q, :sort, :page, :patron_status_code, :sublibrary_code, :direction]
+      PARAM_FIELDS = [:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code]
       attr_reader *PARAM_FIELDS
       attr_reader :admin_view
-
-      def self.new_from_params(params, **options)
-        nonempty_params = params.compact.select{|k,v| v.present? }
-        filtered_params = nonempty_params.symbolize_keys.slice(*PARAM_FIELDS)
-        new **filtered_params.merge(options)
-      end
 
       def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, direction: :asc, admin_view: false)
         @q = q

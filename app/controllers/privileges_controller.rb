@@ -69,8 +69,21 @@ class PrivilegesController < ApplicationController
   end
 
   private
+  def patron_status_search
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new(**patron_status_search_params)
+  end
+
+  def patron_status_search_params
+    params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
+      .symbolize_keys.merge(admin_view: admin_view?)
+  end
+
   def sublibrary_search
-    @sublibrary_search ||= Privileges::Search::SublibrarySearch.new_from_params(params, admin_view: admin_view?)
+    @sublibrary_search ||= Privileges::Search::SublibrarySearch.new(**sublibrary_search_params)
+  end
+
+  def sublibrary_search_params
+    params.permit(:q, :sort, :direction, :page).symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def patron_status_permission_search

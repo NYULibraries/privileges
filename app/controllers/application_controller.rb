@@ -104,10 +104,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def patron_status_search
-    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, admin_view: admin_view?)
-  end
-
   def logout_path
     if ENV['LOGIN_URL'].present? && ENV['SSO_LOGOUT_PATH'].present?
       "#{ENV['LOGIN_URL']}#{ENV['SSO_LOGOUT_PATH']}"

@@ -97,7 +97,12 @@ class PatronStatusesController < ApplicationController
   private
 
   def patron_status_search
-    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new_from_params(params, admin_view: admin_view?)
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new(**patron_status_search_params)
+  end
+
+  def patron_status_search_params
+    params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
+      .symbolize_keys.merge(admin_view: admin_view?)
   end
 
   # Shortcut for retrieving sublibrary object
