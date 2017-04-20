@@ -1,7 +1,8 @@
 module Privileges
   module Search
     class SublibrarySearch < Base
-      attr_reader :q, :sort, :direction, :page, :admin_view
+      FIELDS = [:q, :sort, :direction, :page, :admin_view]
+      attr_reader *FIELDS
 
       def initialize(q: nil, sort: nil, direction: :asc, page: 1, admin_view: false)
         @q = q
@@ -11,9 +12,8 @@ module Privileges
         @admin_view = admin_view
       end
 
-      # Sunspot Sublibraries search
       def solr_search
-        ::Sublibrary.search do
+        @solr_search ||= ::Sublibrary.search do
           # Options for admin sublibraries search
           if admin_view
             # Full text search possible on default fields
@@ -36,6 +36,9 @@ module Privileges
         end
       end
 
+      def cache_key
+        FIELDS.each{|field| public_send(field).inspect }.join("--")
+      end
     end
   end
 end

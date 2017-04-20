@@ -2,21 +2,36 @@ module Privileges
   module Search
     class Base
       def total
-        @total ||= solr_search.total
+        @total ||= cached_solr_search.total
       end
 
-      # Shortcut for retrieving patron status results from database
       def results
-        @results ||= solr_search.results
+        @results ||= cached_solr_search.results
       end
 
-      # Shortcut for retrieving patron status hits
       def hits
-        @hits ||= solr_search.hits
+        @hits ||= cached_solr_search.hits
+      end
+
+      def cached_solr_search
+        solr_search.tap do |search_obj|
+          Rails.cache.write(full_cache_key, search_obj)
+        end
+      rescue RSolr::Error::Http => e
+        Rails.cache.read(full_cache_key)
       end
 
       def solr_search
         raise "You must define solr_search in your subclass of Privileges::Search::Base"
+      end
+
+      def cache_key
+        raise "You must define cache_key in your subclass of Privileges::Search::Base"
+      end
+
+      private
+      def full_cache_key
+        [self.class.name, cache_key, "solr_search"].join("/")
       end
     end
   end

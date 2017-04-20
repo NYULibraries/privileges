@@ -1,7 +1,8 @@
 module Privileges
   module Search
     class PatronStatusPermissionSearch < Base
-      attr_reader :patron_status_code, :sublibrary_code, :admin_view
+      FIELDS = [:patron_status_code, :sublibrary_code, :admin_view]
+      attr_reader *FIELDS
 
       def initialize(patron_status_code: nil, sublibrary_code: nil, admin_view: false)
         @patron_status_code = patron_status_code
@@ -31,9 +32,8 @@ module Privileges
       #   Rails.cache.read(patron_status_permissions_search_cache_key(patron_status_code, sublibrary_code))
       # end
 
-      # Perform Sunspot PatronStatusPermissions search
       def solr_search
-        ::PatronStatusPermission.search do
+        @solr_search ||= ::PatronStatusPermission.search do
           # Find permission for this combo of status/library
           with(:patron_status_code, patron_status_code)
           with(:sublibrary_code, sublibrary_code)
@@ -44,9 +44,9 @@ module Privileges
         end
       end
 
-      # def patron_status_permissions_search_cache_key(patron_status_code, sublibrary_code)
-      #   [self.class.name, 'patron_status_permissions_search', patron_status_code, sublibrary_code]
-      # end
+      def cache_key
+        FIELDS.each{|field| public_send(field).inspect }.join("--")
+      end
     end
   end
 end

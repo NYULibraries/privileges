@@ -1,7 +1,8 @@
 module Privileges
   module Search
     class PatronStatusSearch < Base
-      attr_reader :q, :sort, :direction, :page, :patron_status_code, :sublibrary_code, :admin_view
+      FIELDS = [:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code, :admin_view]
+      attr_reader *FIELDS
 
       def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, direction: :asc, admin_view: false)
         @q = q
@@ -18,9 +19,8 @@ module Privileges
         @sublibraries_with_access ||= hits.first.stored(:sublibraries_with_access) if hits
       end
 
-      # Sunspot Patron Statuses search
       def solr_search
-        ::PatronStatus.search do
+        @solr_search ||= ::PatronStatus.search do
           # We don't want nil values for admin or non admin
           without(:web_text, nil)
           # Options for admin patron status search
@@ -50,6 +50,10 @@ module Privileges
             order_by(:web_text, :asc)
           end
         end
+      end
+
+      def cache_key
+        FIELDS.each{|field| public_send(field).inspect }.join("--")
       end
     end
   end
