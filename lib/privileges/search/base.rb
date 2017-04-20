@@ -15,10 +15,10 @@ module Privileges
 
       def cached_solr_search
         solr_search.tap do |search_obj|
-          Rails.cache.write(full_cache_key, search_obj)
+          cache.write(full_cache_key, search_obj)
         end
       rescue RSolr::Error::Http => e
-        Rails.cache.read(full_cache_key)
+        cache.read(full_cache_key)
       end
 
       def solr_search
@@ -32,6 +32,10 @@ module Privileges
       private
       def full_cache_key
         [self.class.name, cache_key, "solr_search"].join("/")
+      end
+
+      def cache
+        Rails.cache
       end
     end
   end

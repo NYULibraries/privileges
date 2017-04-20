@@ -7,6 +7,8 @@ dependencies:
   pre:
     - gem update bundler
     - bundle config github.https true
+    - sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libmemcached10
+    - yes | pecl install -f memcached-2.1.0
   post:
     - mysql -e 'create database privileges_test;'
     - RAILS_ENV=test bundle exec rake db:schema:load
