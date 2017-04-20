@@ -1,9 +1,7 @@
 module Privileges
   module Search
     class PatronStatusSearch < Base
-      PARAM_FIELDS = [:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code]
-      attr_reader *PARAM_FIELDS
-      attr_reader :admin_view
+      attr_reader :q, :sort, :direction, :page, :patron_status_code, :sublibrary_code, :admin_view
 
       def initialize(q: nil, sort: nil, page: 1, patron_status_code: nil, sublibrary_code: nil, direction: :asc, admin_view: false)
         @q = q

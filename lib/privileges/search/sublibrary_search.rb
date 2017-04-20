@@ -1,9 +1,7 @@
 module Privileges
   module Search
     class SublibrarySearch < Base
-      PARAM_FIELDS = [:q, :sort, :direction, :page]
-      attr_reader *PARAM_FIELDS
-      attr_reader :admin_view
+      attr_reader :q, :sort, :direction, :page, :admin_view
 
       def initialize(q: nil, sort: nil, direction: :asc, page: 1, admin_view: false)
         @q = q
