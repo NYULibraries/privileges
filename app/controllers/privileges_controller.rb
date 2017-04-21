@@ -11,9 +11,9 @@ class PrivilegesController < ApplicationController
   # GET /patrons
   # GET /patrons.json
   def index_patron_statuses
-    @patron_statuses = patron_statuses_hits
-    respond_with(@patron_statuses) do |format|
-      format.json { render :json => patron_statuses_results }
+    @patron_status_search = patron_status_search
+    respond_with(@patron_status_search.hits) do |format|
+      format.json { render json: @patron_status_search.results }
     end
   end
 
@@ -25,10 +25,10 @@ class PrivilegesController < ApplicationController
     @patron_status = PatronStatus.find(params[:id]) if @patron_status.blank?
     # Add patron status code to parameters so sublibrary search get only those with access
     params.merge!({:patron_status_code => @patron_status.code})
-    @sublibraries_with_access = sublibraries_with_access
-    @sublibraries = sublibraries_hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
+    @sublibraries_with_access = patron_status_search.sublibraries_with_access
+    @sublibraries = sublibrary_search.hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
-  	@patron_status_permissions = patron_status_sublibrary_permissions
+  	@patron_status_permissions = patron_status_permission_search.sublibrary_permissions if @sublibrary
 
 	  respond_with(@patron_status) do |format|
 	    format.json { render :json => {:patron_status_permissions => @patron_status_permissions, :sublibrary => @sublibrary, :patron_status => @patron_status }, :layout => false }
@@ -39,12 +39,18 @@ class PrivilegesController < ApplicationController
   # GET /search?q=
   def search
     #Solr search based on params[:q]
-    @patron_statuses = patron_statuses_search
+    @patron_status_search = patron_status_search
 
-    respond_with(@patron_statuses) do |format|
-      format.json { render :json => @patron_statuses.results.map(&:web_text), :layout => false }
+    respond_to do |format|
+      format.json { render json: @patron_status_search.results.map(&:web_text), layout: false }
 	    #If only one patron status is returned, redirect just to that one
-	    format.html { redirect_to patron_status_link(@patron_statuses.hits.first.to_param, @patron_statuses.hits.first.stored(:web_text)) and return if @patron_statuses.total == 1 }
+	    format.html do
+        if @patron_status_search.total == 1
+          patron_status_hit = @patron_status_search.hits.first
+	        redirect_to patron_status_link(patron_status_hit.to_param, patron_status_hit.stored(:web_text))
+          return
+        end
+	    end
     end
   end
 
@@ -54,12 +60,39 @@ class PrivilegesController < ApplicationController
     if !session[:redirected_user] && !current_user.nil?
       #Redirect user to their patron status page
       params.merge!({:patron_status_code => current_user.patron_status})
-      @patron_status = patron_statuses_hits.first
+      @patron_status = patron_status_search.hits.first
       session[:redirected_user] = true #Set this session variable so that the user does not get redirected infinitely and the user can choose other statuses
       unless @patron_status.nil?
         redirect_to patron_status_link(@patron_status.primary_key, @patron_status.stored(:web_text)) and return unless performed?
       end
     end
+  end
+
+  private
+  def patron_status_search
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new(**patron_status_search_params)
+  end
+
+  def patron_status_search_params
+    params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
+      .select{|k,v| v.present? }.symbolize_keys.merge(admin_view: admin_view?)
+  end
+
+  def sublibrary_search
+    @sublibrary_search ||= Privileges::Search::SublibrarySearch.new(**sublibrary_search_params)
+  end
+
+  def sublibrary_search_params
+    params.permit(:q, :sort, :direction, :page).select{|k,v| v.present? }
+      .symbolize_keys.merge(admin_view: admin_view?)
+  end
+
+  def patron_status_permission_search
+    @patron_status_permission_search ||= Privileges::Search::PatronStatusPermissionSearch.new(
+      patron_status_code: @patron_status&.code,
+      sublibrary_code: @sublibrary&.code,
+      admin_view: admin_view?
+    )
   end
 
 end

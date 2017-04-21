@@ -9,7 +9,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   test "show all patron statuses list" do
     VCR.use_cassette('get patron statuses') do
       get :index_patron_statuses
-      assert assigns(:patron_statuses)
+      assert assigns(:patron_status_search)
 
       assert_template :index_patron_statuses
     end
@@ -19,7 +19,7 @@ class PrivilegesControllerTest < ActionController::TestCase
     VCR.use_cassette('get individual patron statuses') do
       sign_in users(:nonadmin)
       get :index_patron_statuses
-      assert assigns(:patron_status)
+      assert assigns(:patron_status_search)
       assert_equal assigns(:patron_status).stored(:code), users(:nonadmin).patron_status
 
       assert_redirected_to patron_path("#{assigns(:patron_status).primary_key}-#{@controller.send(:urlize, assigns(:patron_status).stored(:web_text))}")
@@ -51,7 +51,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   test "search for patron status and redirect to search results" do
     VCR.use_cassette('search for matching multiple patron statuses') do
       get :search, :q => "Student"
-      assert assigns(:patron_statuses)
+      assert assigns(:patron_status_search)
       #assert assigns(:patron_statuses).total > 0
 
       assert_template "search"
@@ -61,8 +61,8 @@ class PrivilegesControllerTest < ActionController::TestCase
   test "search for patron status and redirect to patron status page" do
     VCR.use_cassette('search for matching individual patron statuses') do
       get :search, :q => "NYU Adjunct Faculty"
-      assert assigns(:patron_statuses)
-      #assert assigns(:patron_statuses).total == 1
+      assert assigns(:patron_status_search)
+      assert assigns(:patron_status_search).total == 1
 
       #assert_redirected_to patron_path("41-nyu-adjunct-faculty")
     end

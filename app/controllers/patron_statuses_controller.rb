@@ -5,11 +5,11 @@ class PatronStatusesController < ApplicationController
   # GET /patron_statuses
   # GET /patron_statuses.json
   def index
-    @patron_statuses = patron_statuses_search
+    @patron_status_search = patron_status_search
 
     respond_to do |format|
       format.json do
-        render :json => @patron_statuses.results,
+        render :json => @patron_status_search.results,
                :layout => false and return
       end
       format.html
@@ -64,7 +64,7 @@ class PatronStatusesController < ApplicationController
   # PUT /patron_statuses/1.js
   def update
     @patron_status = PatronStatus.find(params[:id])
-    @patron_statuses = patron_statuses_results
+    @patron_statuses = patron_status_search.results
 
     respond_to do |format|
       if @patron_status.update_attributes(patron_status_params)
@@ -94,8 +94,22 @@ class PatronStatusesController < ApplicationController
   end
   helper_method :sort_column
 
-
   private
+
+  def patron_status_search
+    @patron_status_search ||= Privileges::Search::PatronStatusSearch.new(**patron_status_search_params)
+  end
+
+  def patron_status_search_params
+    params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
+      .select{|k,v| v.present? }.symbolize_keys.merge(admin_view: admin_view?)
+  end
+
+  # Shortcut for retrieving sublibrary object
+  def sublibrary
+    @sublibrary ||= ::Sublibrary.find_by_code(params[:sublibrary_code]) if params[:sublibrary_code].present?
+  end
+
   def patron_status_params
     if params[:patron_status].present?
       params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible)

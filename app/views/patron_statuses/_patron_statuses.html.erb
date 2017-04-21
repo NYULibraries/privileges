@@ -1,6 +1,6 @@
-<p><%= page_entries_info_sunspot @patron_statuses %></p>
+<p><%= page_entries_info_sunspot @patron_status_search %></p>
 
-<%= paginate @patron_statuses.hits, :theme => "bootstrap" %>
+<%= paginate @patron_status_search.hits, theme: "bootstrap" %>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -14,7 +14,7 @@
   </tr>
   </thead>
   <tbody>
-<% @patron_statuses.results.each do |patron_status| %>
+<% @patron_status_search.results.each do |patron_status| %>
 	<tr class="<%=hidden_class(patron_status)%>">
 		<td><%=h patron_status.under_header.html_safe unless patron_status.under_header.nil? %></td>
 		<td><%=h word_break(patron_status.code) %></td>
@@ -30,6 +30,4 @@
   </tbody>
 </table>
 
-<%= paginate @patron_statuses.hits, :theme => "bootstrap" %>
-
-
+<%= paginate @patron_status_search.hits, theme: "bootstrap" %>

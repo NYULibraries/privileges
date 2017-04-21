@@ -37,5 +37,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  config.cache_store = :dalli_store, 'localhost:11211'
+  # config.cache_store = :memory_store, { size: 64.megabytes }
+
   config.active_support.test_order = :random
 end

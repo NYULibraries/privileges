@@ -1,6 +1,6 @@
-<p><%= page_entries_info_sunspot @sublibraries %></p>
+<p><%= page_entries_info_sunspot @sublibrary_search %></p>
 
-<%= paginate @sublibraries.hits, :theme => "bootstrap" %>
+<%= paginate @sublibrary_search.hits, theme: "bootstrap" %>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -14,8 +14,8 @@
     </tr>
   </thead>
   <tbody>
-    
-<% @sublibraries.results.each do |sublibrary| %>
+
+<% @sublibrary_search.results.each do |sublibrary| %>
   <tr class="<%=hidden_class(sublibrary)%>">
 	  <td><%=h sublibrary.under_header unless sublibrary.under_header.eql? sublibrary.web_text %></td>
     <td><%=h sublibrary.code %></td>
@@ -32,4 +32,4 @@
   </tbody>
 </table>
 
-<%= paginate @sublibraries.hits, :theme => "bootstrap" %>
+<%= paginate @sublibrary_search.hits, theme: "bootstrap" %>
