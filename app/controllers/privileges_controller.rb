@@ -75,7 +75,7 @@ class PrivilegesController < ApplicationController
 
   def patron_status_search_params
     params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
-      .symbolize_keys.merge(admin_view: admin_view?)
+      .select{|k,v| v.present? }.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def sublibrary_search
@@ -83,7 +83,8 @@ class PrivilegesController < ApplicationController
   end
 
   def sublibrary_search_params
-    params.permit(:q, :sort, :direction, :page).symbolize_keys.merge(admin_view: admin_view?)
+    params.permit(:q, :sort, :direction, :page).select{|k,v| v.present? }
+      .symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def patron_status_permission_search

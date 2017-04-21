@@ -18,9 +18,19 @@ class PatronStatusesControllerTest < ActionController::TestCase
     end
   end
 
+  test "should ignore blank params" do
+    VCR.use_cassette('patron statuses admin index') do
+      get :index, sort: ""
+      assert_not_nil assigns(:patron_status_search)
+      assert assigns(:patron_status_search).is_a? Privileges::Search::PatronStatusSearch
+      assert_response :success
+      assert_template :index
+    end
+  end
+
   test "should test sorting" do
     VCR.use_cassette('get sorted admin patron statuses') do
-      get :index, :sort => "web_text"
+      get :index, sort: "web_text"
 
       assert assigns(:patron_status_search)
       assert_template :index

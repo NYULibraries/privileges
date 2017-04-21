@@ -102,7 +102,7 @@ class PatronStatusesController < ApplicationController
 
   def patron_status_search_params
     params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
-      .symbolize_keys.merge(admin_view: admin_view?)
+      .select{|k,v| v.present? }.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   # Shortcut for retrieving sublibrary object
