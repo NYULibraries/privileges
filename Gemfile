@@ -18,7 +18,7 @@ gem 'jquery-rails', '~> 4.2.0'
 gem 'jquery-ui-rails', '~> 6.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 3.1.0'
+gem 'uglifier', '~> 3.2.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', '~> 0.12.0'
@@ -34,17 +34,17 @@ gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'
-gem 'devise', '~> 4.2.1'
+gem 'devise', '~> 4.3.0'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.1'
-gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.1'
-gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.0.1'
+gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.4'
+gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.3'
+gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.1.0'
 gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
 gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.1'
 
 # Deploy the application with Formaggio deploy recipes
-gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.5.2'
+gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.2'
 
 # Use Kaminari for pagination
 gem 'kaminari', '~> 1.0.0'
@@ -53,10 +53,10 @@ gem 'kaminari', '~> 1.0.0'
 gem 'dalli', '~> 2.7.0'
 
 # Create CSVs from models
-gem 'comma', '~> 4.0.0'
+gem 'comma', '~> 4.1.0'
 
 # New Relic performance monitoring
-gem 'newrelic_rpm', '~> 3.18'
+gem 'newrelic_rpm', '~> 4'
 
 # Use Sunspot for search
 gem 'sunspot_rails', '~> 2.2.0'
@@ -64,7 +64,7 @@ gem 'sunspot_rails', '~> 2.2.0'
 gem 'foreman', '~> 0.84'
 
 group :development do
-  gem 'better_errors', '~> 2.1.0'
+  gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'progress_bar', '~> 1.1.0'
 end
@@ -77,11 +77,11 @@ group :development, :test, :cucumber do
 end
 
 group :test, :cucumber do
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-its'
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
-  gem 'poltergeist', '~> 1.14.0'
+  gem 'poltergeist', '~> 1.16.0'
   # Use factory girl for creating models
   gem 'factory_girl_rails', '~> 4.8.0'
   gem 'cucumber-rails', require: false
@@ -89,7 +89,7 @@ group :test, :cucumber do
   gem 'simplecov-rcov', require: false
   gem 'coveralls', '~> 0.8.0', require: false
   gem 'vcr', '~> 3.0.0'
-  gem 'webmock', '~> 2.3.0'
-  gem 'selenium-webdriver', '~> 3.1.0'
-  gem 'database_cleaner', '~> 1.5.0'
+  gem 'webmock', '~> 3'
+  gem 'selenium-webdriver', '~> 3.4.0'
+  gem 'database_cleaner', '~> 1.6.0'
 end
