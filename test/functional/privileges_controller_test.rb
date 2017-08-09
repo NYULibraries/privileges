@@ -60,7 +60,7 @@ class PrivilegesControllerTest < ActionController::TestCase
 
   test "search for patron status and redirect to patron status page" do
     VCR.use_cassette('search for matching individual patron statuses') do
-      get :search, :q => "NYU Adjunct Faculty"
+      get :search, :q => "Adjunct Faculty"
       assert assigns(:patron_status_search)
       assert assigns(:patron_status_search).total == 1
 

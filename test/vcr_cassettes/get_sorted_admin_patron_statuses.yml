@@ -401,8 +401,47 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>2,'start'=>0,'docs'=>[{'id'=>'PatronStatus 1','description_ss'=>'Something here','code_ss'=>'51','from_aleph_bs'=>true,'web_text_ss'=>'Administrator','under_header_ss'=>'All things must pass','visible_bs'=>true,'sort_header_ss'=>'all things must pass','_version_'=>'1494831637112815616'},{'id'=>'PatronStatus 1032573618','code_ss'=>'uniqueness1203946','from_aleph_bs'=>false,'web_text_ss'=>'Test2','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','_version_'=>'1504245576048312320'}]}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>2,'start'=>0,'docs'=>[{'id'=>'PatronStatus
+        1','description_ss'=>'Something here','code_ss'=>'51','from_aleph_bs'=>true,'web_text_ss'=>'Administrator','under_header_ss'=>'All
+        things must pass','visible_bs'=>true,'sort_header_ss'=>'all things must pass','_version_'=>'1494831637112815616'},{'id'=>'PatronStatus
+        1032573618','code_ss'=>'uniqueness1203946','from_aleph_bs'=>false,'web_text_ss'=>'Test2','under_header_ss'=>'Other','visible_bs'=>true,'sort_header_ss'=>'other','_version_'=>'1504245576048312320'}]}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:31 GMT
-recorded_with: VCR 2.9.3
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/select?wt=json
+    body:
+      encoding: US-ASCII
+      string: fq=type%3APatronStatus&fq=web_text_ss%3A%5B*+TO+*%5D&sort=web_text_ss+asc&start=0&rows=30&q=*%3A*
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":0},"response":{"numFound":5,"start":0,"docs":[{"id":"PatronStatus
+        1","description_ss":"Something here","code_ss":"51","from_aleph_bs":true,"web_text_ss":"Administrator","under_header_ss":"All
+        things must pass","visible_bs":true,"sort_header_ss":"all things must pass","_version_":1575288424906096640},{"id":"PatronStatus
+        1032573620","code_ss":"uniqueness1203946","from_aleph_bs":false,"web_text_ss":"Test2","under_header_ss":"Other","visible_bs":true,"sort_header_ss":"other","_version_":1575288575558156288},{"id":"PatronStatus
+        1032573622","code_ss":"uniqueness1203946","from_aleph_bs":false,"web_text_ss":"Test2","under_header_ss":"Other","visible_bs":true,"sort_header_ss":"other","_version_":1575288595283968000},{"id":"PatronStatus
+        1032573624","code_ss":"uniqueness1203946","from_aleph_bs":false,"web_text_ss":"Test2","under_header_ss":"Other","visible_bs":true,"sort_header_ss":"other","_version_":1575288621797212160},{"id":"PatronStatus
+        1032573628","code_ss":"uniqueness1203946","from_aleph_bs":false,"web_text_ss":"Test2","under_header_ss":"Other","visible_bs":true,"sort_header_ss":"other","_version_":1575288695597039616}]}}
+
+'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 20:59:30 GMT
+recorded_with: VCR 3.0.3

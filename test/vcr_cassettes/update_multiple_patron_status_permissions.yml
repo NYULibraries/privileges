@@ -25,8 +25,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>3}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -59,8 +58,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>4}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>4}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -83,8 +81,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>19}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>19}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -116,8 +113,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>3}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -140,8 +136,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>17}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>17}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -169,8 +164,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>3}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -203,8 +197,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>3}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -227,8 +220,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>30}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>30}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -260,8 +252,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>4}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>4}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -284,8 +275,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>21}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>21}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:22 GMT
 - request:
@@ -313,8 +303,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>2}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>2}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:32 GMT
 - request:
@@ -342,8 +331,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>1}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>1}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:32 GMT
 - request:
@@ -366,8 +354,100 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>15}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>15}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:32 GMT
-recorded_with: VCR 2.9.3
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=json
+    body:
+      encoding: UTF-8
+      string: '[{"id":"PatronStatusPermission 832099394","type":["PatronStatusPermission","ActiveRecord::Base"],"class_name":"PatronStatusPermission","patron_status_code_ss":"52","sublibrary_code_ss":"TNSFO","permission_value_id_is":"188759157","from_aleph_bs":"true","visible_bs":"true","permission_visible_bs":"true"}]'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":1}}
+
+'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 20:59:31 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=json
+    body:
+      encoding: UTF-8
+      string: '[{"id":"PatronStatusPermission 440326314","type":["PatronStatusPermission","ActiveRecord::Base"],"class_name":"PatronStatusPermission","patron_status_code_ss":"52","sublibrary_code_ss":"TNSFO","permission_value_id_is":"551956711","from_aleph_bs":"true","visible_bs":"true","permission_visible_bs":"true"}]'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":0}}
+
+'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 20:59:31 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=json
+    body:
+      encoding: UTF-8
+      string: '{"commit":{"softCommit":false}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":6}}
+
+'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 20:59:31 GMT
+recorded_with: VCR 3.0.3

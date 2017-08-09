@@ -24,7 +24,7 @@
 		<td class="actions"><%= link_to 'Show', patron_status %></td>
 		<td class="actions"><%= link_to 'Edit', edit_patron_status_path(patron_status) %></td>
 		<td class="actions"><%= link_to_unless(patron_status.from_aleph?, 'Destroy', patron_status, data: { confirm: 'Are you sure?' }, :method => :delete) %></td>
-		<td class="actions"><%= link_to "#{(patron_status.visible) ? 'Hide' : 'Reveal' }", patron_status_path(patron_status, params.merge(:patron_status => {:visible => !patron_status.visible})), :method => :put, :remote => true, :class => "toggle_visible" %></td>
+		<td class="actions"><%= link_to "#{(patron_status.visible) ? 'Hide' : 'Reveal' }", patron_status_path(patron_status, { controller: params[:controller], action: params[:action], :patron_status => {:visible => !patron_status.visible} }), :method => :put, :remote => true, :class => "toggle_visible" %></td>
 	</tr>
 <% end %>
   </tbody>

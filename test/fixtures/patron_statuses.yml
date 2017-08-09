@@ -8,7 +8,7 @@ aleph_one:
   id_type: IDcard
   under_header: Library
   keywords: "Adjunct, Faculty, Adjunct Faculty, specialkeyword"
-  
+
 aleph_nonvisible:
   code: 55
   original_text: Master.s Student
@@ -19,7 +19,7 @@ aleph_nonvisible:
   id_type: IDcard
   under_header: Library
   keywords: "Graduate Student, Grad Student, Graduate Student, Masters Student, Masters, betternotbeabletofindme"
-  
+
 aleph_nowebtext:
   code: "##"
   from_aleph: true
