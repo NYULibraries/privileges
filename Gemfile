@@ -12,7 +12,7 @@ gem 'sass-rails', '~> 5.0.6'
 gem 'coffee-rails', '~> 4.2.0'
 
 # Use jQuery as the JavaScript library
-gem 'jquery-rails', '~> 4.2.0'
+gem 'jquery-rails', '~> 4.3.0'
 
 # Use jQuery UI as well
 gem 'jquery-ui-rails', '~> 6.0.0'
