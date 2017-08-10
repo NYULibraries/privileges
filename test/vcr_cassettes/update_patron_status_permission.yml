@@ -20,8 +20,13 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>6,'start'=>0,'docs'=>[{'id'=>'PatronStatusPermission 8719','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>2,'from_aleph_bs'=>true,'visible_bs'=>false,'permission_visible_bs'=>true,'_version_'=>'1484497876340965384'},{'id'=>'PatronStatusPermission 8727','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>27,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013956'},{'id'=>'PatronStatusPermission 8729','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>28,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013958'},{'id'=>'PatronStatusPermission 8731','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>29,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013960'},{'id'=>'PatronStatusPermission 8732','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>16,'from_aleph_bs'=>true,'visible_bs'=>false,'permission_visible_bs'=>true,'_version_'=>'1484497876342013961'},{'id'=>'PatronStatusPermission 14834','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>51,'from_aleph_bs'=>false,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497892977672194'}]}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>6,'start'=>0,'docs'=>[{'id'=>'PatronStatusPermission
+        8719','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>2,'from_aleph_bs'=>true,'visible_bs'=>false,'permission_visible_bs'=>true,'_version_'=>'1484497876340965384'},{'id'=>'PatronStatusPermission
+        8727','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>27,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013956'},{'id'=>'PatronStatusPermission
+        8729','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>28,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013958'},{'id'=>'PatronStatusPermission
+        8731','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>29,'from_aleph_bs'=>true,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497876342013960'},{'id'=>'PatronStatusPermission
+        8732','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>16,'from_aleph_bs'=>true,'visible_bs'=>false,'permission_visible_bs'=>true,'_version_'=>'1484497876342013961'},{'id'=>'PatronStatusPermission
+        14834','patron_status_code_ss'=>'52','sublibrary_code_ss'=>'TNSFO','permission_value_id_is'=>51,'from_aleph_bs'=>false,'visible_bs'=>true,'permission_visible_bs'=>true,'_version_'=>'1484497892977672194'}]}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -49,8 +54,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>2}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>2}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -84,8 +88,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>4}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>4}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -108,8 +111,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>34}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>34}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -141,8 +143,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>3}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -165,8 +166,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>25}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>25}}\n"
     http_version: 
   recorded_at: Wed, 12 Nov 2014 16:53:21 GMT
 - request:
@@ -189,8 +189,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>0,'start'=>0,'docs'=>[]}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>1},'response'=>{'numFound'=>0,'start'=>0,'docs'=>[]}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:32 GMT
 - request:
@@ -218,8 +217,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>2}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>2}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:32 GMT
 - request:
@@ -242,8 +240,69 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>13}}
+      string: "{'responseHeader'=>{'status'=>0,'QTime'=>13}}\n"
     http_version: 
   recorded_at: Wed, 17 Jun 2015 16:59:32 GMT
-recorded_with: VCR 2.9.3
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=json
+    body:
+      encoding: UTF-8
+      string: '[{"id":"PatronStatusPermission 832099394","type":["PatronStatusPermission","ActiveRecord::Base"],"class_name":"PatronStatusPermission","patron_status_code_ss":"55","sublibrary_code_ss":"TNSFO","permission_value_id_is":"21502174","from_aleph_bs":"true","visible_bs":"true","permission_visible_bs":"true"}]'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":1}}
+
+'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 20:59:31 GMT
+- request:
+    method: post
+    uri: http://localhost:8984/solr/test/update?wt=json
+    body:
+      encoding: UTF-8
+      string: '{"commit":{"softCommit":false}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":6}}
+
+'
+    http_version: 
+  recorded_at: Wed, 09 Aug 2017 20:59:31 GMT
+recorded_with: VCR 3.0.3
