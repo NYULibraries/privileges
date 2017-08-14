@@ -376,9 +376,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rsolr (2.0.2)
+    rsolr (1.1.2)
       builder (>= 2.1.2)
-      faraday
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -513,6 +512,7 @@ DEPENDENCIES
   progress_bar (~> 1.1.0)
   pry (~> 0.10.1)
   rails (~> 4.2.0)
+  rsolr (~> 1)
   rspec-its
   rspec-rails (~> 3.6.0)
   sass-rails (~> 5.0.6)

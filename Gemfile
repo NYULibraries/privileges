@@ -59,6 +59,7 @@ gem 'comma', '~> 4.1.0'
 gem 'newrelic_rpm', '~> 4'
 
 # Use Sunspot for search
+gem 'rsolr', '~> 1'
 gem 'sunspot_rails', '~> 2.2.0'
 
 gem 'foreman', '~> 0.84'
