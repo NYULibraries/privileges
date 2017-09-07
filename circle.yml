@@ -3,7 +3,7 @@ machine:
     SOLR_URL: 'http://localhost:8984/solr/test'
     LOGIN_URL: 'https://dev.login.library.nyu.edu'
     SSO_LOGOUT_PATH: /logout
-    
+
 dependencies:
   pre:
     - gem update bundler
@@ -28,7 +28,7 @@ deployment:
   production:
     branch: master
     commands:
-      - curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/Privileges%20Guide/job/Privileges%20Guide%20Development%20Deploy/build/api
+      - curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/Privileges%20Guide/job/Privileges%20Guide%20Production%20Deploy/build/api
   development:
     branch: /.+/
     commands:
