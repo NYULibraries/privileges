@@ -7,8 +7,6 @@
 # Copyright:: Copyright (c) 2013 New York University
 # License::   Distributes under the same terms as Ruby
 class ApplicationController < ActionController::Base
-  prepend_before_filter :passive_login, unless: -> { request.format.js? || request.format.json? }
-
   helper :all # include all helpers, all the time
 
   layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
@@ -19,13 +17,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_username('admin')
   end
   alias_method :current_user, :current_user_dev if Rails.env.development?
-
-  def passive_login
-    if !cookies[:_check_passive_login]
-      cookies[:_check_passive_login] = true
-      redirect_to passive_login_url
-    end
-  end
 
   # Filter users to root if not admin
   def authenticate_admin
@@ -40,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :is_admin?
 
-  # This makes sure you redirect to the correct location after passively
+  # This makes sure you redirect to the correct location after
   # logging in or after getting sent back not logged in
   def after_sign_in_path_for(resource)
     request.env['omniauth.origin'] || stored_location_for(resource) || root_path
@@ -108,14 +99,6 @@ class ApplicationController < ActionController::Base
     if ENV['LOGIN_URL'].present? && ENV['SSO_LOGOUT_PATH'].present?
       "#{ENV['LOGIN_URL']}#{ENV['SSO_LOGOUT_PATH']}"
     end
-  end
-
-  def passive_login_url
-    "#{ENV['LOGIN_URL']}#{ENV['PASSIVE_LOGIN_PATH']}?client_id=#{ENV['APP_ID']}&return_uri=#{request_url_escaped}"
-  end
-
-  def request_url_escaped
-    CGI::escape(request.url)
   end
 
   def admin_view?
