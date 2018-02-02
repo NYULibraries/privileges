@@ -10,8 +10,10 @@
 <% end -%>
 <% end %>
 
-<%= sidebar_section("intro_text", nil, true) do %>
+<nav class="navbar navbar-default">
+  <div id="intro_text" class="navbar-collapse sidebar-section" aria-expanded="true">
     <ul>
       <li><%= get_formatted_detail('intro_text')%></li>
     </ul>
-<% end -%>
+  </div>
+</nav>
