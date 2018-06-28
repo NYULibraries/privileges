@@ -36,7 +36,8 @@ services:
       COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    command: ["rake"]
+    # command: bash -c "sleep 5; tail -f /dev/null"
+    command: bash -c "sleep 5; rake"
     depends_on:
       - setup_test_dbs
 
@@ -62,8 +63,8 @@ services:
   solr:
     image: privileges_solr
     build:
-      context: .
-      dockerfile: Dockerfile.solr
+      context: ./solr
+      dockerfile: Dockerfile
     expose:
       - "8983"
     ports:
