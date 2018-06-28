@@ -86,8 +86,6 @@ group :test, :cucumber do
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
   gem 'coveralls', '~> 0.8.0', require: false
-  gem 'vcr', '~> 3.0.0'
-  gem 'webmock', '~> 3'
   gem 'selenium-webdriver', '~> 3.4.0'
   gem 'database_cleaner', '~> 1.6.0'
 end

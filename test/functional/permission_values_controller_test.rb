@@ -40,23 +40,19 @@ class PermissionValuesControllerTest < ActionController::TestCase
  end
 
  test "should get edit" do
-  VCR.use_cassette('edit permission value') do
-    get :edit, :id => PermissionValue.first.id
+  get :edit, :id => PermissionValue.first.id
 
-    assert assigns(:permission)
-    assert assigns(:permission_value)
-    assert_response :success
-  end
+  assert assigns(:permission)
+  assert assigns(:permission_value)
+  assert_response :success
  end
 
  test "should update permission value" do
-   VCR.use_cassette('update permission value') do
-     put :update, :id => PermissionValue.first.id, :permission_value => @perm_attrs
+  put :update, :id => PermissionValue.first.id, :permission_value => @perm_attrs
 
-     assert assigns(:permission_value)
-     assert assigns(:permission)
-     assert_redirected_to permission_path(assigns(:permission))
-   end
+  assert assigns(:permission_value)
+  assert assigns(:permission)
+  assert_redirected_to permission_path(assigns(:permission))
  end
 
  test "should NOT update permission value" do
@@ -67,13 +63,11 @@ class PermissionValuesControllerTest < ActionController::TestCase
  end
 
  test "should destroy permission value" do
-  VCR.use_cassette('destroy permission value') do
-   assert_difference('PermissionValue.count', -1) do
-     delete :destroy, :id => PermissionValue.first.id
-   end
-
-   assert_redirected_to permission_path(assigns(:permission))
+  assert_difference('PermissionValue.count', -1) do
+    delete :destroy, :id => PermissionValue.first.id
   end
+
+  assert_redirected_to permission_path(assigns(:permission))
  end
 
 

@@ -1,3 +1,4 @@
+@wip
 Feature: Log in/out links
   In order to easily log in and log out
   As a user

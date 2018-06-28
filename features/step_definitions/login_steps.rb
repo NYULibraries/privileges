@@ -5,11 +5,9 @@ Around('@omniauth_test') do |scenario, block|
 end
 
 Around('@patron_status') do |scenario, block|
-  VCR.use_cassette('index dummy patron status') do
-    FactoryBot.create(:patron_status)
-    PatronStatus.reindex
-    block.call
-  end
+  FactoryBot.create(:patron_status)
+  PatronStatus.reindex
+  block.call
 end
 
 Given(/^I am logged in$/) do
