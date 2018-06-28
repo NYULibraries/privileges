@@ -1,0 +1,75 @@
+version: '3'
+services:
+
+  dev:
+    image: privileges_dev
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      SOLR_URL: http://solr:8983/solr/development-core
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    depends_on:
+      - setup_dbs
+
+  setup_dbs:
+    image: privileges_dev
+    build: .
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    # command: bash -c "/tmp/wait-for-it.sh db:3306 -- bundle exec rake db:setup && bundle exec sunspot-solr start"
+    depends_on:
+      - solr
+      - db
+
+  test:
+    image: privileges_dev
+    build: .
+    environment:
+      RAILS_ENV: test
+      SOLR_URL: http://solr:8983/solr/test-core
+      CI:
+      CODECLIMATE_REPO_TOKEN:
+      COVERALLS_REPO_TOKEN:
+    env_file:
+      - test.env
+    command: ["rake"]
+    depends_on:
+      - setup_test_dbs
+
+  setup_test_dbs:
+    image: privileges_dev
+    build: .
+    environment:
+      RAILS_ENV: test
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    depends_on:
+      - solr
+      - db
+
+  db:
+    image: library/mysql:5.6.22
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  solr:
+    image: privileges_solr
+    build:
+      context: .
+      dockerfile: Dockerfile.solr
+    expose:
+      - "8983"
+    ports:
+      - "8983:8983"
+
+  memcached:
+    image: memcached
+    expose:
+      - "11211"
