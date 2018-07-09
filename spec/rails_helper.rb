@@ -53,6 +53,7 @@ RSpec.configure do |config|
     DatabaseCleaner.start
     example.run
     DatabaseCleaner.clean
+    Sunspot.remove_all!(PatronStatus) if PatronStatus.any?
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
