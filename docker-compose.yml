@@ -8,27 +8,19 @@ services:
       - "3000:3000"
     environment:
       SOLR_URL: http://solr:8983/solr/development-core
-      SECRET_TOKEN: aaaabbbbccccddddeeeeffffgggghhhh
     env_file:
       - test.env
+    volumes:
+      - bundle_cache:/bundle
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
 
-  setup_dbs:
-    image: privileges_dev
-    build: .
-    env_file:
-      - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
-    # command: bash -c "/tmp/wait-for-it.sh db:3306 -- bundle exec rake db:setup && bundle exec sunspot-solr start"
-    depends_on:
-      - solr
-      - db
-
   test:
     image: privileges_dev
     build: .
+    volumes:
+      - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
       SOLR_URL: http://solr:8983/solr/test-core
@@ -37,19 +29,32 @@ services:
       COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    # command: bash -c "sleep 5; tail -f /dev/null"
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
 
+  setup_dbs:
+    image: privileges_dev
+    build: .
+    volumes:
+      - bundle_cache:/bundle
+    env_file:
+      - test.env
+    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    depends_on:
+      - solr
+      - db
+
   setup_test_dbs:
     image: privileges_dev
     build: .
+    volumes:
+      - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake", "db:setup"]
+    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -75,3 +80,6 @@ services:
     image: memcached
     expose:
       - "11211"
+
+volumes:
+  bundle_cache:
