@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :permission_value do
     permission_code 'nyu_ag_noaleph_dummy_permission'
     code 'nyu_ag_noaleph_dummy_permission_value'

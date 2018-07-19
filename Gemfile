@@ -80,8 +80,8 @@ group :test, :cucumber do
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
   gem 'poltergeist', '~> 1.16.0'
-  # Use factory girl for creating models
-  gem 'factory_girl_rails', '~> 4.8.0'
+  # Use factory bot for creating models
+  gem 'factory_bot_rails', '~> 4.10.0'
   gem 'cucumber-rails', require: false
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false

@@ -1,5 +1,5 @@
 # User factory
-FactoryGirl.define do
+FactoryBot.define do
   factory :patron_status do
     code "51"
     original_text "Admiwwedqs"

@@ -6,7 +6,7 @@ end
 
 Around('@patron_status') do |scenario, block|
   VCR.use_cassette('index dummy patron status') do
-    FactoryGirl.create(:patron_status)
+    FactoryBot.create(:patron_status)
     PatronStatus.reindex
     block.call
   end

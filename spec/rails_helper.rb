@@ -29,7 +29,7 @@ RSpec.configure do |config|
   # instead of true.
   # config.use_transactional_fixtures = true
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   # Include the Devise test helpers
   config.include Devise::Test::ControllerHelpers, type: :controller
@@ -41,10 +41,10 @@ RSpec.configure do |config|
     # Then use transactions to roll back other changes
     DatabaseCleaner.strategy = :transaction
 
-    # Run factory girl lint before the suite
+    # Run factory bot lint before the suite
     begin
       DatabaseCleaner.start
-      # FactoryGirl.lint
+      # FactoryBot.lint
     ensure
       DatabaseCleaner.clean
     end
