@@ -5,7 +5,7 @@ require 'rails/all'
 if Rails.env.staging? || Rails.env.production?
   require 'figs'
   # Don't run this initializer on travis.
-  Figs.load(stage: Rails.env) unless ENV['TRAVIS']
+  Figs.load(stage: Rails.env) 
 end
 
 # Require the gems listed in Gemfile, including any gems
