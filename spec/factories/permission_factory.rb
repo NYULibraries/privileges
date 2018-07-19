@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :permission do
     code 'nyu_ag_noaleph_dummy_permission'
     web_text 'Dummy Permission'

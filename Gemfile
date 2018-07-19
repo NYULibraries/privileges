@@ -37,11 +37,11 @@ gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 
 gem 'devise', '~> 4.3.0'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
-gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.0.4'
+gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.1.2'
+gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.2.1'
 gem 'nyulibraries_institutions', github: 'NYULibraries/nyulibraries_institutions', tag: 'v1.0.3'
-gem 'nyulibraries_templates', github: 'NYULibraries/nyulibraries_templates', tag: 'v1.1.2'
 gem 'nyulibraries_javascripts', github: 'NYULibraries/nyulibraries_javascripts', tag: 'v1.0.0'
-gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.1'
+gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.0.2'
 
 # Deploy the application with Formaggio deploy recipes
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.2'
@@ -80,8 +80,8 @@ group :test, :cucumber do
   # Phantomjs for headless browser testing
   gem 'phantomjs', '>= 1.9.0'
   gem 'poltergeist', '~> 1.16.0'
-  # Use factory girl for creating models
-  gem 'factory_girl_rails', '~> 4.8.0'
+  # Use factory bot for creating models
+  gem 'factory_bot_rails', '~> 4.10.0'
   gem 'cucumber-rails', require: false
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
