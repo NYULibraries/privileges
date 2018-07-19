@@ -14,6 +14,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   end
 
   test "redirect to individual patron status" do
+    skip 'Need to move this to rspec'
     sign_in users(:nonadmin)
     get :index_patron_statuses
     assert assigns(:patron_status_search)
@@ -23,6 +24,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   end
 
   test "show individual patron status" do
+    skip 'Need to move this to rspec'
     get :show_patron_status, :id => patron_statuses(:aleph_one)
     assert assigns(:patron_status)
     assert assigns(:sublibraries_with_access)
@@ -33,6 +35,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   end
 
   test "show individual patron status with sublibrary permissions" do
+    skip 'Need to move this to rspec'
     get :show_patron_status, :id => patron_statuses(:aleph_one), :sublibrary_code => sublibraries(:aleph_one).code
     assert assigns(:sublibrary)
     assert assigns(:patron_status_permissions)
@@ -41,6 +44,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   end
 
   test "search for patron status and redirect to search results" do
+    skip 'Need to move this to rspec'
     get :search, :q => "Student"
     assert assigns(:patron_status_search)
     #assert assigns(:patron_statuses).total > 0
@@ -49,6 +53,7 @@ class PrivilegesControllerTest < ActionController::TestCase
   end
 
   test "search for patron status and redirect to patron status page" do
+    skip 'Need to move this to rspec'
     get :search, :q => "Adjunct Faculty"
     assert assigns(:patron_status_search)
     assert assigns(:patron_status_search).total == 1

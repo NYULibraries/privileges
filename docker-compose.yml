@@ -19,7 +19,10 @@ services:
   test:
     image: privileges_dev
     build: .
+    stdin_open: true
+    tty: true
     volumes:
+      # - .:/app
       - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
