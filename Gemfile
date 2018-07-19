@@ -59,8 +59,6 @@ gem 'comma', '~> 4.1.0'
 gem 'rsolr', '~> 1'
 gem 'sunspot_rails', '~> 2.2.0'
 
-gem 'foreman', '~> 0.84'
-
 group :development do
   gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
