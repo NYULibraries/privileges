@@ -10,14 +10,14 @@ The NYU Libraries Privileges Guide offers a Web interface for finding patron per
 
 ```
 docker-compose build
-docker-compose run --service-ports dev
+docker-compose up dev
 ```
 
 ### Run tests
 
 ```
 # To run rspec/cucumber suite
-docker-compose run test
+docker-compose up test
 ```
 
 ### Run locally without Docker

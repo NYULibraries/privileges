@@ -17,8 +17,8 @@ development: &development
 # Do not set this db to the same as development or production.
 test: &test
   <<: *privileges
-  username: <%= (ENV['PRIVILEGES_DB_USER'] || ENV['JENKINS_DB_USER'] || 'root') %>
-  password: <%= (ENV['PRIVILEGES_DB_PASSWORD'] || ENV['JENKINS_DB_PASSWORD'] || '') %>
+  username: <%= (ENV['PRIVILEGES_DB_USER'] || 'root') %>
+  password: <%= (ENV['PRIVILEGES_DB_PASSWORD'] || '') %>
   database: <%= (ENV['PRIVILEGES_DB_DATABASE'] || 'privileges_test') %>
 
 cucumber:

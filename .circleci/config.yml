@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Test
           command: |
-            docker-compose run test
+            docker-compose up test
 
   deploy-dev:
     <<: *docker-defaults

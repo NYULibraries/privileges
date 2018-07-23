@@ -44,6 +44,10 @@ services:
     env_file:
       - test.env
     command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    # healthcheck:
+    #   test: ["CMD", "mysqlshow -uroot|grep privileges"]
+    #   timeout: 20s
+    #   retries: 10
     depends_on:
       - solr
       - db
@@ -58,6 +62,10 @@ services:
     env_file:
       - test.env
     command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    # healthcheck:
+    #   test: ["CMD", "mysqlshow -uroot|grep privileges_test"]
+    #   timeout: 20s
+    #   retries: 10
     depends_on:
       - solr
       - db
