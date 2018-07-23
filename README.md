@@ -8,14 +8,26 @@ The NYU Libraries Privileges Guide offers a Web interface for finding patron per
 
 ## Getting Started
 
+```
+docker-compose build
+docker-compose up dev
+```
+
+### Run tests
+
+```
+# To run rspec/cucumber suite
+docker-compose up test
+```
+
+### Run locally without Docker
+
 See the [dependencies](wiki/Dependencies) section for things to setup before you can get the application running.
 
 ### Starting up a development Solr instance
 
-Use the foreman Procfile to manage startup tasks:
-
 ```
-bundle exec foreman start
+bundle exec sunspot-solr start -p 8984
 ```
 
 ## API

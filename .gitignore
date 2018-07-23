@@ -16,7 +16,6 @@ tmp/
 public/assets
 *.sql
 *.pid
-solr
 app/assets/images/nyulibraries_stylesheets/icons-*.png
 config/aleph
 .DS_Store

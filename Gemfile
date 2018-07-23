@@ -7,6 +7,7 @@ gem 'mysql2', '~> 0.4.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
+gem 'sprockets', '~> 3.7.2'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.0'
@@ -59,8 +60,6 @@ gem 'comma', '~> 4.1.0'
 gem 'rsolr', '~> 1'
 gem 'sunspot_rails', '~> 2.2.0'
 
-gem 'foreman', '~> 0.84'
-
 group :development do
   gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -86,8 +85,6 @@ group :test, :cucumber do
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
   gem 'coveralls', '~> 0.8.0', require: false
-  gem 'vcr', '~> 3.0.0'
-  gem 'webmock', '~> 3'
   gem 'selenium-webdriver', '~> 3.4.0'
   gem 'database_cleaner', '~> 1.6.0'
 end

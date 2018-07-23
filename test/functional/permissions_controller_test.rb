@@ -49,19 +49,15 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    VCR.use_cassette('edit permission') do
-      get :edit, :id => Permission.first.id
-      assert_response :success
-    end
+    get :edit, :id => Permission.first.id
+    assert_response :success
   end
 
   test "should update permission" do
-    VCR.use_cassette('update permission') do
-      put :update, :id => Permission.first.id, :permission => {:code => "uniquecode1234"}
+    put :update, :id => Permission.first.id, :permission => {:code => "uniquecode1234"}
 
-      assert assigns(:permission)
-      assert_redirected_to permission_path(assigns(:permission))
-    end
+    assert assigns(:permission)
+    assert_redirected_to permission_path(assigns(:permission))
   end
 
   test "should NOT update permission" do
@@ -73,23 +69,19 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should destroy permission" do
-    VCR.use_cassette('destroy permission') do
-      assert_difference('Permission.count', -1) do
-        delete :destroy, :id => Permission.first.id
-      end
-
-      assert_redirected_to permissions_path
+    assert_difference('Permission.count', -1) do
+      delete :destroy, :id => Permission.first.id
     end
+
+    assert_redirected_to permissions_path
   end
 
   test "should update order" do
-    VCR.use_cassette('update order permission') do
-      post :update_order, :permissions => [permissions(:aleph_two).id, permissions(:aleph_one).id]
+    post :update_order, :permissions => [permissions(:aleph_two).id, permissions(:aleph_one).id]
 
-      assert_equal permissions(:aleph_two).id, Permission.by_sort_order.first.id
-      assert_equal permissions(:aleph_one).id, Permission.by_sort_order.offset(1).limit(1).first.id
-      assert_redirected_to permissions_url
-    end
+    assert_equal permissions(:aleph_two).id, Permission.by_sort_order.first.id
+    assert_equal permissions(:aleph_one).id, Permission.by_sort_order.offset(1).limit(1).first.id
+    assert_redirected_to permissions_url
   end
 
 end

@@ -10,5 +10,9 @@ FactoryBot.define do
     id_type "You need an ID fool"
     under_header "All things must pass"
     keywords "Shall, Not, Pass"
+
+    after(:create) do |patron_status|
+      patron_status.index!
+    end
   end
 end

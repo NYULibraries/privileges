@@ -1,0 +1,30 @@
+.git
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+log/
+tmp/
+public/assets
+*.sql
+*.pid
+solr
+app/assets/images/nyulibraries_stylesheets/icons-*.png
+config/aleph
+.DS_Store
+
+coverage/
+doc/
+rdoc/
+rvm.env
+brakeman-output.tabs
+
+Dockerfile*
+docker-compose.yml
+test.env
+.ruby-version
+README.md
