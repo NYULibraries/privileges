@@ -1,6 +1,6 @@
 # NYU Libraries Privileges Guide
 
-[![Build Status](https://travis-ci.org/NYULibraries/privileges.png?branch=master)](https://travis-ci.org/NYULibraries/privileges)
+[![CircleCI](https://circleci.com/gh/NYULibraries/privileges.svg?style=svg)](https://circleci.com/gh/NYULibraries/privileges)
 [![Code Climate](https://codeclimate.com/github/NYULibraries/privileges.png)](https://codeclimate.com/github/NYULibraries/privileges)
 [![Coverage Status](https://coveralls.io/repos/NYULibraries/privileges/badge.png?branch=master)](https://coveralls.io/r/NYULibraries/privileges)
 
