@@ -17,7 +17,7 @@ docker-compose up dev
 
 ```
 # To run rspec/cucumber suite
-docker-compose up test
+docker-compose run test
 ```
 
 ### Run locally without Docker
