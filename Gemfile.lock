@@ -396,7 +396,7 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    rubyzip (1.2.1)
+    rubyzip (1.2.2)
     rvm-capistrano (1.5.6)
       capistrano (~> 2.15.4)
     sass (3.4.25)
