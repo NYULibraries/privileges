@@ -87,4 +87,5 @@ group :test, :cucumber do
   gem 'coveralls', '~> 0.8.0', require: false
   gem 'selenium-webdriver', '~> 3.4.0'
   gem 'database_cleaner', '~> 1.6.0'
+  gem 'rails-controller-testing'
 end

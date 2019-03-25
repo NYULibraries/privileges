@@ -6,7 +6,7 @@ describe Privileges::Search::PatronStatusPermissionSearch do
 
   describe "sublibrary_permissions" do
     subject{ search.sublibrary_permissions }
-    
+
     context "with sublibrary_code" do
       let(:options){ {sublibrary_code: "abcd"} }
 
@@ -20,7 +20,6 @@ describe Privileges::Search::PatronStatusPermissionSearch do
           select: ["patron_status_permissions.*, permissions.web_text as permission_web_text, permission_values.web_text as permission_value_web_text"],
           joins: [{:permission_value=>:permission}],
           references: ["permissions"],
-          bind: [],
         }) }
       end
 
@@ -33,7 +32,6 @@ describe Privileges::Search::PatronStatusPermissionSearch do
           select: ["patron_status_permissions.*, permissions.web_text as permission_web_text, permission_values.web_text as permission_value_web_text"],
           joins: [{:permission_value=>:permission}],
           references: ["permissions"],
-          bind: [],
         }) }
       end
     end
