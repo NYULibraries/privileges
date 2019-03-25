@@ -5,7 +5,7 @@ require 'coveralls'
 Coveralls.wear_merged!('rails')
 
 require 'spec_helper'
-require File.expand_path("../../config/environment", __FILE__)
+require_relative '../config/environment'
 require 'rspec/rails'
 require 'database_cleaner'
 require 'pry'
