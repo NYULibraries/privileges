@@ -1,4 +1,4 @@
-FROM ruby:2.3.6
+FROM ruby:2.6.2
 
 ENV INSTALL_PATH /app
 
