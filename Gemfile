@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '= 5.0.7.2'
+gem 'rails', '= 5.2.2.1'
 
 # Use MySQL for the database
 gem 'mysql2', '~> 0.4.5'
@@ -31,11 +31,12 @@ gem 'compass-rails', '~> 3.0.0'
 gem 'acts_as_indexed', '~> 0.8.3'
 
 # Use Exlibris::Nyu for NYU Exlibris customizations, etc.
-gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
+# gem 'exlibris-nyu', github: 'NYULibraries/exlibris-nyu', tag: 'v2.4.0'
+# MAKE COMPATIBLE WITH  nokogiri (~> 1.8) TO RE-ENABLE
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.6.2'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
 gem 'nyulibraries_stylesheets', github: 'NYULibraries/nyulibraries_stylesheets', tag: 'v1.1.2'
@@ -54,7 +55,7 @@ gem 'kaminari', '~> 1.1.1'
 gem 'dalli', '~> 2.7.0'
 
 # Create CSVs from models
-gem 'comma', '~> 4.1.0'
+gem 'comma', '~> 4.2.0'
 
 # Use Sunspot for search
 gem 'rsolr', '~> 1'
@@ -85,7 +86,7 @@ group :test, :cucumber do
   gem 'poltergeist', '~> 1.16.0'
   # Use factory bot for creating models
   gem 'factory_bot_rails', '~> 4.10.0'
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', '~> 1.6.0', require: false
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
   gem 'coveralls', '~> 0.8.0', require: false

@@ -22,5 +22,8 @@ module PrivilegesGuide
 
     # Autoload the lib path
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # Initialize configuration defaults for originally generated Rails version.
+    # config.load_defaults 5.0
   end
 end

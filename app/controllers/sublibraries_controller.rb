@@ -79,7 +79,7 @@ class SublibrariesController < ApplicationController
   end
 
   def sublibrary_search_params
-    params.permit(:q, :sort, :direction, :page).symbolize_keys.merge(admin_view: admin_view?)
+    params.permit(:q, :sort, :direction, :page).to_h.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def sublibrary_params

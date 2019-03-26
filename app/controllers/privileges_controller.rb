@@ -28,7 +28,7 @@ class PrivilegesController < ApplicationController
 
     @sublibraries_with_access = patron_status_search.sublibraries_with_access
     @sublibraries = sublibrary_search.hits.group_by { |sublibrary| sublibrary.stored(:under_header) }
-    @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
+    @sublibrary = Sublibrary.find_by_code(params[:sublibrary_codef])
   	@patron_status_permissions = patron_status_permission_search.sublibrary_permissions if @sublibrary
 
 	  respond_with(@patron_status) do |format|
@@ -84,8 +84,8 @@ class PrivilegesController < ApplicationController
   end
 
   def sublibrary_search_params
-    params.permit(:q, :sort, :direction, :page).select{|k,v| v.present? }
-      .symbolize_keys.merge(admin_view: admin_view?)
+    params.permit(:q, :sort, :direction, :page)
+      .select{ |k,v| v.present? }.to_h.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def patron_status_permission_search
