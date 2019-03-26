@@ -5,7 +5,7 @@ class Sublibrary < ActiveRecord::Base
   scope :visible, ->{ where("sublibraries.web_text <> ? AND NOT(sublibraries.web_text IS NULL) and sublibraries.visible", "") }
 
   #Validations
-  validates :code, :presence => true, :uniqueness => true
+  validates :code, presence: true, uniqueness: true
   validate :code_is_only_prefix
   validate :web_text_required_if_not_from_aleph
 
@@ -21,31 +21,31 @@ class Sublibrary < ActiveRecord::Base
 
   #Has many patron status permissions since they each have a sublibrary
   has_many :patron_status_permissions,
-           :primary_key => "code",
-           :foreign_key => "sublibrary_code",
-           :dependent => :destroy
+           primary_key: "code",
+           foreign_key: "sublibrary_code",
+           dependent: :destroy
 
   # The Sunspot searchable object
-  searchable :auto_index => Utilities::Common::index? do
+  searchable auto_index: Utilities::Common::index? do
     text :web_text, :original_text, :code, :under_header
-    string :web_text, :stored => true do
+    string :web_text, stored: true do
       (web_text.blank?) ? nil : web_text
     end
-    string :code, :stored => true
-    boolean :visible, :stored => true
-    boolean :visible_frontend, :stored => true do
+    string :code, stored: true
+    boolean :visible, stored: true
+    boolean :visible_frontend, stored: true do
       (!code.blank? && !web_text.blank? && visible)
     end
-    boolean :from_aleph, :stored => true
+    boolean :from_aleph, stored: true
     string :original_text
-    string :under_header, :stored => true do
+    string :under_header, stored: true do
       (under_header.blank?) ? "Other NYU Libraries" : under_header
     end
-    string :sort_header, :stored => true do
+    string :sort_header, stored: true do
       (under_header.blank?) ? "other nyu libraries" : under_header.downcase.gsub(/^nyu/, '!nyu')  # Force nyu to be first
     end
     # Strip tags to sort
-    string :sort_text, :stored => true do
+    string :sort_text, stored: true do
       web_text.downcase.gsub(/<\/?[^>]*>/, "") unless web_text.nil?
     end
   end

@@ -18,7 +18,7 @@ describe Privileges::Search::PatronStatusPermissionSearch do
         its(:where_values_hash){ is_expected.to eq({"id" => ["10", "12"]}) }
         its(:values){ is_expected.to include({
           select: ["patron_status_permissions.*, permissions.web_text as permission_web_text, permission_values.web_text as permission_value_web_text"],
-          joins: [{:permission_value=>:permission}],
+          joins: [{permission_value: :permission}],
           references: ["permissions"],
         }) }
       end
@@ -30,7 +30,7 @@ describe Privileges::Search::PatronStatusPermissionSearch do
         its(:where_values_hash){ is_expected.to eq({"id" => []}) }
         its(:values){ is_expected.to include({
           select: ["patron_status_permissions.*, permissions.web_text as permission_web_text, permission_values.web_text as permission_value_web_text"],
-          joins: [{:permission_value=>:permission}],
+          joins: [{permission_value: :permission}],
           references: ["permissions"],
         }) }
       end
@@ -55,10 +55,10 @@ describe Privileges::Search::PatronStatusPermissionSearch do
     let(:search_params){ subject.query.to_params }
     let(:default_params) do
       ({
-        :fq=>["type:PatronStatusPermission", "-patron_status_code_ss:[* TO *]", "-sublibrary_code_ss:[* TO *]", "permission_visible_bs:true", "visible_bs:true"],
-        :start=>0,
-        :rows=>200,
-        :q=>"*:*"
+        fq: ["type:PatronStatusPermission", "-patron_status_code_ss:[* TO *]", "-sublibrary_code_ss:[* TO *]", "permission_visible_bs:true", "visible_bs:true"],
+        start: 0,
+        rows: 200,
+        q: "*:*"
       })
     end
 
@@ -73,7 +73,7 @@ describe Privileges::Search::PatronStatusPermissionSearch do
       let(:options){ {admin_view: true} }
       let(:admin_params) do
         default_params.merge({
-          :fq=>["type:PatronStatusPermission", "-patron_status_code_ss:[* TO *]", "-sublibrary_code_ss:[* TO *]", "permission_visible_bs:true"],
+          fq: ["type:PatronStatusPermission", "-patron_status_code_ss:[* TO *]", "-sublibrary_code_ss:[* TO *]", "permission_visible_bs:true"],
         })
       end
       it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -87,7 +87,7 @@ describe Privileges::Search::PatronStatusPermissionSearch do
         let(:options){ {patron_status_code: "abcd"} }
         let(:patron_status_params) do
           default_params.merge({
-            :fq=>["type:PatronStatusPermission", "patron_status_code_ss:abcd", "-sublibrary_code_ss:[* TO *]", "permission_visible_bs:true", "visible_bs:true"]
+            fq: ["type:PatronStatusPermission", "patron_status_code_ss:abcd", "-sublibrary_code_ss:[* TO *]", "permission_visible_bs:true", "visible_bs:true"]
           })
         end
 
@@ -101,7 +101,7 @@ describe Privileges::Search::PatronStatusPermissionSearch do
         let(:options){ {sublibrary_code: "abcd"} }
         let(:sublibrary_params) do
           default_params.merge({
-            :fq=>["type:PatronStatusPermission", "-patron_status_code_ss:[* TO *]", "sublibrary_code_ss:abcd", "permission_visible_bs:true", "visible_bs:true"]
+            fq: ["type:PatronStatusPermission", "-patron_status_code_ss:[* TO *]", "sublibrary_code_ss:abcd", "permission_visible_bs:true", "visible_bs:true"]
           })
         end
 

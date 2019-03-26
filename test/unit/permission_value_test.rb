@@ -4,7 +4,7 @@ class PermissionValueTest < ActiveSupport::TestCase
   
   def setup
     @existing_permission_value = permission_values(:pv_aleph_one)
-    @permission_value = PermissionValue.new({:web_text => "notnilwebtext", :permission_code => "multiple_hold_permission", :code => "notnilcode"})
+    @permission_value = PermissionValue.new({web_text: "notnilwebtext", permission_code: "multiple_hold_permission", code: "notnilcode"})
   end
 
   test "code is required" do
@@ -38,13 +38,13 @@ class PermissionValueTest < ActiveSupport::TestCase
   
   test "has many patron status permissions" do
     assert @existing_permission_value.patron_status_permissions.count > 0
-    assert_equal @existing_permission_value.patron_status_permissions, PatronStatusPermission.where(:permission_value_id => @existing_permission_value.id)
+    assert_equal @existing_permission_value.patron_status_permissions, PatronStatusPermission.where(permission_value_id: @existing_permission_value.id)
   end
   
   test "has many patron statuses" do
     assert @existing_permission_value.patron_statuses.count > 0
     psps = @existing_permission_value.patron_status_permissions
-    assert_equal @existing_permission_value.patron_statuses, PatronStatus.where(:code => psps.map(&:patron_status_code))
+    assert_equal @existing_permission_value.patron_statuses, PatronStatus.where(code: psps.map(&:patron_status_code))
   end
   
 end
