@@ -5,7 +5,7 @@
 #
 class PrivilegesController < ApplicationController
   # Redirect authenticated user to their patron status
-  before_filter :redirect_to_patron_status, :only => :index_patron_statuses
+  before_action :redirect_to_patron_status, :only => :index_patron_statuses
   respond_to :html, :json, :js
 
   # GET /patrons
@@ -21,12 +21,13 @@ class PrivilegesController < ApplicationController
   # GET /patrons/1.json
   # GET /patrons/1.js
   def show_patron_status
-    @patron_status = PatronStatus.find_by_code(params[:patron_status_code]) unless params[:patron_status_code].blank?
-    @patron_status = PatronStatus.find(params[:id]) if @patron_status.blank?
+    @patron_status = PatronStatus.find_by_code(params[:patron_status_code]) || PatronStatus.find(params[:id])
+
     # Add patron status code to parameters so sublibrary search get only those with access
-    params.merge!({:patron_status_code => @patron_status.code})
+    params[:patron_status_code] = @patron_status.code
+
     @sublibraries_with_access = patron_status_search.sublibraries_with_access
-    @sublibraries = sublibrary_search.hits.group_by {|sublibrary| sublibrary.stored(:under_header)}
+    @sublibraries = sublibrary_search.hits.group_by { |sublibrary| sublibrary.stored(:under_header) }
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = patron_status_permission_search.sublibrary_permissions if @sublibrary
 
@@ -75,7 +76,7 @@ class PrivilegesController < ApplicationController
 
   def patron_status_search_params
     params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
-      .select{|k,v| v.present? }.symbolize_keys.merge(admin_view: admin_view?)
+      .select{|k,v| v.present? }.to_h.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def sublibrary_search

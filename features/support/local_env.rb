@@ -1,7 +1,7 @@
 require 'coveralls'
 Coveralls.wear_merged!('rails')
 
-require 'pry'
+require 'byebug'
 
 # Require support classes in spec/support and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each do |helper|

@@ -25,7 +25,16 @@
     <td class="actions"><%= link_to 'Show', sublibrary %></td>
     <td class="actions"><%= link_to 'Edit', edit_sublibrary_path(sublibrary) %></td>
     <td class="actions"><%= link_to_unless(sublibrary.from_aleph?, 'Destroy', sublibrary, data: { confirm: 'Are you sure?' }, :method => :delete) %></td>
-    <td class="actions"><%= link_to "#{'Hide' if sublibrary.visible}#{'Reveal' unless sublibrary.visible}", sublibrary_path(sublibrary, params.merge(:sublibrary => { :visible => !sublibrary.visible })), :method => :put, :remote => true, :class => "toggle_visible" %></td>
+    <td class="actions"><%=
+      link_to(
+        "#{sublibrary.visible ? 'Hide' : 'Reveal'}",
+        sublibrary_path(
+          sublibrary,
+          **params.permit(:controller, :action).to_h.sybolize_keys, sublibrary: { visible: !sublibrary.visible }
+        ),
+        method: :put, remote: true, class: "toggle_visible"
+      )
+    %></td>
   </tr>
 <% end %>
 

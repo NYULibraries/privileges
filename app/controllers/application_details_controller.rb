@@ -2,7 +2,7 @@
 # application text, which are displayed to frontend users
 #
 class ApplicationDetailsController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
   respond_to :html
 
   # GET /application_details

@@ -62,11 +62,16 @@ module ApplicationHelper
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
-    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-    direction_icon = (direction.eql? "desc") ? :sort_desc : :sort_asc
-    search = params[:search]
-    html = link_to title, params.merge(:sort => column, :direction => direction, :page => nil, :id => ""), {:class => css_class}
+    direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
+    direction_icon = direction == 'desc' ? :sort_desc : :sort_asc
+    html =  link_to title,
+            { **sortable_params_as_symbolized_hash, sort: column, direction: direction, page: nil, id: '' },
+            class: css_class
+
     html << icon_tag(direction_icon) if column == sort_column
-    return html
+  end
+
+  def sortable_params_as_symbolized_hash
+    params.permit(:controller, :action).to_h.symbolize_keys
   end
 end

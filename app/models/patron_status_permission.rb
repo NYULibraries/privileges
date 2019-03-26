@@ -33,8 +33,7 @@ class PatronStatusPermission < ActiveRecord::Base
     boolean :from_aleph, :stored => true
     boolean :visible, :stored => true
     boolean :permission_visible, :stored => true do
-      permission_value.permission.visible
+      permission_value&.permission&.visible
     end
   end
-  
 end

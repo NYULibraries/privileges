@@ -2,7 +2,7 @@
 # and sublibrary to a given set of permissions
 #
 class PatronStatusPermissionsController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   # POST /patron_status_permissions
   # POST /patron_status_permissions.js
@@ -57,10 +57,10 @@ class PatronStatusPermissionsController < ApplicationController
 
   # PUT /patron_status_permissions
   def update_multiple
-    @sublibrary = Sublibrary.find_by_code(params[:patron_status_permission][:sublibrary_code])
-    @patron_status = PatronStatus.find_by_code(params[:patron_status_permission][:patron_status_code])
+    @sublibrary = Sublibrary.find_by_code(patron_status_permission_params[:sublibrary_code])
+    @patron_status = PatronStatus.find_by_code(patron_status_permission_params[:patron_status_code])
 
-    params[:update_permission_ids].each do |perm|
+    params.require(:update_permission_ids).each do |perm|
       psp = PatronStatusPermission.find(perm.first)
       if psp.permission_value_id != perm.last.to_i
         psp.permission_value_id = perm.last
@@ -93,11 +93,7 @@ class PatronStatusPermissionsController < ApplicationController
 
   private
   def patron_status_permission_params
-    if params[:patron_status_permission].present?
-      params.require(:patron_status_permission).permit(:patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible)
-    else
-      {}
-    end
+    params.require(:patron_status_permission).permit(:patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible)
   end
 
   # Shortcut for retrieving sublibrary code if it exists

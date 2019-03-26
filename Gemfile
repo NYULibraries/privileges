@@ -48,7 +48,7 @@ gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.2'
 
 # Use Kaminari for pagination
-gem 'kaminari', '~> 1.0.0'
+gem 'kaminari', '~> 1.1.1'
 
 # For memcached
 gem 'dalli', '~> 2.7.0'
@@ -58,7 +58,9 @@ gem 'comma', '~> 4.1.0'
 
 # Use Sunspot for search
 gem 'rsolr', '~> 1'
-gem 'sunspot_rails', '~> 2.2.0'
+gem 'sunspot_rails', '~> 2.3.0'
+
+gem 'record_tag_helper', '~> 1.0.0'
 
 group :development do
   gem 'better_errors', '~> 2.3.0'
@@ -71,6 +73,8 @@ group :development, :test, :cucumber do
   gem 'pry', '~> 0.10.1'
   # Development solr instance from Sunspot
   gem 'sunspot_solr', '~> 2.2.0'
+  # Debugging in development, tests
+  gem "byebug", "~> 11.0"
 end
 
 group :test, :cucumber do
