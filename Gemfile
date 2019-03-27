@@ -67,6 +67,7 @@ group :development do
   gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'progress_bar', '~> 1.1.0'
+  gem 'listen', '~> 3.1.5'
 end
 
 group :development, :test, :cucumber do
