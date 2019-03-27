@@ -93,7 +93,11 @@ class PatronStatusPermissionsController < ApplicationController
 
   private
   def patron_status_permission_params
-    params.require(:patron_status_permission).permit(:patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible)
+    if params[:patron_status_permission].present?
+      params.require(:patron_status_permission).permit(:patron_status_code, :sublibrary_code, :permission_value_id, :from_aleph, :visible)
+    else
+      {}
+    end
   end
 
   # Shortcut for retrieving sublibrary code if it exists

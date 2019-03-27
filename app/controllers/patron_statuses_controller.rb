@@ -111,7 +111,11 @@ class PatronStatusesController < ApplicationController
   end
 
   def patron_status_params
-    params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible, :from_aleph, :code)
+    if params[:patron_status].present?
+      params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible, :from_aleph, :code)
+    else
+      {}
+    end
   end
 
   # Retreive this @patron_status patron_status_permissions with additional information joined in for display
