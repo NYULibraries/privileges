@@ -51,16 +51,10 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
   end
 
   test "updating multiple patron status permissions at once" do
-    update_permission_ids =[
-        [
-          patron_status_permissions(:psp_aleph_one).id,
-          permission_values(:pv_aleph_two).id
-        ],
-        [
-          patron_status_permissions(:psp_aleph_two).id,
-          permission_values(:pv_aleph_one).id
-        ]
-      ]
+    update_permission_ids = {
+      patron_status_permissions(:psp_aleph_one).id => permission_values(:pv_aleph_two).id,
+      patron_status_permissions(:psp_aleph_two).id => permission_values(:pv_aleph_one).id
+    }
 
     get :update_multiple,
         params: {
