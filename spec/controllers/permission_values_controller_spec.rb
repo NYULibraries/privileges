@@ -11,7 +11,7 @@ describe PermissionValuesController do
   end
 
   describe '#create' do
-    before { post :create, permission_value: permission_value }
+    before { post :create, params: { permission_value: permission_value } }
     subject { response }
     context 'when web_text is a short string' do
       it 'should create a permission value' do

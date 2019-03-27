@@ -24,7 +24,7 @@ class PermissionsControllerTest < ActionController::TestCase
 
   test "should create permission" do
     assert_difference('Permission.count') do
-      post :create, :permission => {:code => "uniquecode1234", :from_aleph => true}
+      post :create, params: { permission: {code: "uniquecode1234", from_aleph: true} }
     end
 
     assert_response :redirect
@@ -33,7 +33,7 @@ class PermissionsControllerTest < ActionController::TestCase
 
   test "should NOT create permission" do
     assert_no_difference('Permission.count') do
-      post :create, :permission => {:code => nil, :from_aleph => true}
+      post :create, params: { permission: {code: nil, from_aleph: true} }
     end
 
     assert assigns(:permission)
@@ -42,26 +42,26 @@ class PermissionsControllerTest < ActionController::TestCase
   end
 
   test "should show permission" do
-    get :show, :id => Permission.first.id
+    get :show, params: { id: Permission.first.id }
     assert_not_nil assigns(:permission)
     assert_response :success
     assert_template :show
   end
 
   test "should get edit" do
-    get :edit, :id => Permission.first.id
+    get :edit, params: { id: Permission.first.id }
     assert_response :success
   end
 
   test "should update permission" do
-    put :update, :id => Permission.first.id, :permission => {:code => "uniquecode1234"}
+    put :update, params: { id: Permission.first.id, permission: {code: "uniquecode1234"} }
 
     assert assigns(:permission)
     assert_redirected_to permission_path(assigns(:permission))
   end
 
   test "should NOT update permission" do
-    put :update, :id => Permission.first.id, :permission => {:code => nil }
+    put :update, params: { id: Permission.first.id, permission: {code: nil } }
 
     assert assigns(:permission)
     assert_not_nil flash[:danger]
@@ -70,14 +70,14 @@ class PermissionsControllerTest < ActionController::TestCase
 
   test "should destroy permission" do
     assert_difference('Permission.count', -1) do
-      delete :destroy, :id => Permission.first.id
+      delete :destroy, params: { id: Permission.first.id }
     end
 
     assert_redirected_to permissions_path
   end
 
   test "should update order" do
-    post :update_order, :permissions => [permissions(:aleph_two).id, permissions(:aleph_one).id]
+    post :update_order, params: { permissions: [permissions(:aleph_two).id, permissions(:aleph_one).id] }
 
     assert_equal permissions(:aleph_two).id, Permission.by_sort_order.first.id
     assert_equal permissions(:aleph_one).id, Permission.by_sort_order.offset(1).limit(1).first.id

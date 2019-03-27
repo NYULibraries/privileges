@@ -12,16 +12,16 @@ class PermissionValue < ActiveRecord::Base
 
   # Belongs to a permission
   belongs_to :permission,
-             :primary_key => "code",
-             :foreign_key => "permission_code"
+             primary_key: "code",
+             foreign_key: "permission_code"
 
   # Has many patron status permissions since they each have a permission_value_id
   has_many :patron_status_permissions,
-           :inverse_of => :permission_value,
-           :dependent => :destroy
+           inverse_of: :permission_value,
+           dependent: :destroy
 
   # Has many patron statuses as a result of the above relationship
   has_many :patron_statuses,
-           :through => :patron_status_permissions
+           through: :patron_status_permissions
 
 end

@@ -39,7 +39,7 @@ class SublibraryTest < ActiveSupport::TestCase
 
   test "has many patron status permissions" do
     assert @existing_sublibrary.patron_status_permissions.count > 0
-    assert_equal @existing_sublibrary.patron_status_permissions, PatronStatusPermission.where(:sublibrary_code => @existing_sublibrary.code)
+    assert_equal @existing_sublibrary.patron_status_permissions, PatronStatusPermission.where(sublibrary_code: @existing_sublibrary.code)
   end
 
 end

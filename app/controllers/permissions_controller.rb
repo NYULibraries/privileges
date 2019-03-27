@@ -1,7 +1,7 @@
 # This controller handles the permissions assigned to sublibraries
 # each permission has a set of possible values (PermissionValues)
 class PermissionsController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   # GET /permissions
   def index
@@ -39,7 +39,7 @@ class PermissionsController < ApplicationController
       else
         #If failed, set the code back to user-entered code, without prefix
 	      @permission.code = params[:permission][:code]
-        format.html { render :action => "new" }
+        format.html { render action: "new" }
       end
     end
   end
@@ -54,11 +54,11 @@ class PermissionsController < ApplicationController
       if @permission.update_attributes(permission_params)
         flash[:notice] = t("permissions.update_success")
         format.html { redirect_to(@permission) }
-        format.js { render :nothing => true } if request.xhr?
+        format.js { render nothing: true } if request.xhr?
       else
         flash[:danger] = t("permissions.update_failure")
-        format.html { render :action => "edit" }
-        format.js { render :nothing => true } if request.xhr?
+        format.html { render action: "edit" }
+        format.js { render nothing: true } if request.xhr?
       end
     end
   end
@@ -73,7 +73,7 @@ class PermissionsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to permissions_url, notice: t("permissions.update_order_success") and return }
-      format.js { render :layout => false } if request.xhr?
+      format.js { render layout: false } if request.xhr?
     end
   end
 

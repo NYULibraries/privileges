@@ -11,5 +11,5 @@ if Rails.env.test?
   # Add the coveralls task as the default with the appropriate prereqs
   require 'coveralls/rake/task'
   Coveralls::RakeTask.new
-  task :default => [:spec, :test, :cucumber, 'coveralls:push']
+  task default: [:spec, :test, :cucumber, 'coveralls:push']
 end

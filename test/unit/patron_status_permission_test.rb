@@ -4,7 +4,7 @@ class PatronStatusPermissionTest < ActiveSupport::TestCase
   
   def setup
     @existing_psp = patron_status_permissions(:psp_aleph_one)
-    @psp = PatronStatusPermission.new({:patron_status_code => 52, :sublibrary_code => "TNSGI", :permission_value_id => permission_values(:pv_aleph_one).id})
+    @psp = PatronStatusPermission.new({patron_status_code: 52, sublibrary_code: "TNSGI", permission_value_id: permission_values(:pv_aleph_one).id})
   end
 
   test "patron status code is required" do
