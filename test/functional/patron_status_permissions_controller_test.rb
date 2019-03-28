@@ -10,7 +10,7 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
 
   test "should create patron status permission" do
     assert_difference('PatronStatusPermission.count') do
-      post :create, :patron_status_permission => @psp_perm_attrs
+      post :create, params: { :patron_status_permission => @psp_perm_attrs }
     end
 
     assert_response :redirect
@@ -19,7 +19,7 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
 
   test "should not create patron status permission" do
      assert_no_difference('PatronStatusPermission.count') do
-       post :create, :patron_status_permission => @psp_perm_attrs.merge({:sublibrary_code => nil})
+       post :create, params: { :patron_status_permission => @psp_perm_attrs.merge({:sublibrary_code => nil}) }
      end
 
      assert_response :redirect
@@ -28,14 +28,14 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
    end
 
   test "should update patron status permission" do
-    put :update, :id => patron_status_permissions(:psp_aleph_one).id, :patron_status_permission => @psp_perm_attrs
+    put :update, params: { :id => patron_status_permissions(:psp_aleph_one).id, :patron_status_permission => @psp_perm_attrs }
 
     assert_redirected_to patron_status_path(assigns(:patron_status), :sublibrary_code => assigns(:sublibrary_code))
     assert_response :redirect
   end
 
   test "should not update patron status permission" do
-    put :update, :id => patron_status_permissions(:psp_aleph_one).id, :patron_status_permission => @psp_perm_attrs.merge({:patron_status_code => nil})
+    put :update, params: { :id => patron_status_permissions(:psp_aleph_one).id, :patron_status_permission => @psp_perm_attrs.merge({:patron_status_code => nil}) }
 
     assert_response :redirect
     assert_redirected_to patron_status_path(assigns(:patron_status), :sublibrary_code => assigns(:sublibrary_code))
@@ -44,7 +44,7 @@ class PatronStatusPermissionsControllerTest < ActionController::TestCase
 
   test "should destroy patron status permission" do
     assert_difference('PatronStatusPermission.count', -1) do
-      delete :destroy, :id => patron_status_permissions(:psp_aleph_one).id
+      delete :destroy, params: { :id => patron_status_permissions(:psp_aleph_one).id }
     end
 
     assert_redirected_to patron_status_path(assigns(:patron_status), :sublibrary_code => assigns(:sublibrary_code))

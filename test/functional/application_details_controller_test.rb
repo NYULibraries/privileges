@@ -15,12 +15,12 @@ class ApplicationDetailsControllerTest < ActionController::TestCase
   end
 
   test "should get edit action" do
-   get :edit, :id => ApplicationDetail.first.id
+   get :edit, params: { :id => ApplicationDetail.first.id }
    assert_response :success
   end
 
   test "should update application detail" do
-   put :update, :id => ApplicationDetail.first.id, :application_detail => {:the_text => "updating this text"}
+   put :update, params: { :id => ApplicationDetail.first.id, :application_detail => {:the_text => "updating this text"} }
 
    assert assigns(:application_detail)
    assert_equal assigns(:application_detail).the_text, "updating this text"
@@ -28,7 +28,7 @@ class ApplicationDetailsControllerTest < ActionController::TestCase
   end
 
   test "should throw update error" do
-   put :update, :id => ApplicationDetail.first.id, :application_detail => {:the_text => nil}
+   put :update, params: { :id => ApplicationDetail.first.id, :application_detail => {:the_text => nil} }
 
    assert_template :edit
   end
