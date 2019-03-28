@@ -16,7 +16,7 @@ class SublibrariesControllerTest < ActionController::TestCase
   end
 
   test "should test sorting" do
-    get :index, params: { :sort => "sort_text" }
+    get :index, params: { sort: "sort_text" }
 
     assert assigns(:sublibrary_search)
     assert_template :index
@@ -31,7 +31,7 @@ class SublibrariesControllerTest < ActionController::TestCase
 
   test "should create sublibrary" do
     assert_difference('Sublibrary.count') do
-      post :create, params: { :sublibrary => { :code => "uniqueness82937465", :from_aleph => true } }
+      post :create, params: { sublibrary: { code: "uniqueness82937465", from_aleph: true } }
     end
 
     assert_response :redirect
@@ -40,7 +40,7 @@ class SublibrariesControllerTest < ActionController::TestCase
 
   test "should NOT create sublibrary" do
    assert_no_difference('Sublibrary.count') do
-     post :create, params: { :sublibrary => { :code => nil, :from_aleph => false } }
+     post :create, params: { sublibrary: { code: nil, from_aleph: false } }
    end
 
    assert assigns(:sublibrary)
@@ -49,26 +49,26 @@ class SublibrariesControllerTest < ActionController::TestCase
   end
 
   test "should show sublibrary" do
-   get :show, params: { :id => sublibraries(:aleph_one) }
+   get :show, params: { id: sublibraries(:aleph_one) }
    assert_not_nil assigns(:sublibrary)
    assert_response :success
    assert_template :show
   end
 
   test "should get edit" do
-    get :edit, params: { :id => Sublibrary.first.id }
+    get :edit, params: { id: Sublibrary.first.id }
     assert_response :success
   end
 
   test "should update sublibrary" do
-    put :update, params: { :id => sublibraries(:aleph_one) }
+    put :update, params: { id: sublibraries(:aleph_one) }
 
     assert assigns(:sublibrary)
     assert_redirected_to sublibrary_path(assigns(:sublibrary))
   end
 
   test "should NOT update sublibrary" do
-    put :update, params: { :id => Sublibrary.first.id, :sublibrary => { :web_text => nil, :from_aleph => false } }
+    put :update, params: { id: Sublibrary.first.id, sublibrary: { web_text: nil, from_aleph: false } }
 
     assert assigns(:sublibrary)
     assert_template :edit
@@ -76,7 +76,7 @@ class SublibrariesControllerTest < ActionController::TestCase
 
   test "should destroy sublibrary" do
     assert_difference('Sublibrary.count', -1) do
-      delete :destroy, params: { :id => sublibraries(:aleph_one) }
+      delete :destroy, params: { id: sublibraries(:aleph_one) }
     end
 
     assert_redirected_to sublibraries_path
