@@ -15,6 +15,10 @@ jobs:
       #     command: |
       #       script/docker/pull_docker.sh
       - run:
+        name: Authenticate Quay
+        command: |
+          docker login -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD" quay.io
+      - run:
           name: Build Docker
           command: |
             export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
