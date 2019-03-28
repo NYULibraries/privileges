@@ -2,7 +2,7 @@ class Permission < ApplicationRecord
   include Utilities::Common
 
   # Validations
-  validates :code, :presence => true, :uniqueness => true
+  validates :code, presence: true, uniqueness: true
   validate :web_text_required_if_not_from_aleph
   validate :code_is_only_prefix
   validate :increment_sort_order
@@ -16,17 +16,17 @@ class Permission < ApplicationRecord
 
   # Has many possible permissions values
   has_many :permission_values,
-           :primary_key => "code",
-           :foreign_key => "permission_code",
-           :dependent => :destroy
+           primary_key: "code",
+           foreign_key: "permission_code",
+           dependent: :destroy
 
   # Has many patron status permissions linked by the permission values they contain
   has_many :patron_status_permissions,
-           :through => :permission_values
+           through: :permission_values
 
   # Has many patron statuses linked by the patron sttatus permissions it contains
   has_many :patron_statuses,
-           :through => :patron_status_permissions
+           through: :patron_status_permissions
 
   # Named scopes
   scope :by_sort_order, ->{ order 'sort_order ASC, web_text ASC' }

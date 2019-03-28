@@ -2,7 +2,7 @@
 namespace :privileges do
 
   desc "Refresh Aleph DB Config"
-  task :load_aleph => :environment do
+  task load_aleph: :environment do
 
     start = Time.now
 

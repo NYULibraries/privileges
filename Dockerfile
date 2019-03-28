@@ -2,6 +2,17 @@ FROM ruby:2.6.2
 
 ENV INSTALL_PATH /app
 
+# Configure sources list to work with archived debain packages
+# See: https://lists.debian.org/debian-devel-announce/2019/03/msg00006.html
+# https://unix.stackexchange.com/questions/508724/failed-to-fetch-jessie-backports-repository
+
+RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak && \
+      sed -e '/jessie-updates/ s/^#*/#/' -i /etc/apt/sources.list && \
+      sed -e '/jessie\/updates/ s/^#*/#/' -i /etc/apt/sources.list && \
+      echo deb http://archive.debian.org/debian jessie-backports main >> /etc/apt/sources.list && \
+      echo deb-src http://archive.debian.org/debian jessie-backports main >> /etc/apt/sources.list && \
+      echo 'Acquire::Check-Valid-Until "false";' >> /etc/apt/apt.conf
+
 # Essential dependencies
 RUN apt-get update -qq && apt-get install -y \
       bzip2 \

@@ -22,7 +22,7 @@ class ApplicationDetailsController < ApplicationController
     @application_detail = ApplicationDetail.find(params[:id])
     flash[:notice] = t('application_details.update_success') if @application_detail.update_attributes(application_detail_params)
 
-    respond_with(@application_detail, :location => application_details_path)
+    respond_with(@application_detail, location: application_details_path)
   end
 
   private
