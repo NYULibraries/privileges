@@ -10,10 +10,10 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      # - run:
-      #     name: Pull Docker
-      #     command: |
-      #       script/docker/pull_docker.sh
+      - run:
+          name: Pull Docker
+          command: |
+            script/docker/pull_docker.sh
       - run:
           name: Authenticate Quay
           command: |
