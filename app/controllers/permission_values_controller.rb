@@ -46,7 +46,7 @@ class PermissionValuesController < ApplicationController
         flash[:notice] = t("permission_values.update_success")
         format.html { redirect_to(@permission) }
       else
-        format.html { render action: "edit" }
+        format.html { render :action => "edit" }
       end
     end
   end

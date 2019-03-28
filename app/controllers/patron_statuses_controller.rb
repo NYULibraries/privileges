@@ -9,8 +9,8 @@ class PatronStatusesController < ApplicationController
 
     respond_to do |format|
       format.json do
-        render json: @patron_status_search.results,
-               layout: false and return
+        render :json => @patron_status_search.results,
+               :layout => false and return
       end
       format.html
     end
@@ -55,7 +55,7 @@ class PatronStatusesController < ApplicationController
       else
         #If failed, set the code back to user-entered code, without prefix
         @patron_status.code = patron_status_params[:code]
-        format.html { render action: "new" }
+        format.html { render :action => "new" }
       end
     end
   end
@@ -70,10 +70,10 @@ class PatronStatusesController < ApplicationController
       if @patron_status.update_attributes(patron_status_params)
         flash[:notice] =  t('patron_statuses.update_success')
         format.html { redirect_to @patron_status }
-        format.js { render nothing: true } if request.xhr?
+        format.js { render :nothing => true } if request.xhr?
       else
-        format.html { render action: "edit" }
-        format.js { render nothing: true } if request.xhr?
+        format.html { render :action => "edit" }
+        format.js { render :nothing => true } if request.xhr?
       end
     end
   end
@@ -120,7 +120,7 @@ class PatronStatusesController < ApplicationController
 
   # Retreive this @patron_status patron_status_permissions with additional information joined in for display
   def patron_status_permissions
-    @patron_status_permissions ||= @patron_status.patron_status_permissions.joins(permission_value: :permission).where(permissions: {visible: true}, sublibrary_code: sublibrary.code).order("permissions.sort_order asc") unless sublibrary.nil?
+    @patron_status_permissions ||= @patron_status.patron_status_permissions.joins(:permission_value => :permission).where(:permissions=>{:visible=>true}, :sublibrary_code => sublibrary.code).order("permissions.sort_order asc") unless sublibrary.nil?
   end
 
   def prefix

@@ -39,7 +39,7 @@ describe PrivilegesController do
   xdescribe '#show_patron_status' do
     let(:patron_status) { create(:patron_status) }
     let(:sublibrary_code) { nil }
-    before { get :show_patron_status, params: { id: patron_status.id, sublibrary_code: sublibrary_code } }
+    before { get :show_patron_status, id: patron_status.id, sublibrary_code: sublibrary_code }
     subject { response }
     context 'when there is no sublibrary code' do
       it 'should set up variables' do

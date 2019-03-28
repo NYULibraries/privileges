@@ -40,11 +40,11 @@ describe Privileges::Search::PatronStatusSearch do
     let(:search_params){ subject.query.to_params }
     let(:default_params) do
       ({
-        fq: ["type:PatronStatus", "web_text_ss:[* TO *]", "visible_bs:true"],
-        sort: "sort_header_ss asc, web_text_ss asc",
-        start: 0,
-        rows: 200,
-        q: "*:*"
+        :fq=>["type:PatronStatus", "web_text_ss:[* TO *]", "visible_bs:true"],
+        :sort=>"sort_header_ss asc, web_text_ss asc",
+        :start=>0,
+        :rows=>200,
+        :q=>"*:*"
       })
     end
 
@@ -59,11 +59,11 @@ describe Privileges::Search::PatronStatusSearch do
       let(:options){ {admin_view: true} }
       let(:admin_params) do
         ({
-          fq: ["type:PatronStatus", "web_text_ss:[* TO *]"],
-          sort: "sort_header_ss asc, web_text_ss asc",
-          start: 0,
-          rows: 30,
-          q: "*:*"
+          :fq=>["type:PatronStatus", "web_text_ss:[* TO *]"],
+          :sort=>"sort_header_ss asc, web_text_ss asc",
+          :start=>0,
+          :rows=>30,
+          :q=>"*:*"
         })
       end
       it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -75,7 +75,7 @@ describe Privileges::Search::PatronStatusSearch do
         let(:options){ {page: 3, admin_view: true} }
         let(:admin_page_params) do
           admin_params.merge({
-            start: 60,
+            :start=>60,
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -88,7 +88,7 @@ describe Privileges::Search::PatronStatusSearch do
         let(:options){ {sort: "code", direction: "desc", admin_view: true} }
         let(:admin_page_params) do
           admin_params.merge({
-            sort: "code_ss desc",
+            :sort=>"code_ss desc",
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -101,10 +101,10 @@ describe Privileges::Search::PatronStatusSearch do
         let(:options){ {q: "some text", admin_view: true} }
         let(:admin_query_params) do
           admin_params.merge({
-            defType: "edismax",
-            fl: "* score",
-            q: "some text",
-            qf: "keywords_text web_text_text code_text description_text under_header_text original_text_text",
+            :defType=>"edismax",
+            :fl=>"* score",
+            :q=>"some text",
+            :qf=>"keywords_text web_text_text code_text description_text under_header_text original_text_text",
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -116,7 +116,7 @@ describe Privileges::Search::PatronStatusSearch do
           let(:options){ {q: "some text", page: 2, admin_view: true} }
           let(:admin_query_page_params) do
             admin_query_params.merge({
-              start: 30,
+              :start=>30,
             })
           end
           it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -132,10 +132,10 @@ describe Privileges::Search::PatronStatusSearch do
         let(:options){ {q: "some text"} }
         let(:query_params) do
           default_params.merge({
-            defType: "edismax",
-            fl: "* score",
-            q: "some text",
-            qf: "keywords_text web_text_text code_text",
+            :defType=>"edismax",
+            :fl=>"* score",
+            :q=>"some text",
+            :qf=>"keywords_text web_text_text code_text",
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -148,7 +148,7 @@ describe Privileges::Search::PatronStatusSearch do
         let(:options){ {sublibrary_code: "abcd"} }
         let(:sublibrary_params) do
           default_params.merge({
-            fq: ["type:PatronStatus", "web_text_ss:[* TO *]", "visible_bs:true", "sublibraries_with_access_sms:abcd"]
+            :fq=>["type:PatronStatus", "web_text_ss:[* TO *]", "visible_bs:true", "sublibraries_with_access_sms:abcd"]
           })
         end
 
@@ -162,7 +162,7 @@ describe Privileges::Search::PatronStatusSearch do
         let(:options){ {patron_status_code: "wxyz"} }
         let(:patron_status_params) do
           default_params.merge({
-            fq: ["type:PatronStatus", "web_text_ss:[* TO *]", "visible_bs:true", "code_ss:wxyz"]
+            :fq=>["type:PatronStatus", "web_text_ss:[* TO *]", "visible_bs:true", "code_ss:wxyz"]
           })
         end
 

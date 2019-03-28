@@ -27,11 +27,11 @@ describe Privileges::Search::SublibrarySearch do
     let(:search_params){ subject.query.to_params }
     let(:default_params) do
       ({
-        fq: ["type:Sublibrary", "visible_frontend_bs:true"],
-        sort: "sort_header_ss asc, sort_text_ss asc",
-        start: 0,
-        rows: 200,
-        q: "*:*"
+        :fq=>["type:Sublibrary", "visible_frontend_bs:true"],
+        :sort=>"sort_header_ss asc, sort_text_ss asc",
+        :start=>0,
+        :rows=>200,
+        :q=>"*:*"
       })
     end
 
@@ -46,11 +46,11 @@ describe Privileges::Search::SublibrarySearch do
       let(:options){ {admin_view: true} }
       let(:admin_params) do
         ({
-          fq: ["type:Sublibrary"],
-          sort: "sort_header_ss asc, sort_text_ss asc",
-          start: 0,
-          rows: 30,
-          q: "*:*"
+          :fq=>["type:Sublibrary"],
+          :sort=>"sort_header_ss asc, sort_text_ss asc",
+          :start=>0,
+          :rows=>30,
+          :q=>"*:*"
         })
       end
       it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -62,7 +62,7 @@ describe Privileges::Search::SublibrarySearch do
         let(:options){ {page: 2, admin_view: true} }
         let(:admin_page_params) do
           admin_params.merge({
-            start: 30,
+            :start=>30,
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -75,7 +75,7 @@ describe Privileges::Search::SublibrarySearch do
         let(:options){ {sort: "sort_text", direction: "desc", admin_view: true} }
         let(:admin_page_params) do
           admin_params.merge({
-            sort: "sort_text_ss desc",
+            :sort=>"sort_text_ss desc",
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -88,10 +88,10 @@ describe Privileges::Search::SublibrarySearch do
         let(:options){ {q: "some text", admin_view: true} }
         let(:admin_query_params) do
           admin_params.merge({
-            defType: "edismax",
-            fl: "* score",
-            q: "some text",
-            qf: "web_text_text original_text_text code_text under_header_text",
+            :defType=>"edismax",
+            :fl=>"* score",
+            :q=>"some text",
+            :qf=>"web_text_text original_text_text code_text under_header_text",
           })
         end
         it { is_expected.to be_a Sunspot::Search::StandardSearch }
@@ -103,7 +103,7 @@ describe Privileges::Search::SublibrarySearch do
           let(:options){ {q: "some text", page: 2, admin_view: true} }
           let(:admin_query_page_params) do
             admin_query_params.merge({
-              start: 30,
+              :start=>30,
             })
           end
           it { is_expected.to be_a Sunspot::Search::StandardSearch }
