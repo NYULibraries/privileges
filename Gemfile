@@ -71,8 +71,6 @@ group :development do
 end
 
 group :development, :test, :cucumber do
-  # Use pry-debugger as the REPL and for debugging
-  gem 'pry', '~> 0.10.1'
   # Development solr instance from Sunspot
   gem 'sunspot_solr', '~> 2.2.0'
   # Debugging in development, tests
