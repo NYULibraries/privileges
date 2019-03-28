@@ -5,7 +5,12 @@ services:
     tty: true
     stdin_open: true
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     ports:
       - "3000:3000"
     environment:
@@ -20,7 +25,12 @@ services:
 
   test:
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     stdin_open: true
     tty: true
     volumes:
@@ -40,7 +50,12 @@ services:
 
   setup_dbs:
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     volumes:
       - bundle_cache:/bundle
     env_file:
@@ -56,7 +71,12 @@ services:
 
   setup_test_dbs:
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     volumes:
       - bundle_cache:/bundle
     environment:

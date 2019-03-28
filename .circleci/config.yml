@@ -1,24 +1,32 @@
 docker-defaults: &docker-defaults
   docker:
-    - image: docker:18.03.0-ce-git
+    - image: quay.io/nyulibraries/circleci_docker:18.06.3-dc-1.23.2-0
   working_directory: ~/app
 
 version: 2
 jobs:
-  test:
+  build-and-test:
     <<: *docker-defaults
     steps:
       - checkout
       - setup_remote_docker
+      # - run:
+      #     name: Pull Docker
+      #     command: |
+      #       script/docker/pull_docker.sh
       - run:
-          name: Setup docker-compose dependency
+          name: Build Docker
           command: |
-            apk add --no-cache python3
-            pip3 install docker-compose==1.20.1
+            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+            docker-compose build test
       - run:
           name: Test
           command: |
             docker-compose run test
+      - run:
+          name: Push Docker
+          command: |
+            script/docker/push_docker.sh
 
   deploy-dev:
     <<: *docker-defaults
@@ -42,7 +50,7 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - test
+      - build-and-test
       - deploy-dev:
           requires:
               - test
