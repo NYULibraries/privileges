@@ -1,6 +1,6 @@
 # This class ties patron status/sublibrary value pairs to permission/permission value pairs
 # it is the primary associative table in this application
-class PatronStatusPermission < ActiveRecord::Base
+class PatronStatusPermission < ApplicationRecord
   include Utilities::Common
 
   #Validations

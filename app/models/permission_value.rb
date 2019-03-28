@@ -1,4 +1,4 @@
-class PermissionValue < ActiveRecord::Base
+class PermissionValue < ApplicationRecord
   include Utilities::Common
 
   default_scope { order('web_text ASC') }
