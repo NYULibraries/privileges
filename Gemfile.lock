@@ -16,10 +16,11 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/nyulibraries_errors.git
-  revision: ae1d11ac6b5ff345912c8043bdb83f1af155f5da
-  tag: v1.0.2
+  revision: 54d8def9c219b2829a1b5284970e698fd4725cb7
+  tag: v1.1.1
   specs:
-    nyulibraries_errors (1.0.2)
+    nyulibraries_errors (1.1.1)
+      rails (>= 4)
 
 GIT
   remote: https://github.com/NYULibraries/nyulibraries_institutions.git
