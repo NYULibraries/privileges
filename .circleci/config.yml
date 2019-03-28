@@ -53,14 +53,14 @@ workflows:
       - build-and-test
       - deploy-dev:
           requires:
-              - test
+              - build-and-test
           filters:
             branches:
               ignore:
                 - master
       - deploy-prod:
           requires:
-              - test
+              - build-and-test
           filters:
             branches:
               only: master
