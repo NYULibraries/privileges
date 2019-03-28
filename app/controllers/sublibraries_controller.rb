@@ -35,7 +35,7 @@ class SublibrariesController < ApplicationController
       else
         # If failed, set the code back to user-entered code for rendering, without prefix
         @sublibrary.code = params[:sublibrary][:code]
-        format.html { render :action => "new" }
+        format.html { render action: "new" }
       end
     end
   end
@@ -50,10 +50,10 @@ class SublibrariesController < ApplicationController
       if @sublibrary.update_attributes(sublibrary_params)
         flash[:notice] = t('sublibraries.update_success')
         format.html { redirect_to @sublibrary }
-        format.js { render :nothing => true } if request.xhr?
+        format.js { render nothing: true } if request.xhr?
       else
-        format.html { render :action => "edit" }
-        format.js { render :nothing => true } if request.xhr?
+        format.html { render action: "edit" }
+        format.js { render nothing: true } if request.xhr?
       end
     end
   end

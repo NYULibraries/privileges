@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @users = @users.with_query(params[:q]) unless params[:q].blank?
 
     respond_with(@users) do |format|
-      format.csv { render :csv => @users, :filename => "privileges_guide_users" }
+      format.csv { render csv: @users, filename: "privileges_guide_users" }
     end
   end
 
