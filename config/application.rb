@@ -20,8 +20,11 @@ module PrivilegesGuide
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # Autoload the lib path
-    config.autoload_paths += %W(#{config.root}/lib)
+    # Rails 5 options:
+    config.eager_load_paths << Rails.root.join('lib')
+
+    config.action_controller.per_form_csrf_tokens = true
+    config.action_controller.forgery_protection_origin_check = true
 
     # Initialize configuration defaults for originally generated Rails version.
     # config.load_defaults 5.0
