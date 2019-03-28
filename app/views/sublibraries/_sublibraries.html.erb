@@ -30,7 +30,7 @@
         "#{sublibrary.visible ? 'Hide' : 'Reveal'}",
         sublibrary_path(
           sublibrary,
-          **params.permit(:controller, :action).to_h.sybolize_keys, sublibrary: { visible: !sublibrary.visible }
+          **params.permit(:controller, :action).to_h.symbolize_keys, sublibrary: { visible: !sublibrary.visible }
         ),
         method: :put, remote: true, class: "toggle_visible"
       )
