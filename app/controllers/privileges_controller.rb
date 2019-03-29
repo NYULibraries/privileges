@@ -27,7 +27,7 @@ class PrivilegesController < ApplicationController
     params[:patron_status_code] = @patron_status.code
     @sublibraries_with_access = patron_status_search.sublibraries_with_access
     @sublibraries = sublibrary_search.hits.group_by { |sublibrary| sublibrary.stored(:under_header) }
-    @sublibrary = Sublibrary.find_by_code(params[:sublibrary_codef])
+    @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
   	@patron_status_permissions = patron_status_permission_search.sublibrary_permissions if @sublibrary
 
 	  respond_with(@patron_status) do |format|
