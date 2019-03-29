@@ -14,13 +14,15 @@ module Privileges
       end
 
       def cached_solr_search
-        solr_search.tap do |search_obj|
-          cache.write(full_cache_key, search_obj)
-        end
-      rescue RSolr::Error::Http => e
-        cache.read(full_cache_key)
-      rescue StandardError => e
-        cache.read(full_cache_key)
+        solr_search
+      # DEPRECATED SINCE search_obj cannot be properly serialized
+      #   .tap do |search_obj|
+      #     cache.write(full_cache_key, search_obj)
+      #   end
+      # rescue RSolr::Error::Http => e
+      #   cache.read(full_cache_key)
+      # rescue StandardError => e
+      #   cache.read(full_cache_key)
       end
 
       def solr_search
