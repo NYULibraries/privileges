@@ -59,7 +59,7 @@ class PrivilegesController < ApplicationController
     #If current user exists and the user has not been previously redirected...
     if !session[:redirected_user] && !current_user.nil?
       #Redirect user to their patron status page
-      params.merge!({patron_status_code: current_user.patron_status})
+      params.merge!({ patron_status_code: current_user.patron_status })
       @patron_status = patron_status_search.hits.first
       session[:redirected_user] = true #Set this session variable so that the user does not get redirected infinitely and the user can choose other statuses
       unless @patron_status.nil?

@@ -19,6 +19,8 @@ module Privileges
         end
       rescue RSolr::Error::Http => e
         cache.read(full_cache_key)
+      rescue StandardError => e
+        cache.read(full_cache_key)
       end
 
       def solr_search
