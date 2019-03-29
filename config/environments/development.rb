@@ -17,10 +17,17 @@ Rails.application.configure do
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
 
-    config.cache_store = :memory_store
+    config.cache_store = [
+      :dalli_store,
+      (ENV['MEMCACHED_URL'] || 'localhost:11211'),
+      { pool_size: 5 }
+    ]
+
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
+
+    puts "Cache store configured: #{config.cache_store}"
   else
     config.action_controller.perform_caching = false
 
@@ -48,8 +55,6 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.cache_store = :dalli_store, (ENV['MEMCACHED_URL'] || 'localhost:11211')
-
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
@@ -59,4 +64,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Use the lowest log level to ensure availability of diagnostic information
+  # when problems arise.
+  config.log_level = :debug
 end

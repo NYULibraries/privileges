@@ -71,8 +71,12 @@ group :development do
 end
 
 group :development, :test, :cucumber do
+  # Use Puma as the app server for testing and local development
+  gem 'puma', '~> 3.12'
+  # Allows dalli cache store compaitibility with multithreaded servers
+  gem 'connection_pool'
   # Development solr instance from Sunspot
-  gem 'sunspot_solr', '~> 2.2.0'
+  gem 'sunspot_solr', '~> 2.3.0'
   # Debugging in development, tests
   gem "byebug", "~> 11.0"
 end

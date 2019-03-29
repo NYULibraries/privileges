@@ -188,6 +188,7 @@ GEM
       sass-rails (< 5.1)
       sprockets (< 4.0)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     coveralls (0.8.22)
       json (>= 1.8, < 3)
       simplecov (~> 0.16.1)
@@ -342,6 +343,7 @@ GEM
       highline (~> 1.6)
       options (~> 2.3.0)
     public_suffix (3.0.3)
+    puma (3.12.1)
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -449,7 +451,7 @@ GEM
     sunspot_rails (2.3.0)
       rails (>= 3)
       sunspot (= 2.3.0)
-    sunspot_solr (2.2.8)
+    sunspot_solr (2.3.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
     therubyracer (0.12.3)
@@ -486,6 +488,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2.0)
   comma (~> 4.2.0)
   compass-rails (~> 3.0.0)
+  connection_pool
   coveralls (~> 0.8.0)
   cucumber-rails (~> 1.6.0)
   dalli (~> 2.7.0)
@@ -508,6 +511,7 @@ DEPENDENCIES
   phantomjs (>= 1.9.0)
   poltergeist (~> 1.16.0)
   progress_bar (~> 1.1.0)
+  puma (~> 3.12)
   rails (= 5.2.2.1)
   rails-controller-testing
   record_tag_helper (~> 1.0.0)
@@ -520,7 +524,7 @@ DEPENDENCIES
   simplecov-rcov
   sprockets (~> 3.7.2)
   sunspot_rails (~> 2.3.0)
-  sunspot_solr (~> 2.2.0)
+  sunspot_solr (~> 2.3.0)
   therubyracer (~> 0.12.0)
   uglifier (~> 3.2.0)
 
