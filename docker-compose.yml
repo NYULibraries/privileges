@@ -19,9 +19,10 @@ services:
     env_file:
       - test.env
     volumes:
-      - ./app/:/app/app
-      - ./lib/:/app/lib
-      - ./config:/app/config
+      # - ./:/app/
+      # - ./app/:/app/app
+      # - ./lib/:/app/lib
+      # - ./config:/app/config
       - bundle_cache:/bundle
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
