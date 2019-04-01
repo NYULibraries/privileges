@@ -103,6 +103,15 @@ services:
       - "3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    # volumes:
+    # - ./privileges_dev.sql:/app/privileges_dev.sql
+
+    # WORKING WITH SQL DATA DUMPS LOCALLY:
+    # docker run library/mysql:5.6.22 mysqldump --user={username} -p --host={web.hostdomain.com} privileges_dev > privileges_dev.sql
+    # docker cp {CONTAINER_ID}:/app/privileges_dev.sql privileges_dev.sql
+    # docker-compose up dev
+    # docker-compose exec db mysql -uroot -p --host=db privileges < /app/privileges_dev.sql
+    # docker-compose exec dev rails db:seed
 
   solr:
     image: privileges_solr
