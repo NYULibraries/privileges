@@ -23,8 +23,15 @@ module PrivilegesGuide
     # Rails 5 options:
     config.eager_load_paths << Rails.root.join('lib')
 
+    # Rails 5.0 defaults
     config.action_controller.per_form_csrf_tokens = true
     config.action_controller.forgery_protection_origin_check = true
+    ActiveSupport.to_time_preserves_timezone = true
+    # ActiveSupport.halt_callback_chains_on_return_false = false # deprecated in Rails 5.2
+    Rails.application.config.active_record.belongs_to_required_by_default = true
+    config.active_record.belongs_to_required_by_default = false
+
+    # Rails 5.1 defaults
 
     # Initialize configuration defaults for originally generated Rails version.
     # config.load_defaults 5.0

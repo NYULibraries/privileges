@@ -6,8 +6,8 @@ describe PrivilegesController do
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
-  # Flaky tests
-  xdescribe '#index_patron_statuses' do
+  # Flaky test - order of execution problems
+  describe '#index_patron_statuses' do
     subject { response }
 
     context "when unauthenticated" do
@@ -19,15 +19,17 @@ describe PrivilegesController do
       end
     end
 
-    context "when user signed in" do
-      let(:user){ create(:user, patron_status: '23') }
-      let(:patron_status){ create(:patron_status, code: user.patron_status) }
-      let(:redirect_path){ patron_path("#{patron_status.id}-#{@controller.send(:urlize, patron_status.web_text)}") }
+    # Incomplete test: Only runs on second run for some reason
+    xcontext "when user signed in" do
+      let(:user) { create(:user, patron_status: '23') }
+      let(:patron_status) { create(:patron_status, code: user.patron_status) }
+      let(:redirect_path) { patron_path("#{patron_status.id}-#{@controller.send(:urlize, patron_status.web_text)}") }
+
       before do
+        @controller.session[:redirected_user] = nil
         sign_in user
         get :index_patron_statuses
       end
-      subject { response }
 
       it { is_expected.to redirect_to redirect_path }
       it "should assign patron_status" do
@@ -44,6 +46,7 @@ describe PrivilegesController do
     subject { response }
     context 'when there is no sublibrary code' do
       let(:sublibrary_code) { nil }
+
       it 'should set up variables' do
         expect(assigns(:patron_status)).to eql patron_status
         expect(assigns(:sublibraries)).to_not be_nil

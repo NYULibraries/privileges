@@ -28,11 +28,18 @@ class PrivilegesController < ApplicationController
     @sublibraries_with_access = patron_status_search.sublibraries_with_access
     @sublibraries = sublibrary_search.hits.group_by { |sublibrary| sublibrary.stored(:under_header) }
     @sublibrary = Sublibrary.find_by_code(params[:sublibrary_code])
-  	@patron_status_permissions = patron_status_permission_search.sublibrary_permissions if @sublibrary
+    @patron_status_permissions = patron_status_permission_search.sublibrary_permissions if @sublibrary
 
-	  respond_with(@patron_status) do |format|
-	    format.json { render json: {patron_status_permissions: @patron_status_permissions, sublibrary: @sublibrary, patron_status: @patron_status }, layout: false }
-	    format.html { render :show_patron_status }
+    respond_with(@patron_status) do |format|
+      format.json do
+        render json: {
+          patron_status_permissions: @patron_status_permissions,
+          sublibrary: @sublibrary,
+          patron_status: @patron_status
+        }, layout: false
+      end
+
+      format.html { render :show_patron_status }
     end
   end
 
@@ -56,26 +63,32 @@ class PrivilegesController < ApplicationController
 
   # Redirect to user's patron status as found in the database on first login
   def redirect_to_patron_status
-    #If current user exists and the user has not been previously redirected...
-    if !session[:redirected_user] && !current_user.nil?
-      #Redirect user to their patron status page
-      params.merge!({ patron_status_code: current_user.patron_status })
-      @patron_status = patron_status_search.hits.first
-      session[:redirected_user] = true #Set this session variable so that the user does not get redirected infinitely and the user can choose other statuses
-      unless @patron_status.nil?
-        redirect_to patron_status_link(@patron_status.primary_key, @patron_status.stored(:web_text)) and return unless performed?
-      end
-    end
+    return if session[:redirected_user] || current_user.nil?
+
+    # If current user exists and the user has not been previously redirected...
+    # Redirect user to their patron status page
+    params[:patron_status_code] = current_user.patron_status
+    @patron_status = patron_status_search.hits.first
+    session[:redirected_user] = true # Set this session variable so that the user does not get redirected infinitely and the user can choose other statuses
+
+    return if @patron_status.nil? || performed?
+
+    redirect_to patron_status_link(@patron_status.primary_key, @patron_status.stored(:web_text)) and return
   end
 
   private
+
   def patron_status_search
     @patron_status_search ||= Privileges::Search::PatronStatusSearch.new(**patron_status_search_params)
   end
 
   def patron_status_search_params
-    params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
-      .select{|k,v| v.present? }.to_h.symbolize_keys.merge(admin_view: admin_view?)
+    params
+      .permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
+      .to_h
+      .symbolize_keys
+      .merge(admin_view: admin_view?)
+      .select { |_k, v| v.present? }
   end
 
   def sublibrary_search
@@ -94,5 +107,4 @@ class PrivilegesController < ApplicationController
       admin_view: admin_view?
     )
   end
-
 end
