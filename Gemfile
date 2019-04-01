@@ -30,7 +30,7 @@ gem 'compass-rails', '~> 3.0.0'
 # Use acts as indexed to search models
 gem 'acts_as_indexed', '~> 0.8.3'
 
-gem 'exlibris-primo', github: 'NYULibraries/exlibris-primo', tag: 'v2.2.0'
+gem 'exlibris-aleph', github: 'scotdalton/exlibris-aleph', tag: 'v2.0.4'
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'

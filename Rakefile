@@ -1,6 +1,6 @@
 #!/usr/bin/env rake
 
-require File.expand_path('../config/application', __FILE__)
+require_relative './config/application'
 
 PrivilegesGuide::Application.load_tasks
 
