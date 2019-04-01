@@ -1,7 +1,7 @@
 # This controller handles the permissions assigned to sublibraries
 # each permission has a set of possible values (PermissionValues)
 class PermissionsController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   # GET /permissions
   def index

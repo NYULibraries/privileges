@@ -28,18 +28,18 @@ class PermissionTest < ActiveSupport::TestCase
     
     test "has many permission values" do
       assert @existing_permission.permission_values.count > 0
-      assert_equal @existing_permission.permission_values.sort, PermissionValue.where(:permission_code => @existing_permission.code).sort
+      assert_equal @existing_permission.permission_values.sort, PermissionValue.where(permission_code: @existing_permission.code).sort
     end
     
     test "has many patron status permissions" do
       assert @existing_permission.patron_status_permissions.count > 0
-      assert_equal @existing_permission.patron_status_permissions.sort, PatronStatusPermission.where(:permission_value_id => PermissionValue.where(:permission_code => @existing_permission.code)).sort
+      assert_equal @existing_permission.patron_status_permissions.sort, PatronStatusPermission.where(permission_value_id: PermissionValue.where(permission_code: @existing_permission.code)).sort
     end
     
     test "has many patron statuses" do
       assert @existing_permission.patron_statuses.count > 0      
-      psps = PatronStatusPermission.where(:permission_value_id => PermissionValue.where(:permission_code => @existing_permission.code))
-      assert_equal @existing_permission.patron_statuses.uniq.sort, PatronStatus.where(:code => psps.map(&:patron_status_code)).sort
+      psps = PatronStatusPermission.where(permission_value_id: PermissionValue.where(permission_code: @existing_permission.code))
+      assert_equal @existing_permission.patron_statuses.uniq.sort, PatronStatus.where(code: psps.map(&:patron_status_code)).sort
     end
 
 end

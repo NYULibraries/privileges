@@ -5,5 +5,8 @@
 bundle config --global github.https true
 bundle check || bundle install --binstubs="$BUNDLE_BIN"
 
+# Enable Rails caching in development mode
+rails dev:cache
+
 # Call command issued to the docker service
 exec "$@"

@@ -1,5 +1,5 @@
 class SublibrariesController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   # GET /sublibraries
   def index
@@ -47,7 +47,7 @@ class SublibrariesController < ApplicationController
     @sublibraries = sublibrary_search.results
 
     respond_to do |format|
-      if @sublibrary.update_attributes(sublibrary_params)
+      if @sublibrary.update(sublibrary_params)
         flash[:notice] = t('sublibraries.update_success')
         format.html { redirect_to @sublibrary }
         format.js { render nothing: true } if request.xhr?
@@ -79,7 +79,7 @@ class SublibrariesController < ApplicationController
   end
 
   def sublibrary_search_params
-    params.permit(:q, :sort, :direction, :page).symbolize_keys.merge(admin_view: admin_view?)
+    params.permit(:q, :sort, :direction, :page).to_h.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   def sublibrary_params

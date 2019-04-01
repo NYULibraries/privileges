@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
   respond_to :html, :json
   respond_to :csv, only: [:index]
 

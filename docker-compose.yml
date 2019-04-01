@@ -5,24 +5,37 @@ services:
     tty: true
     stdin_open: true
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     ports:
       - "3000:3000"
     environment:
       SOLR_URL: http://solr:8983/solr/development-core
+      MEMCACHED_URL: cache:11211
     env_file:
       - test.env
     volumes:
+      - ./app/:/app/app
+      - ./lib/:/app/lib
+      - ./config:/app/config
       - bundle_cache:/bundle
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
+      - cache
 
   test:
-    tty: true
-    stdin_open: true
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     stdin_open: true
     tty: true
     volumes:
@@ -42,7 +55,12 @@ services:
 
   setup_dbs:
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     volumes:
       - bundle_cache:/bundle
     env_file:
@@ -58,7 +76,12 @@ services:
 
   setup_test_dbs:
     image: privileges_dev
-    build: .
+    build:
+      context: .
+      cache_from:
+      - privileges_dev
+      - quay.io/nyulibraries/privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     volumes:
       - bundle_cache:/bundle
     environment:
@@ -91,10 +114,10 @@ services:
     ports:
       - "8983:8983"
 
-  memcached:
-    image: memcached
+  cache:
+    image: memcached:alpine
     expose:
-      - "11211"
+    - "11211"
 
 volumes:
   bundle_cache:

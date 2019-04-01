@@ -1,6 +1,6 @@
 # The controller handles the class that manages information for each patron status
 class PatronStatusesController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   # GET /patron_statuses
   # GET /patron_statuses.json
@@ -41,12 +41,12 @@ class PatronStatusesController < ApplicationController
   def create
     @patron_status = PatronStatus.new
 
-    @patron_status.code = "#{prefix}#{params[:patron_status][:code]}"
-    @patron_status.web_text = params[:patron_status][:web_text]
-    @patron_status.keywords = params[:patron_status][:keywords]
-    @patron_status.from_aleph = (params[:patron_status][:from_aleph]) ? params[:patron_status][:from_aleph] : false
-    @patron_status.under_header = params[:patron_status][:under_header] unless params[:patron_status][:under_header].blank?
-    @patron_status.id_type = params[:patron_status][:id_type]
+    @patron_status.code = "#{prefix}#{patron_status_params[:code]}"
+    @patron_status.web_text = patron_status_params[:web_text]
+    @patron_status.keywords = patron_status_params[:keywords]
+    @patron_status.from_aleph = (patron_status_params[:from_aleph]) ? patron_status_params[:from_aleph] : false
+    @patron_status.under_header = patron_status_params[:under_header] unless patron_status_params[:under_header].blank?
+    @patron_status.id_type = patron_status_params[:id_type]
 
     respond_to do |format|
       if @patron_status.save
@@ -54,7 +54,7 @@ class PatronStatusesController < ApplicationController
         format.html { redirect_to(@patron_status) }
       else
         #If failed, set the code back to user-entered code, without prefix
-        @patron_status.code = params[:patron_status][:code]
+        @patron_status.code = patron_status_params[:code]
         format.html { render action: "new" }
       end
     end
@@ -102,7 +102,7 @@ class PatronStatusesController < ApplicationController
 
   def patron_status_search_params
     params.permit(:q, :sort, :direction, :page, :patron_status_code, :sublibrary_code)
-      .select{|k,v| v.present? }.symbolize_keys.merge(admin_view: admin_view?)
+      .select{|k,v| v.present? }.to_h.symbolize_keys.merge(admin_view: admin_view?)
   end
 
   # Shortcut for retrieving sublibrary object
@@ -112,7 +112,7 @@ class PatronStatusesController < ApplicationController
 
   def patron_status_params
     if params[:patron_status].present?
-      params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible)
+      params.require(:patron_status).permit(:web_text, :keywords, :under_header, :id_type, :description, :visible, :from_aleph, :code)
     else
       {}
     end

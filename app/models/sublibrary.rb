@@ -1,4 +1,4 @@
-class Sublibrary < ActiveRecord::Base
+class Sublibrary < ApplicationRecord
   include Utilities::Common
 
   # Defines a scope of visible sublibraries where the web text is not null or blank and the visible flag is set to true

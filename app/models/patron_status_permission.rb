@@ -1,6 +1,6 @@
 # This class ties patron status/sublibrary value pairs to permission/permission value pairs
 # it is the primary associative table in this application
-class PatronStatusPermission < ActiveRecord::Base
+class PatronStatusPermission < ApplicationRecord
   include Utilities::Common
 
   #Validations
@@ -33,8 +33,7 @@ class PatronStatusPermission < ActiveRecord::Base
     boolean :from_aleph, stored: true
     boolean :visible, stored: true
     boolean :permission_visible, stored: true do
-      permission_value.permission.visible
+      permission_value&.permission&.visible
     end
   end
-  
 end

@@ -16,7 +16,7 @@ module Privileges
 
       # Retrive a list of sublibraries this patron status has access to
       def sublibraries_with_access
-        @sublibraries_with_access ||= hits.first.stored(:sublibraries_with_access) if hits
+        @sublibraries_with_access ||= hits&.first&.stored(:sublibraries_with_access)
       end
 
       def solr_search

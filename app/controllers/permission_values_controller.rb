@@ -1,6 +1,6 @@
 # This controller handles the values which are assigned to permissions
 class PermissionValuesController < ApplicationController
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   # GET /permission_values/1
   def show

@@ -9,12 +9,35 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  # Show full error reports.
+  config.consider_all_requests_local = true
+
+  # Enable/disable caching. By default caching is disabled.
+  # Run rails dev:cache to toggle caching.
+  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+
+    config.cache_store = [
+      :dalli_store,
+      (ENV['MEMCACHED_URL'] || 'localhost:11211'),
+      { pool_size: 5 }
+    ]
+
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    }
+
+    puts "Cache store configured: #{config.cache_store}"
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
+  end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -32,8 +55,17 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.cache_store = :dalli_store, (ENV['MEMCACHED_URL'] || 'localhost:11211')
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Use an evented file watcher to asynchronously detect changes in source code,
+  # routes, locales, etc. This feature depends on the listen gem.
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Use the lowest log level to ensure availability of diagnostic information
+  # when problems arise.
+  config.log_level = :debug
 end

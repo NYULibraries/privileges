@@ -1,6 +1,6 @@
 # This class defines the patron status type,
 # the top level data type of this application
-class PatronStatus < ActiveRecord::Base
+class PatronStatus < ApplicationRecord
   include Utilities::Common
 
   #Validations
