@@ -19,9 +19,10 @@ services:
     env_file:
       - test.env
     volumes:
-      - ./app/:/app/app
-      - ./lib/:/app/lib
-      - ./config:/app/config
+      # - ./:/app/
+      # - ./app/:/app/app
+      # - ./lib/:/app/lib
+      # - ./config:/app/config
       - bundle_cache:/bundle
     command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
@@ -103,6 +104,15 @@ services:
       - "3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    # volumes:
+    # - ./privileges_dev.sql:/app/privileges_dev.sql
+
+    # WORKING WITH SQL DATA DUMPS LOCALLY:
+    # docker run library/mysql:5.6.22 mysqldump --user={username} -p --host={web.hostdomain.com} privileges_dev > privileges_dev.sql
+    # docker cp {CONTAINER_ID}:/app/privileges_dev.sql privileges_dev.sql
+    # docker-compose up dev
+    # docker-compose exec db mysql -uroot -p --host=db privileges < /app/privileges_dev.sql
+    # docker-compose exec dev rails db:seed
 
   solr:
     image: privileges_solr

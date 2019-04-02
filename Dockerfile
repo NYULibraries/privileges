@@ -44,4 +44,4 @@ ENV BUNDLE_PATH=/bundle \
     BUNDLE_BIN=/bundle/bin \
     GEM_HOME=/bundle
 ENV PATH="${BUNDLE_BIN}:${PATH}"
-RUN gem install bundler -v 1.16.3
+RUN gem install bundler -v 2.0.1

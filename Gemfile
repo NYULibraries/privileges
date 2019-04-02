@@ -30,7 +30,9 @@ gem 'compass-rails', '~> 3.0.0'
 # Use acts as indexed to search models
 gem 'acts_as_indexed', '~> 0.8.3'
 
-gem 'exlibris-primo', github: 'NYULibraries/exlibris-primo', tag: 'v2.2.0'
+# Locks in Exlibris Primo dependency for Rails 5 compatibility
+gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
+gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'

@@ -65,7 +65,10 @@ namespace :privileges do
       plog "Deleting patron statuses with codes: #{deleted_codes}"
       #Delete them from Privileges
       deleted_patron_statuses =
-        PatronStatus.destroy_all(code: deleted_codes, from_aleph: true)
+        PatronStatus
+          .where(code: deleted_codes, from_aleph: true)
+          .destroy_all
+
       plog "Deleted #{deleted_patron_statuses.count} patron statuses"
     end
   end
@@ -98,7 +101,10 @@ namespace :privileges do
       plog "Deleting sublibraries with codes: #{deleted_codes}"
       #Delete all sublibraries which were previouly loaded from aleph, but are no longer in aleph
       deleted_sublibraries =
-        Sublibrary.destroy_all(code: deleted_codes, from_aleph: true)
+        Sublibrary
+          .where(code: deleted_codes, from_aleph: true)
+          .destroy_all
+
       plog "Deleted #{deleted_sublibraries.count} sublibraries"
     end
   end
