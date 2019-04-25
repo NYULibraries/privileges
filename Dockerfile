@@ -1,47 +1,44 @@
-FROM ruby:2.6.2
+FROM ruby:2.6.2-alpine3.9
 
+ENV DOCKER true
 ENV INSTALL_PATH /app
+ENV BUNDLE_PATH /usr/local/bundle
 
-# Essential dependencies
-RUN apt-get update -qq && apt-get install -y \
-      bzip2 \
-      git \
-      libfontconfig \
-      libfreetype6 \
-      vim \
-      wget
-
-# PhantomJS
-ENV PHANTOMJS_VERSION 2.1.1
-
-RUN wget --no-check-certificate -q -O - https://cnpmjs.org/mirrors/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 | tar xjC /opt
-RUN ln -s /opt/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
-
-RUN mkdir -p /bundle && chown 1000:2000 /bundle
-
-# Add bundle entry point to handle bundle cache
-COPY ./docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
-RUN groupadd -g 2000 docker -r && \
-    useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
-USER docker
+RUN addgroup -g 1000 -S docker && \
+  adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
+RUN chown docker:docker .
 
-RUN wget --no-check-certificate -q -O - https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /tmp/wait-for-it.sh
-RUN chmod a+x /tmp/wait-for-it.sh
+COPY --chown=docker:docker bin/ bin/
+COPY --chown=docker:docker Gemfile Gemfile.lock ./
+ARG RUN_PACKAGES="ca-certificates fontconfig nodejs nodejs-npm tzdata mariadb-dev"
+ARG BUILD_PACKAGES="ruby-dev build-base git"
+RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
+  && gem install bundler \
+  && bundle config --local github.https true \
+  && bundle install --without no_docker test development cucumber --jobs 20 --retry 5 \
+  && rm -rf /root/.bundle && rm -rf /root/.gem \
+  && rm -rf /usr/local/bundle/cache \
+  && apk del $BUILD_PACKAGES \
+  && chown -R docker:docker /usr/local/bundle
+RUN npm install --global yarn
 
-# Add github to known_hosts
-RUN mkdir -p ~/.ssh
-RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-# Copy source into container
+USER docker
 COPY --chown=docker:docker . .
+# Precompiles production assets with randomized secret
+RUN RAILS_ENV=production SECRET_TOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) \
+  bundle exec rake assets:precompile
 
-ENV BUNDLE_PATH=/bundle \
-    BUNDLE_BIN=/bundle/bin \
-    GEM_HOME=/bundle
-ENV PATH="${BUNDLE_BIN}:${PATH}"
-RUN gem install bundler -v 2.0.1
+# run microscanner
+USER root
+ARG AQUA_MICROSCANNER_TOKEN
+RUN wget -O /microscanner https://get.aquasec.com/microscanner && \
+  chmod +x /microscanner && \
+  /microscanner ${AQUA_MICROSCANNER_TOKEN} && \
+  rm -rf /microscanner
+
+USER docker
+EXPOSE 5000
+
+CMD ./script/start.sh production

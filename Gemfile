@@ -21,8 +21,10 @@ gem 'jquery-ui-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.2.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.0'
+group :no_docker do
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', '~> 0.12.0'
+end
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 3.0.0'
@@ -98,4 +100,8 @@ group :test, :cucumber do
   gem 'selenium-webdriver', '~> 3.4.0'
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rails-controller-testing'
+end
+
+group :production do
+  gem 'unicorn', '~> 5.3.0'
 end

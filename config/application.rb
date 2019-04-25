@@ -2,7 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 
-if Rails.env.staging? || Rails.env.production?
+if !ENV['DOCKER'] && !Rails.env.test?
   require 'figs'
   # Don't run this initializer on travis.
   Figs.load(stage: Rails.env)
