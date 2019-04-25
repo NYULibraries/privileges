@@ -25,7 +25,18 @@ RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
 RUN npm install --global yarn
 
 USER docker
-COPY --chown=docker:docker . .
+
+# Copies necessary Rails files for running and generating assets
+COPY --chown=docker:docker ./app ./app
+COPY --chown=docker:docker ./config ./config
+COPY --chown=docker:docker ./db ./db
+COPY --chown=docker:docker ./lib ./lib
+COPY --chown=docker:docker ./public ./public
+COPY --chown=docker:docker ./vendor ./vendor
+COPY --chown=docker:docker Rakefile Rakefile
+COPY --chown=docker:docker config.ru config.ru
+COPY --chown=docker:docker ./script ./script
+
 # Precompiles production assets with randomized secret
 RUN RAILS_ENV=production SECRET_TOKEN=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) \
   bundle exec rake assets:precompile
