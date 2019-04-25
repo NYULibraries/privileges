@@ -8,7 +8,7 @@ RUN apt-get update -qq && apt-get install -y \
       git \
       libfontconfig \
       libfreetype6 \
-      vim \
+      nodejs \
       wget
 
 # PhantomJS
@@ -42,6 +42,12 @@ COPY --chown=docker:docker . .
 
 ENV BUNDLE_PATH=/bundle \
     BUNDLE_BIN=/bundle/bin \
-    GEM_HOME=/bundle
+    GEM_HOME=/bundle \
+    BUNDLE_INSTALL_WITHOUT='no_docker production'
 ENV PATH="${BUNDLE_BIN}:${PATH}"
 RUN gem install bundler -v 2.0.1
+
+# Comment out below line to use volume as a gems cache at runtime
+# This is especially useful if you're rapidly testing new Gem versions
+RUN bundle config --global github.https true && \
+  bundle install --without no_docker production --binstubs="$BUNDLE_BIN"
