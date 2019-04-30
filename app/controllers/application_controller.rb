@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   layout Proc.new{ |controller| (controller.request.xhr?) ? false : "application" }
 
   protect_from_forgery
+  before_action :set_raven_context
 
   def current_user_dev
     @current_user ||= User.find_by_username('admin')
@@ -103,6 +104,11 @@ class ApplicationController < ActionController::Base
 
   def admin_view?
     is_admin? && is_in_admin_view?
+  end
+
+  def set_raven_context
+    Raven.user_context(id: current_user&.id, username: current_user&.username, email: current_user&.email, ip_address: request.ip)
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 
 end
