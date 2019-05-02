@@ -67,6 +67,8 @@ gem 'sunspot_rails', '~> 2.3.0'
 
 gem 'record_tag_helper', '~> 1.0.0'
 
+gem 'sentry-raven', '~> 2'
+
 group :development do
   gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
