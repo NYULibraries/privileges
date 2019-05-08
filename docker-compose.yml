@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: ./docker/dev/Dockerfile
       cache_from:
-      - privileges_dev
-      - quay.io/nyulibraries/privileges:dev-latest
-      - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+        - privileges_dev
+        - quay.io/nyulibraries/privileges:dev-latest
+        - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
     ports:
       - "3000:3000"
     environment:
@@ -32,9 +32,9 @@ services:
       context: .
       dockerfile: ./docker/dev/Dockerfile
       cache_from:
-      - privileges_dev
-      - quay.io/nyulibraries/privileges:dev-latest
-      - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+        - privileges_dev
+        - quay.io/nyulibraries/privileges:dev-latest
+        - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
     volumes:
       # - .:/app
       - bundle_cache:/bundle
@@ -98,7 +98,7 @@ services:
   memcached:
     image: memcached:alpine
     expose:
-    - "11211"
+      - "11211"
 
   # Use below settings for testing nginx/unicorn locally
   web:
@@ -115,12 +115,12 @@ services:
     build:
       context: .
       cache_from:
-      - privileges
-      - quay.io/nyulibraries/privileges:latest
-      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
+        - privileges
+        - quay.io/nyulibraries/privileges:latest
+        - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
     command: ["./script/start.sh", "production"]
     expose:
-    - "5000"
+      - "5000"
     environment:
       UNICORN_PORT: 5000
       RAILS_LOG_LEVEL: debug

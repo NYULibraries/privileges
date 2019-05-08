@@ -17,7 +17,7 @@ ARG BUILD_PACKAGES="ruby-dev build-base git"
 RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
   && gem install bundler \
   && bundle config --local github.https true \
-  && bundle install --without no_docker test development cucumber --jobs 20 --retry 5 \
+  && bundle install --without no_docker test development cucumber rake_task --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \
   && apk del $BUILD_PACKAGES \
