@@ -20,11 +20,17 @@ config/aleph
 coverage/
 doc/
 rdoc/
-rvm.env
 brakeman-output.tabs
 
 Dockerfile*
 docker-compose.yml
-test.env
 .ruby-version
 README.md
+script/docker/*
+*.md
+*.env
+config/nginx.conf
+.circleci/
+.git
+node_modules
+.gem

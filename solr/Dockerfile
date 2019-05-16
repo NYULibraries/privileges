@@ -1,4 +1,4 @@
-FROM solr:5.5.4
+FROM solr:5.5.4-alpine
 
 COPY conf /solrconf
 

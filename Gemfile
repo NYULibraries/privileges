@@ -21,18 +21,16 @@ gem 'jquery-ui-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.2.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.0'
+group :no_docker do
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', '~> 0.12.0'
+end
 
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 3.0.0'
 
 # Use acts as indexed to search models
 gem 'acts_as_indexed', '~> 0.8.3'
-
-# Locks in Exlibris Primo dependency for Rails 5 compatibility
-gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
-gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
 
 # Use Devise & OAuth2
 gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'
@@ -100,4 +98,14 @@ group :test, :cucumber do
   gem 'selenium-webdriver', '~> 3.4.0'
   gem 'database_cleaner', '~> 1.6.0'
   gem 'rails-controller-testing'
+end
+
+group :production do
+  gem 'unicorn', '~> 5.3.0'
+end
+
+group :rake_task do
+  # Locks in Exlibris Primo dependency for Rails 5 compatibility
+  gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
+  gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
 end

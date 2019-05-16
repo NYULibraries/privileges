@@ -22,7 +22,7 @@ jobs:
           name: Build Docker
           command: |
             export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker-compose build test
+            docker-compose build test unicorn
       - run:
           name: Test
           command: |
