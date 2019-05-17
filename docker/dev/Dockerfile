@@ -1,37 +1,25 @@
-FROM ruby:2.6.2
+FROM quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6.2-slim-chrome_73
 
 ENV INSTALL_PATH /app
+ENV DOCKER true
+ENV BUILD_PACKAGES bzip2 git libfontconfig libfreetype6 nodejs zlib1g-dev build-essential default-libmysqlclient-dev netcat
 
 # Essential dependencies
-RUN apt-get update -qq && apt-get install -y \
-      bzip2 \
-      git \
-      libfontconfig \
-      libfreetype6 \
-      nodejs \
-      wget
-
-# PhantomJS
-ENV PHANTOMJS_VERSION 2.1.1
-
-RUN wget --no-check-certificate -q -O - https://cnpmjs.org/mirrors/phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 | tar xjC /opt
-RUN ln -s /opt/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
+RUN apt-get update -qq && apt-get install -y $BUILD_PACKAGES
 
 RUN mkdir -p /bundle && chown 1000:2000 /bundle
 
 # Add bundle entry point to handle bundle cache
-COPY ./docker/dev/docker-entrypoint.sh ./
-RUN chmod +x /docker-entrypoint.sh
+COPY ./docker/dev/docker-entrypoint.sh /docker/dev/wait-for.sh ./
+RUN chmod +x /docker-entrypoint.sh /wait-for.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 RUN groupadd -g 2000 docker -r && \
     useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
+
 USER docker
 
 WORKDIR $INSTALL_PATH
-
-RUN wget --no-check-certificate -q -O - https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /tmp/wait-for-it.sh
-RUN chmod a+x /tmp/wait-for-it.sh
 
 # Add github to known_hosts
 RUN mkdir -p ~/.ssh

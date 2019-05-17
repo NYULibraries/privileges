@@ -7,8 +7,8 @@ services:
       dockerfile: ./docker/dev/Dockerfile
       cache_from:
         - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-latest
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+        - quay.io/nyulibraries/privileges:dev-latest
     ports:
       - "3000:3000"
     environment:
@@ -21,7 +21,7 @@ services:
       # - ./lib/:/app/lib
       # - ./config:/app/config
       - bundle_cache:/bundle
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    command: ["/wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
       - memcached
@@ -33,8 +33,8 @@ services:
       dockerfile: ./docker/dev/Dockerfile
       cache_from:
         - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-latest
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+        - quay.io/nyulibraries/privileges:dev-latest
     volumes:
       # - .:/app
       - bundle_cache:/bundle
@@ -46,7 +46,7 @@ services:
       COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
+    command: ["/wait-for.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
 
@@ -56,7 +56,7 @@ services:
       - bundle_cache:/bundle
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -69,7 +69,7 @@ services:
       RAILS_ENV: test
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -116,8 +116,10 @@ services:
       context: .
       cache_from:
         - privileges
-        - quay.io/nyulibraries/privileges:latest
         - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
+        - quay.io/nyulibraries/privileges:latest
+      args:
+        AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
     command: ["./script/start.sh", "production"]
     expose:
       - "5000"
