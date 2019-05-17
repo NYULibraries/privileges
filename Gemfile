@@ -86,9 +86,8 @@ end
 group :test, :cucumber do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-its'
-  # Phantomjs for headless browser testing
-  gem 'phantomjs', '>= 1.9.0'
-  gem 'poltergeist', '~> 1.16.0'
+  # Phantomjs for headless browser testings
+  gem 'capybara-screenshot'
   # Use factory bot for creating models
   gem 'factory_bot_rails', '~> 4.10.0'
   gem 'cucumber-rails', '~> 1.6.0', require: false

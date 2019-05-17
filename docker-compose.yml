@@ -21,7 +21,7 @@ services:
       # - ./lib/:/app/lib
       # - ./config:/app/config
       - bundle_cache:/bundle
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    command: ["/wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
       - memcached
@@ -46,7 +46,7 @@ services:
       COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "--", "rake"]
+    command: ["/wait-for.sh", "db:3306", "--", "rake"]
     depends_on:
       - setup_test_dbs
 
@@ -56,7 +56,7 @@ services:
       - bundle_cache:/bundle
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -69,7 +69,7 @@ services:
       RAILS_ENV: test
     env_file:
       - test.env
-    command: ["/tmp/wait-for-it.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
