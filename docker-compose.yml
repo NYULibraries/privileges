@@ -7,8 +7,8 @@ services:
       dockerfile: ./docker/dev/Dockerfile
       cache_from:
         - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-latest
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+        - quay.io/nyulibraries/privileges:dev-latest
     ports:
       - "3000:3000"
     environment:
@@ -33,8 +33,8 @@ services:
       dockerfile: ./docker/dev/Dockerfile
       cache_from:
         - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-latest
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+        - quay.io/nyulibraries/privileges:dev-latest
     volumes:
       # - .:/app
       - bundle_cache:/bundle
@@ -116,8 +116,8 @@ services:
       context: .
       cache_from:
         - privileges
-        - quay.io/nyulibraries/privileges:latest
         - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
+        - quay.io/nyulibraries/privileges:latest
     command: ["./script/start.sh", "production"]
     expose:
       - "5000"

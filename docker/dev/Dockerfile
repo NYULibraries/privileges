@@ -10,8 +10,8 @@ RUN apt-get update -qq && apt-get install -y $BUILD_PACKAGES
 RUN mkdir -p /bundle && chown 1000:2000 /bundle
 
 # Add bundle entry point to handle bundle cache
-COPY ./docker/dev/docker-entrypoint.sh /docker/dev/wait-for-it.sh ./
-RUN chmod +x /docker-entrypoint.sh /wait-for-it.sh
+COPY ./docker/dev/docker-entrypoint.sh /docker/dev/wait-for.sh ./
+RUN chmod +x /docker-entrypoint.sh /wait-for.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 RUN groupadd -g 2000 docker -r && \
