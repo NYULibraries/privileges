@@ -118,6 +118,8 @@ services:
         - privileges
         - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
         - quay.io/nyulibraries/privileges:latest
+      args:
+        AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
     command: ["./script/start.sh", "production"]
     expose:
       - "5000"
