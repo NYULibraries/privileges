@@ -1,4 +1,6 @@
 #TODO: Separate into modules and class functions to simplify
+require 'exlibris-nyu'
+
 namespace :privileges do
 
   desc "Refresh Aleph DB Config"
