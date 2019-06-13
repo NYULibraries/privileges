@@ -60,6 +60,10 @@ gem 'record_tag_helper', '~> 1.0.0'
 
 gem 'sentry-raven', '~> 2'
 
+# Locks in Exlibris Primo dependency for Rails 5 compatibility
+gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
+gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
+
 group :development do
   gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -99,9 +103,6 @@ group :production do
 end
 
 group :no_docker do
-  # Locks in Exlibris Primo dependency for Rails 5 compatibility
-  gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
-  gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '~> 0.12.0'
 end
