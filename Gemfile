@@ -21,11 +21,6 @@ gem 'jquery-ui-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.2.0'
 
-group :no_docker do
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', '~> 0.12.0'
-end
-
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 3.0.0'
 
@@ -65,6 +60,10 @@ gem 'record_tag_helper', '~> 1.0.0'
 
 gem 'sentry-raven', '~> 2'
 
+# Locks in Exlibris Primo dependency for Rails 5 compatibility
+gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
+gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
+
 group :development do
   gem 'better_errors', '~> 2.3.0'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -72,7 +71,7 @@ group :development do
   gem 'listen', '~> 3.1.5'
 end
 
-group :development, :test, :cucumber do
+group :development, :test do
   # Use Puma as the app server for testing and local development
   gem 'puma', '~> 3.12'
   # Allows dalli cache store compaitibility with multithreaded servers
@@ -83,7 +82,7 @@ group :development, :test, :cucumber do
   gem "byebug", "~> 11.0"
 end
 
-group :test, :cucumber do
+group :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-its'
   # Phantomjs for headless browser testings
@@ -103,8 +102,7 @@ group :production do
   gem 'unicorn', '~> 5.3.0'
 end
 
-group :rake_task do
-  # Locks in Exlibris Primo dependency for Rails 5 compatibility
-  gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
-  gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
+group :no_docker do
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', '~> 0.12.0'
 end

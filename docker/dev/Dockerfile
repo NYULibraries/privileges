@@ -36,7 +36,7 @@ RUN gem install bundler -v 2.0.1
 # Comment out below line to use volume as a gems cache at runtime
 # This is especially useful if you're rapidly testing new Gem versions
 RUN bundle config --global github.https true && \
-  bundle install --without no_docker production --binstubs="$BUNDLE_BIN"
+  bundle install --without $BUNDLE_INSTALL_WITHOUT --binstubs="$BUNDLE_BIN"
 
 # Copy source into container
 COPY --chown=docker:docker . .
