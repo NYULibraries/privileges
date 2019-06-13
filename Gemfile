@@ -98,7 +98,7 @@ group :production do
   gem 'unicorn', '~> 5.3.0'
 end
 
-group :rake_task, :production do
+group :rake_task do
   # Locks in Exlibris Primo dependency for Rails 5 compatibility
   gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
   gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'

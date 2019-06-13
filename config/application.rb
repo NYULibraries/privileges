@@ -21,7 +21,7 @@ module PrivilegesGuide
     # -- all .rb files in that directory are automatically loaded.
 
     # Rails 5 options:
-    config.eager_load_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib/privileges')
 
     # Rails 5.0 defaults
     config.action_controller.per_form_csrf_tokens = true
@@ -35,7 +35,7 @@ module PrivilegesGuide
 
     # Initialize configuration defaults for originally generated Rails version.
     # config.load_defaults 5.0
-    
+
     Raven.configure do |config|
       config.dsn = ENV['SENTRY_DSN']
     end
