@@ -21,11 +21,6 @@ gem 'jquery-ui-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 3.2.0'
 
-group :no_docker do
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', '~> 0.12.0'
-end
-
 # Use the Compass CSS framework for sprites, etc.
 gem 'compass-rails', '~> 3.0.0'
 
@@ -103,8 +98,13 @@ group :production do
   gem 'unicorn', '~> 5.3.0'
 end
 
-group :rake_task do
+group :rake_task, :production do
   # Locks in Exlibris Primo dependency for Rails 5 compatibility
   gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
   gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
+end
+
+group :no_docker do
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', '~> 0.12.0'
 end
