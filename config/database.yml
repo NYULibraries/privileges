@@ -21,9 +21,6 @@ test: &test
   password: <%= (ENV['PRIVILEGES_DB_PASSWORD'] || '') %>
   database: <%= (ENV['PRIVILEGES_DB_DATABASE'] || 'privileges_test') %>
 
-cucumber:
-  <<: *test
-
 staging:
   <<: *privileges
 

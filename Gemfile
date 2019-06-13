@@ -71,7 +71,7 @@ group :development do
   gem 'listen', '~> 3.1.5'
 end
 
-group :development, :test, :cucumber do
+group :development, :test do
   # Use Puma as the app server for testing and local development
   gem 'puma', '~> 3.12'
   # Allows dalli cache store compaitibility with multithreaded servers
@@ -82,7 +82,7 @@ group :development, :test, :cucumber do
   gem "byebug", "~> 11.0"
 end
 
-group :test, :cucumber do
+group :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-its'
   # Phantomjs for headless browser testings
