@@ -21,7 +21,7 @@ module PrivilegesGuide
     # -- all .rb files in that directory are automatically loaded.
 
     # Rails 5 options:
-    config.eager_load_paths << Rails.root.join('lib/privileges')
+    config.eager_load_paths << Rails.root.join('lib')
 
     # Rails 5.0 defaults
     config.action_controller.per_form_csrf_tokens = true

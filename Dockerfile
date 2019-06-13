@@ -31,7 +31,7 @@ USER docker
 COPY --chown=docker:docker ./app ./app
 COPY --chown=docker:docker ./config ./config
 COPY --chown=docker:docker ./db ./db
-COPY --chown=docker:docker ./lib/privileges ./lib/privileges
+COPY --chown=docker:docker ./lib ./lib
 COPY --chown=docker:docker ./public ./public
 COPY --chown=docker:docker ./vendor ./vendor
 COPY --chown=docker:docker Rakefile Rakefile
