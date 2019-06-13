@@ -14,7 +14,7 @@ COPY --chown=docker:docker bin/ bin/
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ARG RUN_PACKAGES="ca-certificates fontconfig nodejs nodejs-npm tzdata mariadb-dev"
 ARG BUILD_PACKAGES="ruby-dev build-base git"
-ARG BUNDLE_INSTALL_WITHOUT='no_docker test development cucumber rake_task'
+ARG BUNDLE_INSTALL_WITHOUT='no_docker test development cucumber'
 RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
   && gem install bundler \
   && bundle config --local github.https true \
@@ -31,7 +31,7 @@ USER docker
 COPY --chown=docker:docker ./app ./app
 COPY --chown=docker:docker ./config ./config
 COPY --chown=docker:docker ./db ./db
-COPY --chown=docker:docker ./lib ./lib
+COPY --chown=docker:docker ./lib/privileges ./lib/privileges
 COPY --chown=docker:docker ./public ./public
 COPY --chown=docker:docker ./vendor ./vendor
 COPY --chown=docker:docker Rakefile Rakefile

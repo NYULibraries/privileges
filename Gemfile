@@ -98,13 +98,10 @@ group :production do
   gem 'unicorn', '~> 5.3.0'
 end
 
-group :rake_task do
+group :no_docker do
   # Locks in Exlibris Primo dependency for Rails 5 compatibility
   gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
   gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
-end
-
-group :no_docker do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '~> 0.12.0'
 end
