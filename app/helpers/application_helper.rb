@@ -78,7 +78,7 @@ module ApplicationHelper
   def link_to_logout(params={})
     return unless defined?(logout_url)
     icon_tag(:logout) + link_to(
-      "Log-out ? #{username}".strip,
+      "Log-out #{username}".strip,
       logout_url(params),
       method: :post,
       class: 'logout'

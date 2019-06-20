@@ -1,7 +1,9 @@
-class SessionsController < ApplicationController
-  def login
+class SessionsController < Devise::SessionsController
+  def destroy
     if request.post?
-      redirect_to user_nyulibraries_omniauth_authorize_path
+      super
+    else
+      redirect_to root_path
     end
   end
 end

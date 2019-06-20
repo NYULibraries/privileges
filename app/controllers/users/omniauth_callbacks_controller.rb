@@ -92,4 +92,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @omniauth_patron_status ||= omniauth_aleph_identity.properties.patron_status
     end
   end
+
+  def passthru
+    if request.post?
+      super
+    else
+      redirect_to root_path
+    end
+  end
 end
