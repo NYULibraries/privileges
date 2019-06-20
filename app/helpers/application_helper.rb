@@ -73,4 +73,26 @@ module ApplicationHelper
   def sortable_params_as_symbolized_hash
     params.permit(:controller, :action).to_h.symbolize_keys
   end
+
+  # Link to logout
+  def link_to_logout(params={})
+    return unless defined?(logout_url)
+    icon_tag(:logout) + link_to(
+      "Log-out #{username}".strip,
+      logout_url(params),
+      method: :post,
+      class: 'logout'
+    )
+  end
+
+  # Link to login
+  def link_to_login(params={})
+    return unless defined?(login_url)
+    icon_tag(:login) + link_to(
+      "Login",
+      login_url(params),
+      method: :post,
+      class: "login",
+    )
+  end
 end
