@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     match '/logout', to: 'devise/sessions#destroy', as: :logout, via: [:post]
-    match '/login', to: redirect("/users/auth/nyulibraries"), as: :login, via: [:post]
+    match '/login', to: 'sessions#login', as: :login, via: [:post]
   end
 
   patch 'permissions/update_order' => 'permissions#update_order'
