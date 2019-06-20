@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
-    match '/logout', to: 'devise/sessions#destroy', as: :logout, via: [:post]
+    match '/logout', to: 'sessions#destroy', as: :logout, via: [:post]
     match '/login', to: 'users/omniauth_callbacks#passthru', as: :login, via: [:post]
   end
 
