@@ -11,10 +11,6 @@ module LayoutsHelper
     strip_tags(application_name)
   end
 
-  def gauges_tracking_code
-    ENV['GAUGES_TOKEN']
-  end
-
   # Print breadcrumb navigation
   def breadcrumbs
     breadcrumbs = super
