@@ -339,7 +339,7 @@ GEM
       net-ssh (>= 4.0.0)
     newrelic_rpm (6.2.0.354)
     nio4r (2.3.1)
-    nokogiri (1.10.2)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     nori (2.6.0)
     oauth2 (1.4.1)
@@ -533,7 +533,7 @@ DEPENDENCIES
   jquery-ui-rails (~> 6.0.0)
   kaminari (~> 1.1.1)
   listen (~> 3.1.5)
-  mysql2 (~> 0.4.5)
+  mysql2 (= 0.4.10)
   nyulibraries_errors!
   nyulibraries_institutions!
   nyulibraries_javascripts!
