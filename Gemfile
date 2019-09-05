@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '= 5.2.2.1'
 
 # Use MySQL for the database
-gem 'mysql2', '~> 0.4.5'
+gem 'mysql2', '0.4.10'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
