@@ -363,7 +363,8 @@ GEM
       highline (~> 1.6)
       options (~> 2.3.0)
     public_suffix (3.0.3)
-    puma (3.12.1)
+    puma (4.3.1)
+      nio4r (~> 2.0)
     rack (2.0.8)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -541,7 +542,7 @@ DEPENDENCIES
   nyulibraries_templates!
   omniauth-nyulibraries!
   progress_bar (~> 1.1.0)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (= 5.2.2.1)
   rails-controller-testing
   record_tag_helper (~> 1.0.0)
