@@ -73,7 +73,7 @@ end
 
 group :development, :test do
   # Use Puma as the app server for testing and local development
-  gem 'puma', '~> 4.3.1'
+  gem 'puma', '~> 4.3.2'
   # Allows dalli cache store compaitibility with multithreaded servers
   gem 'connection_pool'
   # Development solr instance from Sunspot
