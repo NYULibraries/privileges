@@ -18,9 +18,8 @@ x-development: &development-image
     dockerfile: ./docker/dev/Dockerfile
     cache_from:
       - privileges_test
-      - privileges_dev
-      - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
-      - quay.io/nyulibraries/privileges:dev-latest
+      - quay.io/nyulibraries/privileges_test:$BRANCH_NO_SLASH
+      - quay.io/nyulibraries/privileges_test:latest
 
 services:
   dev:
