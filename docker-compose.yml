@@ -1,14 +1,30 @@
 version: '3.7'
+
+x-production: &production-image
+  image: privileges
+  build:
+    context: .
+    cache_from:
+      - privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
+      - quay.io/nyulibraries/privileges:latest
+    args:
+      AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
+
+x-development: &development-image
+  image: privileges_test
+  build:
+    context: .
+    dockerfile: ./docker/dev/Dockerfile
+    cache_from:
+      - privileges_test
+      - privileges_dev
+      - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
+      - quay.io/nyulibraries/privileges:dev-latest
+
 services:
   dev:
-    image: privileges_dev
-    build:
-      context: .
-      dockerfile: ./docker/dev/Dockerfile
-      cache_from:
-        - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
-        - quay.io/nyulibraries/privileges:dev-latest
+    <<: *development-image
     ports:
       - "3000:3000"
     environment:
@@ -27,14 +43,7 @@ services:
       - memcached
 
   test:
-    image: privileges_dev
-    build:
-      context: .
-      dockerfile: ./docker/dev/Dockerfile
-      cache_from:
-        - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
-        - quay.io/nyulibraries/privileges:dev-latest
+    <<: *development-image
     volumes:
       # - .:/app
       - bundle_cache:/bundle
@@ -51,7 +60,7 @@ services:
       - setup_test_dbs
 
   setup_dbs:
-    image: privileges_dev
+    <<: *development-image
     volumes:
       - bundle_cache:/bundle
     env_file:
@@ -62,7 +71,7 @@ services:
       - db
 
   setup_test_dbs:
-    image: privileges_dev
+    <<: *development-image
     volumes:
       - bundle_cache:/bundle
     environment:
@@ -101,7 +110,7 @@ services:
       - "11211"
 
   # Use below settings for testing nginx/unicorn locally
-  web:
+  nginx:
     image: quay.io/nyulibraries/nginx:1.15.8-0
     volumes:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -111,15 +120,7 @@ services:
       - unicorn
 
   unicorn:
-    image: privileges
-    build:
-      context: .
-      cache_from:
-        - privileges
-        - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
-        - quay.io/nyulibraries/privileges:latest
-      args:
-        AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
+    <<: *production-image
     command: ["./script/start.sh", "production"]
     expose:
       - "5000"
