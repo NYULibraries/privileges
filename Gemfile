@@ -62,7 +62,7 @@ gem 'sentry-raven', '~> 2'
 
 # Locks in Exlibris Primo dependency for Rails 5 compatibility
 gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
-gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
+#gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
 
 group :development do
   gem 'better_errors', '~> 2.3.0'
