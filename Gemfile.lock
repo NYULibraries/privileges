@@ -509,7 +509,6 @@ DEPENDENCIES
   exlibris-primo!
   factory_bot_rails (~> 4.10.0)
   formaggio!
-  git (~> 1.6.0)
   jquery-rails (~> 4.3.0)
   jquery-ui-rails (~> 6.0.0)
   kaminari (~> 1.1.1)

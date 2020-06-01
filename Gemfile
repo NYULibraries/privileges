@@ -42,7 +42,6 @@ gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.
 
 # Deploy the application with Formaggio deploy recipes
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.2'
-gem 'git', '~> 1.6.0'
 
 # Use Kaminari for pagination
 gem 'kaminari', '~> 1.1.1'
