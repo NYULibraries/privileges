@@ -28,7 +28,7 @@ gem 'compass-rails', '~> 3.0.0'
 gem 'acts_as_indexed', '~> 0.8.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', branch: 'master'
 gem 'devise', '~> 4.6'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
