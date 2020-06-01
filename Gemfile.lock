@@ -246,7 +246,7 @@ GEM
       git (~> 1.2)
       rake (~> 10.1)
     gherkin (5.1.0)
-    git (1.7.0)
+    git (1.6.0)
       rchardet (~> 1.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -509,6 +509,7 @@ DEPENDENCIES
   exlibris-primo!
   factory_bot_rails (~> 4.10.0)
   formaggio!
+  git (~> 1.6.0)
   jquery-rails (~> 4.3.0)
   jquery-ui-rails (~> 6.0.0)
   kaminari (~> 1.1.1)
