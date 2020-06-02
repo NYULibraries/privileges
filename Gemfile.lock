@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/NYULibraries/formaggio.git
+  remote: git://github.com/NYULibraries/formaggio.git
   revision: 09e7cc9d7f882c17f1052fdc5ac7b7f32aa367a0
   tag: v1.7.2
   specs:
@@ -15,7 +15,7 @@ GIT
       rvm-capistrano (~> 1.5)
 
 GIT
-  remote: https://github.com/NYULibraries/nyulibraries_errors.git
+  remote: git://github.com/NYULibraries/nyulibraries_errors.git
   revision: 54d8def9c219b2829a1b5284970e698fd4725cb7
   tag: v1.1.1
   specs:
@@ -23,7 +23,7 @@ GIT
       rails (>= 4)
 
 GIT
-  remote: https://github.com/NYULibraries/nyulibraries_institutions.git
+  remote: git://github.com/NYULibraries/nyulibraries_institutions.git
   revision: edae9f19758afe73686571d8e444e35dfe65cedf
   tag: v1.0.3
   specs:
@@ -32,14 +32,14 @@ GIT
       rails (>= 4)
 
 GIT
-  remote: https://github.com/NYULibraries/nyulibraries_javascripts.git
+  remote: git://github.com/NYULibraries/nyulibraries_javascripts.git
   revision: f2637c4891f273a6227b4f0fed9245a88539f9b2
   tag: v1.0.0
   specs:
     nyulibraries_javascripts (1.0.0)
 
 GIT
-  remote: https://github.com/NYULibraries/nyulibraries_stylesheets.git
+  remote: git://github.com/NYULibraries/nyulibraries_stylesheets.git
   revision: cdb3c1e15e6ef178dc244b9b82201736a3330285
   tag: v1.1.2
   specs:
@@ -48,7 +48,7 @@ GIT
       compass (>= 1.0.1)
 
 GIT
-  remote: https://github.com/NYULibraries/nyulibraries_templates.git
+  remote: git://github.com/NYULibraries/nyulibraries_templates.git
   revision: 03953c95b20edaac11f0be14008a25cbf99914ae
   tag: v1.2.5
   specs:
@@ -56,7 +56,7 @@ GIT
       rails (>= 4)
 
 GIT
-  remote: https://github.com/NYULibraries/omniauth-nyulibraries.git
+  remote: git://github.com/NYULibraries/omniauth-nyulibraries.git
   revision: 73130c8c1f7c6da572e49b7724ec387889d1b7be
   branch: master
   specs:
@@ -64,7 +64,7 @@ GIT
       omniauth-oauth2 (~> 1)
 
 GIT
-  remote: https://github.com/nyulibraries/exlibris-primo.git
+  remote: git://github.com/nyulibraries/exlibris-primo.git
   revision: 525ecf98dfa99f90217353c3112040cbb5619f5c
   tag: v2.2.0
   specs:
@@ -246,7 +246,7 @@ GEM
       git (~> 1.2)
       rake (~> 10.1)
     gherkin (5.1.0)
-    git (1.6.0)
+    git (1.7.0)
       rchardet (~> 1.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -272,18 +272,18 @@ GEM
       railties (>= 3.2.16)
     json (2.3.0)
     jwt (2.2.1)
-    kaminari (1.1.1)
+    kaminari (1.2.1)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.1.1)
-      kaminari-activerecord (= 1.1.1)
-      kaminari-core (= 1.1.1)
-    kaminari-actionview (1.1.1)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
       actionview
-      kaminari-core (= 1.1.1)
-    kaminari-activerecord (1.1.1)
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
       activerecord
-      kaminari-core (= 1.1.1)
-    kaminari-core (1.1.1)
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     kgio (2.11.3)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -511,7 +511,7 @@ DEPENDENCIES
   formaggio!
   jquery-rails (~> 4.3.0)
   jquery-ui-rails (~> 6.0.0)
-  kaminari (~> 1.1.1)
+  kaminari (~> 1.2.1)
   listen (~> 3.1.5)
   mysql2 (= 0.4.10)
   nyulibraries_errors!
