@@ -28,7 +28,7 @@ gem 'compass-rails', '~> 3.0.0'
 gem 'acts_as_indexed', '~> 0.8.3'
 
 # Use Devise & OAuth2
-gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', tag: 'v2.1.1'
+gem 'omniauth-nyulibraries', github: 'NYULibraries/omniauth-nyulibraries', branch: 'master'
 gem 'devise', '~> 4.6'
 
 # Use the NYU Libraries assets gem for shared NYU Libraries assets
@@ -62,7 +62,7 @@ gem 'sentry-raven', '~> 2'
 
 # Locks in Exlibris Primo dependency for Rails 5 compatibility
 gem 'exlibris-primo', github: 'nyulibraries/exlibris-primo', tag: 'v2.2.0'
-gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
+#gem 'exlibris-nyu', github: 'nyulibraries/exlibris-nyu', tag: 'v2.4.1'
 
 group :development do
   gem 'better_errors', '~> 2.3.0'
