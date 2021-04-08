@@ -41,14 +41,14 @@ jobs:
           command: |
             docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/Privileges%20Guide/job/Privileges%20Guide%20Development%20Deploy/build/api
 
-  deploy-prod:
+deploy-prod:
     <<: *docker-defaults
     steps:
       - setup_remote_docker
       - run:
-          name: Deploy into production via Jenkins
+          name: Deploy into Staging via Jenkins
           command: |
-            docker run --rm appropriate/curl -u $JENKINS_USERNAME:$JENKINS_API_KEY -X POST http://jenkins.library.nyu.edu/view/Privileges%20Guide/job/Privileges%20Guide%20Production%20Deploy/build/api
+            docker run --rm -e JOB_NAME=Privileges%20Deploy -e DEPLOY_ENV=staging -e TIMEOUT=3m -e JENKINS_CI_HOST=jenkinsci.library.nyu.edu -e JENKINS_CI_USERNAME -e JENKINS_CI_API_KEY -e CIRCLE_SHA1 quay.io/nyulibraries/jenkins_build
 
 workflows:
   version: 2

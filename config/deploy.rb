@@ -14,3 +14,5 @@ require 'formaggio/capistrano/environment'
 set :app_title, "privileges"
 set :rvm_ruby_string, "ruby-2.6.2"
 set :assets_gem, ["nyulibraries_stylesheets.git", "nyulibraries_javascripts.git"]
+set :scm, :git
+set(:branch, (ENV["GIT_COMMIT"] || ENV["GIT_BRANCH"]).gsub(/remotes\//,"").gsub(/origin\//,""))

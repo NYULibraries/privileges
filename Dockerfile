@@ -1,11 +1,11 @@
-FROM ruby:2.6.2-alpine3.9
+FROM ruby:2.6.2
 
 ENV DOCKER true
 ENV INSTALL_PATH /app
 ENV BUNDLE_PATH /usr/local/bundle
 
-RUN addgroup -g 1000 -S docker && \
-  adduser -u 1000 -S -G docker docker
+RUN groupadd -g 1000 -S docker && \
+  useradd -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
 RUN chown docker:docker .
@@ -15,13 +15,13 @@ COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ARG RUN_PACKAGES="ca-certificates fontconfig nodejs nodejs-npm tzdata mariadb-dev"
 ARG BUILD_PACKAGES="ruby-dev build-base git"
 ARG BUNDLE_INSTALL_WITHOUT='no_docker test development'
-RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
+RUN apt-get add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
   && gem install bundler \
   && bundle config --local github.https true \
   && bundle install --without $BUNDLE_INSTALL_WITHOUT --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \
-  && apk del $BUILD_PACKAGES \
+  && apt-get del $BUILD_PACKAGES \
   && chown -R docker:docker /usr/local/bundle
 RUN npm install --global yarn
 
