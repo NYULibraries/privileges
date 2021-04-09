@@ -2,7 +2,7 @@ FROM quay.io/nyulibraries/selenium_chrome_headless_ruby:2.6.2-slim-chrome_73
 
 ENV INSTALL_PATH /app
 ENV DOCKER true
-ENV BUILD_PACKAGES bzip2 git libfontconfig libfreetype6 nodejs zlib1g-dev build-essential default-libmysqlclient-dev netcat
+ENV BUILD_PACKAGES bzip2 git libfontconfig libfreetype6 nodejs zlib1g-dev build-essential default-libmysqlclient-dev netcat shared-mime-info
 
 # Essential dependencies
 RUN apt-get update -qq && apt-get install -y $BUILD_PACKAGES
