@@ -4,7 +4,7 @@ services:
     image: privileges_dev
     build:
       context: .
-      dockerfile: ./docker/dev/Dockerfile
+      dockerfile: Dockerfile.test
       cache_from:
         - privileges_dev
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
@@ -21,7 +21,7 @@ services:
       # - ./lib/:/app/lib
       # - ./config:/app/config
       - bundle_cache:/bundle
-    command: ["/wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    command: ["./wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
       - memcached
@@ -30,7 +30,7 @@ services:
     image: privileges_dev
     build:
       context: .
-      dockerfile: ./docker/dev/Dockerfile
+      dockerfile: Dockerfile.test
       cache_from:
         - privileges_dev
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
@@ -46,7 +46,7 @@ services:
       COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    command: ["/wait-for.sh", "db:3306", "--", "rake"]
+    command: ["./wait-for.sh", "db:3306", "--", "bundle", "exec", "rake"]
     depends_on:
       - setup_test_dbs
 
@@ -56,7 +56,7 @@ services:
       - bundle_cache:/bundle
     env_file:
       - test.env
-    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["./wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -69,7 +69,7 @@ services:
       RAILS_ENV: test
     env_file:
       - test.env
-    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["./wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -82,8 +82,10 @@ services:
   # docker-compose exec -T db mysql -uroot --host=db privileges < privileges_dev.sql
   db:
     image: library/mysql:5.6.22
-    expose:
-      - "3306"
+    ports:
+      - 3306:3306
+      #expose:
+      #  - "3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
@@ -92,8 +94,10 @@ services:
     build:
       context: ./solr
       dockerfile: Dockerfile
-    expose:
-      - "8983"
+    ports:
+      - 8983:8983
+        #expose:
+        #  - "8983"
 
   memcached:
     image: memcached:alpine
