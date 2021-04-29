@@ -13,8 +13,8 @@ COPY --chown=docker:docker script/docker/wait-for.sh ./
 
 COPY --chown=docker:docker bin/ bin/
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
-ARG RUN_PACKAGES="nodejs ruby-mysql2 default-libmysqlclient-dev ssh"
-ARG BUILD_PACKAGES="build-essential zlib1g-dev git"
+ARG RUN_PACKAGES="nodejs ruby-mysql2 default-libmysqlclient-dev ssh git"
+ARG BUILD_PACKAGES="build-essential zlib1g-dev"
 RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
   && gem install bundler -v '1.16.6' \
   && bundle config --local github.https true \
