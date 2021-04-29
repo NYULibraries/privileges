@@ -15,12 +15,6 @@ services:
       SOLR_URL: http://solr:8983/solr/development-core
     env_file:
       - test.env
-    volumes:
-      # - ./:/app/
-      # - ./app/:/app/app
-      # - ./lib/:/app/lib
-      # - ./config:/app/config
-      - bundle_cache:/bundle
     command: ["./wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
@@ -35,9 +29,6 @@ services:
         - privileges_dev
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
         - quay.io/nyulibraries/privileges:dev-latest
-    volumes:
-      # - .:/app
-      - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
       SOLR_URL: http://solr:8983/solr/test-core
@@ -52,24 +43,20 @@ services:
 
   setup_dbs:
     image: privileges_dev
-    volumes:
-      - bundle_cache:/bundle
     env_file:
       - test.env
-    command: ["./wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["./wait-for.sh", "db:3306", "solr:8983", "--", "bundle", "exec", "rake", "db:setup"]
     depends_on:
       - solr
       - db
 
   setup_test_dbs:
     image: privileges_dev
-    volumes:
-      - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
     env_file:
       - test.env
-    command: ["./wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["./wait-for.sh", "db:3306", "solr:8983", "--", "bundle", "exec", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -137,6 +124,3 @@ services:
     depends_on:
       - setup_dbs
       - memcached
-
-volumes:
-  bundle_cache:
