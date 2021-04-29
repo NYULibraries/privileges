@@ -13,10 +13,10 @@ RUN chown docker:docker .
 COPY --chown=docker:docker bin/ bin/
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ARG RUN_PACKAGES="ca-certificates fontconfig nodejs nodejs-npm tzdata mariadb-dev"
-ARG BUILD_PACKAGES="ruby-dev build-base git"
+ARG BUILD_PACKAGES="ruby-dev build-base git shared-mime-info"
 ARG BUNDLE_INSTALL_WITHOUT='no_docker test development'
 RUN apk add --no-cache --update $RUN_PACKAGES $BUILD_PACKAGES \
-  && gem install bundler \
+  && gem install bundler -v '1.17.2' \
   && bundle config --local github.https true \
   && bundle install --without $BUNDLE_INSTALL_WITHOUT --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
