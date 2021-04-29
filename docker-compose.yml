@@ -1,14 +1,29 @@
 version: '3.7'
+
+x-build-default: &build_default
+  image: privileges
+  build:
+    context: .
+    cache_from:
+      - privileges
+      - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
+      - quay.io/nyulibraries/privileges:latest
+    args:
+      AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
+
+x-build-test: &build_test
+  image: privileges_test
+  build:
+    context: .
+    dockerfile: Dockerfile.test
+    cache_from:
+      - privileges_test
+      - quay.io/nyulibraries/privileges_test:$BRANCH_NO_SLASH
+      - quay.io/nyulibraries/privileges_test:latest
+
 services:
   dev:
-    image: privileges_dev
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-      cache_from:
-        - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
-        - quay.io/nyulibraries/privileges:dev-latest
+    <<: *build_test
     ports:
       - "3000:3000"
     environment:
@@ -21,14 +36,7 @@ services:
       - memcached
 
   test:
-    image: privileges_dev
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-      cache_from:
-        - privileges_dev
-        - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
-        - quay.io/nyulibraries/privileges:dev-latest
+    <<: *build_test
     environment:
       RAILS_ENV: test
       SOLR_URL: http://solr:8983/solr/test-core
@@ -42,7 +50,7 @@ services:
       - setup_test_dbs
 
   setup_dbs:
-    image: privileges_dev
+    <<: *build_test
     env_file:
       - test.env
     command: ["./wait-for.sh", "db:3306", "--", "./wait-for.sh", "solr:8983", "--", "bundle", "exec", "rake", "db:setup"]
@@ -51,7 +59,7 @@ services:
       - db
 
   setup_test_dbs:
-    image: privileges_dev
+    <<: *build_test
     environment:
       RAILS_ENV: test
     env_file:
@@ -102,15 +110,7 @@ services:
       - unicorn
 
   unicorn:
-    image: privileges
-    build:
-      context: .
-      cache_from:
-        - privileges
-        - quay.io/nyulibraries/privileges:$BRANCH_NO_SLASH
-        - quay.io/nyulibraries/privileges:latest
-      args:
-        AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
+    <<: *build_default
     command: ["./script/start.sh", "production"]
     expose:
       - "5000"
