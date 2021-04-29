@@ -12,7 +12,7 @@ x-build-default: &build_default
       AQUA_MICROSCANNER_TOKEN: ${AQUA_MICROSCANNER_TOKEN}
 
 x-build-test: &build_test
-  image: privileges_dev
+  image: privileges_test
   build:
     context: .
     dockerfile: Dockerfile.test
@@ -20,6 +20,9 @@ x-build-test: &build_test
       - privileges_dev
       - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
       - quay.io/nyulibraries/privileges:dev-latest
+      - privileges_test
+      - quay.io/nyulibraries/privileges_test:$BRANCH_NO_SLASH
+      - quay.io/nyulibraries/privileges_test:latest
 
 services:
   dev:
