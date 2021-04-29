@@ -17,9 +17,6 @@ x-build-test: &build_test
     context: .
     dockerfile: Dockerfile.test
     cache_from:
-      - privileges_dev
-      - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
-      - quay.io/nyulibraries/privileges:dev-latest
       - privileges_test
       - quay.io/nyulibraries/privileges_test:$BRANCH_NO_SLASH
       - quay.io/nyulibraries/privileges_test:latest
