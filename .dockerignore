@@ -26,7 +26,6 @@ Dockerfile*
 docker-compose.yml
 .ruby-version
 README.md
-script/docker/*
 *.md
 *.env
 config/nginx.conf

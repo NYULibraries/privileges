@@ -4,7 +4,7 @@ services:
     image: privileges_dev
     build:
       context: .
-      dockerfile: ./docker/dev/Dockerfile
+      dockerfile: Dockerfile.test
       cache_from:
         - privileges_dev
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
@@ -15,13 +15,7 @@ services:
       SOLR_URL: http://solr:8983/solr/development-core
     env_file:
       - test.env
-    volumes:
-      # - ./:/app/
-      # - ./app/:/app/app
-      # - ./lib/:/app/lib
-      # - ./config:/app/config
-      - bundle_cache:/bundle
-    command: ["/wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+    command: ["./wait-for.sh", "db:3306", "--", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     depends_on:
       - setup_dbs
       - memcached
@@ -30,14 +24,11 @@ services:
     image: privileges_dev
     build:
       context: .
-      dockerfile: ./docker/dev/Dockerfile
+      dockerfile: Dockerfile.test
       cache_from:
         - privileges_dev
         - quay.io/nyulibraries/privileges:dev-$BRANCH_NO_SLASH
         - quay.io/nyulibraries/privileges:dev-latest
-    volumes:
-      # - .:/app
-      - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
       SOLR_URL: http://solr:8983/solr/test-core
@@ -46,30 +37,26 @@ services:
       COVERALLS_REPO_TOKEN:
     env_file:
       - test.env
-    command: ["/wait-for.sh", "db:3306", "--", "rake"]
+    command: ["./wait-for.sh", "db:3306", "--", "bundle", "exec", "rake"]
     depends_on:
       - setup_test_dbs
 
   setup_dbs:
     image: privileges_dev
-    volumes:
-      - bundle_cache:/bundle
     env_file:
       - test.env
-    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["./wait-for.sh", "db:3306", "--", "./wait-for.sh", "solr:8983", "--", "bundle", "exec", "rake", "db:setup"]
     depends_on:
       - solr
       - db
 
   setup_test_dbs:
     image: privileges_dev
-    volumes:
-      - bundle_cache:/bundle
     environment:
       RAILS_ENV: test
     env_file:
       - test.env
-    command: ["/wait-for.sh", "db:3306", "solr:8983", "--", "rake", "db:setup"]
+    command: ["./wait-for.sh", "db:3306", "--", "./wait-for.sh", "solr:8983", "--", "bundle", "exec", "rake", "db:setup"]
     depends_on:
       - solr
       - db
@@ -82,8 +69,10 @@ services:
   # docker-compose exec -T db mysql -uroot --host=db privileges < privileges_dev.sql
   db:
     image: library/mysql:5.6.22
-    expose:
-      - "3306"
+    ports:
+      - 3306:3306
+      #expose:
+      #  - "3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
@@ -92,8 +81,10 @@ services:
     build:
       context: ./solr
       dockerfile: Dockerfile
-    expose:
-      - "8983"
+    ports:
+      - 8983:8983
+        #expose:
+        #  - "8983"
 
   memcached:
     image: memcached:alpine
@@ -133,6 +124,3 @@ services:
     depends_on:
       - setup_dbs
       - memcached
-
-volumes:
-  bundle_cache:
