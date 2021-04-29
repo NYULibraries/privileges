@@ -44,7 +44,7 @@ gem 'nyulibraries_errors', github: 'NYULibraries/nyulibraries_errors', tag: 'v1.
 gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.2'
 
 # Use Kaminari for pagination
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 
 # For memcached
 gem 'dalli', '~> 2.7.0'
