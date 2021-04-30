@@ -13,9 +13,8 @@ COPY --chown=docker:docker script/docker/wait-for.sh ./
 
 COPY --chown=docker:docker bin/ bin/
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
-#ARG RUN_PACKAGES="nodejs ruby-mysql2 default-libmysqlclient-dev"
-ARG RUN_PACKAGES="nodejs ruby-mysql2 default-libmysqlclient-dev"
-ARG BUILD_PACKAGES="build-essential zlib1g-dev git"
+ARG RUN_PACKAGES="nodejs ruby-mysql2 default-libmysqlclient-dev ssh git"
+ARG BUILD_PACKAGES="build-essential zlib1g-dev"
 RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES $RUN_PACKAGES \
   && gem install bundler -v '1.16.6' \
   && bundle config --local github.https true \
@@ -27,6 +26,9 @@ RUN apt-get update && apt-get -y --no-install-recommends install $BUILD_PACKAGES
   && chown -R docker:docker /usr/local/bundle
 
 USER docker
+
+# avoid ssh key verification failures on runtime
+RUN mkdir ~/.ssh && touch ~/.ssh/known_hosts && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 COPY --chown=docker:docker . .
 RUN bin/rails assets:precompile
