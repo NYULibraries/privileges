@@ -47,7 +47,7 @@ gem 'formaggio', github: 'NYULibraries/formaggio', tag: 'v1.7.2'
 gem 'kaminari', '~> 1.1.1'
 
 # For memcached
-gem 'dalli', '~> 2.7.0'
+gem 'dalli', '~> 3.2.3'
 
 # Create CSVs from models
 gem 'comma', '~> 4.2.0'
